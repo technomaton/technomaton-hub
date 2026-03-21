@@ -1,0 +1,22 @@
+{
+  "name": "postiz-content-mcp",
+  "version": "latest",
+  "source": "https://github.com/Emuthmartinez/postiz-content-mcp",
+  "commit": "e617651872e3a6409638dacd6e2cb529a75e0419",
+  "vendored_at": "2026-03-21T20:15:55Z",
+  "license": "See LICENSE",
+  "content": {
+    "mcp_server": true,
+    "tools": ["get_postiz_integrations", "get_postiz_channel_health", "list_postiz_posts", "upload_postiz_media_from_url", "create_postiz_post"]
+  },
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21"
+  },
+  "content_hashes": {
+    "src/index.py": "sha256:267e670e70926ae47f72b22eb76c288be3282b8f6b4eef1e19f69f8578dd3f14",
+    "src/tools.py": "sha256:7fca49b7a088416a085fa3b2aec0b4f66ef07c5e62f18a87671de86917c37949",
+    "src/client.py": "sha256:805f7394abfdf854cd14c170beae1623c67704de6f74b3598a4c9dd9b7944989",
+    "src/config.py": "sha256:3ede48f34bd0d75775865d1ead4a0bccb77495a633348e708c394ba6112b8e64"
+  }
+}

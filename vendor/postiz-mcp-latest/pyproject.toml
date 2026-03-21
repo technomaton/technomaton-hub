@@ -1,0 +1,16 @@
+[project]
+name = "postiz-content-mcp"
+version = "0.1.0"
+description = "Reusable Postiz MCP server for integrations, posts, upload-from-url media, and draft creation."
+requires-python = ">=3.11"
+dependencies = [
+  "mcp>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

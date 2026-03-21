@@ -1,3 +1,12 @@
 {
-  "mcpServers": {}
+  "mcpServers": {
+    "postiz": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["${POSTIZ_MCP_DIR:-postiz-content-mcp}/src/index.py"],
+      "env": {
+        "POSTIZ_API_KEY": "${POSTIZ_API_KEY}"
+      }
+    }
+  }
 }
