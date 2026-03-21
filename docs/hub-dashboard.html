@@ -10,7 +10,7 @@
   --bg:#0f1419;--card:#1a2332;--card-hover:#222e3f;--border:#2a3a4e;
   --text:#e6edf3;--text-muted:#8b949e;--text-dim:#5a6470;
   --teal:#4ecdc4;--blue:#45b7d1;--gold:#f7dc6f;--purple:#bb8fce;--red:#e74c3c;
-  --critical:#e74c3c;--warning:#f39c12;--info:#3498db;
+  --critical:#e74c3c;--warning:#f39c12;--info:#3498db;--resolved:#2ecc71;
   --community:#2ecc71;--commercial:#9b59b6;
   --sidebar-w:220px;
 }
@@ -61,6 +61,7 @@ section{margin-bottom:50px;scroll-margin-top:20px}
 .badge-critical{background:rgba(231,76,60,.2);color:var(--critical)}
 .badge-warning{background:rgba(243,156,18,.2);color:var(--warning)}
 .badge-info{background:rgba(52,152,219,.2);color:var(--info)}
+.badge-resolved{background:rgba(46,204,113,.2);color:var(--resolved)}
 .badge-pack{background:rgba(78,205,196,.12);color:var(--teal);margin:2px 3px}
 .badge-action{font-weight:700;padding:2px 10px;border-radius:4px;font-size:10px;text-transform:uppercase;letter-spacing:.5px}
 .badge-merge{background:rgba(78,205,196,.2);color:var(--teal)}
@@ -97,6 +98,11 @@ section{margin-bottom:50px;scroll-margin-top:20px}
 .issue-card.expanded .issue-rec{display:block}
 .expand-btn{background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:11px;margin-top:6px}
 
+/* Resolved issue styling */
+.issue-card.resolved{opacity:0.7}
+.issue-card.resolved .issue-title{text-decoration:line-through;color:var(--text-muted)}
+.issue-card.resolved .resolved-check{color:var(--resolved);font-weight:700;margin-right:6px}
+
 /* Recommendation cards */
 .rec-card{background:var(--card);border:1px solid var(--border);border-radius:10px;
   padding:16px 20px;margin-bottom:12px}
@@ -130,8 +136,9 @@ section{margin-bottom:50px;scroll-margin-top:20px}
 .matrix-cell:hover{transform:scale(1.15);z-index:2}
 
 /* Radar grid */
-.radar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-@media(max-width:1100px){.radar-grid{grid-template-columns:repeat(2,1fr)}}
+.radar-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+@media(max-width:1100px){.radar-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.radar-grid{grid-template-columns:repeat(2,1fr)}}
 .radar-card{background:var(--card);border:1px solid var(--border);border-radius:10px;
   padding:14px;display:flex;flex-direction:column;align-items:center}
 .radar-card .pack-name{font-size:12px;font-weight:600;margin-bottom:6px}
@@ -162,88 +169,68 @@ section{margin-bottom:50px;scroll-margin-top:20px}
 
 <script>
 // =====================================================================
-// DATA
+// DATA — 15-pack structure (post-consolidation)
 // =====================================================================
 const PACKS = [
-  {id:'tm-dx',tier:'community',skills:2,commands:4,agents:0,hooks:3,mcp:1,domain:'Engineering',
-
+  {id:'tm-dx',tier:'community',skills:2,commands:2,agents:0,hooks:2,mcp:1,domain:'Engineering',
     skillNames:['commit-policy','pr-review'],
-    commandNames:['docs/sync','infra/plan','pr/review','release/cut'],
-    agentNames:[],hookNames:['secret-scan (pre)','format-code (post)','run-tests (post)'],mcpList:['context7']},
+    commandNames:['pr/review','release/cut'],
+    agentNames:[],hookNames:['format-code (post)','run-tests (post)'],mcpList:['context7']},
   {id:'tm-docs',tier:'community',skills:1,commands:3,agents:0,hooks:0,mcp:0,domain:'Engineering',
-
     skillNames:['adr-draft'],
     commandNames:['docs/adr','docs/changelog','docs/readme'],
     agentNames:[],hookNames:[],mcpList:[]},
-  {id:'tm-secure',tier:'community',skills:2,commands:3,agents:4,hooks:0,mcp:2,domain:'Security',
-
+  {id:'tm-secure',tier:'community',skills:2,commands:3,agents:4,hooks:0,mcp:0,domain:'Security',
     skillNames:['deps-health','secret-scan'],
-    commandNames:['security/dependencies','security/policy','security/secrets'],
-    agentNames:['security-reviewer','compliance-officer','dpo','risk-analyst'],hookNames:[],mcpList:['jira','servicenow']},
+    commandNames:['security/dependencies','security/branch-policy','security/secrets'],
+    agentNames:['security-reviewer','compliance-officer','dpo','risk-analyst'],hookNames:[],mcpList:[]},
   {id:'tm-infra',tier:'community',skills:2,commands:3,agents:1,hooks:0,mcp:2,domain:'Engineering',
-
     skillNames:['afd-allowlist-sync','azure-what-if'],
     commandNames:['infra/afd-allowlist-sync','infra/private-link','infra/what-if'],
     agentNames:['platform-architect'],hookNames:[],mcpList:['azure-cli','github-api']},
   {id:'tm-github',tier:'community',skills:1,commands:4,agents:0,hooks:0,mcp:1,domain:'Engineering',
-
     skillNames:['gh-release-notes'],
     commandNames:['gh/checks-list','gh/dependabot-summary','gh/pr-status','gh/release-draft-notes'],
     agentNames:[],hookNames:[],mcpList:['github-http']},
-  {id:'tm-growth',tier:'community',skills:0,commands:4,agents:1,hooks:0,mcp:0,domain:'Business',
-
+  {id:'tm-growth',tier:'community',skills:0,commands:4,agents:5,hooks:0,mcp:0,domain:'Business',
     skillNames:[],
     commandNames:['growth/icp','growth/post','growth/sequence','growth/brief'],
-    agentNames:['growth-manager'],hookNames:[],mcpList:[]},
+    agentNames:['growth-manager','product-manager','product-discovery','customer-interviewer','ux-researcher'],hookNames:[],mcpList:[]},
   {id:'tm-eaa',tier:'community',skills:0,commands:3,agents:1,hooks:0,mcp:0,domain:'Compliance',
-
     skillNames:[],
     commandNames:['eaa/checklist','eaa/procurement','eaa/test-plan'],
     agentNames:['accessibility-auditor'],hookNames:[],mcpList:[]},
   {id:'tm-ops',tier:'community',skills:0,commands:3,agents:0,hooks:0,mcp:0,domain:'Engineering',
-
     skillNames:[],
     commandNames:['ops/incident','ops/postmortem','ops/runbook'],
     agentNames:[],hookNames:[],mcpList:[]},
-  {id:'tm-data',tier:'community',skills:0,commands:1,agents:4,hooks:0,mcp:0,domain:'Data & AI',
-
+  {id:'tm-data',tier:'community',skills:0,commands:1,agents:3,hooks:0,mcp:0,domain:'Data & AI',
     skillNames:[],
     commandNames:['data/quality-check'],
-    agentNames:['data-analyst','data-engineer','data-scientist','ml-ops'],hookNames:[],mcpList:[]},
-  {id:'tm-ml',tier:'community',skills:0,commands:2,agents:0,hooks:0,mcp:0,domain:'Data & AI',
-
+    agentNames:['data-analyst','data-engineer','data-scientist'],hookNames:[],mcpList:[]},
+  {id:'tm-ml',tier:'community',skills:0,commands:2,agents:3,hooks:0,mcp:0,domain:'Data & AI',
     skillNames:[],
     commandNames:['rag/evals','rag/index'],
-    agentNames:[],hookNames:[],mcpList:[]},
-  {id:'tm-servicedesk',tier:'commercial',skills:0,commands:2,agents:0,hooks:0,mcp:2,domain:'Service Mgmt',
-
-    skillNames:[],
-    commandNames:['ops/jira-create-bug','ops/snow-incident'],
-    agentNames:[],hookNames:[],mcpList:['atlassian','servicenow']},
-  {id:'tm-public',tier:'commercial',skills:0,commands:1,agents:0,hooks:0,mcp:0,domain:'Business',
-
-    skillNames:[],
-    commandNames:['tenders/checklist'],
-    agentNames:[],hookNames:[],mcpList:[]},
-  {id:'tm-business',tier:'commercial',skills:0,commands:2,agents:0,hooks:0,mcp:0,domain:'Business',
-
-    skillNames:[],
-    commandNames:['finance/forecast','legal/redline'],
-    agentNames:[],hookNames:[],mcpList:[]},
+    agentNames:['ml-ops','ai-researcher','prompt-engineer'],hookNames:[],mcpList:[]},
   {id:'tm-governance',tier:'community',skills:4,commands:4,agents:0,hooks:0,mcp:0,domain:'Compliance',
-
     skillNames:['edpa-setup','edpa-engine','edpa-reports','edpa-autocalib'],
     commandNames:['edpa/setup','edpa/close-iteration','edpa/reports','edpa/calibrate'],
     agentNames:[],hookNames:[],mcpList:[]},
-  {id:'tm-agents',tier:'community',skills:0,commands:0,agents:6,hooks:0,mcp:0,domain:'Cross-cutting',
-
-    skillNames:[],
-    commandNames:[],
-    agentNames:['product-manager','product-discovery','customer-interviewer','ux-researcher','prompt-engineer','ai-researcher'],hookNames:[],mcpList:[]},
   {id:'tm-meta',tier:'community',skills:3,commands:0,agents:0,hooks:0,mcp:0,domain:'Cross-cutting',
-
     skillNames:['full-dev-workflow','document-workflow','secure-dev-workflow'],
     commandNames:[],
+    agentNames:[],hookNames:[],mcpList:[]},
+  {id:'tm-atlassian',tier:'commercial',skills:0,commands:1,agents:0,hooks:0,mcp:1,domain:'Service Mgmt',
+    skillNames:[],
+    commandNames:['integrations/jira-create-bug'],
+    agentNames:[],hookNames:[],mcpList:['atlassian']},
+  {id:'tm-servicenow',tier:'commercial',skills:0,commands:1,agents:0,hooks:0,mcp:1,domain:'Service Mgmt',
+    skillNames:[],
+    commandNames:['integrations/snow-incident'],
+    agentNames:[],hookNames:[],mcpList:['servicenow']},
+  {id:'tm-business',tier:'commercial',skills:0,commands:3,agents:0,hooks:0,mcp:0,domain:'Business',
+    skillNames:[],
+    commandNames:['finance/forecast','legal/redline','public/checklist'],
     agentNames:[],hookNames:[],mcpList:[]}
 ];
 
@@ -251,100 +238,80 @@ const DOMAINS = {
   'Engineering':{color:'#45b7d1',packs:['tm-dx','tm-docs','tm-github','tm-infra','tm-ops']},
   'Security':{color:'#e74c3c',packs:['tm-secure']},
   'Data & AI':{color:'#f7dc6f',packs:['tm-data','tm-ml']},
-  'Business':{color:'#2ecc71',packs:['tm-growth','tm-business','tm-public']},
+  'Business':{color:'#2ecc71',packs:['tm-growth','tm-business']},
   'Compliance':{color:'#9b59b6',packs:['tm-eaa','tm-governance']},
-  'Service Mgmt':{color:'#e67e22',packs:['tm-servicedesk']},
-  'Cross-cutting':{color:'#1abc9c',packs:['tm-agents','tm-meta']}
+  'Service Mgmt':{color:'#e67e22',packs:['tm-atlassian','tm-servicenow']},
+  'Cross-cutting':{color:'#1abc9c',packs:['tm-meta']}
 };
 
 const CAP_COLORS = {skills:'#4ecdc4',commands:'#45b7d1',agents:'#f7dc6f',hooks:'#bb8fce',mcp:'#e74c3c'};
 const CAP_LABELS = {skills:'Skills',commands:'Commands',agents:'Agents',hooks:'Hooks',mcp:'MCP'};
 const CAP_KEYS = ['skills','commands','agents','hooks','mcp'];
-const CAP_MAXES = {skills:4,commands:4,agents:6,hooks:3,mcp:2};
+const CAP_MAXES = {skills:4,commands:4,agents:5,hooks:2,mcp:2};
 function packTotal(p){return p.skills+p.commands+p.agents+p.hooks+p.mcp}
 
 const ISSUES = [
-  {id:1,severity:'critical',title:'ServiceNow MCP duplication',
-    packs:['tm-secure','tm-servicedesk'],
-    detail:'tm-secure and tm-servicedesk both configure identical servicenow MCP servers.',
-    rec:'Unify ServiceNow MCP config: tm-servicedesk should own all ITSM MCPs; tm-secure should reference them.'},
-  {id:2,severity:'critical',title:'Secret scanning in two places',
-    packs:['tm-dx','tm-secure'],
-    detail:'tm-dx has a secret-scan hook; tm-secure has a secret-scan skill. Duplicate capability.',
-    rec:'Consolidate: tm-dx hook should delegate to tm-secure skill to avoid divergent implementations.'},
-  {id:3,severity:'critical',title:'Command namespace collision',
-    packs:['tm-servicedesk','tm-ops'],
-    detail:'tm-servicedesk uses ops/ command prefix while tm-ops owns the ops/ namespace.',
-    rec:'Rename tm-servicedesk commands from ops/* to servicedesk/* or itsm/*.'},
-  {id:4,severity:'warning',title:'Docs command overlap',
-    packs:['tm-dx','tm-docs'],
-    detail:'tm-dx has commands/docs/sync while tm-docs owns the docs/* command namespace.',
-    rec:'Move docs/sync command from tm-dx to tm-docs.'},
-  {id:5,severity:'warning',title:'Infra command overlap',
-    packs:['tm-dx','tm-infra'],
-    detail:'tm-dx has commands/infra/plan while tm-infra owns the infra/* command namespace.',
-    rec:'Move infra/plan command from tm-dx to tm-infra.'},
-  {id:6,severity:'warning',title:'MLOps agent misplaced',
-    packs:['tm-data','tm-ml'],
-    detail:'tm-data has ml-ops agent but tm-ml is the dedicated ML pack.',
-    rec:'Move ml-ops agent from tm-data to tm-ml.'},
-  {id:7,severity:'warning',title:'Thin commercial packs',
-    packs:['tm-public','tm-business','tm-servicedesk'],
-    detail:'tm-public (1 cmd), tm-business (2 cmd), tm-servicedesk (2 cmd) have minimal content for commercial tier.',
+  // Active issues
+  {id:1,severity:'warning',status:'active',title:'Thin commercial packs',
+    packs:['tm-atlassian','tm-servicenow','tm-business'],
+    detail:'tm-atlassian (1 cmd), tm-servicenow (1 cmd), tm-business (3 cmd) have minimal content.',
     rec:'Enrich with skills and agents to justify commercial tier.'},
-  {id:8,severity:'warning',title:'tm-ml is skeletal',
-    packs:['tm-ml'],
-    detail:'Only 2 commands, 0 skills, 0 agents. Insufficient for a standalone pack.',
-    rec:'Absorb ml-ops agent from tm-data, add model-eval and experiment-tracking skills.'},
-  {id:9,severity:'info',title:'tm-agents is a catch-all',
-    packs:['tm-agents'],
-    detail:'6 agents without domain context; could be distributed to domain packs.',
-    rec:'Consider distributing agents to their domain packs for better cohesion.'},
-  {id:10,severity:'info',title:'tm-ops has no skills or agents',
+  {id:2,severity:'warning',status:'active',title:'tm-ops has no skills or agents',
     packs:['tm-ops'],
-    detail:'Only 3 commands with no skills or agents.',
+    detail:'Only 3 commands, could use incident-commander agent.',
     rec:'Add incident-commander agent and runbook-generation skill.'},
-  {id:11,severity:'info',title:'Internal redundancy in tm-github',
+  {id:3,severity:'info',status:'active',title:'Internal redundancy in tm-github',
     packs:['tm-github'],
-    detail:'gh-release-notes skill and gh/release-draft-notes command do similar things.',
-    rec:'Consider merging or clearly differentiating the skill and command.'},
-  {id:12,severity:'info',title:'Jira MCP divergence',
-    packs:['tm-secure','tm-servicedesk'],
-    detail:'tm-secure uses custom jira MCP; tm-servicedesk uses @anthropic/atlassian-mcp-server.',
-    rec:'Standardize on one Jira/Atlassian MCP implementation.'}
+    detail:'gh/release-draft-notes command + gh-release-notes skill overlap.',
+    rec:'tm-github command should invoke skill internally (document the pattern).'},
+  {id:4,severity:'info',status:'active',title:'Context optimization applied',
+    packs:[],
+    detail:'8 skills set to disable-model-invocation to reduce context footprint.',
+    rec:'Monitor context usage and adjust as needed.'},
+  // Resolved issues
+  {id:5,severity:'resolved',status:'resolved',title:'ServiceNow MCP duplication',
+    packs:['tm-atlassian','tm-servicenow'],
+    detail:'FIXED: Split into tm-atlassian + tm-servicenow with separate MCP configs.',
+    rec:'Resolved by splitting tm-servicedesk into two domain-specific packs.'},
+  {id:6,severity:'resolved',status:'resolved',title:'Secret scanning duplication',
+    packs:['tm-dx','tm-secure'],
+    detail:'FIXED: Hook delegates to skill.',
+    rec:'Resolved by making tm-dx hook delegate to tm-secure skill.'},
+  {id:7,severity:'resolved',status:'resolved',title:'Command namespace collision',
+    packs:['tm-atlassian','tm-servicenow'],
+    detail:'FIXED: Renamed to integrations/ prefix.',
+    rec:'Resolved by renaming commands from ops/* to integrations/*.'},
+  {id:8,severity:'resolved',status:'resolved',title:'Docs/infra command overlap',
+    packs:['tm-dx','tm-docs','tm-infra'],
+    detail:'FIXED: Moved to correct packs.',
+    rec:'Resolved by moving docs/sync and infra/plan to their respective packs.'},
+  {id:9,severity:'resolved',status:'resolved',title:'MLOps agent misplaced',
+    packs:['tm-data','tm-ml'],
+    detail:'FIXED: Moved to tm-ml.',
+    rec:'Resolved by moving ml-ops agent from tm-data to tm-ml.'},
+  {id:10,severity:'resolved',status:'resolved',title:'tm-agents catch-all',
+    packs:[],
+    detail:'FIXED: Dissolved into domain packs.',
+    rec:'Resolved by distributing agents to tm-growth, tm-ml, and other domain packs.'},
+  {id:11,severity:'resolved',status:'resolved',title:'tm-public too thin',
+    packs:['tm-business'],
+    detail:'FIXED: Merged into tm-business.',
+    rec:'Resolved by merging tm-public commands into tm-business.'}
 ];
 
 const RECOMMENDATIONS = [
-  {id:1,priority:'P1',action:'MERGE',title:'Consolidate secret-scan',
-    packs:['tm-dx','tm-secure'],
-    text:'tm-dx hook should delegate to tm-secure skill to avoid divergent implementations.'},
-  {id:2,priority:'P1',action:'MERGE',title:'Unify ServiceNow MCP',
-    packs:['tm-servicedesk','tm-secure'],
-    text:'tm-servicedesk owns ITSM MCPs, tm-secure references them instead of duplicating.'},
-  {id:3,priority:'P2',action:'MERGE',title:'Move docs/sync to tm-docs',
-    packs:['tm-dx','tm-docs'],
-    text:'Move docs/sync command from tm-dx to tm-docs where it belongs.'},
-  {id:4,priority:'P2',action:'MERGE',title:'Move infra/plan to tm-infra',
-    packs:['tm-dx','tm-infra'],
-    text:'Move infra/plan command from tm-dx to tm-infra where it belongs.'},
-  {id:5,priority:'P2',action:'MERGE',title:'Move ml-ops agent to tm-ml',
-    packs:['tm-data','tm-ml'],
-    text:'Move ml-ops agent from tm-data to tm-ml, the dedicated ML pack.'},
-  {id:6,priority:'P1',action:'RENAME',title:'Rename tm-servicedesk commands',
-    packs:['tm-servicedesk'],
-    text:'Change ops/* prefix to servicedesk/* or itsm/* to avoid namespace collision with tm-ops.'},
-  {id:7,priority:'P2',action:'GROW',title:'Enrich tm-public',
-    packs:['tm-public'],
-    text:'Add tender-analysis skill, grant-writing skill, public-sector-advisor agent.'},
-  {id:8,priority:'P2',action:'GROW',title:'Enrich tm-business',
-    packs:['tm-business'],
-    text:'Add finance-analyst agent, budget-planning skill.'},
-  {id:9,priority:'P2',action:'GROW',title:'Enrich tm-ml',
-    packs:['tm-ml'],
-    text:'Absorb ml-ops agent, add model-eval and experiment-tracking skills.'},
-  {id:10,priority:'P3',action:'GROW',title:'Enrich tm-ops',
+  {id:1,priority:'P2',action:'GROW',title:'Enrich tm-atlassian',
+    packs:['tm-atlassian'],
+    text:'Add Jira workflow agent, board-management skill.'},
+  {id:2,priority:'P2',action:'GROW',title:'Enrich tm-servicenow',
+    packs:['tm-servicenow'],
+    text:'Add incident-response agent, SLA-monitoring skill.'},
+  {id:3,priority:'P2',action:'GROW',title:'Enrich tm-ops',
     packs:['tm-ops'],
-    text:'Add incident-commander agent, runbook-generation skill.'}
+    text:'Add incident-commander agent, runbook-generation skill.'},
+  {id:4,priority:'P3',action:'INFO',title:'tm-github command should invoke skill',
+    packs:['tm-github'],
+    text:'gh/release-draft-notes command should invoke gh-release-notes skill internally (document the pattern).'}
 ];
 
 // Build overlap matrix data
@@ -357,9 +324,9 @@ function addOverlap(a,b,severity,issueId){
     OVERLAPS[key].issueIds.push(issueId);
   }
 }
-function severityRank(s){return s==='critical'?3:s==='warning'?2:1}
+function severityRank(s){return s==='critical'?3:s==='warning'?2:s==='info'?1:0}
 ISSUES.forEach(issue => {
-  if(issue.packs.length === 2){
+  if(issue.packs.length === 2 && issue.status === 'active'){
     addOverlap(issue.packs[0], issue.packs[1], issue.severity, issue.id);
   }
 });
@@ -582,7 +549,7 @@ const mainEl = document.getElementById('main-content');
   mainEl.appendChild(sec);
 })();
 
-// --- SECTION 4: Overlap Matrix ---
+// --- SECTION 4: Overlap Matrix (15x15) ---
 (function(){
   const sec = document.createElement('section');
   sec.id = 'matrix';
@@ -607,16 +574,16 @@ const mainEl = document.getElementById('main-content');
 
   // Header row
   const thead = document.createElement('thead');
-  const hr = document.createElement('tr');
+  const headerRow = document.createElement('tr');
   const emptyTh = document.createElement('th');
   emptyTh.className = 'row-head';
-  hr.appendChild(emptyTh);
+  headerRow.appendChild(emptyTh);
   PACKS.forEach(p=>{
     const th = document.createElement('th');
     th.textContent = p.id.replace('tm-','');
-    hr.appendChild(th);
+    headerRow.appendChild(th);
   });
-  thead.appendChild(hr);
+  thead.appendChild(headerRow);
   table.appendChild(thead);
 
   const tbody = document.createElement('tbody');
@@ -641,9 +608,9 @@ const mainEl = document.getElementById('main-content');
           td.style.cursor = 'pointer';
           td.style.borderRadius = '3px';
 
-          // Find relevant issues
+          // Find relevant active issues
           const relIssues = ISSUES.filter(iss =>
-            iss.packs.includes(rowP.id) && iss.packs.includes(colP.id)
+            iss.status === 'active' && iss.packs.includes(rowP.id) && iss.packs.includes(colP.id)
           );
           td.addEventListener('mouseenter', e=>{
             const lines = relIssues.map(i=>`[${i.severity.toUpperCase()}] ${i.title}`).join('\n');
@@ -676,12 +643,12 @@ const mainEl = document.getElementById('main-content');
   // Filter bar
   const filterBar = document.createElement('div');
   filterBar.className = 'filter-bar';
-  const severities = ['all','critical','warning','info'];
+  const severities = ['all','warning','info','resolved'];
   const counts = {
     all:ISSUES.length,
-    critical:ISSUES.filter(i=>i.severity==='critical').length,
     warning:ISSUES.filter(i=>i.severity==='warning').length,
-    info:ISSUES.filter(i=>i.severity==='info').length
+    info:ISSUES.filter(i=>i.severity==='info').length,
+    resolved:ISSUES.filter(i=>i.severity==='resolved').length
   };
   severities.forEach(sev=>{
     const btn = document.createElement('button');
@@ -701,17 +668,21 @@ const mainEl = document.getElementById('main-content');
 
   const issueContainer = document.createElement('div');
 
-  // Group issues
-  const grouped = {critical:[],warning:[],info:[]};
-  ISSUES.forEach(i=>grouped[i.severity].push(i));
+  // Active issues first, then resolved
+  const activeIssues = ISSUES.filter(i=>i.status==='active');
+  const resolvedIssues = ISSUES.filter(i=>i.status==='resolved');
 
-  ['critical','warning','info'].forEach(sev=>{
-    grouped[sev].forEach(issue=>{
+  // Render active issues grouped by severity
+  const grouped = {warning:[],info:[]};
+  activeIssues.forEach(i=>{if(grouped[i.severity]) grouped[i.severity].push(i);});
+
+  ['warning','info'].forEach(sev=>{
+    (grouped[sev]||[]).forEach(issue=>{
       const card = document.createElement('div');
       card.className = 'issue-card';
       card.dataset.severity = sev;
 
-      const sevColor = sev==='critical'?'var(--critical)':sev==='warning'?'var(--warning)':'var(--info)';
+      const sevColor = sev==='warning'?'var(--warning)':'var(--info)';
 
       card.innerHTML = `
         <div class="issue-header">
@@ -719,7 +690,7 @@ const mainEl = document.getElementById('main-content');
           <span class="badge badge-${sev}">${sev.toUpperCase()}</span>
           <span class="issue-title">${issue.title}</span>
         </div>
-        <div class="issue-packs">${issue.packs.map(p=>'<span class="badge badge-pack">'+p+'</span>').join('')}</div>
+        ${issue.packs.length > 0 ? '<div class="issue-packs">'+issue.packs.map(p=>'<span class="badge badge-pack">'+p+'</span>').join('')+'</div>' : ''}
         <div class="issue-detail">${issue.detail}</div>
         <div class="issue-rec">Recommendation: ${issue.rec}</div>
         <button class="expand-btn">Show recommendation</button>
@@ -733,6 +704,25 @@ const mainEl = document.getElementById('main-content');
 
       issueContainer.appendChild(card);
     });
+  });
+
+  // Render resolved issues
+  resolvedIssues.forEach(issue=>{
+    const card = document.createElement('div');
+    card.className = 'issue-card resolved';
+    card.dataset.severity = 'resolved';
+
+    card.innerHTML = `
+      <div class="issue-header">
+        <span class="sev-icon" style="background:var(--resolved)"></span>
+        <span class="badge badge-resolved">RESOLVED</span>
+        <span class="issue-title"><span class="resolved-check">&#10003;</span>${issue.title}</span>
+      </div>
+      ${issue.packs.length > 0 ? '<div class="issue-packs">'+issue.packs.map(p=>'<span class="badge badge-pack">'+p+'</span>').join('')+'</div>' : ''}
+      <div class="issue-detail">${issue.detail}</div>
+    `;
+
+    issueContainer.appendChild(card);
   });
 
   sec.appendChild(issueContainer);
@@ -837,7 +827,7 @@ const mainEl = document.getElementById('main-content');
   // Sort packs by total descending
   const sorted = [...PACKS].sort((a,b)=>packTotal(b)-packTotal(a));
 
-  const barH = 26, gap = 6, labelW = 110, maxBarW = 600;
+  const barH = 26, gap = 6, labelW = 120, maxBarW = 600;
   const maxTotal = Math.max(...sorted.map(packTotal));
   const svgH = sorted.length*(barH+gap)+10;
   const svgW = labelW + maxBarW + 60;
@@ -940,7 +930,7 @@ const mainEl = document.getElementById('main-content');
   // Right: Recommendation cards
   const rightCard = document.createElement('div');
   rightCard.className = 'card';
-  rightCard.innerHTML = '<div class="card-title">Recommendations (10)</div>';
+  rightCard.innerHTML = '<div class="card-title">Recommendations (' + RECOMMENDATIONS.length + ')</div>';
   rightCard.style.maxHeight = '520px';
   rightCard.style.overflowY = 'auto';
 
@@ -949,7 +939,7 @@ const mainEl = document.getElementById('main-content');
     rCard.className = 'rec-card';
 
     const prioClass = rec.priority==='P1'?'badge-p1':rec.priority==='P2'?'badge-p2':'badge-p3';
-    const actClass = rec.action==='MERGE'?'badge-merge':rec.action==='RENAME'?'badge-rename':'badge-grow';
+    const actClass = rec.action==='MERGE'?'badge-merge':rec.action==='RENAME'?'badge-rename':rec.action==='GROW'?'badge-grow':'badge-info';
 
     rCard.innerHTML = `
       <div class="rec-header">
