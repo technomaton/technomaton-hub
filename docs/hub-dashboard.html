@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TECHNOMATON Hub Dashboard</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0f1419;--card:#1a2332;--card-hover:#222e3f;--border:#2a3a4e;
+  --text:#e6edf3;--text-muted:#8b949e;--text-dim:#5a6470;
+  --teal:#4ecdc4;--blue:#45b7d1;--gold:#f7dc6f;--purple:#bb8fce;--red:#e74c3c;
+  --critical:#e74c3c;--warning:#f39c12;--info:#3498db;
+  --community:#2ecc71;--commercial:#9b59b6;
+  --sidebar-w:220px;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+
+/* Sidebar */
+.sidebar{position:fixed;left:0;top:0;width:var(--sidebar-w);height:100vh;
+  background:#141b24;border-right:1px solid var(--border);z-index:100;
+  display:flex;flex-direction:column;padding:20px 0}
+.sidebar-logo{padding:0 20px 20px;font-size:14px;font-weight:700;
+  letter-spacing:1px;color:var(--teal);border-bottom:1px solid var(--border)}
+.sidebar-logo span{display:block;font-size:11px;color:var(--text-muted);font-weight:400;margin-top:2px}
+.sidebar nav{flex:1;overflow-y:auto;padding:12px 0}
+.sidebar nav a{display:flex;align-items:center;gap:10px;padding:10px 20px;
+  color:var(--text-muted);text-decoration:none;font-size:13px;
+  border-left:3px solid transparent;transition:all .2s}
+.sidebar nav a:hover,.sidebar nav a.active{color:var(--text);
+  background:rgba(78,205,196,.06);border-left-color:var(--teal)}
+.sidebar nav a .nav-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+
+/* Main */
+.main{margin-left:var(--sidebar-w);padding:30px 40px 60px}
+section{margin-bottom:50px;scroll-margin-top:20px}
+.section-title{font-size:20px;font-weight:600;margin-bottom:20px;
+  padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.section-title .dot{width:8px;height:8px;border-radius:50%}
+
+/* Stat Cards */
+.stat-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-bottom:30px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:18px;text-align:center;transition:transform .2s}
+.stat-card:hover{transform:translateY(-2px)}
+.stat-card .val{font-size:28px;font-weight:700}
+.stat-card .lbl{font-size:12px;color:var(--text-muted);margin-top:4px}
+
+/* Grid helpers */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:1100px){.grid-2{grid-template-columns:1fr}}
+
+/* Cards */
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px}
+.card-title{font-size:14px;font-weight:600;margin-bottom:12px}
+
+/* Badges */
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.badge-critical{background:rgba(231,76,60,.2);color:var(--critical)}
+.badge-warning{background:rgba(243,156,18,.2);color:var(--warning)}
+.badge-info{background:rgba(52,152,219,.2);color:var(--info)}
+.badge-pack{background:rgba(78,205,196,.12);color:var(--teal);margin:2px 3px}
+.badge-action{font-weight:700;padding:2px 10px;border-radius:4px;font-size:10px;text-transform:uppercase;letter-spacing:.5px}
+.badge-merge{background:rgba(78,205,196,.2);color:var(--teal)}
+.badge-rename{background:rgba(243,156,18,.2);color:var(--warning)}
+.badge-grow{background:rgba(69,183,209,.2);color:var(--blue)}
+.badge-p1{background:var(--critical);color:#fff}
+.badge-p2{background:var(--warning);color:#111}
+.badge-p3{background:var(--info);color:#fff}
+
+/* Tooltip */
+.tooltip{position:absolute;z-index:200;background:#222e3f;color:var(--text);
+  border:1px solid var(--border);border-radius:6px;padding:10px 14px;font-size:12px;
+  white-space:pre-line;pointer-events:none;opacity:0;transition:opacity .15s;
+  max-width:300px;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.tooltip.visible{opacity:1;pointer-events:auto}
+
+/* Filter buttons */
+.filter-bar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.filter-btn{padding:6px 14px;border-radius:6px;border:1px solid var(--border);
+  background:transparent;color:var(--text-muted);cursor:pointer;font-size:12px;transition:all .2s}
+.filter-btn:hover{border-color:var(--teal);color:var(--text)}
+.filter-btn.active{background:var(--teal);color:#0f1419;border-color:var(--teal);font-weight:600}
+
+/* Issue card */
+.issue-card{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 20px;margin-bottom:12px;transition:all .2s}
+.issue-card:hover{border-color:var(--teal)}
+.issue-header{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.issue-header .sev-icon{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.issue-title{font-weight:600;font-size:14px;flex:1}
+.issue-packs{margin:6px 0}
+.issue-detail{font-size:13px;color:var(--text-muted);margin-top:6px}
+.issue-rec{font-size:12px;color:var(--teal);margin-top:6px;cursor:pointer;display:none}
+.issue-card.expanded .issue-rec{display:block}
+.expand-btn{background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:11px;margin-top:6px}
+
+/* Recommendation cards */
+.rec-card{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 20px;margin-bottom:12px}
+.rec-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.rec-text{font-size:13px;color:var(--text-muted)}
+
+/* Legend */
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;font-size:12px;color:var(--text-muted)}
+.legend-item{display:flex;align-items:center;gap:5px}
+.legend-swatch{width:12px;height:12px;border-radius:3px}
+
+/* Heatmap */
+.heatmap-table{width:100%;border-collapse:separate;border-spacing:3px}
+.heatmap-table th{font-size:11px;color:var(--text-muted);font-weight:500;padding:6px 4px;text-align:center}
+.heatmap-table th:first-child{text-align:left;padding-left:10px;min-width:130px}
+.heatmap-table td{text-align:center;padding:8px 4px;border-radius:4px;font-size:12px;
+  font-weight:600;cursor:default;position:relative}
+.heatmap-table td:first-child{text-align:left;padding-left:10px;font-weight:500;background:transparent!important;color:var(--text)}
+.heatmap-cell{border-radius:4px;transition:transform .15s}
+.heatmap-cell:hover{transform:scale(1.08);z-index:2}
+.tier-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+
+/* Overlap matrix */
+.matrix-wrap{overflow-x:auto;padding-bottom:10px}
+.matrix-table{border-collapse:separate;border-spacing:2px}
+.matrix-table th{font-size:9px;color:var(--text-muted);font-weight:500;padding:4px;
+  writing-mode:vertical-lr;text-orientation:mixed;transform:rotate(180deg);min-width:30px}
+.matrix-table th.row-head{writing-mode:horizontal-tb;transform:none;text-align:right;padding-right:8px;min-width:100px}
+.matrix-table td{width:30px;height:30px;border-radius:3px;cursor:default;position:relative;text-align:center;font-size:0}
+.matrix-cell{transition:transform .15s}
+.matrix-cell:hover{transform:scale(1.15);z-index:2}
+
+/* Radar grid */
+.radar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:1100px){.radar-grid{grid-template-columns:repeat(2,1fr)}}
+.radar-card{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:14px;display:flex;flex-direction:column;align-items:center}
+.radar-card .pack-name{font-size:12px;font-weight:600;margin-bottom:6px}
+
+/* Bar chart */
+.bar-chart-container{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px}
+
+/* Donut area */
+.donut-area{display:flex;align-items:center;justify-content:center;flex-direction:column}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#3a4a5e}
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-logo">TECHNOMATON HUB<span>Analysis Dashboard</span></div>
+  <nav id="sidebar-nav"></nav>
+</aside>
+
+<!-- Main Content -->
+<div class="main" id="main-content"></div>
+
+<script>
+// =====================================================================
+// DATA
+// =====================================================================
+const PACKS = [
+  {id:'tm-dx',tier:'community',skills:2,commands:4,agents:0,hooks:3,mcp:1,domain:'Engineering',
+
+    skillNames:['commit-policy','pr-review'],
+    commandNames:['docs/sync','infra/plan','pr/review','release/cut'],
+    agentNames:[],hookNames:['secret-scan (pre)','format-code (post)','run-tests (post)'],mcpList:['context7']},
+  {id:'tm-docs',tier:'community',skills:1,commands:3,agents:0,hooks:0,mcp:0,domain:'Engineering',
+
+    skillNames:['adr-draft'],
+    commandNames:['docs/adr','docs/changelog','docs/readme'],
+    agentNames:[],hookNames:[],mcpList:[]},
+  {id:'tm-secure',tier:'community',skills:2,commands:3,agents:4,hooks:0,mcp:2,domain:'Security',
+
+    skillNames:['deps-health','secret-scan'],
+    commandNames:['security/dependencies','security/policy','security/secrets'],
+    agentNames:['security-reviewer','compliance-officer','dpo','risk-analyst'],hookNames:[],mcpList:['jira','servicenow']},
+  {id:'tm-infra',tier:'community',skills:2,commands:3,agents:1,hooks:0,mcp:2,domain:'Engineering',
+
+    skillNames:['afd-allowlist-sync','azure-what-if'],
+    commandNames:['infra/afd-allowlist-sync','infra/private-link','infra/what-if'],
+    agentNames:['platform-architect'],hookNames:[],mcpList:['azure-cli','github-api']},
+  {id:'tm-github',tier:'community',skills:1,commands:4,agents:0,hooks:0,mcp:1,domain:'Engineering',
+
+    skillNames:['gh-release-notes'],
+    commandNames:['gh/checks-list','gh/dependabot-summary','gh/pr-status','gh/release-draft-notes'],
+    agentNames:[],hookNames:[],mcpList:['github-http']},
+  {id:'tm-growth',tier:'community',skills:0,commands:4,agents:1,hooks:0,mcp:0,domain:'Business',
+
+    skillNames:[],
+    commandNames:['growth/icp','growth/post','growth/sequence','growth/brief'],
+    agentNames:['growth-manager'],hookNames:[],mcpList:[]},
+  {id:'tm-eaa',tier:'community',skills:0,commands:3,agents:1,hooks:0,mcp:0,domain:'Compliance',
+
+    skillNames:[],
+    commandNames:['eaa/checklist','eaa/procurement','eaa/test-plan'],
+    agentNames:['accessibility-auditor'],hookNames:[],mcpList:[]},
+  {id:'tm-ops',tier:'community',skills:0,commands:3,agents:0,hooks:0,mcp:0,domain:'Engineering',
+
+    skillNames:[],
+    commandNames:['ops/incident','ops/postmortem','ops/runbook'],
+    agentNames:[],hookNames:[],mcpList:[]},
+  {id:'tm-data',tier:'community',skills:0,commands:1,agents:4,hooks:0,mcp:0,domain:'Data & AI',
+
+    skillNames:[],
+    commandNames:['data/quality-check'],
+    agentNames:['data-analyst','data-engineer','data-scientist','ml-ops'],hookNames:[],mcpList:[]},
+  {id:'tm-ml',tier:'community',skills:0,commands:2,agents:0,hooks:0,mcp:0,domain:'Data & AI',
+
+    skillNames:[],
+    commandNames:['rag/evals','rag/index'],
+    agentNames:[],hookNames:[],mcpList:[]},
+  {id:'tm-servicedesk',tier:'commercial',skills:0,commands:2,agents:0,hooks:0,mcp:2,domain:'Service Mgmt',
+
+    skillNames:[],
+    commandNames:['ops/jira-create-bug','ops/snow-incident'],
+    agentNames:[],hookNames:[],mcpList:['atlassian','servicenow']},
+  {id:'tm-public',tier:'commercial',skills:0,commands:1,agents:0,hooks:0,mcp:0,domain:'Business',
+
+    skillNames:[],
+    commandNames:['tenders/checklist'],
+    agentNames:[],hookNames:[],mcpList:[]},
+  {id:'tm-business',tier:'commercial',skills:0,commands:2,agents:0,hooks:0,mcp:0,domain:'Business',
+
+    skillNames:[],
+    commandNames:['finance/forecast','legal/redline'],
+    agentNames:[],hookNames:[],mcpList:[]},
+  {id:'tm-governance',tier:'community',skills:4,commands:4,agents:0,hooks:0,mcp:0,domain:'Compliance',
+
+    skillNames:['edpa-setup','edpa-engine','edpa-reports','edpa-autocalib'],
+    commandNames:['edpa/setup','edpa/close-iteration','edpa/reports','edpa/calibrate'],
+    agentNames:[],hookNames:[],mcpList:[]},
+  {id:'tm-agents',tier:'community',skills:0,commands:0,agents:6,hooks:0,mcp:0,domain:'Cross-cutting',
+
+    skillNames:[],
+    commandNames:[],
+    agentNames:['product-manager','product-discovery','customer-interviewer','ux-researcher','prompt-engineer','ai-researcher'],hookNames:[],mcpList:[]},
+  {id:'tm-meta',tier:'community',skills:3,commands:0,agents:0,hooks:0,mcp:0,domain:'Cross-cutting',
+
+    skillNames:['full-dev-workflow','document-workflow','secure-dev-workflow'],
+    commandNames:[],
+    agentNames:[],hookNames:[],mcpList:[]}
+];
+
+const DOMAINS = {
+  'Engineering':{color:'#45b7d1',packs:['tm-dx','tm-docs','tm-github','tm-infra','tm-ops']},
+  'Security':{color:'#e74c3c',packs:['tm-secure']},
+  'Data & AI':{color:'#f7dc6f',packs:['tm-data','tm-ml']},
+  'Business':{color:'#2ecc71',packs:['tm-growth','tm-business','tm-public']},
+  'Compliance':{color:'#9b59b6',packs:['tm-eaa','tm-governance']},
+  'Service Mgmt':{color:'#e67e22',packs:['tm-servicedesk']},
+  'Cross-cutting':{color:'#1abc9c',packs:['tm-agents','tm-meta']}
+};
+
+const CAP_COLORS = {skills:'#4ecdc4',commands:'#45b7d1',agents:'#f7dc6f',hooks:'#bb8fce',mcp:'#e74c3c'};
+const CAP_LABELS = {skills:'Skills',commands:'Commands',agents:'Agents',hooks:'Hooks',mcp:'MCP'};
+const CAP_KEYS = ['skills','commands','agents','hooks','mcp'];
+const CAP_MAXES = {skills:4,commands:4,agents:6,hooks:3,mcp:2};
+function packTotal(p){return p.skills+p.commands+p.agents+p.hooks+p.mcp}
+
+const ISSUES = [
+  {id:1,severity:'critical',title:'ServiceNow MCP duplication',
+    packs:['tm-secure','tm-servicedesk'],
+    detail:'tm-secure and tm-servicedesk both configure identical servicenow MCP servers.',
+    rec:'Unify ServiceNow MCP config: tm-servicedesk should own all ITSM MCPs; tm-secure should reference them.'},
+  {id:2,severity:'critical',title:'Secret scanning in two places',
+    packs:['tm-dx','tm-secure'],
+    detail:'tm-dx has a secret-scan hook; tm-secure has a secret-scan skill. Duplicate capability.',
+    rec:'Consolidate: tm-dx hook should delegate to tm-secure skill to avoid divergent implementations.'},
+  {id:3,severity:'critical',title:'Command namespace collision',
+    packs:['tm-servicedesk','tm-ops'],
+    detail:'tm-servicedesk uses ops/ command prefix while tm-ops owns the ops/ namespace.',
+    rec:'Rename tm-servicedesk commands from ops/* to servicedesk/* or itsm/*.'},
+  {id:4,severity:'warning',title:'Docs command overlap',
+    packs:['tm-dx','tm-docs'],
+    detail:'tm-dx has commands/docs/sync while tm-docs owns the docs/* command namespace.',
+    rec:'Move docs/sync command from tm-dx to tm-docs.'},
+  {id:5,severity:'warning',title:'Infra command overlap',
+    packs:['tm-dx','tm-infra'],
+    detail:'tm-dx has commands/infra/plan while tm-infra owns the infra/* command namespace.',
+    rec:'Move infra/plan command from tm-dx to tm-infra.'},
+  {id:6,severity:'warning',title:'MLOps agent misplaced',
+    packs:['tm-data','tm-ml'],
+    detail:'tm-data has ml-ops agent but tm-ml is the dedicated ML pack.',
+    rec:'Move ml-ops agent from tm-data to tm-ml.'},
+  {id:7,severity:'warning',title:'Thin commercial packs',
+    packs:['tm-public','tm-business','tm-servicedesk'],
+    detail:'tm-public (1 cmd), tm-business (2 cmd), tm-servicedesk (2 cmd) have minimal content for commercial tier.',
+    rec:'Enrich with skills and agents to justify commercial tier.'},
+  {id:8,severity:'warning',title:'tm-ml is skeletal',
+    packs:['tm-ml'],
+    detail:'Only 2 commands, 0 skills, 0 agents. Insufficient for a standalone pack.',
+    rec:'Absorb ml-ops agent from tm-data, add model-eval and experiment-tracking skills.'},
+  {id:9,severity:'info',title:'tm-agents is a catch-all',
+    packs:['tm-agents'],
+    detail:'6 agents without domain context; could be distributed to domain packs.',
+    rec:'Consider distributing agents to their domain packs for better cohesion.'},
+  {id:10,severity:'info',title:'tm-ops has no skills or agents',
+    packs:['tm-ops'],
+    detail:'Only 3 commands with no skills or agents.',
+    rec:'Add incident-commander agent and runbook-generation skill.'},
+  {id:11,severity:'info',title:'Internal redundancy in tm-github',
+    packs:['tm-github'],
+    detail:'gh-release-notes skill and gh/release-draft-notes command do similar things.',
+    rec:'Consider merging or clearly differentiating the skill and command.'},
+  {id:12,severity:'info',title:'Jira MCP divergence',
+    packs:['tm-secure','tm-servicedesk'],
+    detail:'tm-secure uses custom jira MCP; tm-servicedesk uses @anthropic/atlassian-mcp-server.',
+    rec:'Standardize on one Jira/Atlassian MCP implementation.'}
+];
+
+const RECOMMENDATIONS = [
+  {id:1,priority:'P1',action:'MERGE',title:'Consolidate secret-scan',
+    packs:['tm-dx','tm-secure'],
+    text:'tm-dx hook should delegate to tm-secure skill to avoid divergent implementations.'},
+  {id:2,priority:'P1',action:'MERGE',title:'Unify ServiceNow MCP',
+    packs:['tm-servicedesk','tm-secure'],
+    text:'tm-servicedesk owns ITSM MCPs, tm-secure references them instead of duplicating.'},
+  {id:3,priority:'P2',action:'MERGE',title:'Move docs/sync to tm-docs',
+    packs:['tm-dx','tm-docs'],
+    text:'Move docs/sync command from tm-dx to tm-docs where it belongs.'},
+  {id:4,priority:'P2',action:'MERGE',title:'Move infra/plan to tm-infra',
+    packs:['tm-dx','tm-infra'],
+    text:'Move infra/plan command from tm-dx to tm-infra where it belongs.'},
+  {id:5,priority:'P2',action:'MERGE',title:'Move ml-ops agent to tm-ml',
+    packs:['tm-data','tm-ml'],
+    text:'Move ml-ops agent from tm-data to tm-ml, the dedicated ML pack.'},
+  {id:6,priority:'P1',action:'RENAME',title:'Rename tm-servicedesk commands',
+    packs:['tm-servicedesk'],
+    text:'Change ops/* prefix to servicedesk/* or itsm/* to avoid namespace collision with tm-ops.'},
+  {id:7,priority:'P2',action:'GROW',title:'Enrich tm-public',
+    packs:['tm-public'],
+    text:'Add tender-analysis skill, grant-writing skill, public-sector-advisor agent.'},
+  {id:8,priority:'P2',action:'GROW',title:'Enrich tm-business',
+    packs:['tm-business'],
+    text:'Add finance-analyst agent, budget-planning skill.'},
+  {id:9,priority:'P2',action:'GROW',title:'Enrich tm-ml',
+    packs:['tm-ml'],
+    text:'Absorb ml-ops agent, add model-eval and experiment-tracking skills.'},
+  {id:10,priority:'P3',action:'GROW',title:'Enrich tm-ops',
+    packs:['tm-ops'],
+    text:'Add incident-commander agent, runbook-generation skill.'}
+];
+
+// Build overlap matrix data
+const OVERLAPS = {};
+function addOverlap(a,b,severity,issueId){
+  const key = [a,b].sort().join('|');
+  if(!OVERLAPS[key] || severityRank(severity) > severityRank(OVERLAPS[key].severity)){
+    OVERLAPS[key] = {severity, issueIds:[issueId]};
+  } else {
+    OVERLAPS[key].issueIds.push(issueId);
+  }
+}
+function severityRank(s){return s==='critical'?3:s==='warning'?2:1}
+ISSUES.forEach(issue => {
+  if(issue.packs.length === 2){
+    addOverlap(issue.packs[0], issue.packs[1], issue.severity, issue.id);
+  }
+});
+
+// Health score
+function healthScore(p){
+  let s=0;
+  if(p.skills>=1) s+=25;
+  if(p.commands>=2) s+=25;
+  if(p.agents>=1) s+=15;
+  if(p.hooks>0) s+=15;
+  if(p.mcp>0) s+=10;
+  const types = CAP_KEYS.filter(k=>p[k]>0).length;
+  if(types>=3) s+=10;
+  return s;
+}
+
+function total(key){return PACKS.reduce((s,p)=>s+p[key],0)}
+
+// =====================================================================
+// SECTIONS
+// =====================================================================
+const SECTIONS = [
+  {id:'summary',title:'Summary Stats',color:'#4ecdc4'},
+  {id:'heatmap',title:'Pack Heatmap',color:'#45b7d1'},
+  {id:'treemap',title:'Domain Treemap',color:'#2ecc71'},
+  {id:'matrix',title:'Overlap Matrix',color:'#e74c3c'},
+  {id:'issues',title:'Issue Tracker',color:'#f39c12'},
+  {id:'radar',title:'Pack Health',color:'#bb8fce'},
+  {id:'density',title:'Capability Density',color:'#45b7d1'},
+  {id:'license',title:'License & Recommendations',color:'#9b59b6'}
+];
+
+// Build sidebar
+const sidebarNav = document.getElementById('sidebar-nav');
+SECTIONS.forEach(sec => {
+  const a = document.createElement('a');
+  a.href = '#'+sec.id;
+  a.innerHTML = '<span class="nav-dot" style="background:'+sec.color+'"></span>'+sec.title;
+  a.dataset.section = sec.id;
+  sidebarNav.appendChild(a);
+});
+
+// =====================================================================
+// SVG HELPERS
+// =====================================================================
+function svgEl(tag, attrs){
+  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  if(attrs) Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k,v));
+  return el;
+}
+function createSvg(w, h, vb){
+  const svg = svgEl('svg', {width:w, height:h, viewBox:vb||`0 0 ${w} ${h}`});
+  svg.style.display = 'block';
+  return svg;
+}
+
+// =====================================================================
+// SHARED TOOLTIP
+// =====================================================================
+const sharedTooltip = document.createElement('div');
+sharedTooltip.className = 'tooltip';
+document.body.appendChild(sharedTooltip);
+
+// =====================================================================
+// RENDER MAIN
+// =====================================================================
+const mainEl = document.getElementById('main-content');
+
+// --- SECTION 1: Summary Stats ---
+(function(){
+  const sec = document.createElement('section');
+  sec.id = 'summary';
+  sec.innerHTML = '<div class="section-title"><span class="dot" style="background:#4ecdc4"></span>Summary Stats</div>';
+  const bar = document.createElement('div');
+  bar.className = 'stat-bar';
+  const stats = [
+    {val:PACKS.length, lbl:'Total Packs', color:'#4ecdc4'},
+    {val:total('skills'), lbl:'Skills', color:CAP_COLORS.skills},
+    {val:total('commands'), lbl:'Commands', color:CAP_COLORS.commands},
+    {val:total('agents'), lbl:'Agents', color:CAP_COLORS.agents},
+    {val:total('hooks'), lbl:'Hooks', color:CAP_COLORS.hooks},
+    {val:total('mcp'), lbl:'MCP Servers', color:CAP_COLORS.mcp},
+    {val:PACKS.filter(p=>p.tier==='community').length, lbl:'Community', color:'#2ecc71'},
+    {val:PACKS.filter(p=>p.tier==='commercial').length, lbl:'Commercial', color:'#9b59b6'}
+  ];
+  stats.forEach(s=>{
+    const card = document.createElement('div');
+    card.className = 'stat-card';
+    card.innerHTML = `<div class="val" style="color:${s.color}">${s.val}</div><div class="lbl">${s.lbl}</div>`;
+    bar.appendChild(card);
+  });
+  sec.appendChild(bar);
+  mainEl.appendChild(sec);
+})();
+
+// --- SECTION 2: Pack Heatmap ---
+(function(){
+  const sec = document.createElement('section');
+  sec.id = 'heatmap';
+  sec.innerHTML = '<div class="section-title"><span class="dot" style="background:#45b7d1"></span>Pack Heatmap</div>';
+  const wrap = document.createElement('div');
+  wrap.className = 'card';
+  wrap.style.overflowX = 'auto';
+
+  const table = document.createElement('table');
+  table.className = 'heatmap-table';
+  const thead = document.createElement('thead');
+  const hr = document.createElement('tr');
+  ['Pack','Skills','Commands','Agents','Hooks','MCP'].forEach(h=>{
+    const th = document.createElement('th');
+    th.textContent = h;
+    hr.appendChild(th);
+  });
+  thead.appendChild(hr);
+  table.appendChild(thead);
+
+  const tbody = document.createElement('tbody');
+  const capNameKey = {skills:'skillNames',commands:'commandNames',agents:'agentNames',hooks:'hookNames',mcp:'mcpList'};
+
+  PACKS.forEach(p=>{
+    const tr = document.createElement('tr');
+    const tdName = document.createElement('td');
+    const dotColor = p.tier==='community'?'var(--community)':'var(--commercial)';
+    tdName.innerHTML = `<span class="tier-dot" style="background:${dotColor}" title="${p.tier}"></span>${p.id}`;
+    tr.appendChild(tdName);
+
+    CAP_KEYS.forEach(cap=>{
+      const td = document.createElement('td');
+      const val = p[cap];
+      const intensity = val===0 ? 0 : Math.min(val/CAP_MAXES[cap], 1);
+      const baseColor = CAP_COLORS[cap];
+      const alpha = val===0 ? 0.05 : 0.15 + intensity*0.7;
+      td.style.background = hexToRgba(baseColor, alpha);
+      td.style.color = val===0 ? 'var(--text-dim)' : baseColor;
+      td.textContent = val;
+      td.className = 'heatmap-cell';
+
+      const names = p[capNameKey[cap]] || [];
+
+      if(names.length > 0){
+        td.addEventListener('mouseenter', e=>{
+          sharedTooltip.textContent = names.join('\n');
+          sharedTooltip.classList.add('visible');
+          positionTooltip(e, sharedTooltip);
+        });
+        td.addEventListener('mousemove', e=> positionTooltip(e, sharedTooltip));
+        td.addEventListener('mouseleave', ()=> sharedTooltip.classList.remove('visible'));
+      }
+
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  wrap.appendChild(table);
+  sec.appendChild(wrap);
+  mainEl.appendChild(sec);
+})();
+
+// --- SECTION 3: Domain Treemap ---
+(function(){
+  const sec = document.createElement('section');
+  sec.id = 'treemap';
+  sec.innerHTML = '<div class="section-title"><span class="dot" style="background:#2ecc71"></span>Domain Treemap</div>';
+  const card = document.createElement('div');
+  card.className = 'card';
+
+  const W = 900, H = 420;
+  const svg = createSvg('100%', H, `0 0 ${W} ${H}`);
+  svg.style.maxWidth = W+'px';
+
+  // Compute domain totals
+  const domainData = Object.entries(DOMAINS).map(([name,d])=>{
+    const packData = d.packs.map(pid=>{
+      const p = PACKS.find(x=>x.id===pid);
+      return {id:pid, total: packTotal(p)};
+    });
+    return {name, color:d.color, total:packData.reduce((s,x)=>s+x.total,0), packs:packData};
+  }).sort((a,b)=>b.total-a.total);
+
+  const grandTotal = domainData.reduce((s,d)=>s+d.total,0);
+
+  // Simple treemap: horizontal strips divided vertically
+  let y = 0;
+  const pad = 3;
+  domainData.forEach(domain=>{
+    const h = Math.max(40, (domain.total/grandTotal)*(H-pad*(domainData.length-1)));
+    // Domain background
+    const bg = svgEl('rect',{x:0,y,width:W,height:h,rx:6,fill:hexToRgba(domain.color,0.12),stroke:hexToRgba(domain.color,0.3),'stroke-width':1});
+    svg.appendChild(bg);
+
+    // Domain label
+    const lbl = svgEl('text',{x:8,y:y+16,'font-size':11,'font-weight':600,fill:domain.color,'font-family':'inherit'});
+    lbl.textContent = domain.name + ' (' + domain.total + ')';
+    svg.appendChild(lbl);
+
+    // Subdivide horizontally for packs
+    let px = 0;
+    const packArea = W;
+    const labelH = 22;
+    domain.packs.sort((a,b)=>b.total-a.total);
+    const maxPackTotal = Math.max(1,...domain.packs.map(p=>p.total));
+    domain.packs.forEach(pack=>{
+      const pw = domain.total>0 ? Math.max(60, (pack.total/domain.total)*packArea) : packArea/domain.packs.length;
+      const rect = svgEl('rect',{x:px+2,y:y+labelH,width:pw-4,height:h-labelH-4,rx:4,fill:hexToRgba(domain.color,0.2+0.15*(pack.total/maxPackTotal))});
+      svg.appendChild(rect);
+
+      const ptxt = svgEl('text',{x:px+pw/2,y:y+labelH+(h-labelH)/2+4,'text-anchor':'middle','font-size':10,fill:'#e6edf3','font-family':'inherit'});
+      ptxt.textContent = pack.id.replace('tm-','') + ' (' + pack.total + ')';
+      svg.appendChild(ptxt);
+      px += pw;
+    });
+
+    y += h + pad;
+  });
+
+  card.appendChild(svg);
+  sec.appendChild(card);
+  mainEl.appendChild(sec);
+})();
+
+// --- SECTION 4: Overlap Matrix ---
+(function(){
+  const sec = document.createElement('section');
+  sec.id = 'matrix';
+  sec.innerHTML = '<div class="section-title"><span class="dot" style="background:#e74c3c"></span>Overlap Matrix</div>';
+
+  // Legend
+  const legend = document.createElement('div');
+  legend.className = 'legend';
+  legend.innerHTML = `
+    <div class="legend-item"><span class="legend-swatch" style="background:var(--critical)"></span>Critical</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:var(--warning)"></span>Warning</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:var(--info)"></span>Info</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#1e2a38"></span>No overlap</div>
+  `;
+  sec.appendChild(legend);
+
+  const card = document.createElement('div');
+  card.className = 'card matrix-wrap';
+
+  const table = document.createElement('table');
+  table.className = 'matrix-table';
+
+  // Header row
+  const thead = document.createElement('thead');
+  const hr = document.createElement('tr');
+  const emptyTh = document.createElement('th');
+  emptyTh.className = 'row-head';
+  hr.appendChild(emptyTh);
+  PACKS.forEach(p=>{
+    const th = document.createElement('th');
+    th.textContent = p.id.replace('tm-','');
+    hr.appendChild(th);
+  });
+  thead.appendChild(hr);
+  table.appendChild(thead);
+
+  const tbody = document.createElement('tbody');
+  PACKS.forEach((rowP,ri)=>{
+    const tr = document.createElement('tr');
+    const th = document.createElement('th');
+    th.className = 'row-head';
+    th.textContent = rowP.id.replace('tm-','');
+    tr.appendChild(th);
+
+    PACKS.forEach((colP,ci)=>{
+      const td = document.createElement('td');
+      td.className = 'matrix-cell';
+      if(ri === ci){
+        td.style.background = '#151e29';
+      } else {
+        const key = [rowP.id, colP.id].sort().join('|');
+        const overlap = OVERLAPS[key];
+        if(overlap){
+          const colors = {critical:'#e74c3c',warning:'#f39c12',info:'#3498db'};
+          td.style.background = hexToRgba(colors[overlap.severity], 0.6);
+          td.style.cursor = 'pointer';
+          td.style.borderRadius = '3px';
+
+          // Find relevant issues
+          const relIssues = ISSUES.filter(iss =>
+            iss.packs.includes(rowP.id) && iss.packs.includes(colP.id)
+          );
+          td.addEventListener('mouseenter', e=>{
+            const lines = relIssues.map(i=>`[${i.severity.toUpperCase()}] ${i.title}`).join('\n');
+            sharedTooltip.textContent = `${rowP.id} <> ${colP.id}\n\n${lines}`;
+            sharedTooltip.classList.add('visible');
+            positionTooltip(e, sharedTooltip);
+          });
+          td.addEventListener('mousemove', e=> positionTooltip(e, sharedTooltip));
+          td.addEventListener('mouseleave', ()=> sharedTooltip.classList.remove('visible'));
+        } else {
+          td.style.background = '#1e2a38';
+        }
+      }
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  card.appendChild(table);
+  sec.appendChild(card);
+  mainEl.appendChild(sec);
+})();
+
+// --- SECTION 5: Issue Tracker ---
+(function(){
+  const sec = document.createElement('section');
+  sec.id = 'issues';
+  sec.innerHTML = '<div class="section-title"><span class="dot" style="background:#f39c12"></span>Issue Tracker</div>';
+
+  // Filter bar
+  const filterBar = document.createElement('div');
+  filterBar.className = 'filter-bar';
+  const severities = ['all','critical','warning','info'];
+  const counts = {
+    all:ISSUES.length,
+    critical:ISSUES.filter(i=>i.severity==='critical').length,
+    warning:ISSUES.filter(i=>i.severity==='warning').length,
+    info:ISSUES.filter(i=>i.severity==='info').length
+  };
+  severities.forEach(sev=>{
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn' + (sev==='all'?' active':'');
+    btn.textContent = sev.charAt(0).toUpperCase()+sev.slice(1)+' ('+counts[sev]+')';
+    btn.dataset.filter = sev;
+    btn.addEventListener('click', ()=>{
+      filterBar.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      issueContainer.querySelectorAll('.issue-card').forEach(card=>{
+        card.style.display = (sev==='all' || card.dataset.severity===sev) ? '' : 'none';
+      });
+    });
+    filterBar.appendChild(btn);
+  });
+  sec.appendChild(filterBar);
+
+  const issueContainer = document.createElement('div');
+
+  // Group issues
+  const grouped = {critical:[],warning:[],info:[]};
+  ISSUES.forEach(i=>grouped[i.severity].push(i));
+
+  ['critical','warning','info'].forEach(sev=>{
+    grouped[sev].forEach(issue=>{
+      const card = document.createElement('div');
+      card.className = 'issue-card';
+      card.dataset.severity = sev;
+
+      const sevColor = sev==='critical'?'var(--critical)':sev==='warning'?'var(--warning)':'var(--info)';
+
+      card.innerHTML = `
+        <div class="issue-header">
+          <span class="sev-icon" style="background:${sevColor}"></span>
+          <span class="badge badge-${sev}">${sev.toUpperCase()}</span>
+          <span class="issue-title">${issue.title}</span>
+        </div>
+        <div class="issue-packs">${issue.packs.map(p=>'<span class="badge badge-pack">'+p+'</span>').join('')}</div>
+        <div class="issue-detail">${issue.detail}</div>
+        <div class="issue-rec">Recommendation: ${issue.rec}</div>
+        <button class="expand-btn">Show recommendation</button>
+      `;
+
+      const expandBtn = card.querySelector('.expand-btn');
+      expandBtn.addEventListener('click', ()=>{
+        card.classList.toggle('expanded');
+        expandBtn.textContent = card.classList.contains('expanded') ? 'Hide recommendation' : 'Show recommendation';
+      });
+
+      issueContainer.appendChild(card);
+    });
+  });
+
+  sec.appendChild(issueContainer);
+  mainEl.appendChild(sec);
+})();
+
+// --- SECTION 6: Pack Health Radar Charts ---
+(function(){
+  const sec = document.createElement('section');
+  sec.id = 'radar';
+  sec.innerHTML = '<div class="section-title"><span class="dot" style="background:#bb8fce"></span>Pack Health Radar</div>';
+
+  const grid = document.createElement('div');
+  grid.className = 'radar-grid';
+
+  const axisLabels = ['Skills','Cmds','Agents','Hooks','MCP'];
+  const axisMaxArr = CAP_KEYS.map(k=>CAP_MAXES[k]);
+  const R = 50; // radar radius
+  const CX = 65, CY = 70;
+  const svgW = 130, svgH = 140;
+
+  PACKS.forEach(pack=>{
+    const card = document.createElement('div');
+    card.className = 'radar-card';
+
+    const score = healthScore(pack);
+    const scoreColor = score>=60?'#2ecc71':score>=35?'#f39c12':'#e74c3c';
+    const tierColor = pack.tier==='community'?'var(--community)':'var(--commercial)';
+
+    card.innerHTML = `<div class="pack-name" style="color:${tierColor}">${pack.id}</div>`;
+
+    const svg = createSvg(svgW, svgH);
+
+    // Draw concentric pentagons (background)
+    for(let ring=1;ring<=3;ring++){
+      const r = (ring/3)*R;
+      const pts = CAP_KEYS.map((_,i)=>{
+        const angle = (Math.PI*2*i/5) - Math.PI/2;
+        return `${CX+r*Math.cos(angle)},${CY+r*Math.sin(angle)}`;
+      }).join(' ');
+      const poly = svgEl('polygon',{points:pts,fill:'none',stroke:'#2a3a4e','stroke-width':0.5});
+      svg.appendChild(poly);
+    }
+
+    // Draw axis lines
+    CAP_KEYS.forEach((_,i)=>{
+      const angle = (Math.PI*2*i/5) - Math.PI/2;
+      const line = svgEl('line',{x1:CX,y1:CY,x2:CX+R*Math.cos(angle),y2:CY+R*Math.sin(angle),stroke:'#2a3a4e','stroke-width':0.5});
+      svg.appendChild(line);
+    });
+
+    // Draw data polygon
+    const vals = CAP_KEYS.map((ax,i)=> Math.min(pack[ax]/axisMaxArr[i], 1));
+    const dataPts = vals.map((v,i)=>{
+      const angle = (Math.PI*2*i/5) - Math.PI/2;
+      const r = v*R;
+      return `${CX+r*Math.cos(angle)},${CY+r*Math.sin(angle)}`;
+    }).join(' ');
+    const dataPoly = svgEl('polygon',{points:dataPts,fill:hexToRgba(scoreColor,0.25),stroke:scoreColor,'stroke-width':1.5});
+    svg.appendChild(dataPoly);
+
+    // Axis labels
+    CAP_KEYS.forEach((_,i)=>{
+      const angle = (Math.PI*2*i/5) - Math.PI/2;
+      const lx = CX + (R+14)*Math.cos(angle);
+      const ly = CY + (R+14)*Math.sin(angle);
+      const label = svgEl('text',{x:lx,y:ly+3,'text-anchor':'middle','font-size':8,fill:'#8b949e','font-family':'inherit'});
+      label.textContent = axisLabels[i];
+      svg.appendChild(label);
+    });
+
+    // Center score
+    const scoreTxt = svgEl('text',{x:CX,y:CY+4,'text-anchor':'middle','font-size':14,'font-weight':700,fill:scoreColor,'font-family':'inherit'});
+    scoreTxt.textContent = score;
+    svg.appendChild(scoreTxt);
+
+    card.appendChild(svg);
+    grid.appendChild(card);
+  });
+
+  sec.appendChild(grid);
+  mainEl.appendChild(sec);
+})();
+
+// --- SECTION 7: Capability Density ---
+(function(){
+  const sec = document.createElement('section');
+  sec.id = 'density';
+  sec.innerHTML = '<div class="section-title"><span class="dot" style="background:#45b7d1"></span>Capability Density</div>';
+
+  // Legend
+  const legend = document.createElement('div');
+  legend.className = 'legend';
+  Object.entries(CAP_COLORS).forEach(([key,color])=>{
+    legend.innerHTML += `<div class="legend-item"><span class="legend-swatch" style="background:${color}"></span>${CAP_LABELS[key]}</div>`;
+  });
+  sec.appendChild(legend);
+
+  const container = document.createElement('div');
+  container.className = 'bar-chart-container';
+
+  // Sort packs by total descending
+  const sorted = [...PACKS].sort((a,b)=>packTotal(b)-packTotal(a));
+
+  const barH = 26, gap = 6, labelW = 110, maxBarW = 600;
+  const maxTotal = Math.max(...sorted.map(packTotal));
+  const svgH = sorted.length*(barH+gap)+10;
+  const svgW = labelW + maxBarW + 60;
+
+  const svg = createSvg('100%', svgH, `0 0 ${svgW} ${svgH}`);
+  svg.style.maxWidth = svgW+'px';
+
+  sorted.forEach((pack,idx)=>{
+    const y = idx*(barH+gap)+5;
+    const pt = packTotal(pack);
+
+    // Pack label
+    const label = svgEl('text',{x:labelW-8,y:y+barH/2+4,'text-anchor':'end','font-size':11,fill:'#e6edf3','font-family':'inherit'});
+    label.textContent = pack.id;
+    svg.appendChild(label);
+
+    // Stacked bars
+    let x = labelW;
+    CAP_KEYS.forEach(cap=>{
+      const val = pack[cap];
+      if(val>0){
+        const w = (val/maxTotal)*maxBarW;
+        const rect = svgEl('rect',{x,y:y+2,width:w,height:barH-4,rx:3,fill:CAP_COLORS[cap]});
+        rect.style.cursor = 'default';
+        rect.addEventListener('mouseenter', e=>{
+          sharedTooltip.textContent = `${pack.id} - ${CAP_LABELS[cap]}: ${val}`;
+          sharedTooltip.classList.add('visible');
+          positionTooltip(e, sharedTooltip);
+        });
+        rect.addEventListener('mousemove', e=> positionTooltip(e, sharedTooltip));
+        rect.addEventListener('mouseleave', ()=> sharedTooltip.classList.remove('visible'));
+        svg.appendChild(rect);
+        x += w;
+      }
+    });
+
+    // Total label
+    const totalLabel = svgEl('text',{x:x+8,y:y+barH/2+4,'font-size':11,'font-weight':600,fill:'#8b949e','font-family':'inherit'});
+    totalLabel.textContent = pt;
+    svg.appendChild(totalLabel);
+  });
+
+  container.appendChild(svg);
+  sec.appendChild(container);
+  mainEl.appendChild(sec);
+})();
+
+// --- SECTION 8: License & Recommendations ---
+(function(){
+  const sec = document.createElement('section');
+  sec.id = 'license';
+  sec.innerHTML = '<div class="section-title"><span class="dot" style="background:#9b59b6"></span>License & Recommendations</div>';
+
+  const grid = document.createElement('div');
+  grid.className = 'grid-2';
+
+  // Left: Donut chart
+  const leftCard = document.createElement('div');
+  leftCard.className = 'card';
+  leftCard.innerHTML = '<div class="card-title">License Distribution</div>';
+
+  const donutWrap = document.createElement('div');
+  donutWrap.className = 'donut-area';
+
+  const communityCount = PACKS.filter(p=>p.tier==='community').length;
+  const commercialCount = PACKS.filter(p=>p.tier==='commercial').length;
+  const totalPacks = PACKS.length;
+
+  const dSvg = createSvg(220,220);
+  const cx=110,cy=110,outerR=85,innerR=55;
+
+  // Community arc
+  const commAngle = (communityCount/totalPacks)*360;
+  const startAngle = -90;
+  drawArc(dSvg, cx, cy, outerR, innerR, startAngle, startAngle+commAngle, '#2ecc71');
+  drawArc(dSvg, cx, cy, outerR, innerR, startAngle+commAngle, startAngle+360, '#9b59b6');
+
+  // Center text
+  const ct1 = svgEl('text',{x:cx,y:cy-4,'text-anchor':'middle','font-size':24,'font-weight':700,fill:'#e6edf3','font-family':'inherit'});
+  ct1.textContent = totalPacks;
+  dSvg.appendChild(ct1);
+  const ct2 = svgEl('text',{x:cx,y:cy+14,'text-anchor':'middle','font-size':11,fill:'#8b949e','font-family':'inherit'});
+  ct2.textContent = 'packs';
+  dSvg.appendChild(ct2);
+
+  donutWrap.appendChild(dSvg);
+
+  // Legend under donut
+  const dLegend = document.createElement('div');
+  dLegend.className = 'legend';
+  dLegend.style.marginTop = '12px';
+  dLegend.innerHTML = `
+    <div class="legend-item"><span class="legend-swatch" style="background:#2ecc71"></span>Community (${communityCount})</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#9b59b6"></span>Commercial (${commercialCount})</div>
+  `;
+  donutWrap.appendChild(dLegend);
+  leftCard.appendChild(donutWrap);
+  grid.appendChild(leftCard);
+
+  // Right: Recommendation cards
+  const rightCard = document.createElement('div');
+  rightCard.className = 'card';
+  rightCard.innerHTML = '<div class="card-title">Recommendations (10)</div>';
+  rightCard.style.maxHeight = '520px';
+  rightCard.style.overflowY = 'auto';
+
+  RECOMMENDATIONS.forEach(rec=>{
+    const rCard = document.createElement('div');
+    rCard.className = 'rec-card';
+
+    const prioClass = rec.priority==='P1'?'badge-p1':rec.priority==='P2'?'badge-p2':'badge-p3';
+    const actClass = rec.action==='MERGE'?'badge-merge':rec.action==='RENAME'?'badge-rename':'badge-grow';
+
+    rCard.innerHTML = `
+      <div class="rec-header">
+        <span class="badge ${prioClass}">${rec.priority}</span>
+        <span class="badge badge-action ${actClass}">${rec.action}</span>
+        <strong style="font-size:13px">${rec.title}</strong>
+      </div>
+      <div class="rec-text">${rec.text}</div>
+      <div style="margin-top:6px">${rec.packs.map(p=>'<span class="badge badge-pack">'+p+'</span>').join('')}</div>
+    `;
+    rightCard.appendChild(rCard);
+  });
+
+  grid.appendChild(rightCard);
+  sec.appendChild(grid);
+  mainEl.appendChild(sec);
+})();
+
+// =====================================================================
+// UTILITY FUNCTIONS
+// =====================================================================
+function hexToRgba(hex, alpha){
+  const r = parseInt(hex.slice(1,3),16);
+  const g = parseInt(hex.slice(3,5),16);
+  const b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+function positionTooltip(e, el){
+  const x = e.clientX+12;
+  const y = e.clientY+12;
+  el.style.left = x+'px';
+  el.style.top = y+'px';
+  el.style.position = 'fixed';
+}
+
+function drawArc(svg, cx, cy, outerR, innerR, startDeg, endDeg, color){
+  if(Math.abs(endDeg-startDeg)<0.5) return;
+  const startRad = startDeg*Math.PI/180;
+  const endRad = endDeg*Math.PI/180;
+  const largeArc = (endDeg-startDeg)>180?1:0;
+
+  const x1o = cx+outerR*Math.cos(startRad);
+  const y1o = cy+outerR*Math.sin(startRad);
+  const x2o = cx+outerR*Math.cos(endRad);
+  const y2o = cy+outerR*Math.sin(endRad);
+  const x1i = cx+innerR*Math.cos(endRad);
+  const y1i = cy+innerR*Math.sin(endRad);
+  const x2i = cx+innerR*Math.cos(startRad);
+  const y2i = cy+innerR*Math.sin(startRad);
+
+  const d = `M${x1o},${y1o} A${outerR},${outerR} 0 ${largeArc} 1 ${x2o},${y2o} L${x1i},${y1i} A${innerR},${innerR} 0 ${largeArc} 0 ${x2i},${y2i} Z`;
+  const path = svgEl('path',{d,fill:color,opacity:0.85});
+  svg.appendChild(path);
+}
+
+// =====================================================================
+// SCROLL SPY
+// =====================================================================
+function updateScrollSpy(){
+  const links = sidebarNav.querySelectorAll('a');
+  let current = '';
+  SECTIONS.forEach(s=>{
+    const el = document.getElementById(s.id);
+    if(el){
+      const rect = el.getBoundingClientRect();
+      if(rect.top <= 100) current = s.id;
+    }
+  });
+  links.forEach(a=>{
+    a.classList.toggle('active', a.dataset.section===current);
+  });
+}
+window.addEventListener('scroll', updateScrollSpy);
+updateScrollSpy();
+
+// =====================================================================
+// CROSS-PACK HIGHLIGHTING
+// =====================================================================
+(function(){
+  // Click on heatmap row highlights related issues
+  const heatmapRows = document.querySelectorAll('.heatmap-table tbody tr');
+  heatmapRows.forEach(tr=>{
+    tr.style.cursor = 'pointer';
+    tr.addEventListener('click', ()=>{
+      const packName = tr.querySelector('td:first-child').textContent.trim();
+      // Highlight matching issues
+      document.querySelectorAll('.issue-card').forEach(card=>{
+        const packs = card.querySelectorAll('.badge-pack');
+        let match = false;
+        packs.forEach(b=>{if(b.textContent.trim()===packName) match=true;});
+        if(match){
+          card.style.borderColor = 'var(--teal)';
+          card.style.background = 'var(--card-hover)';
+        } else {
+          card.style.borderColor = 'var(--border)';
+          card.style.background = 'var(--card)';
+        }
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
