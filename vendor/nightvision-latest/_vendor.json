@@ -1,0 +1,18 @@
+{
+  "name": "nightvision",
+  "version": "latest",
+  "source": "https://claude.com/plugins/nightvision",
+  "vendored_at": "2026-03-21T12:00:13Z",
+  "license": "See individual files",
+  "skills_imported": ["api-discovery", "ci-cd-integration", "scan-configuration", "scan-triage"],
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21"
+  },
+  "content_hashes": {
+    "skills/api-discovery/SKILL.md": "sha256:d6ecbff2291b78387a34bbe9cd84aa3ec65f179f4bce013636e5c956e342a397",
+    "skills/ci-cd-integration/SKILL.md": "sha256:21b183cfb44b8be95d3c6a62c9e74ebbcd1fb236498fcdc48ba216143dffe823",
+    "skills/scan-configuration/SKILL.md": "sha256:30eb643b8986d8e454955c306ae2d5631938fb44b1a862f7e76673d48fee079d",
+    "skills/scan-triage/SKILL.md": "sha256:264e01deeeff918fae42ae3ee4c5f2d19029377ca8b9433776751c5c411b2334"
+  }
+}

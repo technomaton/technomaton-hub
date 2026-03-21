@@ -1,0 +1,19 @@
+{
+  "name": "opsera",
+  "version": "latest",
+  "source": "https://claude.com/plugins/opsera",
+  "vendored_at": "2026-03-21T12:00:13Z",
+  "license": "See individual files",
+  "skills_imported": ["architecture-analyze", "compliance-audit", "pre-commit-scan", "security-scan", "sql-security"],
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21"
+  },
+  "content_hashes": {
+    "skills/architecture-analyze/SKILL.md": "sha256:fa2a950623451cef572ff847d868f3f919524b3ae9c6473bf2adb6287978509c",
+    "skills/compliance-audit/SKILL.md": "sha256:f5ac4d02b16cdc2d0c1dda9acec113d4732d32ccf1630b94228388b914b56e07",
+    "skills/pre-commit-scan/SKILL.md": "sha256:9544167598ce9dd3a96b0cee7420fc936ec8c98f09e22a49b5a7a53225e4b79b",
+    "skills/security-scan/SKILL.md": "sha256:31b90a4b1b5fd85a4e0adbe228567ae79947ecc73804abc0b5b07f1ca5880ec6",
+    "skills/sql-security/SKILL.md": "sha256:518cf1ab9857c9685adeeccc6b763835cfdb3dfc3997eb6863fbbc8631e036cb"
+  }
+}
