@@ -4,6 +4,7 @@ description: Check last commit message against Conventional Commits; suggest a c
 license: MIT
 compatibility: Designed for Claude Code
 allowed-tools: Read Grep Glob Bash(git:*)
+disable-model-invocation: true
 metadata:
   author: TECHNOMATON Team
   version: 1.0.0

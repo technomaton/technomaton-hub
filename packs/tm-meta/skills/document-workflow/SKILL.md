@@ -7,6 +7,7 @@ description: >
 license: MIT
 compatibility: Designed for Claude Code
 allowed-tools: Read Write Grep Glob Bash
+disable-model-invocation: true
 metadata:
   author: TECHNOMATON Team
   version: 1.0.0

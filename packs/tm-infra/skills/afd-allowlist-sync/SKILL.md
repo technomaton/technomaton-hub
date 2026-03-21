@@ -4,6 +4,7 @@ description: Generate idempotent az commands to sync Front Door WAF allowlist fo
 license: MIT
 compatibility: Designed for Claude Code
 allowed-tools: Read Write
+disable-model-invocation: true
 metadata:
   author: TECHNOMATON Team
   version: 1.0.0
