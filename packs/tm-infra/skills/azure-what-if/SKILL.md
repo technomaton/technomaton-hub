@@ -4,6 +4,7 @@ description: Generate what-if plan commands for Azure Bicep/Terraform; never exe
 license: MIT
 compatibility: Designed for Claude Code
 allowed-tools: Read Write
+disable-model-invocation: true
 metadata:
   author: TECHNOMATON Team
   version: 1.0.0
