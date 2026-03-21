@@ -1,5 +1,5 @@
 # tm-business
 
-**Claim:** Finance & Legal: budgets, forecasts, redlining.
+**Claim:** Finance, Legal & Public Sector: budgets, forecasts, redlining, tenders, grants.
 
 See `/help` for commands & agents.

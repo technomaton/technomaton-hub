@@ -115,22 +115,13 @@
       "capabilities": { "skills": 0, "commands": 1, "agents": 0, "hooks": 0 }
     },
     {
-      "name": "tm-public",
-      "source": "./packs/tm-public",
-      "description": "Public Sector: tenders, grants, reporting",
-      "tier": "commercial",
-      "license": "Proprietary",
-      "tags": ["public", "tenders", "grants"],
-      "capabilities": { "skills": 0, "commands": 1, "agents": 0, "hooks": 0 }
-    },
-    {
       "name": "tm-business",
       "source": "./packs/tm-business",
-      "description": "Finance & Legal: budgets, forecasts, redlining",
+      "description": "Finance, Legal & Public Sector: budgets, forecasts, redlining, tenders, grants",
       "tier": "commercial",
       "license": "Proprietary",
-      "tags": ["finance", "legal", "budget"],
-      "capabilities": { "skills": 0, "commands": 2, "agents": 0, "hooks": 0 }
+      "tags": ["finance", "legal", "budget", "public", "tenders"],
+      "capabilities": { "skills": 0, "commands": 3, "agents": 0, "hooks": 0 }
     },
     {
       "name": "tm-governance",
