@@ -1,10 +1,11 @@
 {
   "name": "tm-governance",
   "version": "2.2.0",
-  "description": "EDPA — Evidence-Driven Proportional Allocation. Capacity derivation from delivery evidence.",
+  "description": "EDPA — Evidence-Driven Proportional Allocation. Capacity derivation from delivery evidence. Standalone: github.com/technomaton/edpa",
   "author": {
     "name": "TECHNOMATON Team"
   },
+  "upstream": "https://github.com/technomaton/edpa",
   "license": "MIT",
   "tier": "community",
   "hooks": "./hooks/hooks.json",

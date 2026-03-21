@@ -126,10 +126,11 @@
     {
       "name": "tm-governance",
       "source": "./packs/tm-governance",
-      "description": "EDPA governance: evidence-driven proportional allocation",
+      "upstream": "https://github.com/technomaton/edpa",
+      "description": "EDPA governance: evidence-driven proportional allocation. Standalone: github.com/technomaton/edpa",
       "tier": "community",
       "license": "MIT",
-      "tags": ["governance", "edpa", "capacity"],
+      "tags": ["governance", "edpa", "capacity", "timesheets", "audit"],
       "capabilities": { "skills": 4, "commands": 4, "agents": 0, "hooks": 0 }
     },
     {
