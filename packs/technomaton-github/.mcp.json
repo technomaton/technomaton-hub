@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "github-api": {
+      "type": "stdio",
+      "command": "${GITHUB_MCP_CMD:-node}",
+      "args": [
+        "${GITHUB_MCP_ENTRY:-github-mcp.js}"
+      ],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      }
+    }
+  }
+}

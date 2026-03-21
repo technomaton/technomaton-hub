@@ -1,0 +1,145 @@
+{
+  "name": "technomaton-hub",
+  "version": "1.0.0",
+  "owner": {
+    "name": "TECHNOMATON Group",
+    "email": "info@technomaton.com"
+  },
+  "plugins": [
+    {
+      "name": "technomaton-dx",
+      "source": "./packs/technomaton-dx",
+      "description": "DX core: PR/release, docs sync, guardrails",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["dx", "pr", "release"],
+      "capabilities": { "skills": 2, "commands": 4, "agents": 0, "hooks": 3 }
+    },
+    {
+      "name": "technomaton-docs",
+      "source": "./packs/technomaton-docs",
+      "description": "Documentation: ADR, changelog, readme generation",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["docs", "adr", "changelog"],
+      "capabilities": { "skills": 1, "commands": 3, "agents": 0, "hooks": 0 }
+    },
+    {
+      "name": "technomaton-secure",
+      "source": "./packs/technomaton-secure",
+      "description": "Security & compliance: scanning, policy, agents",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["security", "compliance", "scanning"],
+      "capabilities": { "skills": 2, "commands": 3, "agents": 4, "hooks": 0 }
+    },
+    {
+      "name": "technomaton-infra",
+      "source": "./packs/technomaton-infra",
+      "description": "Infrastructure: Azure/TF planning, AFD, Private Link",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["infra", "azure", "terraform"],
+      "capabilities": { "skills": 2, "commands": 3, "agents": 1, "hooks": 0 }
+    },
+    {
+      "name": "technomaton-github",
+      "source": "./packs/technomaton-github",
+      "description": "GitHub MCP utilities: PR status, release notes, Dependabot",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["github", "pr", "release"],
+      "capabilities": { "skills": 1, "commands": 4, "agents": 0, "hooks": 0 }
+    },
+    {
+      "name": "technomaton-growth",
+      "source": "./packs/technomaton-growth",
+      "description": "Growth/Sales/Marketing: ICP, outreach, content",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["growth", "marketing", "sales"],
+      "capabilities": { "skills": 0, "commands": 4, "agents": 1, "hooks": 0 }
+    },
+    {
+      "name": "technomaton-eaa",
+      "source": "./packs/technomaton-eaa",
+      "description": "Accessibility (EAA/kiosks): checklists, test plans, procurement",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["accessibility", "eaa", "a11y"],
+      "capabilities": { "skills": 0, "commands": 3, "agents": 1, "hooks": 0 }
+    },
+    {
+      "name": "technomaton-ops",
+      "source": "./packs/technomaton-ops",
+      "description": "Observability & Ops: runbooks, incidents, postmortems",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["ops", "incident", "observability"],
+      "capabilities": { "skills": 0, "commands": 3, "agents": 0, "hooks": 0 }
+    },
+    {
+      "name": "technomaton-data",
+      "source": "./packs/technomaton-data",
+      "description": "Data & Analytics: quality, engineering, ML agents",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["data", "analytics", "engineering"],
+      "capabilities": { "skills": 0, "commands": 1, "agents": 4, "hooks": 0 }
+    },
+    {
+      "name": "technomaton-ml",
+      "source": "./packs/technomaton-ml",
+      "description": "ML & AI: RAG tooling, experiments, MLOps",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["ml", "ai", "rag"],
+      "capabilities": { "skills": 0, "commands": 2, "agents": 0, "hooks": 0 }
+    },
+    {
+      "name": "technomaton-servicedesk",
+      "source": "./packs/technomaton-servicedesk",
+      "description": "Service Desk: Jira & ServiceNow via MCP",
+      "tier": "commercial",
+      "license": "Proprietary",
+      "tags": ["servicedesk", "jira", "servicenow"],
+      "capabilities": { "skills": 0, "commands": 2, "agents": 0, "hooks": 0 }
+    },
+    {
+      "name": "technomaton-public",
+      "source": "./packs/technomaton-public",
+      "description": "Public Sector: tenders, grants, reporting",
+      "tier": "commercial",
+      "license": "Proprietary",
+      "tags": ["public", "tenders", "grants"],
+      "capabilities": { "skills": 0, "commands": 1, "agents": 0, "hooks": 0 }
+    },
+    {
+      "name": "technomaton-business",
+      "source": "./packs/technomaton-business",
+      "description": "Finance & Legal: budgets, forecasts, redlining",
+      "tier": "commercial",
+      "license": "Proprietary",
+      "tags": ["finance", "legal", "budget"],
+      "capabilities": { "skills": 0, "commands": 2, "agents": 0, "hooks": 0 }
+    },
+    {
+      "name": "technomaton-governance",
+      "source": "./packs/technomaton-governance",
+      "description": "EDPA governance: evidence-driven proportional allocation",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["governance", "edpa", "capacity"],
+      "capabilities": { "skills": 4, "commands": 4, "agents": 0, "hooks": 0 }
+    },
+    {
+      "name": "technomaton-agents",
+      "source": "./packs/technomaton-agents",
+      "description": "General-purpose agents: product, discovery, prompt, research",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["agents", "product", "research"],
+      "capabilities": { "skills": 0, "commands": 0, "agents": 6, "hooks": 0 }
+    }
+  ]
+}

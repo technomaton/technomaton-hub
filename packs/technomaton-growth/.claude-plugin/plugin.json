@@ -1,0 +1,20 @@
+{
+  "name": "technomaton-growth",
+  "version": "1.0.0",
+  "description": "Growth/Marketing/Sales: ICP, outreach sequences, content.",
+  "author": { "name": "TECHNOMATON Team" },
+  "license": "MIT",
+  "tier": "community",
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json",
+  "skills": [],
+  "commands": [
+    "commands/growth/icp.md",
+    "commands/growth/post.md",
+    "commands/growth/sequence.md",
+    "commands/growth/brief.md"
+  ],
+  "agents": [
+    "agents/growth-manager.md"
+  ]
+}

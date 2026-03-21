@@ -1,0 +1,13 @@
+# NOTICE — Third-Party Attributions
+
+## EDPA Governance (technomaton-governance pack)
+
+EDPA — Evidence-Driven Proportional Allocation v2.2
+Original author: Jaroslav Urbanek
+Source: edpa-governance-template
+License: MIT
+Imported: 2026-03-20
+
+The EDPA governance skills, references, scripts, and config templates
+were originally developed as a standalone governance template and have
+been imported into this mono-repo as the technomaton-governance pack.

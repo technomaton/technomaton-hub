@@ -1,0 +1,17 @@
+{
+  "description": "Docs lint after edit",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/docs-check.sh",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+name: Release
+on:
+  push:
+    tags: ['v*']
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate
+        run: bash scripts/validate.sh
+      - name: Export Agent Skills
+        run: bash scripts/export-agentskills.sh
+      - name: Package Claude Code zip
+        run: zip -r technomaton-hub-claude-code.zip packs/ .claude-plugin/ -x "*.DS_Store"
+      - name: Package Agent Skills zip
+        run: cd dist && zip -r ../technomaton-hub-agentskills.zip agentskills/
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            technomaton-hub-claude-code.zip
+            technomaton-hub-agentskills.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

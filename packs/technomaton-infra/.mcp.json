@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "azure-cli": {
+      "type": "stdio",
+      "command": "${AZURE_MCP_CMD:-node}",
+      "args": [
+        "${AZURE_MCP_ENTRY:-azure-mcp.js}"
+      ],
+      "env": {
+        "AZURE_SUBSCRIPTION_ID": "${AZURE_SUBSCRIPTION_ID}",
+        "AZURE_TENANT_ID": "${AZURE_TENANT_ID}"
+      }
+    },
+    "github-api": {
+      "type": "stdio",
+      "command": "${GITHUB_MCP_CMD:-node}",
+      "args": [
+        "${GITHUB_MCP_ENTRY:-github-mcp.js}"
+      ],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      }
+    }
+  }
+}

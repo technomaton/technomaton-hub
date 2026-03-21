@@ -1,0 +1,21 @@
+{
+  "name": "technomaton-dx",
+  "version": "1.0.0",
+  "description": "DX core: PR/release helpers, docs sync, light guardrails, infra planning stubs.",
+  "author": { "name": "TECHNOMATON Team" },
+  "license": "MIT",
+  "tier": "community",
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json",
+  "skills": [
+    "skills/commit-policy/SKILL.md",
+    "skills/pr-review/SKILL.md"
+  ],
+  "commands": [
+    "commands/docs/sync.md",
+    "commands/infra/plan.md",
+    "commands/pr/review.md",
+    "commands/release/cut.md"
+  ],
+  "agents": []
+}

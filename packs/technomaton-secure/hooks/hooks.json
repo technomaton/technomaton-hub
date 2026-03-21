@@ -1,0 +1,17 @@
+{
+  "description": "Secret scan before write",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/secret-scan.sh",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}

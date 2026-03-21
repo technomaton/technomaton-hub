@@ -1,0 +1,83 @@
+# kashealth.cz — Reference Implementation
+# Medical Platform a Datový e-shop (CZ.01.01.01/01/24_062/0007440)
+
+cadence:
+  iteration_weeks: 2
+  pi_weeks: 10
+  delivery_iterations_per_pi: 4
+  ip_iterations_per_pi: 1
+
+people:
+  - id: urbanek
+    name: "Jaroslav Urbánek"
+    role: Arch
+    team: "ČVUT FBMI"
+    fte: 0.5
+    capacity_per_iteration: 40
+    email: "urbanek@kashealth.cz"
+    availability: confirmed
+
+  - id: tuma
+    name: "Ondřej Tůma"
+    role: DevSecOps
+    team: "ČVUT FBMI"
+    fte: 1.0
+    capacity_per_iteration: 80
+    email: "tuma@kashealth.cz"
+    availability: confirmed
+
+  - id: turyna
+    name: "Turyna"
+    role: Dev
+    team: "ČVUT FBMI"
+    fte: 0.75
+    capacity_per_iteration: 60
+    email: "turyna@cvut.cz"
+    availability: confirmed
+
+  - id: matousek
+    name: "Matoušek"
+    role: Dev
+    team: "ČVUT FBMI"
+    fte: 0.75
+    capacity_per_iteration: 60
+    email: "matousek@cvut.cz"
+    availability: confirmed
+
+  - id: pm_mc
+    name: "PM Medicalc"
+    role: PM
+    team: "Medicalc"
+    fte: 0.5
+    capacity_per_iteration: 40
+    email: "pm@kashealth.cz"
+    availability: confirmed
+
+  - id: dev1_mc
+    name: "Sr Dev MC"
+    role: Dev
+    team: "Medicalc"
+    fte: 0.5
+    capacity_per_iteration: 40
+    email: "dev1@medicalc.cz"
+    availability: confirmed
+
+  - id: dev2_mc
+    name: "DB Spec MC"
+    role: Dev
+    team: "Medicalc"
+    fte: 0.5
+    capacity_per_iteration: 40
+    email: "dev2@medicalc.cz"
+    availability: confirmed
+
+  - id: devops_mc
+    name: "DevOps MC"
+    role: Dev
+    team: "Medicalc"
+    fte: 0.25
+    capacity_per_iteration: 20
+    email: "devops@medicalc.cz"
+    availability: confirmed
+
+# Total: 8 people, 4.75 FTE, 380h/iteration, 1900h/PI
