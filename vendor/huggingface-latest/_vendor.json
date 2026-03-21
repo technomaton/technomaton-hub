@@ -1,0 +1,43 @@
+{
+  "name": "huggingface",
+  "version": "latest",
+  "source": "https://claude.com/plugins/huggingface",
+  "vendored_at": "2026-03-21T14:00:00Z",
+  "license": "See LICENSE file",
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21"
+  },
+  "skills_imported": [
+    "skills/hf-cli/SKILL.md",
+    "skills/hf-mcp/SKILL.md",
+    "skills/hugging-face-dataset-viewer/SKILL.md",
+    "skills/hugging-face-datasets/SKILL.md",
+    "skills/hugging-face-evaluation/SKILL.md",
+    "skills/hugging-face-jobs/SKILL.md",
+    "skills/hugging-face-model-trainer/SKILL.md",
+    "skills/hugging-face-paper-pages/SKILL.md",
+    "skills/hugging-face-paper-publisher/SKILL.md",
+    "skills/hugging-face-tool-builder/SKILL.md",
+    "skills/hugging-face-trackio/SKILL.md",
+    "skills/hugging-face-vision-trainer/SKILL.md",
+    "skills/huggingface-gradio/SKILL.md",
+    "skills/transformers.js/SKILL.md"
+  ],
+  "content_hashes": {
+    "skills/hf-cli/SKILL.md": "sha256:cf4e55f6c098e90626e0f7bf7c1b1471514d3c5b9b560bd44c875d82965a9747",
+    "skills/hf-mcp/SKILL.md": "sha256:4cd99f2f6fabc5d87eac1b9e9bb2278d8348eca3621c2120599dede8d6b66eb4",
+    "skills/hugging-face-dataset-viewer/SKILL.md": "sha256:9d0598f5fd25118f83ea005aa7bf577f17b3b45c9ef7ec448ac4c2e6095a2b48",
+    "skills/hugging-face-datasets/SKILL.md": "sha256:ca8fb141e351ff7bd0ae81992d5219a23649cc7497ee012ac785f636cf233c0b",
+    "skills/hugging-face-evaluation/SKILL.md": "sha256:1f9d6f6beb51118fa68dbec7664d040bc1d29678d8bdd81108c756e1a4250a17",
+    "skills/hugging-face-jobs/SKILL.md": "sha256:e4572214f82a9301708930bd3fe77dab6526ec376a824601fd590ea92d93ded9",
+    "skills/hugging-face-model-trainer/SKILL.md": "sha256:db13a2bc6b8f35fd3c618479acb4edfe65d0bb3d376f0231a2eb1eceb7077e17",
+    "skills/hugging-face-paper-pages/SKILL.md": "sha256:a8958cbbc1598fda4eca95a85b7d85378620403d8e07f9e5241f726eebc65610",
+    "skills/hugging-face-paper-publisher/SKILL.md": "sha256:c0450a18c6c798c33295c10488f735d4771998d3b4366b2236e8a777598cf845",
+    "skills/hugging-face-tool-builder/SKILL.md": "sha256:ad8ea7af44a94503c52859696c1828046688ceb71fda4361725fcd64e7aeaa82",
+    "skills/hugging-face-trackio/SKILL.md": "sha256:0d0654cc659bca435bb4b278ff7f1d6c2978caebed1adb5b01dcf5a69286ca2b",
+    "skills/hugging-face-vision-trainer/SKILL.md": "sha256:5eeed94628ced6b759a265102186329768e0e18d01a54362ffe711fa228bd37f",
+    "skills/huggingface-gradio/SKILL.md": "sha256:4efdbe6670297c26456043af8568733a36c12e5bb6df15b38967f19555075a99",
+    "skills/transformers.js/SKILL.md": "sha256:03e5039f7f68644ee894a066ae2c3a6a27b025746c16c945d9926b594e48744f"
+  }
+}

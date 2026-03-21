@@ -1,0 +1,17 @@
+{
+  "name": "posthog",
+  "version": "latest",
+  "source": "https://claude.com/plugins/posthog",
+  "vendored_at": "2026-03-21T14:00:00Z",
+  "license": "See individual files",
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21"
+  },
+  "skills_imported": [
+    "skills/posthog-instrumentation/SKILL.md"
+  ],
+  "content_hashes": {
+    "skills/posthog-instrumentation/SKILL.md": "sha256:d32a621b3b099a099eb154a8b6c51b61275ba8a114ca08d6ff907f80c983f273"
+  }
+}

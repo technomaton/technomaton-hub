@@ -1,0 +1,25 @@
+{
+  "name": "atlassian",
+  "version": "latest",
+  "source": "https://claude.com/plugins/atlassian",
+  "vendored_at": "2026-03-21T14:00:00Z",
+  "license": "See LICENSE file",
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21"
+  },
+  "skills_imported": [
+    "skills/capture-tasks-from-meeting-notes/SKILL.md",
+    "skills/generate-status-report/SKILL.md",
+    "skills/search-company-knowledge/SKILL.md",
+    "skills/spec-to-backlog/SKILL.md",
+    "skills/triage-issue/SKILL.md"
+  ],
+  "content_hashes": {
+    "skills/capture-tasks-from-meeting-notes/SKILL.md": "sha256:44940f580f884976f74dd416b2267a7c8dad9718526158596d51fa8781079707",
+    "skills/generate-status-report/SKILL.md": "sha256:d5548b058a8454a1545003091e4acbea6b2fb0f3ac222b08550e6daa9aafe443",
+    "skills/search-company-knowledge/SKILL.md": "sha256:580f5c5f5b66968a394e56b5f92a99cb28a88396f1af6618991ca746cefc591d",
+    "skills/spec-to-backlog/SKILL.md": "sha256:082876467b45a40e86cc617dbcd1eecf9044c3ff63367cfb62b6dccb51cf440d",
+    "skills/triage-issue/SKILL.md": "sha256:4ce1808138ea8871e5a113e4f7b7ae28dc8e78a36df4cb7c87f9666c20620e0c"
+  }
+}

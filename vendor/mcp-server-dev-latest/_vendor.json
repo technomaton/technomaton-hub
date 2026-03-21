@@ -1,0 +1,21 @@
+{
+  "name": "mcp-server-dev",
+  "version": "latest",
+  "source": "https://claude.com/plugins/mcp-server-dev",
+  "vendored_at": "2026-03-21T14:00:00Z",
+  "license": "See individual files",
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21"
+  },
+  "skills_imported": [
+    "skills/build-mcp-app/SKILL.md",
+    "skills/build-mcp-server/SKILL.md",
+    "skills/build-mcpb/SKILL.md"
+  ],
+  "content_hashes": {
+    "skills/build-mcp-app/SKILL.md": "sha256:e30e4a1090485320a13301a1294c3a16bfa62195ab1f2c22550cb4caa995a4e0",
+    "skills/build-mcp-server/SKILL.md": "sha256:fe990c4a45216eb331d4439d23aa6ce97f43ef33be12118e7021efce25a50e59",
+    "skills/build-mcpb/SKILL.md": "sha256:f3c04fbc9912f51e140e69b06b47638bc42b5f2057716c6d92b78c275ffe6c1f"
+  }
+}

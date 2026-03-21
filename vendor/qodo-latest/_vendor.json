@@ -1,0 +1,21 @@
+{
+  "name": "qodo",
+  "version": "latest",
+  "source": "https://claude.com/plugins/qodo",
+  "vendored_at": "2026-03-21T14:00:00Z",
+  "license": "See LICENSE file",
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21"
+  },
+  "skills_imported": [
+    "skills/qodo-get-relevant-rules/SKILL.md",
+    "skills/qodo-get-rules/SKILL.md",
+    "skills/qodo-pr-resolver/SKILL.md"
+  ],
+  "content_hashes": {
+    "skills/qodo-get-relevant-rules/SKILL.md": "sha256:b4f7980245dc0970ee311f6f61579c56e433c4000c0e406d60736fe6dc93e8c9",
+    "skills/qodo-get-rules/SKILL.md": "sha256:65171ff52f7ec000e910414348d62dc608d9532b82552f8e84d7d5a56f53d9b2",
+    "skills/qodo-pr-resolver/SKILL.md": "sha256:3bdbf0df3a9cc23a6fe12c23864f2fa3799c52599d0aa0d17f9b8c577df9c334"
+  }
+}

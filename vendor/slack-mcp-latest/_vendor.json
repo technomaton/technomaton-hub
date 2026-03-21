@@ -1,0 +1,19 @@
+{
+  "name": "slack-mcp",
+  "version": "latest",
+  "source": "https://claude.com/plugins/slack-mcp",
+  "vendored_at": "2026-03-21T14:00:00Z",
+  "license": "See LICENSE file",
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21"
+  },
+  "skills_imported": [
+    "skills/slack-messaging/SKILL.md",
+    "skills/slack-search/SKILL.md"
+  ],
+  "content_hashes": {
+    "skills/slack-messaging/SKILL.md": "sha256:85764dfa6090302bdb9548af4afc118e65dc47c0b07db730769424d20a1618a2",
+    "skills/slack-search/SKILL.md": "sha256:8f91e9a792a7492d7d1a47afa4786f30289a881c830b1b915e315bb57da3c77e"
+  }
+}

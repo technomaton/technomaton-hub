@@ -1,0 +1,17 @@
+{
+  "name": "sourcegraph",
+  "version": "latest",
+  "source": "https://claude.com/plugins/sourcegraph",
+  "vendored_at": "2026-03-21T14:00:00Z",
+  "license": "See individual files",
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21"
+  },
+  "skills_imported": [
+    "skills/searching-sourcegraph/SKILL.md"
+  ],
+  "content_hashes": {
+    "skills/searching-sourcegraph/SKILL.md": "sha256:56b471b47406775a969745fd160cc2cdf9117f0fbe1ea4c5fdc6542f8087836f"
+  }
+}

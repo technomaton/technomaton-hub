@@ -28,27 +28,82 @@ License: unknown
 Imported: 2026-03-21
 Skills: docx,pdf,pptx,xlsx,internal-comms,doc-coauthoring,brand-guidelines,frontend-design,canvas-design
 
-## agent-browse vmain (vendor/agent-browse-main)
+## aikido (vendor/aikido-latest)
 
-Source: https://github.com/browserbase/agent-browse
-Original commit: 62a03ce0bd86
-License: unknown
-Imported: 2026-03-21
-Skills: browser-automation
+aikido — vendored from https://claude.com/plugins/aikido
+License: See individual files
 
-## Claude Code Workflows (vendor/workflows-main)
+## atlassian (vendor/atlassian-latest)
 
-Source: https://github.com/wshobson/agents
-Original commit: 1ad2f007d5e9
-License: MIT
-Imported: 2026-03-21
-Content: 146 skills from 33 plugins (accessibility, backend, cloud, data, security, etc.)
+atlassian — vendored from https://claude.com/plugins/atlassian
+License: See individual files
 
-## Official Claude Plugins Collection (vendor/official-plugins)
+## chrome-devtools (vendor/chrome-devtools-latest)
 
-Source: https://claude.com/plugins (66 plugins from claude-plugins-official + external repos)
-Imported: 2026-03-21
-Content: 345 skills, 43 agents, 90 commands
-License: Mixed (MIT, Apache-2.0, proprietary — per-plugin, see individual repos)
-Includes: Anthropic internal plugins, partner plugins (Vercel, Sentry, HuggingFace,
-  Netlify, Pinecone, Figma, Notion, Atlassian, PagerDuty, PostHog, etc.)
+chrome-devtools — vendored from https://claude.com/plugins/chrome-devtools
+License: See individual files
+
+## coderabbit (vendor/coderabbit-latest)
+
+coderabbit — vendored from https://claude.com/plugins/coderabbit
+License: See individual files
+
+## figma (vendor/figma-latest)
+
+figma — vendored from https://claude.com/plugins/figma
+License: See individual files
+
+## huggingface (vendor/huggingface-latest)
+
+huggingface — vendored from https://claude.com/plugins/huggingface
+License: See individual files
+
+## mcp-server-dev (vendor/mcp-server-dev-latest)
+
+mcp-server-dev — vendored from https://claude.com/plugins/mcp-server-dev
+License: See individual files
+
+## nightvision (vendor/nightvision-latest)
+
+nightvision — vendored from https://claude.com/plugins/nightvision
+License: See individual files
+
+## notion (vendor/notion-latest)
+
+notion — vendored from https://claude.com/plugins/notion
+License: See individual files
+
+## opsera (vendor/opsera-latest)
+
+opsera — vendored from https://claude.com/plugins/opsera
+License: See individual files
+
+## pinecone (vendor/pinecone-latest)
+
+pinecone — vendored from https://claude.com/plugins/pinecone
+License: See individual files
+
+## posthog (vendor/posthog-latest)
+
+posthog — vendored from https://claude.com/plugins/posthog
+License: See individual files
+
+## qodo (vendor/qodo-latest)
+
+qodo — vendored from https://claude.com/plugins/qodo
+License: See individual files
+
+## sentry (vendor/sentry-latest)
+
+sentry — vendored from https://claude.com/plugins/sentry
+License: See individual files
+
+## slack-mcp (vendor/slack-mcp-latest)
+
+slack-mcp — vendored from https://claude.com/plugins/slack-mcp
+License: See individual files
+
+## sourcegraph (vendor/sourcegraph-latest)
+
+sourcegraph — vendored from https://claude.com/plugins/sourcegraph
+License: See individual files
