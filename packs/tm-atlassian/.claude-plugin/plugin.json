@@ -9,7 +9,7 @@
   "mcpServers": "./.mcp.json",
   "skills": [],
   "commands": [
-    "commands/ops/jira-create-bug.md"
+    "commands/integrations/jira-create-bug.md"
   ],
   "agents": []
 }

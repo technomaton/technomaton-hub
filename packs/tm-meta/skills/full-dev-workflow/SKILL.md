@@ -19,6 +19,7 @@ metadata:
     - pack: tm-governance/edpa-setup
     - pack: tm-dx/pr-review
     - pack: tm-dx/commit-policy
+    - vendor: superpowers/finishing-a-development-branch
 ---
 
 # Full Development Workflow
@@ -78,6 +79,17 @@ Before merging, invoke tm-dx:pr-review to:
 4. Verify test coverage
 
 **Exit condition:** PR approved and merged.
+
+## Phase 5: Finishing (superpowers:finishing-a-development-branch)
+
+After PR review is approved, invoke superpowers:finishing-a-development-branch to:
+
+1. Verify all tests pass on the feature branch
+2. Present integration options (merge, squash, rebase)
+3. Execute the chosen merge strategy
+4. Clean up the feature branch
+
+**Exit condition:** Branch merged and cleaned up.
 
 ## Error Handling
 

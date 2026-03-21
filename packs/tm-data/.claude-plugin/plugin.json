@@ -14,7 +14,6 @@
   "agents": [
     "agents/data-analyst.md",
     "agents/data-engineer.md",
-    "agents/data-scientist.md",
-    "agents/ml-ops.md"
+    "agents/data-scientist.md"
   ]
 }

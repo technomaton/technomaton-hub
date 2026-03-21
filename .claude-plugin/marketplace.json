@@ -9,11 +9,11 @@
     {
       "name": "tm-dx",
       "source": "./packs/tm-dx",
-      "description": "DX core: PR/release, docs sync, guardrails",
+      "description": "DX core: PR/release, guardrails",
       "tier": "community",
       "license": "MIT",
       "tags": ["dx", "pr", "release"],
-      "capabilities": { "skills": 2, "commands": 4, "agents": 0, "hooks": 3 }
+      "capabilities": { "skills": 2, "commands": 2, "agents": 0, "hooks": 2 }
     },
     {
       "name": "tm-docs",
@@ -81,11 +81,11 @@
     {
       "name": "tm-data",
       "source": "./packs/tm-data",
-      "description": "Data & Analytics: quality, engineering, ML agents",
+      "description": "Data & Analytics: quality, engineering agents",
       "tier": "community",
       "license": "MIT",
       "tags": ["data", "analytics", "engineering"],
-      "capabilities": { "skills": 0, "commands": 1, "agents": 4, "hooks": 0 }
+      "capabilities": { "skills": 0, "commands": 1, "agents": 3, "hooks": 0 }
     },
     {
       "name": "tm-ml",
@@ -94,7 +94,7 @@
       "tier": "community",
       "license": "MIT",
       "tags": ["ml", "ai", "rag"],
-      "capabilities": { "skills": 0, "commands": 2, "agents": 0, "hooks": 0 }
+      "capabilities": { "skills": 0, "commands": 2, "agents": 1, "hooks": 0 }
     },
     {
       "name": "tm-atlassian",

@@ -13,7 +13,7 @@
   ],
   "commands": [
     "commands/security/dependencies.md",
-    "commands/security/policy.md",
+    "commands/security/branch-policy.md",
     "commands/security/secrets.md"
   ],
   "agents": [

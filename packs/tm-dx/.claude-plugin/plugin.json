@@ -1,7 +1,7 @@
 {
   "name": "tm-dx",
   "version": "1.0.0",
-  "description": "DX core: PR/release helpers, docs sync, light guardrails, infra planning stubs.",
+  "description": "DX core: PR/release helpers, light guardrails.",
   "author": { "name": "TECHNOMATON Team" },
   "license": "MIT",
   "tier": "community",
@@ -12,8 +12,6 @@
     "skills/pr-review/SKILL.md"
   ],
   "commands": [
-    "commands/docs/sync.md",
-    "commands/infra/plan.md",
     "commands/pr/review.md",
     "commands/release/cut.md"
   ],

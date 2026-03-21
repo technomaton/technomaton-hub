@@ -12,5 +12,7 @@
     "commands/rag/evals.md",
     "commands/rag/index.md"
   ],
-  "agents": []
+  "agents": [
+    "agents/ml-ops.md"
+  ]
 }

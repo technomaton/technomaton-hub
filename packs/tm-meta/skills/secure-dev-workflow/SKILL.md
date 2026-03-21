@@ -18,6 +18,7 @@ metadata:
     - vendor: superpowers/test-driven-development
     - vendor: superpowers/systematic-debugging
     - pack: tm-secure/security-scan
+    - vendor: superpowers/verification-before-completion
     - pack: tm-dx/pr-review
 ---
 
@@ -65,6 +66,17 @@ Implement using superpowers:test-driven-development with security focus:
 Use superpowers:systematic-debugging for any security-related issues.
 
 **Exit condition:** All security tests pass.
+
+## Phase 2.5: Verification (superpowers:verification-before-completion)
+
+Before proceeding to security audit, invoke superpowers:verification-before-completion to:
+
+1. Run all tests and confirm they pass
+2. Verify no regressions in existing functionality
+3. Confirm implementation matches the threat model requirements
+4. Provide evidence of completion before claiming ready for audit
+
+**Exit condition:** Verification evidence collected, all checks green.
 
 ## Phase 3: Security Audit
 

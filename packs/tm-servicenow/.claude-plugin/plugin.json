@@ -9,7 +9,7 @@
   "mcpServers": "./.mcp.json",
   "skills": [],
   "commands": [
-    "commands/ops/snow-incident.md"
+    "commands/integrations/snow-incident.md"
   ],
   "agents": []
 }
