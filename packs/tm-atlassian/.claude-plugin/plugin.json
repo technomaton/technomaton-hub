@@ -1,0 +1,15 @@
+{
+  "name": "tm-atlassian",
+  "version": "1.0.0",
+  "description": "Atlassian integration: Jira project management & Confluence knowledge base via MCP.",
+  "author": { "name": "TECHNOMATON Team" },
+  "license": "MIT",
+  "tier": "community",
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json",
+  "skills": [],
+  "commands": [
+    "commands/ops/jira-create-bug.md"
+  ],
+  "agents": []
+}

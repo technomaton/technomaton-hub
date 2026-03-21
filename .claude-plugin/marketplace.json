@@ -1,9 +1,9 @@
 {
-  "name": "tm-hub",
+  "name": "technomaton-hub",
   "version": "1.0.0",
   "owner": {
     "name": "TECHNOMATON Group",
-    "email": "info@technomaton.com"
+    "email": "ai@technomaton.com"
   },
   "plugins": [
     {
@@ -97,13 +97,22 @@
       "capabilities": { "skills": 0, "commands": 2, "agents": 0, "hooks": 0 }
     },
     {
-      "name": "tm-servicedesk",
-      "source": "./packs/tm-servicedesk",
-      "description": "Service Desk: Jira & ServiceNow via MCP",
+      "name": "tm-atlassian",
+      "source": "./packs/tm-atlassian",
+      "description": "Atlassian integration: Jira project management & Confluence knowledge base via MCP",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["atlassian", "jira", "confluence"],
+      "capabilities": { "skills": 0, "commands": 1, "agents": 0, "hooks": 0 }
+    },
+    {
+      "name": "tm-servicenow",
+      "source": "./packs/tm-servicenow",
+      "description": "ServiceNow integration: incident management via MCP",
       "tier": "commercial",
       "license": "Proprietary",
-      "tags": ["servicedesk", "jira", "servicenow"],
-      "capabilities": { "skills": 0, "commands": 2, "agents": 0, "hooks": 0 }
+      "tags": ["servicenow", "itsm", "incident"],
+      "capabilities": { "skills": 0, "commands": 1, "agents": 0, "hooks": 0 }
     },
     {
       "name": "tm-public",

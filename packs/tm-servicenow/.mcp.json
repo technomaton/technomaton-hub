@@ -1,16 +1,5 @@
 {
   "mcpServers": {
-    "jira": {
-      "type": "stdio",
-      "command": "${JIRA_MCP_CMD:-node}",
-      "args": [
-        "${JIRA_MCP_ENTRY:-jira-mcp.js}"
-      ],
-      "env": {
-        "JIRA_BASE_URL": "${JIRA_BASE_URL}",
-        "JIRA_TOKEN": "${JIRA_TOKEN}"
-      }
-    },
     "servicenow": {
       "type": "stdio",
       "command": "${SNOW_MCP_CMD:-node}",
