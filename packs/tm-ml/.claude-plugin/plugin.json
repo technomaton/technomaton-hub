@@ -13,6 +13,8 @@
     "commands/rag/index.md"
   ],
   "agents": [
-    "agents/ml-ops.md"
+    "agents/ml-ops.md",
+    "agents/ai-researcher.md",
+    "agents/prompt-engineer.md"
   ]
 }

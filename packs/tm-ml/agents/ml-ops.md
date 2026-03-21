@@ -8,7 +8,7 @@ metadata:
   author: TECHNOMATON Team
   version: 1.0.0
   tier: community
-  domain: data
+  domain: ml
 ---
 
 # ML Ops
