@@ -9,7 +9,7 @@
   "mcpServers": "./.mcp.json",
   "skills": [],
   "commands": [
-    "commands/eaa/checklist.md",
+    "commands/eaa/eaa-checklist.md",
     "commands/eaa/procurement.md",
     "commands/eaa/test-plan.md"
   ],
