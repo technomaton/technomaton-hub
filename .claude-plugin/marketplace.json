@@ -58,7 +58,7 @@
       "tier": "community",
       "license": "MIT",
       "tags": ["growth", "marketing", "sales"],
-      "capabilities": { "skills": 0, "commands": 4, "agents": 1, "hooks": 0 }
+      "capabilities": { "skills": 0, "commands": 4, "agents": 5, "hooks": 0 }
     },
     {
       "name": "tm-eaa",
@@ -94,7 +94,7 @@
       "tier": "community",
       "license": "MIT",
       "tags": ["ml", "ai", "rag"],
-      "capabilities": { "skills": 0, "commands": 2, "agents": 1, "hooks": 0 }
+      "capabilities": { "skills": 0, "commands": 2, "agents": 3, "hooks": 0 }
     },
     {
       "name": "tm-atlassian",
@@ -140,15 +140,6 @@
       "license": "MIT",
       "tags": ["governance", "edpa", "capacity"],
       "capabilities": { "skills": 4, "commands": 4, "agents": 0, "hooks": 0 }
-    },
-    {
-      "name": "tm-agents",
-      "source": "./packs/tm-agents",
-      "description": "General-purpose agents: product, discovery, prompt, research",
-      "tier": "community",
-      "license": "MIT",
-      "tags": ["agents", "product", "research"],
-      "capabilities": { "skills": 0, "commands": 0, "agents": 6, "hooks": 0 }
     },
     {
       "name": "tm-meta",

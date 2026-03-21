@@ -15,6 +15,10 @@
     "commands/growth/brief.md"
   ],
   "agents": [
-    "agents/growth-manager.md"
+    "agents/growth-manager.md",
+    "agents/product-manager.md",
+    "agents/product-discovery.md",
+    "agents/customer-interviewer.md",
+    "agents/ux-researcher.md"
   ]
 }
