@@ -1,0 +1,16 @@
+{
+  "name": "aikido",
+  "version": "latest",
+  "source": "https://claude.com/plugins/aikido",
+  "vendored_at": "2026-03-21T12:00:13Z",
+  "license": "See individual files",
+  "skills_imported": ["scan", "setup"],
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21"
+  },
+  "content_hashes": {
+    "skills/scan/SKILL.md": "sha256:9c30e88f0bf9626c621635dd5885ba27a0936a2f29e91f83da60cec452abd178",
+    "skills/setup/SKILL.md": "sha256:a5cfdb4b2714d6c9144e5431aef6756fe8adf49daddf6082cab669da171b685d"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "coderabbit",
+  "version": "latest",
+  "source": "https://claude.com/plugins/coderabbit",
+  "vendored_at": "2026-03-21T12:00:13Z",
+  "license": "See individual files",
+  "skills_imported": ["autofix", "code-review"],
+  "agents_imported": ["code-reviewer"],
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21"
+  },
+  "content_hashes": {
+    "skills/autofix/SKILL.md": "sha256:6f0aeca190177d628b7250bab65582d5ba811c46f9b306f2df83e8753bfdf4d7",
+    "skills/code-review/SKILL.md": "sha256:c811028b4faf4076f76d78cbd11b490c565a9a15b7c260195566b6414a3f5447",
+    "agents/code-reviewer.md": "sha256:451a1c688a10a29be9910d8e81a6805706a0ab99a713a0f70f50e6b39317c29f"
+  }
+}
