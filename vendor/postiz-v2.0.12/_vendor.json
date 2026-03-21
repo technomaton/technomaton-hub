@@ -1,0 +1,16 @@
+{
+  "name": "postiz",
+  "version": "v2.0.12",
+  "source": "https://claude.com/plugins/postiz (claude-plugins-official)",
+  "vendored_at": "2026-03-21T19:34:00Z",
+  "license": "See LICENSE",
+  "skills_imported": ["postiz", "postiz-main"],
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21"
+  },
+  "content_hashes": {
+    "skills/postiz/SKILL.md": "sha256:a0adfe03fab4eb177c071b21df33849b1f053d7ad2a74aae8e75bc84efcd11fe",
+    "skills/postiz-main/SKILL.md": "sha256:a0adfe03fab4eb177c071b21df33849b1f053d7ad2a74aae8e75bc84efcd11fe"
+  }
+}
