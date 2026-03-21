@@ -1,0 +1,20 @@
+{
+  "name": "tm-data",
+  "version": "1.0.0",
+  "description": "Data & Analytics: engineering, quality, governance.",
+  "author": { "name": "TECHNOMATON Team" },
+  "license": "MIT",
+  "tier": "community",
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json",
+  "skills": [],
+  "commands": [
+    "commands/data/quality-check.md"
+  ],
+  "agents": [
+    "agents/data-analyst.md",
+    "agents/data-engineer.md",
+    "agents/data-scientist.md",
+    "agents/ml-ops.md"
+  ]
+}

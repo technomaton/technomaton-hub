@@ -1,0 +1,17 @@
+{
+  "name": "tm-meta",
+  "version": "1.0.0",
+  "description": "Meta-workflows: orchestrate skills from internal packs and vendored external sources.",
+  "author": { "name": "TECHNOMATON Team" },
+  "license": "MIT",
+  "tier": "community",
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json",
+  "skills": [
+    "skills/full-dev-workflow/SKILL.md",
+    "skills/document-workflow/SKILL.md",
+    "skills/secure-dev-workflow/SKILL.md"
+  ],
+  "commands": [],
+  "agents": []
+}

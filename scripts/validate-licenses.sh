@@ -3,7 +3,7 @@ set -euo pipefail
 
 ERRORS=0
 
-for pack in packs/technomaton-*/; do
+for pack in packs/tm-*/; do
   name=$(basename "$pack")
   plugin_json="$pack/.claude-plugin/plugin.json"
   license_file="$pack/LICENSE"

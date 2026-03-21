@@ -1,0 +1,25 @@
+{
+  "name": "tm-secure",
+  "version": "1.0.0",
+  "description": "Security & compliance: secrets, dependency health, policy checks.",
+  "author": { "name": "TECHNOMATON Team" },
+  "license": "MIT",
+  "tier": "community",
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json",
+  "skills": [
+    "skills/deps-health/SKILL.md",
+    "skills/secret-scan/SKILL.md"
+  ],
+  "commands": [
+    "commands/security/dependencies.md",
+    "commands/security/policy.md",
+    "commands/security/secrets.md"
+  ],
+  "agents": [
+    "agents/security-reviewer.md",
+    "agents/compliance-officer.md",
+    "agents/dpo.md",
+    "agents/risk-analyst.md"
+  ]
+}

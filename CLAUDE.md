@@ -4,7 +4,7 @@
 
 ```
 technomaton-hub/
-├── packs/technomaton-<name>/     # Each pack is a self-contained plugin
+├── packs/tm-<name>/     # Each pack is a self-contained plugin
 │   ├── .claude-plugin/plugin.json
 │   ├── .mcp.json
 │   ├── skills/                   # SKILL.md files in subdirectories
@@ -46,6 +46,22 @@ make export            # Generate Agent Skills
 - New agent: create `agents/<name>.md` in target pack
 - Update pack's plugin.json with new capability paths
 - Update .claude-plugin/marketplace.json capabilities count
+
+## Vendor Management
+
+External skills are vendored into `vendor/` for stability and offline use.
+
+```bash
+make vendor-skill source=<url> version=<tag> skills="skill1,skill2"
+make update-vendor name=<vendor> version=<new-tag>
+make check-upstream       # Check for upstream changes
+make validate-vendor      # Verify integrity
+```
+
+- `imports.lock` tracks pinned versions and content hashes
+- `vendor/<name>-<version>/_vendor.json` has import metadata
+- `NOTICE` must have attribution for every vendored source
+- vendor/ IS committed to git (not gitignored)
 
 ## Git Conventions
 

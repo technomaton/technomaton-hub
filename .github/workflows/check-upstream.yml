@@ -1,0 +1,28 @@
+name: Check Upstream Vendors
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Every Monday at 09:00 UTC
+  workflow_dispatch:       # Manual trigger
+
+jobs:
+  check-upstream:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for upstream changes
+        run: bash scripts/check-upstream.sh
+
+      - name: Create issue if updates found
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Vendor upstream updates available',
+              body: 'The weekly vendor check found upstream changes. Run `make check-upstream` locally for details.',
+              labels: ['vendor', 'dependencies']
+            });

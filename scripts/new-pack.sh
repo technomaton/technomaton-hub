@@ -8,8 +8,8 @@ set -euo pipefail
 echo "=== New Pack Scaffold ==="
 echo ""
 
-read -rp "Pack name (without technomaton- prefix): " PACK_NAME
-FULL_NAME="technomaton-$PACK_NAME"
+read -rp "Pack name (without tm- prefix): " PACK_NAME
+FULL_NAME="tm-$PACK_NAME"
 PACK_DIR="packs/$FULL_NAME"
 
 if [ -d "$PACK_DIR" ]; then

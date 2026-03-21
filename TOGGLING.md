@@ -3,8 +3,8 @@
 ## Per-pack control
 
 ```bash
-/plugin enable technomaton-infra@technomaton-hub
-/plugin disable technomaton-growth@technomaton-hub
+/plugin enable tm-infra@technomaton-hub
+/plugin disable tm-growth@technomaton-hub
 ```
 
 ## Team defaults in `.claude/settings.json`
@@ -17,13 +17,13 @@
     }
   },
   "enabledPlugins": {
-    "technomaton-dx@technomaton-hub": "enabled",
-    "technomaton-docs@technomaton-hub": "enabled",
-    "technomaton-github@technomaton-hub": "enabled",
-    "technomaton-secure@technomaton-hub": "enabled",
-    "technomaton-infra@technomaton-hub": "enabled",
-    "technomaton-governance@technomaton-hub": "enabled",
-    "technomaton-agents@technomaton-hub": "disabled"
+    "tm-dx@technomaton-hub": "enabled",
+    "tm-docs@technomaton-hub": "enabled",
+    "tm-github@technomaton-hub": "enabled",
+    "tm-secure@technomaton-hub": "enabled",
+    "tm-infra@technomaton-hub": "enabled",
+    "tm-governance@technomaton-hub": "enabled",
+    "tm-agents@technomaton-hub": "disabled"
   }
 }
 ```

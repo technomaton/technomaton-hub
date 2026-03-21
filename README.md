@@ -9,11 +9,11 @@ Centralized mono-repo marketplace for Claude Code capabilities: skills, agents, 
 /plugin marketplace add ./technomaton-hub
 
 # Enable packs
-/plugin install technomaton-dx@technomaton-hub
-/plugin install technomaton-docs@technomaton-hub
-/plugin install technomaton-secure@technomaton-hub
-/plugin install technomaton-infra@technomaton-hub
-/plugin install technomaton-github@technomaton-hub
+/plugin install tm-dx@technomaton-hub
+/plugin install tm-docs@technomaton-hub
+/plugin install tm-secure@technomaton-hub
+/plugin install tm-infra@technomaton-hub
+/plugin install tm-github@technomaton-hub
 ```
 
 See [TOGGLING.md](TOGGLING.md) for team defaults and fine-grained control.
@@ -22,21 +22,21 @@ See [TOGGLING.md](TOGGLING.md) for team defaults and fine-grained control.
 
 | Pack | Description | Tier | Skills | Commands | Agents |
 |------|-------------|------|--------|----------|--------|
-| technomaton-dx | DX core: PR/release, docs sync, guardrails | community | 2 | 4 | 0 |
-| technomaton-docs | Documentation: ADR, changelog, readme | community | 1 | 3 | 0 |
-| technomaton-secure | Security & compliance | community | 2 | 3 | 4 |
-| technomaton-infra | Infrastructure (Azure/TF) | community | 2 | 3 | 1 |
-| technomaton-github | GitHub MCP utilities | community | 1 | 4 | 0 |
-| technomaton-growth | Growth/Sales/Marketing | community | 0 | 4 | 1 |
-| technomaton-eaa | Accessibility (EAA/kiosks) | community | 0 | 3 | 1 |
-| technomaton-ops | Observability & Ops | community | 0 | 3 | 0 |
-| technomaton-data | Data & Analytics | community | 0 | 1 | 4 |
-| technomaton-ml | ML & AI | community | 0 | 2 | 1 |
-| technomaton-servicedesk | Service Desk (Jira/SNow) | commercial | 0 | 2 | 0 |
-| technomaton-public | Public Sector | commercial | 0 | 1 | 0 |
-| technomaton-business | Finance & Legal | commercial | 0 | 2 | 0 |
-| technomaton-governance | EDPA governance | community | 4 | 4 | 0 |
-| technomaton-agents | General-purpose agents | community | 0 | 0 | 6 |
+| tm-dx | DX core: PR/release, docs sync, guardrails | community | 2 | 4 | 0 |
+| tm-docs | Documentation: ADR, changelog, readme | community | 1 | 3 | 0 |
+| tm-secure | Security & compliance | community | 2 | 3 | 4 |
+| tm-infra | Infrastructure (Azure/TF) | community | 2 | 3 | 1 |
+| tm-github | GitHub MCP utilities | community | 1 | 4 | 0 |
+| tm-growth | Growth/Sales/Marketing | community | 0 | 4 | 1 |
+| tm-eaa | Accessibility (EAA/kiosks) | community | 0 | 3 | 1 |
+| tm-ops | Observability & Ops | community | 0 | 3 | 0 |
+| tm-data | Data & Analytics | community | 0 | 1 | 4 |
+| tm-ml | ML & AI | community | 0 | 2 | 1 |
+| tm-servicedesk | Service Desk (Jira/SNow) | commercial | 0 | 2 | 0 |
+| tm-public | Public Sector | commercial | 0 | 1 | 0 |
+| tm-business | Finance & Legal | commercial | 0 | 2 | 0 |
+| tm-governance | EDPA governance | community | 4 | 4 | 0 |
+| tm-agents | General-purpose agents | community | 0 | 0 | 6 |
 
 ## Development
 

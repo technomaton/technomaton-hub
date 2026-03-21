@@ -1,0 +1,19 @@
+{
+  "name": "tm-docs",
+  "version": "1.0.0",
+  "description": "Documentation: README/CHANGELOG/ADR sync and doc hints.",
+  "author": { "name": "TECHNOMATON Team" },
+  "license": "MIT",
+  "tier": "community",
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json",
+  "skills": [
+    "skills/adr-draft/SKILL.md"
+  ],
+  "commands": [
+    "commands/docs/adr.md",
+    "commands/docs/changelog.md",
+    "commands/docs/readme.md"
+  ],
+  "agents": []
+}

@@ -1,0 +1,14 @@
+{
+  "name": "skills",
+  "version": "main",
+  "source": "https://github.com/anthropics/skills",
+  "commit": "b0cbd3df1533b396d281a6886d5132f623393a9c",
+  "vendored_at": "2026-03-21T11:05:41Z",
+  "license": "unknown",
+  "skills_imported": ["algorithmic-art","brand-guidelines","canvas-design","claude-api","doc-coauthoring","docx","frontend-design","internal-comms","mcp-builder","pdf","pptx","skill-creator","slack-gif-creator","theme-factory","web-artifacts-builder","webapp-testing","xlsx"],
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21",
+    "last_upstream_commit": "2026-03-06"
+  }
+}

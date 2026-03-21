@@ -23,19 +23,19 @@ Technomaton Hub slouží jako **kurátorovaný zdroj AI-powered capabilities** p
 
 | Oblast | Vlastní packy | Externí skills (k integraci) |
 |--------|--------------|------------------------------|
-| **Vývoj** | technomaton-dx, technomaton-github | superpowers (TDD, debugging, planning) |
-| **Kvalita** | technomaton-secure | superpowers (code review, verification) |
-| **Dokumentace** | technomaton-docs | example-skills (docx, pdf, pptx, doc-coauthoring) |
+| **Vývoj** | tm-dx, tm-github | superpowers (TDD, debugging, planning) |
+| **Kvalita** | tm-secure | superpowers (code review, verification) |
+| **Dokumentace** | tm-docs | example-skills (docx, pdf, pptx, doc-coauthoring) |
 | **Design** | — | example-skills (frontend-design, canvas-design, brand-guidelines, theme-factory) |
 | **Komunikace** | — | example-skills (internal-comms, slack-gif-creator) |
-| **Data & Finance** | technomaton-data | example-skills (xlsx), excel-analyst-pro |
-| **Governance** | technomaton-governance (EDPA) | — |
-| **Infrastruktura** | technomaton-infra | — |
-| **Marketing** | technomaton-public, technomaton-growth | example-skills (brand-guidelines, canvas-design) |
-| **Business** | technomaton-business, technomaton-servicedesk | — |
-| **ML/AI** | technomaton-ml | — |
-| **Operativa** | technomaton-ops | — |
-| **Agenti** | technomaton-agents (6 agentů) | — |
+| **Data & Finance** | tm-data | example-skills (xlsx), excel-analyst-pro |
+| **Governance** | tm-governance (EDPA) | — |
+| **Infrastruktura** | tm-infra | — |
+| **Marketing** | tm-public, tm-growth | example-skills (brand-guidelines, canvas-design) |
+| **Business** | tm-business, tm-servicedesk | — |
+| **ML/AI** | tm-ml | — |
+| **Operativa** | tm-ops | — |
+| **Agenti** | tm-agents (6 agentů) | — |
 
 ---
 
@@ -133,9 +133,9 @@ description: "Curated AI capabilities for TECHNOMATON"
 
 # Vlastní skills
 skills:
-  - path: ./packs/technomaton-dx/skills/commit-policy/SKILL.md
-  - path: ./packs/technomaton-governance/skills/edpa-setup/SKILL.md
-  - path: ./packs/technomaton-secure/skills/*/SKILL.md
+  - path: ./packs/tm-dx/skills/commit-policy/SKILL.md
+  - path: ./packs/tm-governance/skills/edpa-setup/SKILL.md
+  - path: ./packs/tm-secure/skills/*/SKILL.md
 
 # Externí závislosti — APM je stáhne automaticky
 dependencies:
@@ -168,21 +168,21 @@ apm install technomaton-hub
 
 **Meta-skill příklad:**
 ```yaml
-# packs/technomaton-meta/skills/full-dev-workflow/SKILL.md
+# packs/tm-meta/skills/full-dev-workflow/SKILL.md
 ---
 name: full-dev-workflow
 description: Use when starting a new feature from scratch
 dependencies:
   - superpowers:brainstorming
   - superpowers:test-driven-development
-  - technomaton-governance:edpa-setup
-  - technomaton-dx:pr-review
+  - tm-governance:edpa-setup
+  - tm-dx:pr-review
 ---
 # Full Development Workflow
 1. superpowers:brainstorming → design
-2. technomaton-governance:edpa-setup → capacity
+2. tm-governance:edpa-setup → capacity
 3. superpowers:test-driven-development → implementace
-4. technomaton-dx:pr-review → review
+4. tm-dx:pr-review → review
 ```
 
 **Security audit:**
@@ -253,11 +253,11 @@ technomaton-hub/
 ├── .claude-plugin/marketplace.json    # CC registr (rozšířen o meta-pack)
 │
 ├── packs/                             # Tvoje capabilities (beze změn)
-│   ├── technomaton-dx/
-│   ├── technomaton-governance/
-│   ├── technomaton-secure/
+│   ├── tm-dx/
+│   ├── tm-governance/
+│   ├── tm-secure/
 │   ├── ...                            # (15 existujících packů)
-│   └── technomaton-meta/              # NOVÝ — meta-pack
+│   └── tm-meta/              # NOVÝ — meta-pack
 │       ├── .claude-plugin/plugin.json
 │       ├── skills/
 │       │   ├── full-dev-workflow/SKILL.md
@@ -425,8 +425,8 @@ metadata:
   composed-from:
     - vendor: superpowers/brainstorming
     - vendor: superpowers/test-driven-development
-    - pack: technomaton-governance/edpa-setup
-    - pack: technomaton-dx/pr-review
+    - pack: tm-governance/edpa-setup
+    - pack: tm-dx/pr-review
 ---
 
 # Full Development Workflow
@@ -446,7 +446,7 @@ Invoke the superpowers:brainstorming skill. Follow its complete workflow:
 
 ## Fáze 2: Capacity Planning (technomaton:edpa-setup)
 
-After design approval, invoke technomaton-governance:edpa-setup to:
+After design approval, invoke tm-governance:edpa-setup to:
 - Initialize EDPA configuration for the new feature
 - Set up capacity registry entries
 - Configure evidence detection rules
@@ -468,7 +468,7 @@ Use superpowers:systematic-debugging if issues arise.
 
 ## Fáze 4: Review (technomaton:pr-review)
 
-Before merging, invoke technomaton-dx:pr-review to:
+Before merging, invoke tm-dx:pr-review to:
 - Validate commit policy (conventional commits)
 - Run PR review checklist
 - Ensure documentation is updated
@@ -532,11 +532,11 @@ make check-upstream
 ```bash
 # V Claude Code:
 /plugin marketplace add https://github.com/technomaton/technomaton-hub
-/plugin install technomaton-meta@technomaton-hub
+/plugin install tm-meta@technomaton-hub
 
 # Co se stane:
 # → Claude Code stáhne celé repo (včetně vendor/)
-# → Nainstaluje technomaton-meta pack
+# → Nainstaluje tm-meta pack
 # → vendor/ skills jsou dostupné jako součást repa
 # → Uživatel může okamžitě použít meta-skills
 ```
@@ -622,9 +622,9 @@ technomaton-hub/
 name: technomaton-hub
 version: 1.0.0
 skills:
-  - path: ./packs/technomaton-dx/skills/*/SKILL.md
-  - path: ./packs/technomaton-governance/skills/*/SKILL.md
-  - path: ./packs/technomaton-meta/skills/*/SKILL.md
+  - path: ./packs/tm-dx/skills/*/SKILL.md
+  - path: ./packs/tm-governance/skills/*/SKILL.md
+  - path: ./packs/tm-meta/skills/*/SKILL.md
 dependencies:
   superpowers:
     source: github.com/obra/superpowers
@@ -640,9 +640,9 @@ dependencies:
 // .claude-plugin/marketplace.json — pro CC uživatele
 {
   "plugins": [
-    { "name": "technomaton-dx", "source": "./packs/technomaton-dx" },
-    { "name": "technomaton-governance", "source": "./packs/technomaton-governance" },
-    { "name": "technomaton-meta", "source": "./packs/technomaton-meta" }
+    { "name": "tm-dx", "source": "./packs/tm-dx" },
+    { "name": "tm-governance", "source": "./packs/tm-governance" },
+    { "name": "tm-meta", "source": "./packs/tm-meta" }
     // ... ostatní packy
   ]
 }
@@ -653,14 +653,14 @@ dependencies:
 # CI workflow: pokud přidáš skill do apm.yml, musí být i v marketplace.json
 make sync-check
 # → PASS: Manifesty jsou konzistentní
-# → FAIL: "technomaton-meta je v marketplace.json ale ne v apm.yml"
+# → FAIL: "tm-meta je v marketplace.json ale ne v apm.yml"
 ```
 
 **Multi-platform instalace:**
 ```bash
 # Claude Code uživatel:
 /plugin marketplace add https://github.com/technomaton/technomaton-hub
-/plugin install technomaton-meta@technomaton-hub
+/plugin install tm-meta@technomaton-hub
 
 # Cursor/Copilot uživatel (přes APM):
 apm install technomaton-hub
@@ -786,7 +786,7 @@ Pokud Anthropic implementuje dependency support v CC plugins, přechod z B bude 
 ```json
 // plugin.json — budoucí format (spekulace dle FR #9444)
 {
-  "name": "technomaton-meta",
+  "name": "tm-meta",
   "dependencies": {
     "superpowers": "^5.0.0",
     "example-skills": "^1.0.0"
@@ -836,7 +836,7 @@ make vendor-skill \
 
 ### Krok 3: Meta-pack
 
-Nový pack `packs/technomaton-meta/` s:
+Nový pack `packs/tm-meta/` s:
 - `plugin.json` — manifest
 - `skills/full-dev-workflow/SKILL.md` — brainstorming → governance → TDD → review
 - `skills/document-workflow/SKILL.md` — doc-coauthoring → docx/pdf/pptx → brand-guidelines

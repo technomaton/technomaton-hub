@@ -11,3 +11,44 @@ Imported: 2026-03-20
 The EDPA governance skills, references, scripts, and config templates
 were originally developed as a standalone governance template and have
 been imported into this mono-repo as the technomaton-governance pack.
+
+## superpowers vv5.0.5 (vendor/superpowers-v5.0.5)
+
+Source: https://github.com/obra/superpowers
+Original commit: 7e516434f2a3
+License: MIT
+Imported: 2026-03-21
+Skills: brainstorming,test-driven-development,systematic-debugging,writing-plans
+
+## skills vmain (vendor/skills-main)
+
+Source: https://github.com/anthropics/skills
+Original commit: b0cbd3df1533
+License: unknown
+Imported: 2026-03-21
+Skills: docx,pdf,pptx,xlsx,internal-comms,doc-coauthoring,brand-guidelines,frontend-design,canvas-design
+
+## agent-browse vmain (vendor/agent-browse-main)
+
+Source: https://github.com/browserbase/agent-browse
+Original commit: 62a03ce0bd86
+License: unknown
+Imported: 2026-03-21
+Skills: browser-automation
+
+## Claude Code Workflows (vendor/workflows-main)
+
+Source: https://github.com/wshobson/agents
+Original commit: 1ad2f007d5e9
+License: MIT
+Imported: 2026-03-21
+Content: 146 skills from 33 plugins (accessibility, backend, cloud, data, security, etc.)
+
+## Official Claude Plugins Collection (vendor/official-plugins)
+
+Source: https://claude.com/plugins (66 plugins from claude-plugins-official + external repos)
+Imported: 2026-03-21
+Content: 345 skills, 43 agents, 90 commands
+License: Mixed (MIT, Apache-2.0, proprietary — per-plugin, see individual repos)
+Includes: Anthropic internal plugins, partner plugins (Vercel, Sentry, HuggingFace,
+  Netlify, Pinecone, Figma, Notion, Atlassian, PagerDuty, PostHog, etc.)

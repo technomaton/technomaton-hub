@@ -1,0 +1,16 @@
+{
+  "name": "tm-servicedesk",
+  "version": "1.0.0",
+  "description": "Service Desk: Jira & ServiceNow via MCP.",
+  "author": { "name": "TECHNOMATON Team" },
+  "license": "Proprietary",
+  "tier": "commercial",
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json",
+  "skills": [],
+  "commands": [
+    "commands/ops/jira-create-bug.md",
+    "commands/ops/snow-incident.md"
+  ],
+  "agents": []
+}

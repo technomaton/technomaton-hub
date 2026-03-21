@@ -18,7 +18,7 @@ fi
 
 # 2. Check pack manifests
 echo "2. Checking pack manifests..."
-for pack in packs/technomaton-*/; do
+for pack in packs/tm-*/; do
   name=$(basename "$pack")
   missing=""
   [ ! -f "$pack/.claude-plugin/plugin.json" ] && missing="$missing plugin.json"
@@ -54,7 +54,7 @@ bash scripts/validate-licenses.sh || ERRORS=$((ERRORS + 1))
 
 # 7. Check plugin.json capability arrays match files on disk
 echo "7. Checking plugin.json capability arrays match disk..."
-for pack in packs/technomaton-*/; do
+for pack in packs/tm-*/; do
   name=$(basename "$pack")
   pj="$pack/.claude-plugin/plugin.json"
   [ ! -f "$pj" ] && continue
@@ -90,7 +90,7 @@ echo "   OK"
 
 # 8. Check marketplace count matches pack count
 echo "8. Checking marketplace registry count..."
-PACK_COUNT=$(ls -d packs/technomaton-*/ 2>/dev/null | wc -l | tr -d ' ')
+PACK_COUNT=$(ls -d packs/tm-*/ 2>/dev/null | wc -l | tr -d ' ')
 REGISTRY_COUNT=$(grep -c '"source":' .claude-plugin/marketplace.json 2>/dev/null | head -1)
 if [ "$PACK_COUNT" -ne "$REGISTRY_COUNT" ]; then
   echo "   FAIL: $PACK_COUNT packs on disk but $REGISTRY_COUNT entries in marketplace.json"
@@ -99,8 +99,12 @@ else
   echo "   OK: $PACK_COUNT packs match registry"
 fi
 
-# 9. Test export pipeline
-echo "9. Testing export pipeline..."
+# 9. Validate vendor integrity
+echo "9. Checking vendor integrity..."
+bash scripts/validate-vendor.sh || ERRORS=$((ERRORS + 1))
+
+# 10. Test export pipeline
+echo "10. Testing export pipeline..."
 if [ -f scripts/export-agentskills.sh ]; then
   bash scripts/export-agentskills.sh --dry-run 2>/dev/null && echo "   OK" || echo "   WARN: export dry-run had issues"
 else

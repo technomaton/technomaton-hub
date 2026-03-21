@@ -1,0 +1,16 @@
+{
+  "name": "tm-business",
+  "version": "1.0.0",
+  "description": "Finance & Legal: budgets, forecasts, redlining.",
+  "author": { "name": "TECHNOMATON Team" },
+  "license": "Proprietary",
+  "tier": "commercial",
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json",
+  "skills": [],
+  "commands": [
+    "commands/finance/forecast.md",
+    "commands/legal/redline.md"
+  ],
+  "agents": []
+}

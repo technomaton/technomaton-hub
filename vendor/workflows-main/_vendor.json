@@ -1,0 +1,15 @@
+{
+  "name": "workflows",
+  "version": "main",
+  "source": "https://github.com/wshobson/agents",
+  "commit": "1ad2f007d5e9",
+  "vendored_at": "2026-03-21T11:36:04Z",
+  "license": "MIT",
+  "skills_imported_count": 146,
+  "plugins_with_skills": 33,
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21",
+    "last_upstream_commit": "2026-03-17"
+  }
+}

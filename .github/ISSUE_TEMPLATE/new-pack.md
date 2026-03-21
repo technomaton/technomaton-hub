@@ -6,7 +6,7 @@ labels: new-pack
 ---
 
 ## Pack Name
-technomaton-
+tm-
 
 ## Description
 

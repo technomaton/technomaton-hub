@@ -1,0 +1,22 @@
+{
+  "name": "tm-infra",
+  "version": "1.0.0",
+  "description": "Infrastructure (Azure/TF): what-if/plan, AFD/WAF allowlist, Private Link planning.",
+  "author": { "name": "TECHNOMATON Team" },
+  "license": "MIT",
+  "tier": "community",
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json",
+  "skills": [
+    "skills/afd-allowlist-sync/SKILL.md",
+    "skills/azure-what-if/SKILL.md"
+  ],
+  "commands": [
+    "commands/infra/afd-allowlist-sync.md",
+    "commands/infra/private-link.md",
+    "commands/infra/what-if.md"
+  ],
+  "agents": [
+    "agents/platform-architect.md"
+  ]
+}

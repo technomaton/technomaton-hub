@@ -1,5 +1,5 @@
 {
-  "name": "technomaton-hub",
+  "name": "tm-hub",
   "version": "1.0.0",
   "owner": {
     "name": "TECHNOMATON Group",
@@ -7,8 +7,8 @@
   },
   "plugins": [
     {
-      "name": "technomaton-dx",
-      "source": "./packs/technomaton-dx",
+      "name": "tm-dx",
+      "source": "./packs/tm-dx",
       "description": "DX core: PR/release, docs sync, guardrails",
       "tier": "community",
       "license": "MIT",
@@ -16,8 +16,8 @@
       "capabilities": { "skills": 2, "commands": 4, "agents": 0, "hooks": 3 }
     },
     {
-      "name": "technomaton-docs",
-      "source": "./packs/technomaton-docs",
+      "name": "tm-docs",
+      "source": "./packs/tm-docs",
       "description": "Documentation: ADR, changelog, readme generation",
       "tier": "community",
       "license": "MIT",
@@ -25,8 +25,8 @@
       "capabilities": { "skills": 1, "commands": 3, "agents": 0, "hooks": 0 }
     },
     {
-      "name": "technomaton-secure",
-      "source": "./packs/technomaton-secure",
+      "name": "tm-secure",
+      "source": "./packs/tm-secure",
       "description": "Security & compliance: scanning, policy, agents",
       "tier": "community",
       "license": "MIT",
@@ -34,8 +34,8 @@
       "capabilities": { "skills": 2, "commands": 3, "agents": 4, "hooks": 0 }
     },
     {
-      "name": "technomaton-infra",
-      "source": "./packs/technomaton-infra",
+      "name": "tm-infra",
+      "source": "./packs/tm-infra",
       "description": "Infrastructure: Azure/TF planning, AFD, Private Link",
       "tier": "community",
       "license": "MIT",
@@ -43,8 +43,8 @@
       "capabilities": { "skills": 2, "commands": 3, "agents": 1, "hooks": 0 }
     },
     {
-      "name": "technomaton-github",
-      "source": "./packs/technomaton-github",
+      "name": "tm-github",
+      "source": "./packs/tm-github",
       "description": "GitHub MCP utilities: PR status, release notes, Dependabot",
       "tier": "community",
       "license": "MIT",
@@ -52,8 +52,8 @@
       "capabilities": { "skills": 1, "commands": 4, "agents": 0, "hooks": 0 }
     },
     {
-      "name": "technomaton-growth",
-      "source": "./packs/technomaton-growth",
+      "name": "tm-growth",
+      "source": "./packs/tm-growth",
       "description": "Growth/Sales/Marketing: ICP, outreach, content",
       "tier": "community",
       "license": "MIT",
@@ -61,8 +61,8 @@
       "capabilities": { "skills": 0, "commands": 4, "agents": 1, "hooks": 0 }
     },
     {
-      "name": "technomaton-eaa",
-      "source": "./packs/technomaton-eaa",
+      "name": "tm-eaa",
+      "source": "./packs/tm-eaa",
       "description": "Accessibility (EAA/kiosks): checklists, test plans, procurement",
       "tier": "community",
       "license": "MIT",
@@ -70,8 +70,8 @@
       "capabilities": { "skills": 0, "commands": 3, "agents": 1, "hooks": 0 }
     },
     {
-      "name": "technomaton-ops",
-      "source": "./packs/technomaton-ops",
+      "name": "tm-ops",
+      "source": "./packs/tm-ops",
       "description": "Observability & Ops: runbooks, incidents, postmortems",
       "tier": "community",
       "license": "MIT",
@@ -79,8 +79,8 @@
       "capabilities": { "skills": 0, "commands": 3, "agents": 0, "hooks": 0 }
     },
     {
-      "name": "technomaton-data",
-      "source": "./packs/technomaton-data",
+      "name": "tm-data",
+      "source": "./packs/tm-data",
       "description": "Data & Analytics: quality, engineering, ML agents",
       "tier": "community",
       "license": "MIT",
@@ -88,8 +88,8 @@
       "capabilities": { "skills": 0, "commands": 1, "agents": 4, "hooks": 0 }
     },
     {
-      "name": "technomaton-ml",
-      "source": "./packs/technomaton-ml",
+      "name": "tm-ml",
+      "source": "./packs/tm-ml",
       "description": "ML & AI: RAG tooling, experiments, MLOps",
       "tier": "community",
       "license": "MIT",
@@ -97,8 +97,8 @@
       "capabilities": { "skills": 0, "commands": 2, "agents": 0, "hooks": 0 }
     },
     {
-      "name": "technomaton-servicedesk",
-      "source": "./packs/technomaton-servicedesk",
+      "name": "tm-servicedesk",
+      "source": "./packs/tm-servicedesk",
       "description": "Service Desk: Jira & ServiceNow via MCP",
       "tier": "commercial",
       "license": "Proprietary",
@@ -106,8 +106,8 @@
       "capabilities": { "skills": 0, "commands": 2, "agents": 0, "hooks": 0 }
     },
     {
-      "name": "technomaton-public",
-      "source": "./packs/technomaton-public",
+      "name": "tm-public",
+      "source": "./packs/tm-public",
       "description": "Public Sector: tenders, grants, reporting",
       "tier": "commercial",
       "license": "Proprietary",
@@ -115,8 +115,8 @@
       "capabilities": { "skills": 0, "commands": 1, "agents": 0, "hooks": 0 }
     },
     {
-      "name": "technomaton-business",
-      "source": "./packs/technomaton-business",
+      "name": "tm-business",
+      "source": "./packs/tm-business",
       "description": "Finance & Legal: budgets, forecasts, redlining",
       "tier": "commercial",
       "license": "Proprietary",
@@ -124,8 +124,8 @@
       "capabilities": { "skills": 0, "commands": 2, "agents": 0, "hooks": 0 }
     },
     {
-      "name": "technomaton-governance",
-      "source": "./packs/technomaton-governance",
+      "name": "tm-governance",
+      "source": "./packs/tm-governance",
       "description": "EDPA governance: evidence-driven proportional allocation",
       "tier": "community",
       "license": "MIT",
@@ -133,13 +133,22 @@
       "capabilities": { "skills": 4, "commands": 4, "agents": 0, "hooks": 0 }
     },
     {
-      "name": "technomaton-agents",
-      "source": "./packs/technomaton-agents",
+      "name": "tm-agents",
+      "source": "./packs/tm-agents",
       "description": "General-purpose agents: product, discovery, prompt, research",
       "tier": "community",
       "license": "MIT",
       "tags": ["agents", "product", "research"],
       "capabilities": { "skills": 0, "commands": 0, "agents": 6, "hooks": 0 }
+    },
+    {
+      "name": "tm-meta",
+      "source": "./packs/tm-meta",
+      "description": "Meta-workflows: orchestrate skills from internal packs and vendored sources",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["meta", "workflow", "composition", "orchestration"],
+      "capabilities": { "skills": 3, "commands": 0, "agents": 0, "hooks": 0 }
     }
   ]
 }

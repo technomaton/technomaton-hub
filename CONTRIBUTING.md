@@ -69,7 +69,24 @@ Create `packs/<pack>/agents/<agent-name>.md` with frontmatter.
 
 ## Importing External Skills
 
-When importing skills from external sources:
+### Vendoring (recommended)
+
+Use the vendor script to import skills with quality gates:
+
+```bash
+make vendor-skill \
+  source=https://github.com/org/repo \
+  version=v1.0.0 \
+  skills="skill1,skill2"
+```
+
+This automatically handles: quality checks, copying, hashing, NOTICE attribution, and imports.lock.
+
+See `docs/vendor-guide.md` for full documentation.
+
+### Manual import
+
+When importing skills manually from external sources:
 1. Add attribution to `NOTICE`
 2. Preserve original license
-3. Update `metadata.source` in frontmatter
+3. Update `metadata.source` in frontmatter to `imported` or `adapted`

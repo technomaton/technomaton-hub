@@ -7,16 +7,16 @@ Technomaton Hub uses a dual license model:
 ### Community Packs (MIT)
 
 Packs with `"tier": "community"` in their plugin.json are MIT-licensed:
-- technomaton-dx, docs, secure, infra, github
-- technomaton-growth, eaa, ops, data, ml
-- technomaton-governance, agents
+- tm-dx, docs, secure, infra, github
+- tm-growth, eaa, ops, data, ml
+- tm-governance, agents
 
 Free to use, modify, and distribute.
 
 ### Commercial Packs (Proprietary)
 
 Packs with `"tier": "commercial"` in their plugin.json are proprietary:
-- technomaton-servicedesk, public, business
+- tm-servicedesk, public, business
 
 Licensed per arrangement with TECHNOMATON Group.
 
