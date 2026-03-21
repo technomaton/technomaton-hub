@@ -1,13 +1,8 @@
-# Toggling & Team Profiles
+# Toggling & Team Onboarding
 
-## Per-pack control
+## Step 1: Prepare settings.json
 
-```bash
-/plugin enable tm-infra@technomaton-hub
-/plugin disable tm-growth@technomaton-hub
-```
-
-## Team defaults in `.claude/settings.json`
+Commit `.claude/settings.json` into your project with the team's default packs:
 
 ```json
 {
@@ -19,19 +14,63 @@
   "enabledPlugins": {
     "tm-dx@technomaton-hub": "enabled",
     "tm-docs@technomaton-hub": "enabled",
-    "tm-github@technomaton-hub": "enabled",
     "tm-secure@technomaton-hub": "enabled",
-    "tm-infra@technomaton-hub": "enabled",
-    "tm-governance@technomaton-hub": "enabled",
-    "tm-agents@technomaton-hub": "disabled"
+    "tm-github@technomaton-hub": "enabled"
   }
 }
 ```
 
-## Suggested profiles
+## Step 2: Choose Profile by Role
 
-**Core developer:** dx, docs, secure, github
-**Platform engineer:** dx, infra, ops, secure
-**Growth team:** growth, business
-**Project governance:** governance, dx, docs
-**Full stack:** all community packs enabled
+| Role | Packs to enable |
+|------|----------------|
+| Core developer | dx, docs, secure, github |
+| Platform engineer | dx, infra, ops, secure |
+| Growth / marketing | growth, business |
+| Governance / PM | governance, dx, docs, agents |
+| Full stack | all community packs |
+
+## Step 3: User Opens Claude Code
+
+Nothing else needed. Claude Code:
+- Finds `settings.json`
+- Loads the marketplace
+- Activates enabled packs
+- Skills/commands/agents are immediately available
+
+## Step 4: Personal Toggle (optional)
+
+Each user can per-user enable/disable packs:
+
+```bash
+/plugin enable tm-agents@technomaton-hub
+/plugin disable tm-growth@technomaton-hub
+```
+
+## Full settings.json Example (all community packs)
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "technomaton-hub": {
+      "source": { "source": "path", "path": "./technomaton-hub/.claude-plugin/marketplace.json" }
+    }
+  },
+  "enabledPlugins": {
+    "tm-dx@technomaton-hub": "enabled",
+    "tm-docs@technomaton-hub": "enabled",
+    "tm-secure@technomaton-hub": "enabled",
+    "tm-infra@technomaton-hub": "enabled",
+    "tm-github@technomaton-hub": "enabled",
+    "tm-growth@technomaton-hub": "enabled",
+    "tm-eaa@technomaton-hub": "enabled",
+    "tm-ops@technomaton-hub": "enabled",
+    "tm-data@technomaton-hub": "enabled",
+    "tm-ml@technomaton-hub": "enabled",
+    "tm-atlassian@technomaton-hub": "enabled",
+    "tm-governance@technomaton-hub": "enabled",
+    "tm-agents@technomaton-hub": "enabled",
+    "tm-meta@technomaton-hub": "enabled"
+  }
+}
+```

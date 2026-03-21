@@ -15,6 +15,7 @@ technomaton-hub/
 │   ├── CHANGELOG.md
 │   └── LICENSE
 ├── .claude-plugin/marketplace.json  # Central registry
+├── vendor/                       # Vendored external skills (committed)
 ├── scripts/                      # Validation, export, scaffold
 ├── templates/                    # Templates for new content
 └── docs/                         # Reference documentation

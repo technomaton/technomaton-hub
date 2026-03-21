@@ -4,19 +4,52 @@ Centralized mono-repo marketplace for Claude Code capabilities: skills, agents, 
 
 ## Quick Start
 
-```bash
-# Install marketplace
-/plugin marketplace add ./technomaton-hub
+### Option A: Git Submodule (recommended for teams)
 
-# Enable packs
-/plugin install tm-dx@technomaton-hub
-/plugin install tm-docs@technomaton-hub
-/plugin install tm-secure@technomaton-hub
-/plugin install tm-infra@technomaton-hub
-/plugin install tm-github@technomaton-hub
+```bash
+git submodule add https://github.com/technomaton/technomaton-hub
 ```
 
-See [TOGGLING.md](TOGGLING.md) for team defaults and fine-grained control.
+Create `.claude/settings.json` in your project:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "technomaton-hub": {
+      "source": {
+        "source": "path",
+        "path": "./technomaton-hub/.claude-plugin/marketplace.json"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "tm-dx@technomaton-hub": "enabled",
+    "tm-docs@technomaton-hub": "enabled",
+    "tm-secure@technomaton-hub": "enabled"
+  }
+}
+```
+
+```bash
+git add .claude/settings.json && git commit -m "chore: enable technomaton-hub packs"
+```
+
+### Option B: Local Path (solo/testing)
+
+```bash
+/plugin marketplace add /path/to/technomaton-hub
+/plugin install tm-dx@technomaton-hub
+```
+
+### Option C: Remote URL
+
+```bash
+/plugin marketplace add https://github.com/technomaton/technomaton-hub
+```
+
+Open Claude Code — packs load automatically.
+
+See [TOGGLING.md](TOGGLING.md) for team defaults, role profiles, and fine-grained control.
 
 ## Packs
 
@@ -40,14 +73,39 @@ See [TOGGLING.md](TOGGLING.md) for team defaults and fine-grained control.
 | tm-agents | General-purpose agents | community | 0 | 0 | 6 |
 | tm-meta | Meta-workflows (orchestration) | community | 3 | 0 | 0 |
 
+## How It Works
+
+```
+1. git submodule add technomaton-hub    (or /plugin marketplace add)
+2. .claude/settings.json committed      (team-wide defaults)
+3. User opens Claude Code               (packs load automatically)
+4. /pr/review                           (command)
+5. @security-reviewer                   (agent)
+6. Claude invokes skills on its own     (skills + meta-skills)
+7. Hooks run automatically              (format, tests, scanning)
+```
+
+See [docs/how-it-works.md](docs/how-it-works.md) for the full guide.
+
 ## Development
 
 ```bash
-make validate    # Run full validation suite
+make validate    # Run full validation suite (10 checks)
 make export      # Generate Agent Skills to dist/
 make new-pack    # Scaffold a new pack
 make clean       # Remove dist/
 ```
+
+## Vendor Management
+
+```bash
+make vendor-skill source=<url> version=<tag> skills="skill1,skill2"
+make update-vendor name=<vendor> version=<new-tag>
+make check-upstream       # Check for upstream changes
+make validate-vendor      # Verify integrity
+```
+
+See [docs/vendor-guide.md](docs/vendor-guide.md) for details.
 
 ## License
 
