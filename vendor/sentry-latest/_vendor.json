@@ -1,0 +1,42 @@
+{
+  "name": "sentry",
+  "version": "latest",
+  "source": "https://claude.com/plugins/sentry",
+  "vendored_at": "2026-03-21T12:00:13Z",
+  "license": "See individual files",
+  "skills_imported": ["sentry-android-sdk", "sentry-browser-sdk", "sentry-cloudflare-sdk", "sentry-cocoa-sdk", "sentry-code-review", "sentry-create-alert", "sentry-dotnet-sdk", "sentry-elixir-sdk", "sentry-feature-setup", "sentry-fix-issues", "sentry-flutter-sdk", "sentry-go-sdk", "sentry-nestjs-sdk", "sentry-nextjs-sdk", "sentry-node-sdk", "sentry-otel-exporter-setup", "sentry-php-sdk", "sentry-pr-code-review", "sentry-python-sdk", "sentry-react-native-sdk", "sentry-react-sdk", "sentry-ruby-sdk", "sentry-sdk-setup", "sentry-sdk-skill-creator", "sentry-sdk-upgrade", "sentry-setup-ai-monitoring", "sentry-svelte-sdk", "sentry-workflow"],
+  "quality_check": {
+    "passed": true,
+    "checked_at": "2026-03-21"
+  },
+  "content_hashes": {
+    "skills/sentry-android-sdk/SKILL.md": "sha256:c5f75ef6802792a5f79416fee26703c864429a7a59a639c92fa484b8c4b3d68b",
+    "skills/sentry-browser-sdk/SKILL.md": "sha256:04cd8583e771be05b43caedd2d6c88516ae0cf73e21154f32fe68eb957da98a0",
+    "skills/sentry-cloudflare-sdk/SKILL.md": "sha256:db858e48836a8afe4d0fae8ea7977de1ba3777e17503a5d587488eb104d9ed4f",
+    "skills/sentry-cocoa-sdk/SKILL.md": "sha256:19833661c8a2d76cd261df48511c78098b6717bd020454a3431403e7286d1b65",
+    "skills/sentry-code-review/SKILL.md": "sha256:6840dfd4a436e690cd11ba3fc567a577a1d782997f709284f9ff0221e54f8027",
+    "skills/sentry-create-alert/SKILL.md": "sha256:c83214773a0da23d78b6139e1053d9a069ab699dc5b88e273adeef338b02b093",
+    "skills/sentry-dotnet-sdk/SKILL.md": "sha256:69a27bb6f2dcc0e715c93504afa404188b95a568afd7e191bdbcc1fb5049bc13",
+    "skills/sentry-elixir-sdk/SKILL.md": "sha256:45bc7edd8b1cb803f3764aa23b39364ddb4be9068b548ec437966ce71bb92c2d",
+    "skills/sentry-feature-setup/SKILL.md": "sha256:4ebb14c6745f6ccac164e0c2e0f2240de30020840a5e1f69df4cfb3879c4cdc5",
+    "skills/sentry-fix-issues/SKILL.md": "sha256:4a9c16f79980b61ab20366c84be252f1c21a6e36e60c3b9ee20b8d5d9fd3a56f",
+    "skills/sentry-flutter-sdk/SKILL.md": "sha256:a19f90986c450e14a4aaa63dac6fb2676a2701af6a37e7c046fda745d210e985",
+    "skills/sentry-go-sdk/SKILL.md": "sha256:9133459b7a775654da3f571c8966c6271dc8c8822390f15d6369be5e6621f615",
+    "skills/sentry-nestjs-sdk/SKILL.md": "sha256:e889e3dcda92beb4c449460c1934f5837749a4dc23716afd704e035ed0f3a7c5",
+    "skills/sentry-nextjs-sdk/SKILL.md": "sha256:ef3b5ff744d64fe09b3811062309914b03c833cc179f1be6fe2acb813e7c9b2b",
+    "skills/sentry-node-sdk/SKILL.md": "sha256:a284bb60e59bb485c298050b6329b1f2198512ceb1bc8697f431dc5141a6bfdf",
+    "skills/sentry-otel-exporter-setup/SKILL.md": "sha256:59a706b463b51d573326067a43003d61efab8db51f4582e8594755b611c0c4c5",
+    "skills/sentry-php-sdk/SKILL.md": "sha256:050eb665e4132c2e6ed94013dee4b9d9104b079a768b913a112165a687762bf2",
+    "skills/sentry-pr-code-review/SKILL.md": "sha256:6ca34c67aa9a98a7559d489d4a1e91b914b4e753040a3b48a7c705a7f2a12c76",
+    "skills/sentry-python-sdk/SKILL.md": "sha256:1bd53585d7320fcd5554942b6c01ddf93f9954a85262813be84775a8e4d232e6",
+    "skills/sentry-react-native-sdk/SKILL.md": "sha256:1607e7f9ef0f1167b371e77503f719b5bc12f0c97fabb7e855337486d24a105a",
+    "skills/sentry-react-sdk/SKILL.md": "sha256:22c57d7d96ec1ba2b534c9cc0a27f809f92164867067990a5d9b9dbb79a4f550",
+    "skills/sentry-ruby-sdk/SKILL.md": "sha256:3283f04489001d804a754f04d79bcf91ba4be6d99cee1ee79de2f82ad41774a7",
+    "skills/sentry-sdk-setup/SKILL.md": "sha256:9419fc36c68a513e040270847effda853338e54f81ef060afb4bc8da7442dace",
+    "skills/sentry-sdk-skill-creator/SKILL.md": "sha256:99d78bfca54ea162e76c0fb30a5f36db61714af7302cb2fee8d61b77686adb03",
+    "skills/sentry-sdk-upgrade/SKILL.md": "sha256:3573b864d6a5325f5ee8e7aea3fae015a2269e33f9025e91b143445e85e67d7b",
+    "skills/sentry-setup-ai-monitoring/SKILL.md": "sha256:67e179642e27c603b485be23f45f2dc3d468d5579aac7341642406dfa4cf38b4",
+    "skills/sentry-svelte-sdk/SKILL.md": "sha256:5778ee716ffc5f70765baef4eff7342c02a1610f3ee37c4189e1bfd0211f8bbb",
+    "skills/sentry-workflow/SKILL.md": "sha256:baa8dee53af3be96de34d298b7e577e2d9d54ae6a1e31b8f6e8635d18fe008a2"
+  }
+}
