@@ -13,7 +13,7 @@
       "tier": "community",
       "license": "MIT",
       "tags": ["dx", "pr", "release"],
-      "capabilities": { "skills": 2, "commands": 2, "agents": 0, "hooks": 2 }
+      "capabilities": { "skills": 2, "commands": 2, "agents": 0, "hooks": 2, "vendorDeps": 1 }
     },
     {
       "name": "tm-docs",

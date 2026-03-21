@@ -15,5 +15,13 @@
     "commands/pr/review.md",
     "commands/release/cut.md"
   ],
-  "agents": []
+  "agents": [],
+  "dependencies": [
+    {
+      "name": "superpowers",
+      "source": "vendor/superpowers-v5.0.5",
+      "version": "v5.0.5",
+      "type": "vendor"
+    }
+  ]
 }

@@ -103,8 +103,32 @@ fi
 echo "9. Checking vendor integrity..."
 bash scripts/validate-vendor.sh || ERRORS=$((ERRORS + 1))
 
-# 10. Test export pipeline
-echo "10. Testing export pipeline..."
+# 10. Validate vendor dependencies declared in plugin.json
+echo "10. Checking vendor dependencies..."
+DEP_ERRORS=0
+for pack in packs/tm-*/; do
+  name=$(basename "$pack")
+  pj="$pack/.claude-plugin/plugin.json"
+  [ ! -f "$pj" ] && continue
+
+  # Extract dependency sources (simple grep — no jq dependency)
+  dep_sources=$(grep '"source"' "$pj" | sed 's/.*"source"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/' || true)
+  for src in $dep_sources; do
+    # Skip non-vendor sources (e.g. relative pack paths)
+    case "$src" in vendor/*) ;; *) continue ;; esac
+    if [ ! -d "$src" ]; then
+      echo "   FAIL: $name declares dependency on $src but directory not found"
+      DEP_ERRORS=$((DEP_ERRORS + 1))
+    else
+      echo "   OK: $name -> $src"
+    fi
+  done
+done
+[ "$DEP_ERRORS" -gt 0 ] && ERRORS=$((ERRORS + DEP_ERRORS))
+[ "$DEP_ERRORS" -eq 0 ] && echo "   OK"
+
+# 11. Test export pipeline
+echo "11. Testing export pipeline..."
 if [ -f scripts/export-agentskills.sh ]; then
   bash scripts/export-agentskills.sh --dry-run 2>/dev/null && echo "   OK" || echo "   WARN: export dry-run had issues"
 else
