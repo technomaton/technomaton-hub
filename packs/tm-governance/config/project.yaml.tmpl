@@ -11,7 +11,7 @@ project:
   domain: ""                                  # Domain URL (e.g., myproject.cz)
 
 governance:
-  methodology: "EDPA v2.2"
+  methodology: "EDPA 1.0.0-beta"
   calculation_mode: "simple"                  # simple (JS×CW) or full (JS×CW×RS)
   audit_mode: "full"                          # always store RS in snapshots
 
@@ -25,4 +25,18 @@ naming:
     feature: "F"
     story: "S"
     task: "T"
-    bug: "B"
+    defect: "D"
+
+# Native GitHub Issue Types (org-level, not labels)
+issue_types:
+  Initiative: "Business case, investiční záměr"
+  Epic: "Strategický cíl, 6-9 měsíců"
+  Feature: "Musí se vejít do Planning Intervalu"
+  Story: "Dodáváno v iteraci"
+  Defect: "Defekt v existující funkcionalitě"
+  Task: "Technická práce"
+
+# Enabler is a label classification (Business vs Enabler), not an Issue Type
+# An Epic can be labeled "Enabler" to mark it as Enabler Epic (SAFe)
+labels:
+  Enabler: "Infrastruktura, research, technický dluh"

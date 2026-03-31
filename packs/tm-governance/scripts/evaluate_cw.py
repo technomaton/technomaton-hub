@@ -7,7 +7,7 @@ EDPA CW Heuristics Evaluator — LOCKED FILE
     If you need to change evaluation criteria, create a new version.
 
 Usage:
-    python scripts/evaluate_cw.py --ground-truth data/ground_truth.yaml --heuristics config/cw_heuristics.yaml
+    python .claude/edpa/scripts/evaluate_cw.py --ground-truth .edpa/data/ground_truth.yaml --heuristics .edpa/config/heuristics.yaml
 """
 
 import argparse

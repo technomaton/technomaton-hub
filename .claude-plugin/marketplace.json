@@ -131,7 +131,7 @@
       "tier": "community",
       "license": "MIT",
       "tags": ["governance", "edpa", "capacity", "timesheets", "audit"],
-      "capabilities": { "skills": 4, "commands": 4, "agents": 0, "hooks": 0 }
+      "capabilities": { "skills": 5, "commands": 5, "agents": 0, "hooks": 0 }
     },
     {
       "name": "tm-meta",

@@ -1,12 +1,13 @@
 ---
 name: edpa-reports
+user-invocable: false
 description: >
   Generate EDPA timesheets, reports, and exports. Produces per-person MD/JSON reports,
   per-item cost allocation, PI summaries, Excel exports, and frozen snapshots. Use when
   user asks for "reports", "výkazy", "export", "snapshot", or "per-item analysis".
   Requires edpa-engine results (edpa_results.json) as input.
 license: MIT
-compatibility: Python 3.10+ (openpyxl for XLSX), config/capacity.yaml
+compatibility: Python 3.10+ (openpyxl for XLSX), .edpa/config/people.yaml
 allowed-tools: Read Write Bash(python3 *) Bash(cp *) Bash(mkdir *)
 metadata:
   author: Jaroslav Urbánek
@@ -20,17 +21,40 @@ metadata:
 
 ## What this does
 
-Generates all EDPA v2.2 output artifacts from engine results: per-person timesheets (MD+JSON),
+Generates all EDPA output artifacts from engine results: per-person timesheets (MD+JSON),
 per-item cost allocation, frozen snapshots, PI summaries, and Excel exports.
 
 ## Arguments
 
 `$ARGUMENTS` = iteration ID, or "pi" for PI-level aggregation, or "per-item {item_id}" for single item analysis.
 
+### Argument resolution (when $ARGUMENTS is empty)
+
+If `$ARGUMENTS` is empty, blank, or "help":
+
+1. Read `.edpa/config/edpa.yaml` and extract `pi.iterations`
+2. Check which iterations have existing results in `.edpa/reports/iteration-{ID}/edpa_results.json`
+3. Present options:
+   ```
+   Available iterations:
+     PI-2026-1.1  [closed]   1.4–14.4    results: yes
+     PI-2026-1.2  [closed]   15.4–28.4   results: yes
+     PI-2026-1.3  [closed]   29.4–12.5   results: yes
+     PI-2026-1.4  [active]   13.5–26.5   results: no (run engine first)
+     PI-2026-1.5  [planned]  27.5–9.6    (IP)
+
+   Other options:
+     "pi"                    PI-level aggregation across all closed iterations
+     "per-item {item_id}"    Cost allocation for a single item (e.g., "per-item S-200")
+   ```
+4. **Default suggestion:** the latest `closed` iteration that has `edpa_results.json`.
+5. Ask user: "Generate reports for which iteration? [suggested-id]"
+6. If `.edpa/config/edpa.yaml` does not exist, inform user to run `/edpa setup` first.
+
 ## Prerequisites
 
-- `reports/iteration-{ID}/edpa_results.json` exists (run edpa-engine first)
-- `config/capacity.yaml` exists
+- `.edpa/reports/iteration-{ID}/edpa_results.json` exists (run edpa-engine first)
+- `.edpa/config/people.yaml` exists
 
 ## Output artifacts
 
@@ -45,7 +69,7 @@ Projekt: {project_name}
 Registrace: {registration}
 Období: {iteration} ({dates})
 Kapacita: {capacity}h ({fte} FTE)
-Metodika: EDPA v2.2 ({mode})
+Metodika: EDPA 1.0.0-beta ({mode})
 
 | Item | Typ | JS | CW | Score | Podíl | Hodiny |
 |------|-----|----|----|-------|-------|--------|
@@ -67,18 +91,18 @@ ItemShare[P] = DerivedHours[P, item] / Σ DerivedHours[*, item]
 ```
 
 Output hierarchically: Epic → Feature → Story with contributor breakdown per level.
-Write to `reports/iteration-{ID}/item-costs.xlsx`.
+Write to `.edpa/reports/iteration-{ID}/item-costs.xlsx`.
 
 ### Frozen snapshot
 
-Write to `/snapshots/iteration-{ID}.json`:
+Write to `.edpa/snapshots/iteration-{ID}.json`:
 ```json
 {
-  "snapshot_version": "2.2",
+  "snapshot_version": "1.0.0-beta",
   "iteration": "{id}",
   "generated_at": "ISO-8601",
   "frozen": true,
-  "methodology": "EDPA v2.2",
+  "methodology": "EDPA 1.0.0-beta",
   "capacity_registry": { "...from config..." },
   "edpa_results": { "...from engine..." },
   "signature_status": "pending"
@@ -93,7 +117,7 @@ When $ARGUMENTS = "pi":
 1. Load all iteration results in current PI
 2. Aggregate per person: Σ hours across iterations
 3. Compare to expected (capacity × iterations_count)
-4. Write `reports/pi-{ID}/pi-summary.xlsx`
+4. Write `.edpa/reports/pi-{ID}/pi-summary.xlsx`
 
 ### Excel export
 

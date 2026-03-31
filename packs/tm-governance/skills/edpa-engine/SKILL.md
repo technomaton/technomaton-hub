@@ -1,12 +1,13 @@
 ---
 name: edpa-engine
+user-invocable: false
 description: >
   Run EDPA evidence-driven calculation for an iteration. Gathers GitHub delivery evidence
   (commits, PRs, reviews, comments), computes CW from heuristics, calculates Score and
   DerivedHours, validates invariants. Use when closing an iteration, computing derived hours,
   or running "EDPA výpočet". Produces per-person allocation data for the reports skill.
 license: MIT
-compatibility: GitHub CLI (gh), Python 3.10+, config/capacity.yaml, config/cw_heuristics.yaml
+compatibility: GitHub CLI (gh), Python 3.10+, .edpa/config/people.yaml, .edpa/config/heuristics.yaml
 allowed-tools: Read Bash(gh *) Bash(git *) Bash(python3 *) Grep
 metadata:
   author: Jaroslav Urbánek
@@ -20,16 +21,34 @@ metadata:
 
 ## What this does
 
-Computes derived hours for all team members for a given iteration using EDPA v2.2 formula.
+Computes derived hours for all team members for a given iteration using EDPA formula.
 
 ## Arguments
 
 `$ARGUMENTS` = iteration ID (e.g., "PI-2026-1.3") or "latest" for most recent closed iteration.
 
+### Argument resolution (when $ARGUMENTS is empty)
+
+If `$ARGUMENTS` is empty, blank, or "help":
+
+1. Read `.edpa/config/edpa.yaml` and extract `pi.iterations`
+2. Present available iterations with status and dates:
+   ```
+   Available iterations:
+     PI-2026-1.1  [closed]   1.4–14.4
+     PI-2026-1.2  [closed]   15.4–28.4
+     PI-2026-1.3  [closed]   29.4–12.5
+     PI-2026-1.4  [active]   13.5–26.5  <-- suggested
+     PI-2026-1.5  [planned]  27.5–9.6   (IP)
+   ```
+3. **Default suggestion:** the iteration with `status: active`. If none is active, suggest the latest `closed`.
+4. Ask user: "Which iteration to compute? [suggested-id]"
+5. If user confirms or provides an ID, proceed. If `.edpa/config/edpa.yaml` does not exist, inform user to run `/edpa setup` first.
+
 ## Prerequisites
 
-- `config/capacity.yaml` exists (run edpa-setup first)
-- `config/cw_heuristics.yaml` exists
+- `.edpa/config/people.yaml` exists (run edpa-setup first)
+- `.edpa/config/heuristics.yaml` exists
 - GitHub issues have Job Size field populated
 - Iteration has closed stories (status: Done)
 
@@ -39,9 +58,9 @@ Computes derived hours for all team members for a given iteration using EDPA v2.
 
 ```python
 import yaml
-with open('config/capacity.yaml') as f:
+with open('.edpa/config/people.yaml') as f:
     config = yaml.safe_load(f)
-with open('config/cw_heuristics.yaml') as f:
+with open('.edpa/config/heuristics.yaml') as f:
     heuristics = yaml.safe_load(f)
 ```
 
@@ -49,7 +68,7 @@ with open('config/cw_heuristics.yaml') as f:
 
 For each person P, identify relevant items:
 - **Stories:** Done in iteration $ARGUMENTS, where P has evidence
-- **Features:** Active in current PI, where P has evidence  
+- **Features:** Active in current PI, where P has evidence
 - **Epics:** Active, where P has evidence
 
 **Evidence sources (hybrid — MCP preferred, gh CLI fallback):**
@@ -118,7 +137,7 @@ Run ALL checks — halt on failure:
 
 ### 7. Output
 
-Write results to `reports/iteration-{ID}/edpa_results.json`:
+Write results to `.edpa/reports/iteration-{ID}/edpa_results.json`:
 ```json
 {
   "iteration": "$ARGUMENTS",

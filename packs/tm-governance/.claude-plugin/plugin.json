@@ -1,11 +1,13 @@
 {
   "name": "tm-governance",
-  "version": "2.2.0",
-  "description": "EDPA — Evidence-Driven Proportional Allocation. Capacity derivation from delivery evidence. Standalone: github.com/technomaton/edpa",
+  "version": "1.0.0-beta",
+  "description": "EDPA — Evidence-Driven Proportional Allocation. Derive hours from Git delivery evidence. Standalone: github.com/technomaton/edpa",
   "author": {
-    "name": "TECHNOMATON Team"
+    "name": "TECHNOMATON",
+    "url": "https://technomaton.com"
   },
   "upstream": "https://github.com/technomaton/edpa",
+  "homepage": "https://edpa.technomaton.com",
   "license": "MIT",
   "tier": "community",
   "hooks": "./hooks/hooks.json",
@@ -14,13 +16,15 @@
     "skills/edpa-setup/SKILL.md",
     "skills/edpa-engine/SKILL.md",
     "skills/edpa-reports/SKILL.md",
-    "skills/edpa-autocalib/SKILL.md"
+    "skills/edpa-autocalib/SKILL.md",
+    "skills/edpa-sync/SKILL.md"
   ],
   "commands": [
     "commands/edpa/setup.md",
     "commands/edpa/close-iteration.md",
     "commands/edpa/reports.md",
-    "commands/edpa/calibrate.md"
+    "commands/edpa/calibrate.md",
+    "commands/edpa/sync.md"
   ],
   "agents": []
 }

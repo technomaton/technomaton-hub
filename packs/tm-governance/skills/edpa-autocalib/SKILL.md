@@ -1,12 +1,13 @@
 ---
 name: edpa-autocalib
+user-invocable: false
 description: >
   Auto-calibrate EDPA CW heuristics using Karpathy's autoresearch loop. One file
   (cw_heuristics.yaml), one metric (MAD vs ground truth), one loop (modify→evaluate→keep/discard).
   Use when: user says "calibrate CW", "auto-calibrate", "optimize heuristics", or after first PI
   with ≥20 manually confirmed CW records. Do NOT use before first PI — insufficient ground truth.
 license: MIT
-compatibility: Python 3.10+, git, config/cw_heuristics.yaml, data/ground_truth.yaml
+compatibility: Python 3.10+, git, .edpa/config/heuristics.yaml, .edpa/data/ground_truth.yaml
 allowed-tools: Read Write Bash(python3 *) Bash(git *) Grep
 disable-model-invocation: false
 metadata:
@@ -25,11 +26,36 @@ metadata:
 Optimizes CW heuristic parameters by running an autonomous experiment loop against
 manually confirmed ground truth data. Inspired by Karpathy's autoresearch pattern.
 
+## Arguments
+
+`$ARGUMENTS` = experiment budget (number, default: 50) or "auto".
+
+### Argument resolution (when $ARGUMENTS is empty)
+
+If `$ARGUMENTS` is empty, blank, or "help":
+
+1. Check if `.edpa/data/ground_truth.yaml` exists:
+   - If yes, count records and report: "Ground truth: **{count}** records (minimum 20 required)."
+   - If no, inform: "No ground truth file found. Create `.edpa/data/ground_truth.yaml` from retrospective data first."
+2. If sufficient records, check current heuristics state:
+   - Read `.edpa/config/heuristics.yaml` and show current role_weights
+   - Check if `.edpa/data/calibration_log.tsv` exists → show last calibration date and MAD
+3. Present:
+   ```
+   Calibration status:
+     Ground truth:    32 records (OK)
+     Current MAD:     0.12 (from last calibration 2026-03-15)
+     Suggested budget: 50 experiments
+
+   Run calibration with 50 experiments? [50]
+   ```
+4. **Default suggestion:** 50 experiments. User can override with any number.
+
 ## Prerequisites
 
-**Hard requirement:** `data/ground_truth.yaml` with ≥ 20 records:
+**Hard requirement:** `.edpa/data/ground_truth.yaml` with ≥ 20 records:
 ```yaml
-# data/ground_truth.yaml — from retrospective confirmations
+# .edpa/data/ground_truth.yaml — from retrospective confirmations
 records:
   - item_id: S-200
     person_id: turyna
@@ -44,11 +70,11 @@ If fewer than 20 records exist, inform user: "Insufficient ground truth. Need �
 ## Configuration
 
 ```
-Target file:    config/cw_heuristics.yaml
+Target file:    .edpa/config/heuristics.yaml
 Metric:         mean_absolute_deviation(auto_cw, confirmed_cw)
 Direction:      lower
 Budget:         $0 (default 50) or user-specified experiments
-Eval script:    scripts/evaluate_cw.py (LOCKED — agent must NOT edit)
+Eval script:    .claude/edpa/scripts/evaluate_cw.py (LOCKED — agent must NOT edit)
 Branch:         calibration/{timestamp}
 ```
 
@@ -62,7 +88,7 @@ git checkout -b calibration/$(date +%Y%m%d-%H%M%S)
 ### Loop (repeat $0 times, default 50):
 
 **Step 1: Read state**
-- Load current `config/cw_heuristics.yaml`
+- Load current `.edpa/config/heuristics.yaml`
 - Load experiment history from git log on calibration branch
 - Load last MAD score
 
@@ -82,25 +108,25 @@ Constraints:
 
 **Step 3: Commit**
 ```bash
-git add config/cw_heuristics.yaml
+git add .edpa/config/heuristics.yaml
 git commit -m "experiment {n}: {parameter} {old_value} -> {new_value}"
 ```
 
 **Step 4: Evaluate**
 ```bash
-python3 scripts/evaluate_cw.py --ground-truth data/ground_truth.yaml --heuristics config/cw_heuristics.yaml
+python3 .claude/edpa/scripts/evaluate_cw.py --ground-truth .edpa/data/ground_truth.yaml --heuristics .edpa/config/heuristics.yaml
 ```
 
 Script outputs: `MAD={value}`
 
-**CRITICAL: Agent must NEVER edit scripts/evaluate_cw.py. If tempted to modify the evaluator, STOP. This separation prevents gaming.**
+**CRITICAL: Agent must NEVER edit .claude/edpa/scripts/evaluate_cw.py. If tempted to modify the evaluator, STOP. This separation prevents gaming.**
 
 **Step 5: Decide**
 - If new MAD < previous best MAD → **KEEP** (advance branch)
 - If new MAD ≥ previous best MAD → **REVERT**: `git reset --hard HEAD~1`
 
 **Step 6: Log**
-Append to `data/calibration_log.tsv`:
+Append to `.edpa/data/calibration_log.tsv`:
 ```
 {experiment_num}\t{parameter}\t{old_value}\t{new_value}\t{new_MAD}\t{best_MAD}\t{kept|reverted}
 ```
@@ -121,6 +147,6 @@ Append to `data/calibration_log.tsv`:
 ## Error handling
 
 - Ground truth < 20 records → refuse, explain why
-- evaluate_cw.py missing → create from template in references/evaluate_cw_template.py
+- evaluate_cw.py missing → create from template in .claude/edpa/scripts/evaluate_cw.py
 - Git conflicts → abort, report
 - MAD not improving after 20 experiments → suggest reviewing ground truth quality
