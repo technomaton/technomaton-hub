@@ -1,6 +1,6 @@
 ---
 description: "Batch VUCA audit of all skills in a directory. Produces aggregate scores, identifies systemic patterns, and recommends portfolio-level improvements."
-allowed-tools: Read, Write, Bash
+allowed-tools: Read, Write, Grep, Glob, Agent
 model: sonnet
 ---
 

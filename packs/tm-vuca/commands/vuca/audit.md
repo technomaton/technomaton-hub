@@ -1,6 +1,6 @@
 ---
 description: "Run a VUCA audit using the multi-agent system. Dispatches @vuca-conductor which orchestrates 4 specialist subagents in parallel."
-allowed-tools: Read, Write, Bash
+allowed-tools: Read, Write, Grep, Glob, Agent
 model: sonnet
 ---
 

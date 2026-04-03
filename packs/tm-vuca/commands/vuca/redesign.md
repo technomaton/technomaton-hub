@@ -1,6 +1,6 @@
 ---
 description: "Audit and redesign a file with VUCA-balanced structure. Runs full audit first, then improves weakest dimensions and verifies improvement."
-allowed-tools: Read, Write, Bash
+allowed-tools: Read, Write, Grep, Glob, Agent
 model: sonnet
 ---
 
