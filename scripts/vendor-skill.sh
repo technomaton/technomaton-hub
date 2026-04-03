@@ -214,9 +214,16 @@ if command -v sed &>/dev/null; then
 fi
 
 # Remove existing entry for this vendor if present
-if grep -q "name: $NAME" "$LOCK_FILE" 2>/dev/null; then
-  # Simple approach: rebuild the file
+if grep -q "  - name: $NAME$" "$LOCK_FILE" 2>/dev/null; then
   echo "   Updating existing entry for $NAME"
+  # Remove from "  - name: $NAME" to the line before next "  - name:" or EOF
+  awk -v vendor="$NAME" '
+    /^  - name: / {
+      if ($NF == vendor) { skip=1; next }
+      else { skip=0 }
+    }
+    !skip { print }
+  ' "$LOCK_FILE" > "${LOCK_FILE}.tmp" && mv "${LOCK_FILE}.tmp" "$LOCK_FILE"
 fi
 
 # Append new vendor entry

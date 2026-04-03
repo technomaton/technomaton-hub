@@ -5,6 +5,7 @@
   "author": { "name": "TECHNOMATON Team" },
   "license": "MIT",
   "tier": "community",
+  "status": "stable",
   "hooks": "./hooks/hooks.json",
   "mcpServers": "./.mcp.json",
   "skills": [

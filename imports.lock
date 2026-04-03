@@ -124,6 +124,7 @@ vendors:
   - name: aikido
     version: "latest"
     source: "https://claude.com/plugins/aikido"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/aikido-latest"
     license: "See individual files"
     quality_check:
@@ -139,6 +140,7 @@ vendors:
   - name: atlassian
     version: "latest"
     source: "https://claude.com/plugins/atlassian"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/atlassian-latest"
     license: "See LICENSE file"
     quality_check:
@@ -163,6 +165,7 @@ vendors:
   - name: chrome-devtools
     version: "latest"
     source: "https://claude.com/plugins/chrome-devtools"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/chrome-devtools-latest"
     license: "See LICENSE file"
     quality_check:
@@ -187,6 +190,7 @@ vendors:
   - name: coderabbit
     version: "latest"
     source: "https://claude.com/plugins/coderabbit"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/coderabbit-latest"
     license: "See LICENSE file"
     quality_check:
@@ -202,6 +206,7 @@ vendors:
   - name: figma
     version: "latest"
     source: "https://claude.com/plugins/figma"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/figma-latest"
     license: "See individual files"
     quality_check:
@@ -220,6 +225,7 @@ vendors:
   - name: huggingface
     version: "latest"
     source: "https://claude.com/plugins/huggingface"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/huggingface-latest"
     license: "See LICENSE file"
     quality_check:
@@ -271,6 +277,7 @@ vendors:
   - name: mcp-server-dev
     version: "latest"
     source: "https://claude.com/plugins/mcp-server-dev"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/mcp-server-dev-latest"
     license: "See individual files"
     quality_check:
@@ -289,6 +296,7 @@ vendors:
   - name: nightvision
     version: "latest"
     source: "https://claude.com/plugins/nightvision"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/nightvision-latest"
     license: "See LICENSE file"
     quality_check:
@@ -310,6 +318,7 @@ vendors:
   - name: notion
     version: "latest"
     source: "https://claude.com/plugins/notion"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/notion-latest"
     license: "See individual files"
     quality_check:
@@ -331,6 +340,7 @@ vendors:
   - name: opsera
     version: "latest"
     source: "https://claude.com/plugins/opsera"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/opsera-latest"
     license: "See individual files"
     quality_check:
@@ -355,6 +365,7 @@ vendors:
   - name: pinecone
     version: "latest"
     source: "https://claude.com/plugins/pinecone"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/pinecone-latest"
     license: "See LICENSE file"
     quality_check:
@@ -385,6 +396,7 @@ vendors:
   - name: posthog
     version: "latest"
     source: "https://claude.com/plugins/posthog"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/posthog-latest"
     license: "See individual files"
     quality_check:
@@ -397,6 +409,7 @@ vendors:
   - name: qodo
     version: "latest"
     source: "https://claude.com/plugins/qodo"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/qodo-latest"
     license: "See LICENSE file"
     quality_check:
@@ -415,6 +428,7 @@ vendors:
   - name: sentry
     version: "latest"
     source: "https://claude.com/plugins/sentry"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/sentry-latest"
     license: "See LICENSE file"
     quality_check:
@@ -508,6 +522,7 @@ vendors:
   - name: slack-mcp
     version: "latest"
     source: "https://claude.com/plugins/slack-mcp"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/slack-mcp-latest"
     license: "See LICENSE file"
     quality_check:
@@ -523,6 +538,7 @@ vendors:
   - name: sourcegraph
     version: "latest"
     source: "https://claude.com/plugins/sourcegraph"
+    snapshot_date: "2026-03-21"
     vendor_path: "./vendor/sourcegraph-latest"
     license: "See individual files"
     quality_check:

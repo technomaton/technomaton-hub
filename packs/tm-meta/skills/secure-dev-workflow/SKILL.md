@@ -14,11 +14,11 @@ metadata:
   tier: community
   source: original
   composed-from:
-    - pack: tm-secure/threat-model
+    - pack: tm-secure/deps-health
     - vendor: superpowers/brainstorming
     - vendor: superpowers/test-driven-development
     - vendor: superpowers/systematic-debugging
-    - pack: tm-secure/security-scan
+    - pack: tm-secure/secret-scan
     - vendor: superpowers/verification-before-completion
     - pack: tm-dx/pr-review
 ---

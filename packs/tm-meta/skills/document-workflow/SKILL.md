@@ -14,13 +14,13 @@ metadata:
   tier: community
   source: original
   composed-from:
-    - vendor: example-skills/doc-coauthoring
-    - vendor: example-skills/docx
-    - vendor: example-skills/pdf
-    - vendor: example-skills/pptx
-    - vendor: example-skills/xlsx
-    - vendor: example-skills/brand-guidelines
-    - vendor: example-skills/internal-comms
+    - vendor: skills/doc-coauthoring
+    - vendor: skills/docx
+    - vendor: skills/pdf
+    - vendor: skills/pptx
+    - vendor: skills/xlsx
+    - vendor: skills/brand-guidelines
+    - vendor: skills/internal-comms
 ---
 
 # Document Workflow

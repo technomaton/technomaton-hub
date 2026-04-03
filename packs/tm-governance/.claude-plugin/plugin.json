@@ -10,6 +10,7 @@
   "homepage": "https://edpa.technomaton.com",
   "license": "MIT",
   "tier": "community",
+  "status": "beta",
   "hooks": "./hooks/hooks.json",
   "mcpServers": "./.mcp.json",
   "skills": [

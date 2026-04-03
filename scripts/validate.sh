@@ -136,6 +136,113 @@ else
   WARNINGS=$((WARNINGS + 1))
 fi
 
+# 12. Check lifecycle status field
+echo "12. Checking lifecycle status..."
+VALID_STATUSES="stable beta deprecated experimental"
+for pack in packs/tm-*/; do
+  name=$(basename "$pack")
+  pj="$pack/.claude-plugin/plugin.json"
+  [ ! -f "$pj" ] && continue
+  status=$(grep '"status"' "$pj" | sed 's/.*"status"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/' || true)
+  if [ -z "$status" ]; then
+    echo "   FAIL: $name missing status field in plugin.json"
+    ERRORS=$((ERRORS + 1))
+  elif ! echo "$VALID_STATUSES" | grep -qw "$status"; then
+    echo "   FAIL: $name has invalid status '$status' (valid: $VALID_STATUSES)"
+    ERRORS=$((ERRORS + 1))
+  else
+    echo "   OK: $name ($status)"
+  fi
+done
+
+# 13. Validate composed-from references
+echo "13. Checking composed-from references..."
+COMPOSE_ERRORS=0
+for skill_file in $(grep -rl "composed-from:" packs/*/skills/*/SKILL.md 2>/dev/null); do
+  skill_name=$(basename "$(dirname "$skill_file")")
+  pack_name=$(echo "$skill_file" | sed 's|packs/\([^/]*\)/.*|\1|')
+
+  # Extract and check vendor references: "vendor: name/skill"
+  for ref in $(grep "vendor:" "$skill_file" | sed 's/.*vendor:[[:space:]]*//'); do
+    vendor_name=$(echo "$ref" | cut -d/ -f1)
+    ref_skill=$(echo "$ref" | cut -d/ -f2)
+    found=false
+    for vdir in vendor/${vendor_name}-*/skills/${ref_skill}/SKILL.md; do
+      [ -f "$vdir" ] && found=true && break
+    done
+    if [ "$found" = "false" ]; then
+      echo "   FAIL: $pack_name/$skill_name references vendor:$ref but skill not found"
+      COMPOSE_ERRORS=$((COMPOSE_ERRORS + 1))
+    fi
+  done
+
+  # Extract and check pack references: "pack: name/skill"
+  for ref in $(grep "pack:" "$skill_file" | sed 's/.*pack:[[:space:]]*//'); do
+    ref_pack=$(echo "$ref" | cut -d/ -f1)
+    ref_skill=$(echo "$ref" | cut -d/ -f2)
+    if [ ! -f "packs/${ref_pack}/skills/${ref_skill}/SKILL.md" ]; then
+      echo "   FAIL: $pack_name/$skill_name references pack:$ref but skill not found"
+      COMPOSE_ERRORS=$((COMPOSE_ERRORS + 1))
+    fi
+  done
+done
+[ "$COMPOSE_ERRORS" -gt 0 ] && ERRORS=$((ERRORS + COMPOSE_ERRORS))
+[ "$COMPOSE_ERRORS" -eq 0 ] && echo "   OK"
+
+# 14. Check marketplace capability counts match reality
+echo "14. Checking marketplace capability counts..."
+MKT=".claude-plugin/marketplace.json"
+MKT_ERRORS=0
+for pack in packs/tm-*/; do
+  name=$(basename "$pack")
+  [ ! -f "$pack/.claude-plugin/plugin.json" ] && continue
+
+  # Count actual capabilities on disk
+  actual_skills=0
+  [ -d "$pack/skills" ] && actual_skills=$(find "$pack/skills" -name SKILL.md | wc -l | tr -d ' ')
+  actual_cmds=0
+  [ -d "$pack/commands" ] && actual_cmds=$(find "$pack/commands" -name "*.md" | wc -l | tr -d ' ')
+  actual_agents=0
+  [ -d "$pack/agents" ] && actual_agents=$(find "$pack/agents" -name "*.md" | wc -l | tr -d ' ')
+
+  # Extract marketplace counts (simple grep — no jq)
+  # Find the block for this pack and extract skills/commands counts
+  mkt_block=$(sed -n "/\"name\": \"$name\"/,/}/p" "$MKT" 2>/dev/null)
+  mkt_skills=$(echo "$mkt_block" | grep '"skills"' | head -1 | sed 's/.*"skills"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/')
+  mkt_cmds=$(echo "$mkt_block" | grep '"commands"' | head -1 | sed 's/.*"commands"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/')
+
+  [ -z "$mkt_skills" ] && continue  # pack not in marketplace
+
+  if [ "$actual_skills" -ne "$mkt_skills" ]; then
+    echo "   FAIL: $name marketplace says $mkt_skills skills but has $actual_skills"
+    MKT_ERRORS=$((MKT_ERRORS + 1))
+  fi
+  if [ "$actual_cmds" -ne "$mkt_cmds" ]; then
+    echo "   FAIL: $name marketplace says $mkt_cmds commands but has $actual_cmds"
+    MKT_ERRORS=$((MKT_ERRORS + 1))
+  fi
+done
+[ "$MKT_ERRORS" -gt 0 ] && ERRORS=$((ERRORS + MKT_ERRORS)) || echo "   OK"
+
+# 15. Check internal file references in README files
+echo "15. Checking README internal links..."
+LINK_ERRORS=0
+for pack in packs/tm-*/; do
+  name=$(basename "$pack")
+  readme="$pack/README.md"
+  [ ! -f "$readme" ] && continue
+
+  # Extract relative file references like `references/foo.md`, `skills/bar/SKILL.md`
+  while IFS= read -r ref; do
+    target="$pack/$ref"
+    if [ ! -e "$target" ]; then
+      echo "   FAIL: $name/README.md references $ref but file not found"
+      LINK_ERRORS=$((LINK_ERRORS + 1))
+    fi
+  done < <(grep -oE '`(references|skills|commands|config|scripts|agents)/[^`]+`' "$readme" 2>/dev/null | tr -d '`')
+done
+[ "$LINK_ERRORS" -gt 0 ] && ERRORS=$((ERRORS + LINK_ERRORS)) || echo "   OK"
+
 echo ""
 echo "=== Results ==="
 echo "Errors: $ERRORS"
