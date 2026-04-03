@@ -141,6 +141,15 @@
       "license": "MIT",
       "tags": ["meta", "workflow", "composition", "orchestration"],
       "capabilities": { "skills": 3, "commands": 0, "agents": 0, "hooks": 0 }
+    },
+    {
+      "name": "tm-vuca",
+      "source": "./packs/tm-vuca",
+      "description": "VUCA Skills Framework: multi-agent audit across 4 dimensions (Collaboration, Perspectives, Context, Decision-Making)",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["vuca", "assessment", "skills", "collaboration", "decision-making"],
+      "capabilities": { "skills": 1, "commands": 3, "agents": 5, "hooks": 0 }
     }
   ]
 }
