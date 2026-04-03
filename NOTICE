@@ -20,7 +20,7 @@ License: MIT
 Imported: 2026-03-21
 Skills: brainstorming,test-driven-development,systematic-debugging,writing-plans
 
-## skills vmain (vendor/skills-main)
+## anthropic-skills vmain (vendor/anthropic-skills-main)
 
 Source: https://github.com/anthropics/skills
 Original commit: b0cbd3df1533
@@ -107,3 +107,17 @@ License: See individual files
 
 sourcegraph — vendored from https://claude.com/plugins/sourcegraph
 License: See individual files
+
+## postiz (vendor/postiz-v2.0.12)
+
+Source: https://claude.com/plugins/postiz (claude-plugins-official)
+Original commit: vendored 2026-03-21
+License: AGPL-3.0
+Skills: postiz, postiz-main
+
+## postiz-content-mcp (vendor/postiz-mcp-latest)
+
+Source: https://github.com/Emuthmartinez/postiz-content-mcp
+Original commit: e617651872e3
+License: MIT
+Imported: 2026-03-21
