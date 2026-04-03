@@ -150,6 +150,15 @@
       "license": "MIT",
       "tags": ["vuca", "assessment", "strategy", "skills"],
       "capabilities": { "skills": 1, "commands": 3, "agents": 5, "hooks": 0 }
+    },
+    {
+      "name": "tm-pmf",
+      "source": "./packs/tm-pmf",
+      "description": "AI Product-Market Fit Playbook: opportunity scoring, product design, moat analysis, metrics, launch readiness",
+      "tier": "community",
+      "license": "MIT",
+      "tags": ["pmf", "product", "strategy", "ai"],
+      "capabilities": { "skills": 4, "commands": 6, "agents": 5, "hooks": 0 }
     }
   ]
 }

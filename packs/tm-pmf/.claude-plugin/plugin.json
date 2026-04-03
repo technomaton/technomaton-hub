@@ -1,0 +1,32 @@
+{
+  "name": "tm-pmf",
+  "version": "1.0.0",
+  "description": "AI Product-Market Fit Playbook — strategic assessment for AI products. Covers opportunity scoring (Pain×Frequency×AI Advantage), 4D product development, moat construction, metrics, and launch readiness. Adapted from Miqdad Jaffer's AI PMF framework ecosystem.",
+  "author": { "name": "TECHNOMATON Team" },
+  "license": "MIT",
+  "tier": "community",
+  "status": "beta",
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json",
+  "skills": [
+    "skills/pmf-assessment/SKILL.md",
+    "skills/pmf-opportunity/SKILL.md",
+    "skills/pmf-product-design/SKILL.md",
+    "skills/pmf-moat-analysis/SKILL.md"
+  ],
+  "commands": [
+    "commands/pmf/score.md",
+    "commands/pmf/audit.md",
+    "commands/pmf/moat.md",
+    "commands/pmf/launch-check.md",
+    "commands/pmf/invisible-pain.md",
+    "commands/pmf/validate.md"
+  ],
+  "agents": [
+    "agents/pmf-conductor.md",
+    "agents/pmf-opportunity.md",
+    "agents/pmf-product.md",
+    "agents/pmf-moat.md",
+    "agents/pmf-metrics.md"
+  ]
+}

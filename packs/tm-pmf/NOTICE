@@ -1,0 +1,26 @@
+# NOTICE — Third-Party Attributions
+
+## AI PMF Playbook
+
+Based on: Miqdad Jaffer's AI Product-Market Fit framework ecosystem
+Original publications: 2024-2026, published across multiple newsletter platforms
+Author: Miqdad Jaffer (Product Lead, OpenAI; formerly Head of AI Products, Shopify)
+License: CC-BY-4.0
+
+The AI_PMF_*.md knowledge base files in this pack are adapted from
+Miqdad Jaffer's publicly published AI PMF frameworks and are licensed
+under CC-BY-4.0 with attribution. The plugin code (skills, agents,
+commands) is original work licensed under MIT.
+
+Key frameworks adapted:
+- AI PMF Paradox and three structural forces
+- Pain × Frequency × AI Advantage scoring matrix
+- Invisible Pain Points discovery methodology
+- 4D Method (Discover, Design, Develop, Deploy)
+- Autonomy Staircase
+- Three-Moat Taxonomy (Data, Behavioral, Workflow)
+- Launch Strategy Canvas
+- Dual Success Metrics framework
+- 10-100-1000 Validation Loop
+- Seven Hidden Costs of AI Products
+- Three AI Pricing Models
