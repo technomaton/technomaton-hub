@@ -1,7 +1,7 @@
 ---
 description: "Combined VUCA + PMF strategic assessment using both framework systems in parallel"
 allowed-tools: Read, Write, Grep, Glob, Agent
-model: sonnet
+model: opus
 ---
 
 # /strategy/audit

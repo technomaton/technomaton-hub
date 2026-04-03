@@ -1,7 +1,7 @@
 ---
 description: "Run a VUCA audit using the multi-agent system. Dispatches @vuca-conductor which orchestrates 4 specialist subagents in parallel."
 allowed-tools: Read, Write, Grep, Glob, Agent
-model: sonnet
+model: opus
 ---
 
 Run a VUCA audit on the file or directory specified in $ARGUMENTS.

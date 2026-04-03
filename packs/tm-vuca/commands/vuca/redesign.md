@@ -1,7 +1,7 @@
 ---
 description: "Audit and redesign a file with VUCA-balanced structure. Runs full audit first, then improves weakest dimensions and verifies improvement."
 allowed-tools: Read, Write, Grep, Glob, Agent
-model: sonnet
+model: opus
 ---
 
 Redesign the file specified in $ARGUMENTS with VUCA-balanced structure.

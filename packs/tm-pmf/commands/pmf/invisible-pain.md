@@ -1,7 +1,7 @@
 ---
 description: "Discover invisible pain points in a target market or workflow using AI-native methodology"
 allowed-tools: Read, Grep, Glob
-model: sonnet
+model: opus
 ---
 
 # Invisible Pain Discovery

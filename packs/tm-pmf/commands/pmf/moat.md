@@ -1,7 +1,7 @@
 ---
 description: "Analyze competitive moats for an AI product using the Three-Moat Taxonomy"
 allowed-tools: Read, Grep, Glob, Agent
-model: sonnet
+model: opus
 ---
 
 # Moat Analysis

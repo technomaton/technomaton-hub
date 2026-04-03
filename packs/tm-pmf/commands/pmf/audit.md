@@ -1,7 +1,7 @@
 ---
 description: "Full AI PMF assessment using all framework dimensions via multi-agent system"
 allowed-tools: Read, Write, Grep, Glob, Agent
-model: sonnet
+model: opus
 ---
 
 # Full PMF Audit

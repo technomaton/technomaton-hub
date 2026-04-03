@@ -1,7 +1,7 @@
 ---
 description: "Batch VUCA audit of all skills in a directory. Produces aggregate scores, identifies systemic patterns, and recommends portfolio-level improvements."
 allowed-tools: Read, Write, Grep, Glob, Agent
-model: sonnet
+model: opus
 ---
 
 Run a portfolio VUCA audit on all SKILL.md files found in $ARGUMENTS (default: .claude/skills/).

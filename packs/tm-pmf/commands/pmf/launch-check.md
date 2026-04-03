@@ -1,7 +1,7 @@
 ---
 description: "Launch Strategy Canvas — 4-dimension readiness assessment before scaling"
 allowed-tools: Read, Grep, Glob, Agent
-model: sonnet
+model: opus
 ---
 
 # Launch Strategy Canvas

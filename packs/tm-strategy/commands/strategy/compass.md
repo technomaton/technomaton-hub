@@ -1,7 +1,7 @@
 ---
 description: "Strategic positioning compass — integrated VUCA + PMF assessment for product direction decisions"
 allowed-tools: Read, Write, Grep, Glob, Agent
-model: sonnet
+model: opus
 ---
 
 # /strategy/compass
