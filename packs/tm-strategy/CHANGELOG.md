@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0] — 2026-04-04
+
+### Changed
+- Integration Matrix expanded with new PMF framework cross-references (Trust Layer, AI Strategic Lens, Feasibility Checklist, 5-Question Pain Analysis, Psychological Triggers)
+- All skill, agent, and command files now use English as primary language (Czech in parentheses)
+- Strategy conductor references updated for expanded PMF coverage
+
 ## [1.0.1] - 2026-04-03
 
 ### Fixed

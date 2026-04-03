@@ -46,14 +46,16 @@ Neither framework alone gives the full picture. A product can have strong PMF si
 
 | VUCA Dimension | PMF Framework | Integration Signal |
 |---|---|---|
-| Kontext (Context) | Market analysis, Invisible Pain, Competition Readiness | Low Context + narrow market view = blind spots |
-| Rozhodování (Decision) | 4D Method, Autonomy Staircase, Go/No-Go | Low Decision + no 4D structure = premature scaling |
-| Perspektivy (Perspectives) | User research, Dual Metrics, Case Studies | Low Perspectives + single metric = false PMF |
-| Kolaborace (Collaboration) | Trust engineering, Workflow Moats, AI UX | Low Collaboration + no trust layer = scaling churn |
+| Contextual Thinking (Kontextove mysleni) | Market analysis, Invisible Pain, Competition Readiness, AI Strategic Lens | Low Context + narrow market view = blind spots |
+| Decision-Making Process (Rozhodovaci proces) | 4D Method, Autonomy Staircase, Go/No-Go, AI Feasibility Checklist | Low Decision + no 4D structure = premature scaling |
+| Perspective Coordination (Koordinace perspektiv) | User research, Dual Metrics, Case Studies, 5-Question Pain Point Analysis | Low Perspectives + single metric = false PMF |
+| Collaborative Capacity (Kolaborativni kapacita) | Trust engineering, Workflow Moats, AI UX Laws, Trust Layer, 10 Psychological Triggers | Low Collaboration + no trust layer = scaling churn |
 
 ### How to read the matrix
 
 Each row identifies a risk amplification pattern. When both the VUCA dimension and the corresponding PMF framework area score low, the risk in the "Integration Signal" column becomes acute. A single low score is a warning; both low is a critical finding that should appear in the top recommendations.
+
+The expanded PMF framework references (AI Strategic Lens, AI Feasibility Checklist, 5-Question Pain Point Analysis, Trust Layer, 10 Psychological Triggers) provide additional diagnostic depth for each dimension.
 
 ## Routing
 
@@ -72,10 +74,10 @@ The integrated assessment produces:
 ### Combined Scorecard
 
 1. **VUCA Scorecard** (0-20 total)
-   - Kontext: 0-5
-   - Rozhodování: 0-5
-   - Perspektivy: 0-5
-   - Kolaborace: 0-5
+   - Contextual Thinking (Kontextove mysleni): 0-5
+   - Decision-Making Process (Rozhodovaci proces): 0-5
+   - Perspective Coordination (Koordinace perspektiv): 0-5
+   - Collaborative Capacity (Kolaborativni kapacita): 0-5
 
 2. **PMF Scorecard**
    - Opportunity strength
@@ -92,4 +94,4 @@ The integrated assessment produces:
    - Ordered by impact, drawing from both frameworks
    - Each recommendation tagged with source framework (VUCA/PMF/both)
 
-Default language: Czech. Switch to English if the user writes in English.
+Default language: English. Switch to Czech if the user writes in Czech.

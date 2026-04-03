@@ -19,10 +19,10 @@ Meta-plugin that orchestrates VUCA Skills + AI PMF Playbook for comprehensive st
 
 | VUCA Dimension | PMF Framework | Risk When Both Low |
 |---|---|---|
-| Kontext | Market analysis, Competition | Blind spots |
-| Rozhodování | 4D Method, Launch Canvas | Premature scaling |
-| Perspektivy | User research, Metrics | False PMF |
-| Kolaborace | Trust engineering, UX | Scaling churn |
+| Contextual Thinking | Market analysis, Competition, AI Strategic Lens | Blind spots |
+| Decision-Making Process | 4D Method, Launch Canvas, AI Feasibility Checklist | Premature scaling |
+| Perspective Coordination | User research, Metrics, 5-Question Pain Analysis | False PMF |
+| Collaborative Capacity | Trust engineering, UX, Trust Layer, Psychological Triggers | Scaling churn |
 
 ## Usage
 

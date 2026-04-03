@@ -34,7 +34,7 @@ Use this agent when:
 
 ## Output Format
 
-Combined scorecard with VUCA scores (0-20), PMF scores, Integration Matrix findings, and top 5 prioritized recommendations. Default language: Czech. Switch to English if the user writes in English.
+Combined scorecard with VUCA scores (0-20), PMF scores, Integration Matrix findings, and top 5 prioritized recommendations. Default language: English. Switch to Czech if the user writes in Czech.
 
 ## Architecture
 
@@ -67,10 +67,10 @@ After collecting results from both conductors, apply the Cross-Framework Integra
 
 | VUCA Dimension | PMF Framework | Integration Signal |
 |---|---|---|
-| Kontext (Context) | Market analysis, Invisible Pain, Competition Readiness | Low Context + narrow market view = blind spots |
-| Rozhodování (Decision) | 4D Method, Autonomy Staircase, Go/No-Go | Low Decision + no 4D structure = premature scaling |
-| Perspektivy (Perspectives) | User research, Dual Metrics, Case Studies | Low Perspectives + single metric = false PMF |
-| Kolaborace (Collaboration) | Trust engineering, Workflow Moats, AI UX | Low Collaboration + no trust layer = scaling churn |
+| Contextual Thinking (Kontextove mysleni) | Market analysis, Invisible Pain, Competition Readiness, AI Strategic Lens | Low Context + narrow market view = blind spots |
+| Decision-Making Process (Rozhodovaci proces) | 4D Method, Autonomy Staircase, Go/No-Go, AI Feasibility Checklist | Low Decision + no 4D structure = premature scaling |
+| Perspective Coordination (Koordinace perspektiv) | User research, Dual Metrics, Case Studies, 5-Question Pain Point Analysis | Low Perspectives + single metric = false PMF |
+| Collaborative Capacity (Kolaborativni kapacita) | Trust engineering, Workflow Moats, AI UX Laws, Trust Layer, 10 Psychological Triggers | Low Collaboration + no trust layer = scaling churn |
 
 For each row:
 1. Map the VUCA dimension score to the corresponding PMF area findings
@@ -84,10 +84,10 @@ Produce the unified assessment in this structure:
 
 ### 1. VUCA Scorecard (0-20)
 Reproduce the scores from `@vuca-conductor`:
-- Kontext: 0-5
-- Rozhodování: 0-5
-- Perspektivy: 0-5
-- Kolaborace: 0-5
+- Contextual Thinking (Kontextove mysleni): 0-5
+- Decision-Making Process (Rozhodovaci proces): 0-5
+- Perspective Coordination (Koordinace perspektiv): 0-5
+- Collaborative Capacity (Kolaborativni kapacita): 0-5
 - **Total: 0-20**
 
 ### 2. PMF Scorecard
@@ -110,4 +110,4 @@ Merge recommendations from both frameworks, ordered by impact:
 
 ## Language
 
-Default output language is Czech. If the user writes in English, respond in English.
+Default output language is English. If the user writes in Czech, respond in Czech.

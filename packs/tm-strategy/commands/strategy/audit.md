@@ -12,7 +12,7 @@ Invoke `@strategy-conductor` to dispatch both `@vuca-conductor` and `@pmf-conduc
 
 ## Expected Output
 
-1. **VUCA Scorecard** — 4 dimensions (Kontext, Rozhodování, Perspektivy, Kolaborace), each 0-5, total 0-20
+1. **VUCA Scorecard** — 4 dimensions (Contextual Thinking, Decision-Making Process, Perspective Coordination, Collaborative Capacity), each 0-5, total 0-20
 2. **PMF Scorecard** — Opportunity strength, Product design quality, Moat durability, Metrics maturity
 3. **Integration Matrix Findings** — Risk amplification patterns where weaknesses in one framework compound weaknesses in the other
 4. **Top 5 Prioritized Recommendations** — Ordered by impact, drawing from both frameworks, each tagged with source (VUCA/PMF/both)
