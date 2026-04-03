@@ -59,4 +59,5 @@ Return this structure:
 
 Read these files for reference:
 - `skills/pmf-assessment/AI_PMF_CORE.md` — scoring framework and invisible pain methodology
+- `skills/pmf-assessment/AI_PMF_STRATEGY.md` — 5-Question Pain Point Analysis (AI lens) and AI Positioning Template
 - `skills/pmf-opportunity/CASE_STUDIES.md` — 10 case studies for comparison

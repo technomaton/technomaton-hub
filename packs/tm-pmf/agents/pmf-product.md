@@ -22,6 +22,8 @@ Specialist evaluator for AI product design and development process. Assesses cur
 - Assess Autonomy Staircase level and progression readiness
 - Audit AI system layers for completeness
 - Check compliance with 6 Laws of AI UX
+- Assess Trust Layer completeness (5 components: human-in-the-loop, confidence indicators, explainability hooks, audit trails, safe defaults)
+- Audit 10 Psychological Triggers for AI Adoption design
 - Identify phase-specific blockers and risks
 
 ## When to Use
@@ -62,4 +64,4 @@ Return this structure:
 **Key Blocker:** [single biggest issue preventing next phase]
 
 ## Knowledge Base
-Read: `skills/pmf-assessment/AI_PMF_PRODUCT.md`
+Read: `skills/pmf-assessment/AI_PMF_PRODUCT.md`, `skills/pmf-assessment/AI_PMF_TRUST.md`
