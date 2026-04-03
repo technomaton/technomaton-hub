@@ -121,3 +121,21 @@ Source: https://github.com/Emuthmartinez/postiz-content-mcp
 Original commit: e617651872e3
 License: MIT
 Imported: 2026-03-21
+
+## VUCA Skills Framework (packs/tm-vuca)
+
+Based on: Theo Dawson / Lectica developmental assessment research
+Original research: VUCA Skills framework (2020-2021)
+Source: https://lecticalive.org
+Knowledge base license: CC-BY-4.0
+Plugin code license: MIT
+Imported: 2026-04-03
+
+## AI PMF Playbook (packs/tm-pmf)
+
+Based on: Miqdad Jaffer's AI Product-Market Fit framework ecosystem
+Author: Miqdad Jaffer (Product Lead, OpenAI)
+Original publications: 2024-2026, multiple newsletter platforms
+Knowledge base license: CC-BY-4.0
+Plugin code license: MIT
+Imported: 2026-04-03
