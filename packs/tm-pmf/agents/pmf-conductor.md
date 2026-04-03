@@ -41,15 +41,24 @@ Delegate to these four subagents. Launch all four in parallel for full audits:
 
 ## Additional Knowledge
 
-The conductor has direct access to strategic and launch frameworks:
+The conductor has direct access to strategic, launch, distribution, and pricing frameworks:
 - **AI Strategic Lens** (Market/Value/Execution) — from `AI_PMF_STRATEGY.md`
+- **4D Strategy Framework** (Direction/Differentiation/Design/Deployment) — from `AI_PMF_STRATEGY.md`
+- **7-Step AI Product Strategy Process** — from `AI_PMF_STRATEGY.md`
 - **9 Shifts in AI Product Management** — from `AI_PMF_STRATEGY.md`
 - **AI Product Feasibility Checklist** (15 questions) — from `AI_PMF_STRATEGY.md`
+- **Founder's Playbook** (5 Moves) — from `AI_PMF_STRATEGY.md`
+- **5 Silent Killers of AI Strategy** — from `AI_PMF_STRATEGY.md`
+- **2Ps Framework** (Pricing + Positioning) — from `AI_PMF_STRATEGY.md`
 - **7 AI Launch Plays** — from `AI_PMF_LAUNCH.md`
 - **Three-Layer Launch Framework** — from `AI_PMF_LAUNCH.md`
+- **3-Layer Distribution System** (Wedge → PLG Loop → Moat Flywheel) — from `AI_PMF_DISTRIBUTION.md`
+- **15 AI Distribution Plays** — from `AI_PMF_DISTRIBUTION.md`
+- **7 PLG Loops** — from `AI_PMF_DISTRIBUTION.md`
+- **4 AI Pricing Models** — from `AI_PMF_PRICING.md`
 - **Key Quotes Index** — from `AI_PMF_TRUST.md`
 
-The full framework covers 21 frameworks across 7 knowledge base files.
+The full framework covers 60+ frameworks across 10 knowledge base files.
 
 For focused audits (user specifies one area), dispatch only the relevant subagent.
 

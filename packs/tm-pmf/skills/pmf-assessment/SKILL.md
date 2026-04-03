@@ -23,18 +23,21 @@ This skill provides the AI PMF framework knowledge base and routes to the approp
 
 ## When this skill activates
 
-Auto-trigger on keywords: "PMF", "product-market fit", "AI product", "moat analysis", "launch readiness", "opportunity scoring", "Pain Frequency AI Advantage"
+Auto-trigger on keywords: "PMF", "product-market fit", "AI product", "moat analysis", "launch readiness", "opportunity scoring", "Pain Frequency AI Advantage", "distribution strategy", "PLG loop", "pricing model", "unit economics", "AI PRD", "cost structure", "wedge", "flywheel"
 
 ## What to do
 
 1. Read the knowledge base files in this directory:
    - `AI_PMF_CORE.md` — Paradox, Pain×Freq×AI matrix, Invisible Pain Points
-   - `AI_PMF_PRODUCT.md` — 4D Method, Autonomy Staircase, 5 Layers, 6 UX Laws
-   - `AI_PMF_MOATS.md` — Five-Moat Taxonomy, AI Growth Framework
-   - `AI_PMF_METRICS.md` — Dual metrics, 7 Hidden Costs, 3 Pricing Models, 10-100-1000
+   - `AI_PMF_PRODUCT.md` — 4D Method, Autonomy Staircase, 5 Layers, 6 UX Laws, Discovery Debt Log, FTCEM, CAIR Equation, Drift Management, 7 UX Traps
+   - `AI_PMF_MOATS.md` — Five-Moat Taxonomy, AI Growth Framework, Adaptation Moat, Moat Flywheel
+   - `AI_PMF_METRICS.md` — Dual metrics, 7 Hidden Costs, 10-100-1000
    - `AI_PMF_LAUNCH.md` — Launch Strategy Canvas, 7 AI Launch Plays, Three-Layer Launch Framework
-   - `AI_PMF_STRATEGY.md` — 5-Question Pain Point Analysis, AI Positioning Template, AI Strategic Lens, 9 Shifts in AI PM, AI Feasibility Checklist
-   - `AI_PMF_TRUST.md` — Trust Layer, 10 Psychological Triggers for AI Adoption, Key Quotes Index
+   - `AI_PMF_STRATEGY.md` — 5-Question Pain Analysis, AI Positioning, AI Strategic Lens, 9 Shifts, Feasibility Checklist, 4D Strategy Framework, 7-Step Strategy Process, Founder's Playbook, 5 Silent Killers, 2Ps Framework
+   - `AI_PMF_TRUST.md` — Trust Layer, 10 Psychological Triggers, Onboarding Psychology, Key Quotes Index
+   - `AI_PMF_DISTRIBUTION.md` — 3-Layer Distribution System, 7 PLG Loops, 15 Distribution Plays, 6 Laws, Wedge Finder Canvas
+   - `AI_PMF_PRICING.md` — 4 Pricing Models, 7-Layer Cost Structure, 9 Validation Tests, Unit Economics P&L, Cost Glossary
+   - `AI_PMF_PRD.md` — 9-Section AI PRD Template, AI-Specific NFRs, Shopify Auto Write Case Study
    - `AI_PMF_BIBLIOGRAPHY.md` — Source citations with URLs, file-to-source mapping, quotes attribution
 2. Route to the appropriate agent:
    - Full PMF audit → `@pmf-conductor` (orchestrates all 4 specialists)
@@ -66,6 +69,28 @@ Auto-trigger on keywords: "PMF", "product-market fit", "AI product", "moat analy
 | 9 Shifts in AI PM | AI_PMF_STRATEGY.md | @pmf-conductor |
 | AI Feasibility Checklist | AI_PMF_STRATEGY.md | @pmf-conductor |
 | Key Quotes Index | AI_PMF_TRUST.md | (inline) |
+| Onboarding Psychology | AI_PMF_TRUST.md | @pmf-product |
+| Discovery Debt Log | AI_PMF_PRODUCT.md | @pmf-product |
+| FTCEM Failure Framework | AI_PMF_PRODUCT.md | @pmf-product |
+| CAIR Equation | AI_PMF_PRODUCT.md | @pmf-product |
+| Drift Management Loop | AI_PMF_PRODUCT.md | @pmf-product |
+| 7 UX Traps | AI_PMF_PRODUCT.md | @pmf-product |
+| Adaptation Moat | AI_PMF_MOATS.md | @pmf-moat |
+| Moat Flywheel | AI_PMF_MOATS.md | @pmf-moat |
+| 4D Strategy Framework | AI_PMF_STRATEGY.md | @pmf-conductor |
+| 7-Step Strategy Process | AI_PMF_STRATEGY.md | @pmf-conductor |
+| Founder's Playbook | AI_PMF_STRATEGY.md | @pmf-conductor |
+| 5 Silent Killers | AI_PMF_STRATEGY.md | @pmf-conductor |
+| 2Ps Framework | AI_PMF_STRATEGY.md | @pmf-conductor |
+| 3-Layer Distribution System | AI_PMF_DISTRIBUTION.md | @pmf-conductor |
+| 15 Distribution Plays | AI_PMF_DISTRIBUTION.md | @pmf-conductor |
+| 7 PLG Loops | AI_PMF_DISTRIBUTION.md | @pmf-conductor |
+| Wedge Finder Canvas | AI_PMF_DISTRIBUTION.md | @pmf-conductor |
+| 4 Pricing Models | AI_PMF_PRICING.md | @pmf-metrics |
+| 7-Layer Cost Structure | AI_PMF_PRICING.md | @pmf-metrics |
+| 9 Pricing Validation Tests | AI_PMF_PRICING.md | @pmf-metrics |
+| Unit Economics P&L | AI_PMF_PRICING.md | @pmf-metrics |
+| AI PRD Template | AI_PMF_PRD.md | @pmf-product |
 
 ## Output format
 

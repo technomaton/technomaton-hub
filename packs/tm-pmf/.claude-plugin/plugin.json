@@ -1,12 +1,12 @@
 {
   "name": "tm-pmf",
   "version": "1.1.0",
-  "description": "AI Product-Market Fit Playbook — strategic assessment for AI products. Covers opportunity scoring, 4D product development, moat construction, metrics, and launch readiness. Adapted from Miqdad Jaffer's AI PMF framework ecosystem.",
+  "description": "AI Product-Market Fit Playbook — comprehensive strategic assessment for AI products. Covers opportunity scoring, 4D product development, 4D strategy framework, moat construction (incl. Adaptation Moat, Flywheel), metrics, launch readiness, distribution (15 plays, 7 PLG loops, 6 laws), pricing (4 models, unit economics, cost glossary), AI PRD templates, and 60+ frameworks. Adapted from Miqdad Jaffer's AI PMF framework ecosystem.",
   "author": {
     "name": "TECHNOMATON Team"
   },
   "license": "MIT",
-  "keywords": ["pmf", "product", "strategy", "ai", "community"],
+  "keywords": ["pmf", "product", "strategy", "ai", "distribution", "pricing", "prd", "community"],
   "mcpServers": "./.mcp.json",
   "skills": "./skills/",
   "commands": "./commands/",

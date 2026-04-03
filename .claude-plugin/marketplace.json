@@ -39,7 +39,7 @@
     {
       "name": "tm-pmf",
       "source": "./packs/tm-pmf",
-      "description": "AI Product-Market Fit Playbook: opportunity scoring, product design, moat analysis, metrics, launch readiness",
+      "description": "AI Product-Market Fit Playbook: opportunity scoring, product design, moat analysis, metrics, launch readiness, distribution, pricing, AI PRD — 60+ frameworks",
       "license": "MIT",
       "tags": ["pmf", "product", "strategy", "ai", "community"]
     },

@@ -1,5 +1,6 @@
 <!-- License: CC-BY-4.0 — Attribution: Miqdad Jaffer (Product Lead, OpenAI) -->
-<!-- Sources: [jaffer-4d-method], [jaffer-pmf] — see AI_PMF_BIBLIOGRAPHY.md -->
+<!-- Sources: [jaffer-4d-method], [jaffer-pmf], [jaffer-course] — see AI_PMF_BIBLIOGRAPHY.md -->
+<!-- Sections 1-4: course content [jaffer-course]. Sections 5-8: published article [jaffer-4d-method]. -->
 
 # AI Product-Market Fit — Product Development
 
@@ -287,3 +288,217 @@ If none of the above → reconsider whether AI is necessary
 - [ ] Law 5: Context from previous sessions persists and improves responses
 - [ ] Law 6: Every AI response has a fallback path (retry, human escalation, manual override)
 ```
+
+---
+
+## 5. Discovery Deep Dive
+
+### Discovery Debt Log
+
+A systematic approach to expose and revisit risky assumptions.
+
+| Component | Description |
+|-----------|-------------|
+| **Hypothesis Capture** | Document the specific claim being wagered |
+| **Evidence Strength Rating** | Categorize: anecdotal (weak), pilot with paying users (medium), retention data (strong) |
+| **Validation Method** | Interviews, shadowing, surveys, real usage logs, or revenue data |
+| **Risk If Wrong** | Low-impact (wasted week) vs. existential (startup failure) |
+| **Owner Assignment** | Team member responsible for periodic re-validation |
+| **Recheck Date** | Scheduled assumption re-interrogation |
+
+### 3-Lens Discovery Test
+
+Rate each lens 1-5. Average below 3.5 = inadequate foundation.
+
+- **Lens 1: Durability** — Will problem persist through 2-3 model upgrades?
+- **Lens 2: Data** — Can we secure exclusive/defensible data pipelines?
+- **Lens 3: Trust** — Who controls veto power on trust decisions?
+
+### Five Uncomfortable Questions
+
+Mandatory pre-commitment questions:
+
+1. What if the problem disappears within 12 months due to model commoditization?
+2. Who owns the data, and could they revoke access?
+3. Would regulators face embarrassment if product failed?
+4. Can a competitor replicate using identical APIs within six weeks?
+5. If we achieve scale, what is the first trust failure vector?
+
+### 5-Step Friction-Finding Process
+
+1. Pick one core persona (highest revenue segment)
+2. Map their user journey (3-5 stages)
+3. List tasks in each stage
+4. Identify friction points (slowdowns, confusion, copy-paste between tools)
+5. Prioritize high-impact friction (frequency x users x business alignment)
+
+#### 5 Friction Validation Sources
+
+| # | Source | Signal Type |
+|---|--------|-------------|
+| 1 | Support tickets | Explicit pain reports |
+| 2 | User surveys | Self-reported friction |
+| 3 | Session replays | Observed behavioral friction |
+| 4 | JTBD matching | Unmet job steps |
+| 5 | CS team | Recurring onboarding/usage struggles |
+
+---
+
+## 6. Design Deep Dive
+
+### FTCEM Failure Mode Framework
+
+Five-component diagnostic for anticipating and mitigating catastrophic AI failures.
+
+| Component | Definition | Example |
+|-----------|-----------|---------|
+| **Failure Mode (F)** | Specific catastrophic failure types | Hallucinating legal advice |
+| **Trigger (T)** | Root causes | Malicious prompts, ambiguous instructions |
+| **Consequence (C)** | Downstream damage | User trust loss, legal liability |
+| **Early Warning (E)** | Telemetry indicators | Out-of-distribution input spikes |
+| **Mitigation (M)** | Pre-defined response | Graceful shutdown, human escalation |
+
+#### Workshop Exercise
+
+> "Imagine product fails on NYT front page — what's the headline?"
+
+### Three-Layer AI Design Pyramid
+
+| Layer | Scope | Critical Detail |
+|-------|-------|----------------|
+| **1. Interaction Design (Visible)** | Prompts, responses, chat, explanations | Word choice matters: "Generate" implies creativity, "Recommend" implies authority |
+| **2. Constraint Design (Invisible)** | Filters, monitoring, escalation, guardrails | Determine: silent failure, output blocking, or human escalation |
+| **3. Expectation Design (Meta-layer)** | Pre-usage cues: pricing, onboarding, marketing | Calling product "AI doctor" implies infallibility; "symptom checker" permits uncertainty |
+
+### CAIR Equation (Fallback Investment)
+
+> CAIR = Perceived Consequence of Error x Effort to Correct
+
+| Consequence | Effort to Correct | CAIR | Fallback Investment |
+|---|---|---|---|
+| Low | Low | Low | Minimal — simple error message |
+| Low | High | Medium | Standard — undo buttons, explanations |
+| High | Low | Medium | Robust — easy correction paths |
+| High | High | High | Maximum — human review, approval workflows |
+
+### Invisible AI Design Principles (Smart Shortcuts)
+
+1. Tuck AI behind existing buttons
+2. Anchor actions to verbs, not nouns ("Summarize notes" > "AI Assistant")
+3. Make AI the default — easy to edit or opt out
+4. Offer one-click previews ("Undo", "Show draft")
+
+> "If users need to learn how to use your AI, you've already lost them."
+
+---
+
+## 7. Development Deep Dive
+
+### Drift Management Loop
+
+Three-element continuous resilience system:
+
+| Element | Definition | Management Strategy |
+|---------|-----------|-------------------|
+| **Model Drift** | Input distribution shifts from training data | Golden dataset, regression tests, out-of-distribution alerts |
+| **Cost Drift** | Infrastructure costs escalate unpredictably | Monitor "cost per successful outcome", set margin thresholds |
+| **Behavior Drift** | Outputs accurate but behavioral shifts erode trust | UX regression testing, user trust signals, escalation paths |
+
+### Drift Triangle
+
+Three competing optimization forces:
+
+```
+        Performance
+       /          \
+     Cost ------- Trust
+```
+
+Maximize Performance → increases costs. Reduce Costs → potentially lowers trust. Increase Trust → may reduce performance. PM's job: continuously rebalance.
+
+### Shadow Mode Deployment
+
+Features run silently in background while humans retain control. Enables data collection without public trust collapse.
+
+**Examples:**
+- Tesla Autopilot shadow mode — system drives in background, human drives in foreground
+- Fraud detection AI — silently flagging transactions before automated decisions
+
+---
+
+## 8. Deployment Deep Dive
+
+### Day 2 Checklist
+
+Six critical infrastructure elements live from launch:
+
+| Element | Function | Failure Consequence |
+|---------|----------|---|
+| **Monitoring Dashboards** | Real-time tracking of usage, drift, costs, errors | Flying blind |
+| **Compliance Reporting** | Automated regulatory fulfillment | Regulatory violation |
+| **Retraining Cadence** | Scheduled model updates (weekly/monthly) | Unplanned trust collapse |
+| **Feedback Routing** | Tickets, complaints, flagged outputs captured | Lost learning signals |
+| **Billing & Infra Alerts** | Runaway cost/token spike detection | Infra bills kill startups |
+| **Rollback Protocols** | Known pathway to safe state within hours | Extended outage |
+
+> "If you can't answer 'what happens on Day 2 if X breaks?' you weren't ready for Day 0."
+
+### First-Use Stress Test Protocol (6 Steps)
+
+1. **Pick right testers** — match target users, weren't involved in building
+2. **Give minimal context** — don't explain how it works
+3. **Watch, don't help** — note pauses, backtracks, confusion
+4. **Document everything** — GIF demos, key use cases, common questions
+5. **Form beta squad** — support, sales, CS people
+6. **Fix before ship** — if internal testers struggle, users will abandon
+
+### Onboarding for Instant Value (5 Principles)
+
+1. **Provide clear scaffolding** — suggested prompts, "Try this" buttons
+2. **Set expectations up front** — what AI can/can't do
+3. **Design for fast wins** — complete fundamental task in first 30 seconds
+4. **Make success obvious** — highlight time saved, quality improvements
+5. **Partner with Customer Success** — 15-min "AI kickoff" sessions
+
+### Three Metric Categories
+
+| Category | What It Measures | Example Metrics |
+|----------|-----------------|----------------|
+| **Curiosity** | Someone was interested enough to try | Clicks, first interactions, feature discovery |
+| **Value** | They found something useful | Task completion, time saved, satisfaction |
+| **Impact** | They can't live without it | Repeat use, workflow replacement, team adoption |
+
+> "Clicks are like curiosity. Repeat use tells you they found value."
+
+---
+
+## 9. Seven UX Traps That Destroy AI Products
+
+| # | Trap | Problem | Solution |
+|---|------|---------|----------|
+| 1 | **Over-Automating Too Early** | Users lack trust for autonomy | Trust must precede autonomy |
+| 2 | **Under-Guiding During Ambiguity** | Minimal UI amplifies confusion in uncertain moments | More guidance during ambiguity, not less |
+| 3 | **Outputs Without Explanation** | Unexplained results trigger suspicion even when correct | Reasoning breadcrumbs: "what I understood", "why this path" |
+| 4 | **Collapsing Everything Into a Chatbox** | Chat can't handle planning, review, editing, branching | Design multi-mode interfaces |
+| 5 | **Silent Failures** | Silence interpreted as incompetence | AI must never fail silently |
+| 6 | **Punishing Exploration** | Pricing friction prevents "aha moment" | Remove cost barriers to discovery |
+| 7 | **Expecting Users to Think Like Engineers** | Requiring JSON, parameters, prompt debugging | Design for humans, not developers |
+
+---
+
+## 10. 4D Method vs. 4D Strategy — Key Distinction
+
+> **Important:** The 4D Method (this file) and 4D Strategy Framework (AI_PMF_STRATEGY.md) share the "4D" label but are DIFFERENT frameworks with different audiences and purposes.
+
+| Dimension | 4D Method (Product) | 4D Strategy (Strategy) |
+|-----------|-------------------|----------------------|
+| Focus | How to BUILD an AI product | How to POSITION in the market |
+| The 4 Ds | Discover → Design → Develop → Deploy | Direction → Differentiation → Design → Deployment |
+| Input | User pain point | Market landscape |
+| Output | Functional AI feature | Defensible market position |
+| Audience | PM + Engineering | Founder + VC |
+| Published in | creatoreconomy.so, productmanagement.ai | thevccorner.com (VC-oriented) |
+
+**4D Method tells you HOW to build. 4D Strategy tells you WHAT and WHY to build from a market survival perspective.**
+
+For the 4D Strategy Framework, see `AI_PMF_STRATEGY.md`.

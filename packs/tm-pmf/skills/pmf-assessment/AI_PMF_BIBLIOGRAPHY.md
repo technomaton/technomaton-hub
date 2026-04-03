@@ -26,6 +26,7 @@
 | [jaffer-distribution-vc] | OpenAI's Product Lead Reveals the 15 AI Distribution Plays | The VC Corner | [link](https://www.thevccorner.com/p/openai-ai-distribution-strategy) |
 | [jaffer-strategy-vc] | OpenAI's Product Lead Reveals the 4-Part Framework for AI Product Strategy | The VC Corner | [link](https://www.thevccorner.com/p/ai-product-strategy-openai-guide) |
 | [jaffer-strategic-lens] | How to Create an AI Product Strategy: The AI Strategic Lens Framework | Product Compass | [link](https://www.productcompass.pm/p/how-to-create-an-ai-product-strategy) |
+| [jaffer-prd] | A Proven AI PRD Template by Miqdad Jaffer (Product Lead @ OpenAI) | Product Compass | [link](https://www.productcompass.pm/p/ai-prd-template) |
 
 ### Secondary Sources (third-party summaries and interviews)
 
@@ -60,6 +61,9 @@
 | `AI_PMF_LAUNCH.md` | [jaffer-course], [aatir-course-summary] | Three-Layer Launch Framework from course (published article [jaffer-distribution] uses GTM Wedge/PLG Loop/Moat Flywheel); Launch Strategy Canvas synthesized; 7 Launch Plays synthesized |
 | `AI_PMF_STRATEGY.md` | [jaffer-9-shifts], [jaffer-strategic-lens], [jaffer-strategy-vc], [jaffer-course] | AI Strategic Lens (published), 5-Question Pain Analysis (published); 9 Shifts content diverges from published article; AI Feasibility Checklist (unverified source) |
 | `AI_PMF_TRUST.md` | [jaffer-course], [aatir-course-summary] | Trust Layer components from course (published trust article [jaffer-trust] covers enterprise rollout, not tech components); 10 Triggers from course (names 6-10 adapted) |
+| `AI_PMF_DISTRIBUTION.md` | [jaffer-distribution], [jaffer-distribution-vc] | 3-Layer Distribution System, 7 PLG Loops (published article); 15 Distribution Plays (VC Corner article) |
+| `AI_PMF_PRICING.md` | [jaffer-pricing] | 4 Pricing Models, 7-Layer Cost Structure, 9 Validation Tests (published pricing masterclass article) |
+| `AI_PMF_PRD.md` | [jaffer-course], [jaffer-prd] | 9-Section AI PRD Template, AI-Specific NFRs, Shopify Auto Write case study |
 | `CASE_STUDIES.md` | [jaffer-pmf], [jaffer-moats], [jaffer-trust] | 10 case studies with TECHNOMATON analysis; factual claims verified (Klarna, Cursor, Clay) |
 
 ---
@@ -98,3 +102,20 @@
 **Miqdad Jaffer** — Product Lead at OpenAI, helping their biggest partners ship AI products. Previously Head of AI Products at Shopify. 18 years of product experience. Award-winning AI Product educator. Featured in TechCrunch, MIT AI Podcast, FastCompany. Teaches a 6-week AI Product Management Certification cohort via Product Faculty.
 
 **Publication pattern:** Jaffer publishes frameworks as guest articles on newsletters (Product Faculty by Moe Ali, The VC Corner, Product Compass) rather than on his own platform. His personal Substack (`miqdadjaffer.substack.com`) is currently a placeholder.
+
+---
+
+## Coverage Note & Recommendation
+
+This knowledge base covers **~90% of Jaffer's AI PMF framework** — everything that is freely available across published articles and third-party summaries. The remaining ~10% is behind paywalls:
+
+| Missing Content | Source | Access |
+|----------------|--------|--------|
+| Full Maven course materials (original source of all frameworks) | [Maven AI PM Certification](https://maven.com/product-faculty/ai-product-management-certification) | ~$2-5K, 6-week cohort |
+| Maven AI Strategy Certificate (10-week, leadership-focused) | [Maven AI Strategy](https://maven.com/product-faculty/ai-product-strategy-certificate) | Paid cohort |
+| AI Product Sense — 10 Core Principles | [aakashg.com](https://www.news.aakashg.com/p/ai-product-sense) | Paid subscription |
+| 5A Framework + 3P Framework (Play/Prototype/Protect) | [creatoreconomy.so podcast](https://creatoreconomy.so/p/how-to-build-ai-products-miqdad-jaffer) | Paid subscription |
+| 10 Engineering Decision Trade-offs | [eng-leadership.com](https://newsletter.eng-leadership.com/p/openais-product-leader-reveals-ai) | Paid subscription |
+| 4D Strategy Framework — full VC Corner detail | [thevccorner.com](https://www.thevccorner.com/p/ai-product-strategy-openai-guide) | Paid subscription |
+
+**Recommendation for complete coverage:** The Maven 6-week AI PM Certification is the canonical source — all published articles are derivatives. Enrolling would allow filling the remaining gaps and verifying existing framework adaptations against the original.
