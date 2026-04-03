@@ -1,27 +1,32 @@
 {
   "name": "tm-pmf",
   "version": "1.0.0",
-  "description": "AI Product-Market Fit Playbook \u2014 strategic assessment for AI products. Covers opportunity scoring, 4D product development, moat construction, metrics, and launch readiness. Adapted from Miqdad Jaffer's AI PMF framework ecosystem.",
-  "author": {
-    "name": "TECHNOMATON Team"
-  },
+  "description": "AI Product-Market Fit Playbook: opportunity scoring, product design, moat analysis, metrics, launch readiness.",
+  "author": { "name": "TECHNOMATON Team" },
   "license": "MIT",
-  "keywords": [
-    "pmf",
-    "product",
-    "strategy",
-    "ai",
-    "moat",
-    "metrics"
-  ],
+  "tier": "community",
+  "status": "beta",
+  "hooks": "./hooks/hooks.json",
   "mcpServers": "./.mcp.json",
-  "skills": "./skills/",
-  "commands": "./commands/",
+  "skills": [
+    "skills/pmf-assessment/SKILL.md",
+    "skills/pmf-opportunity/SKILL.md",
+    "skills/pmf-product-design/SKILL.md",
+    "skills/pmf-moat-analysis/SKILL.md"
+  ],
+  "commands": [
+    "commands/pmf/audit.md",
+    "commands/pmf/invisible-pain.md",
+    "commands/pmf/launch-check.md",
+    "commands/pmf/moat.md",
+    "commands/pmf/score.md",
+    "commands/pmf/validate.md"
+  ],
   "agents": [
-    "./agents/pmf-conductor.md",
-    "./agents/pmf-opportunity.md",
-    "./agents/pmf-product.md",
-    "./agents/pmf-moat.md",
-    "./agents/pmf-metrics.md"
+    "agents/pmf-conductor.md",
+    "agents/pmf-metrics.md",
+    "agents/pmf-moat.md",
+    "agents/pmf-opportunity.md",
+    "agents/pmf-product.md"
   ]
 }

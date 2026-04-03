@@ -38,19 +38,9 @@ License: See individual files
 atlassian — vendored from https://claude.com/plugins/atlassian
 License: See individual files
 
-## chrome-devtools (vendor/chrome-devtools-latest)
-
-chrome-devtools — vendored from https://claude.com/plugins/chrome-devtools
-License: See individual files
-
 ## coderabbit (vendor/coderabbit-latest)
 
 coderabbit — vendored from https://claude.com/plugins/coderabbit
-License: See individual files
-
-## figma (vendor/figma-latest)
-
-figma — vendored from https://claude.com/plugins/figma
 License: See individual files
 
 ## huggingface (vendor/huggingface-latest)
@@ -58,19 +48,9 @@ License: See individual files
 huggingface — vendored from https://claude.com/plugins/huggingface
 License: See individual files
 
-## mcp-server-dev (vendor/mcp-server-dev-latest)
-
-mcp-server-dev — vendored from https://claude.com/plugins/mcp-server-dev
-License: See individual files
-
 ## nightvision (vendor/nightvision-latest)
 
 nightvision — vendored from https://claude.com/plugins/nightvision
-License: See individual files
-
-## notion (vendor/notion-latest)
-
-notion — vendored from https://claude.com/plugins/notion
 License: See individual files
 
 ## opsera (vendor/opsera-latest)
@@ -78,34 +58,9 @@ License: See individual files
 opsera — vendored from https://claude.com/plugins/opsera
 License: See individual files
 
-## pinecone (vendor/pinecone-latest)
-
-pinecone — vendored from https://claude.com/plugins/pinecone
-License: See individual files
-
-## posthog (vendor/posthog-latest)
-
-posthog — vendored from https://claude.com/plugins/posthog
-License: See individual files
-
-## qodo (vendor/qodo-latest)
-
-qodo — vendored from https://claude.com/plugins/qodo
-License: See individual files
-
 ## sentry (vendor/sentry-latest)
 
 sentry — vendored from https://claude.com/plugins/sentry
-License: See individual files
-
-## slack-mcp (vendor/slack-mcp-latest)
-
-slack-mcp — vendored from https://claude.com/plugins/slack-mcp
-License: See individual files
-
-## sourcegraph (vendor/sourcegraph-latest)
-
-sourcegraph — vendored from https://claude.com/plugins/sourcegraph
 License: See individual files
 
 ## postiz (vendor/postiz-v2.0.12)

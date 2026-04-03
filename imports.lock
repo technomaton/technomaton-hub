@@ -162,31 +162,6 @@ vendors:
       - name: triage-issue
         path: "skills/triage-issue/SKILL.md"
         hash: "sha256:4ce1808138ea8871e5a113e4f7b7ae28dc8e78a36df4cb7c87f9666c20620e0c"
-  - name: chrome-devtools
-    version: "latest"
-    source: "https://claude.com/plugins/chrome-devtools"
-    snapshot_date: "2026-03-21"
-    vendor_path: "./vendor/chrome-devtools-latest"
-    license: "See LICENSE file"
-    quality_check:
-      passed: true
-      checked_at: "2026-03-21"
-    skills:
-      - name: a11y-debugging
-        path: "skills/a11y-debugging/SKILL.md"
-        hash: "sha256:f2ee15c98641fd101275fcfe25083de0fe38f0d2145c17d6fcbe11d454b1d286"
-      - name: chrome-devtools
-        path: "skills/chrome-devtools/SKILL.md"
-        hash: "sha256:3fb1cdc33e3f484cf1445b452cad0b70ca4e5a34bb50b0c5e174440727a343a6"
-      - name: chrome-devtools-cli
-        path: "skills/chrome-devtools-cli/SKILL.md"
-        hash: "sha256:57189a12a0b40fe09ceb5e78022382d4c6f3347880f74c90a745f5be39889be4"
-      - name: debug-optimize-lcp
-        path: "skills/debug-optimize-lcp/SKILL.md"
-        hash: "sha256:47813dff4b3943138345b775c6f610c7cbe0621b08b57dfbdc15459f497db55b"
-      - name: troubleshooting
-        path: "skills/troubleshooting/SKILL.md"
-        hash: "sha256:b12e5163b89f714cbaa2c886b750f7a079a00f9625e70b44fe2db812bf5b9e53"
   - name: coderabbit
     version: "latest"
     source: "https://claude.com/plugins/coderabbit"
@@ -203,25 +178,6 @@ vendors:
       - name: code-review
         path: "skills/code-review/SKILL.md"
         hash: "sha256:c811028b4faf4076f76d78cbd11b490c565a9a15b7c260195566b6414a3f5447"
-  - name: figma
-    version: "latest"
-    source: "https://claude.com/plugins/figma"
-    snapshot_date: "2026-03-21"
-    vendor_path: "./vendor/figma-latest"
-    license: "See individual files"
-    quality_check:
-      passed: true
-      checked_at: "2026-03-21"
-    skills:
-      - name: code-connect-components
-        path: "skills/code-connect-components/SKILL.md"
-        hash: "sha256:6fd880ececc87509f04502e976af3414a8fdad497b19864a05eb6a9885cde810"
-      - name: create-design-system-rules
-        path: "skills/create-design-system-rules/SKILL.md"
-        hash: "sha256:c2a27e07672176bacddbcf004975b60237077e9cdfd18dd03a0500d8b085d0d9"
-      - name: implement-design
-        path: "skills/implement-design/SKILL.md"
-        hash: "sha256:8eed282f173196053d3864a69c7fb6d02ea3fc3ad990f1349feba04919f5ccb6"
   - name: huggingface
     version: "latest"
     source: "https://claude.com/plugins/huggingface"
@@ -274,25 +230,6 @@ vendors:
       - name: transformers.js
         path: "skills/transformers.js/SKILL.md"
         hash: "sha256:03e5039f7f68644ee894a066ae2c3a6a27b025746c16c945d9926b594e48744f"
-  - name: mcp-server-dev
-    version: "latest"
-    source: "https://claude.com/plugins/mcp-server-dev"
-    snapshot_date: "2026-03-21"
-    vendor_path: "./vendor/mcp-server-dev-latest"
-    license: "See individual files"
-    quality_check:
-      passed: true
-      checked_at: "2026-03-21"
-    skills:
-      - name: build-mcp-app
-        path: "skills/build-mcp-app/SKILL.md"
-        hash: "sha256:e30e4a1090485320a13301a1294c3a16bfa62195ab1f2c22550cb4caa995a4e0"
-      - name: build-mcp-server
-        path: "skills/build-mcp-server/SKILL.md"
-        hash: "sha256:fe990c4a45216eb331d4439d23aa6ce97f43ef33be12118e7021efce25a50e59"
-      - name: build-mcpb
-        path: "skills/build-mcpb/SKILL.md"
-        hash: "sha256:f3c04fbc9912f51e140e69b06b47638bc42b5f2057716c6d92b78c275ffe6c1f"
   - name: nightvision
     version: "latest"
     source: "https://claude.com/plugins/nightvision"
@@ -315,28 +252,6 @@ vendors:
       - name: scan-triage
         path: "skills/scan-triage/SKILL.md"
         hash: "sha256:264e01deeeff918fae42ae3ee4c5f2d19029377ca8b9433776751c5c411b2334"
-  - name: notion
-    version: "latest"
-    source: "https://claude.com/plugins/notion"
-    snapshot_date: "2026-03-21"
-    vendor_path: "./vendor/notion-latest"
-    license: "See individual files"
-    quality_check:
-      passed: true
-      checked_at: "2026-03-21"
-    skills:
-      - name: knowledge-capture
-        path: "skills/knowledge-capture/SKILL.md"
-        hash: "sha256:42e8c7634c25c59155ec04c5451da7ca34c5711084c53625fdf37b4af9bf0d19"
-      - name: meeting-intelligence
-        path: "skills/meeting-intelligence/SKILL.md"
-        hash: "sha256:8abefc02d5e25ceab841d7bbad5b14da3e4e05ba468cbd0f457a1466e4fd27fd"
-      - name: research-documentation
-        path: "skills/research-documentation/SKILL.md"
-        hash: "sha256:05175c669c1fabc5234eeae647219caadd84703d718af64fafd246e9e3c130a6"
-      - name: spec-to-implementation
-        path: "skills/spec-to-implementation/SKILL.md"
-        hash: "sha256:76c035adf07dba1a05b471194071ae495518c118af1a7541a6faf81701b5d1cb"
   - name: opsera
     version: "latest"
     source: "https://claude.com/plugins/opsera"
@@ -362,69 +277,6 @@ vendors:
       - name: sql-security
         path: "skills/sql-security/SKILL.md"
         hash: "sha256:518cf1ab9857c9685adeeccc6b763835cfdb3dfc3997eb6863fbbc8631e036cb"
-  - name: pinecone
-    version: "latest"
-    source: "https://claude.com/plugins/pinecone"
-    snapshot_date: "2026-03-21"
-    vendor_path: "./vendor/pinecone-latest"
-    license: "See LICENSE file"
-    quality_check:
-      passed: true
-      checked_at: "2026-03-21"
-    skills:
-      - name: assistant
-        path: "skills/assistant/SKILL.md"
-        hash: "sha256:226f163673c4f307654df5f02b073d9683530be0b418d5b42ff70686258fba46"
-      - name: cli
-        path: "skills/cli/SKILL.md"
-        hash: "sha256:f8e9572bec9463aad0d3dfcb41944b70c80e2e68d1743f007f099d1bc5052592"
-      - name: docs
-        path: "skills/docs/SKILL.md"
-        hash: "sha256:4898471ee44130fb3b5c0df2e1d3d4e4faca77489203adf9fd1cfc8aab573573"
-      - name: help
-        path: "skills/help/SKILL.md"
-        hash: "sha256:11a6040756f3022509f4587bbd78d41e0722087b089e22058b2314ddda76a31e"
-      - name: mcp
-        path: "skills/mcp/SKILL.md"
-        hash: "sha256:f7c0d254efedf98b7e18d49e4cdaee98f7d9bbb16e5877771d68de93c9cfd0b3"
-      - name: query
-        path: "skills/query/SKILL.md"
-        hash: "sha256:fee820dc303a0dd96be52ca48250bbf1ce2c9133ac3611a730100a913eed0aeb"
-      - name: quickstart
-        path: "skills/quickstart/SKILL.md"
-        hash: "sha256:c33e916b411ac7d36599d1ee51adeaac1a6a762a74e885e33badfb993c46ea17"
-  - name: posthog
-    version: "latest"
-    source: "https://claude.com/plugins/posthog"
-    snapshot_date: "2026-03-21"
-    vendor_path: "./vendor/posthog-latest"
-    license: "See individual files"
-    quality_check:
-      passed: true
-      checked_at: "2026-03-21"
-    skills:
-      - name: posthog-instrumentation
-        path: "skills/posthog-instrumentation/SKILL.md"
-        hash: "sha256:d32a621b3b099a099eb154a8b6c51b61275ba8a114ca08d6ff907f80c983f273"
-  - name: qodo
-    version: "latest"
-    source: "https://claude.com/plugins/qodo"
-    snapshot_date: "2026-03-21"
-    vendor_path: "./vendor/qodo-latest"
-    license: "See LICENSE file"
-    quality_check:
-      passed: true
-      checked_at: "2026-03-21"
-    skills:
-      - name: qodo-get-relevant-rules
-        path: "skills/qodo-get-relevant-rules/SKILL.md"
-        hash: "sha256:b4f7980245dc0970ee311f6f61579c56e433c4000c0e406d60736fe6dc93e8c9"
-      - name: qodo-get-rules
-        path: "skills/qodo-get-rules/SKILL.md"
-        hash: "sha256:65171ff52f7ec000e910414348d62dc608d9532b82552f8e84d7d5a56f53d9b2"
-      - name: qodo-pr-resolver
-        path: "skills/qodo-pr-resolver/SKILL.md"
-        hash: "sha256:3bdbf0df3a9cc23a6fe12c23864f2fa3799c52599d0aa0d17f9b8c577df9c334"
   - name: sentry
     version: "latest"
     source: "https://claude.com/plugins/sentry"
@@ -519,32 +371,3 @@ vendors:
       - name: sentry-workflow
         path: "skills/sentry-workflow/SKILL.md"
         hash: "sha256:baa8dee53af3be96de34d298b7e577e2d9d54ae6a1e31b8f6e8635d18fe008a2"
-  - name: slack-mcp
-    version: "latest"
-    source: "https://claude.com/plugins/slack-mcp"
-    snapshot_date: "2026-03-21"
-    vendor_path: "./vendor/slack-mcp-latest"
-    license: "See LICENSE file"
-    quality_check:
-      passed: true
-      checked_at: "2026-03-21"
-    skills:
-      - name: slack-messaging
-        path: "skills/slack-messaging/SKILL.md"
-        hash: "sha256:85764dfa6090302bdb9548af4afc118e65dc47c0b07db730769424d20a1618a2"
-      - name: slack-search
-        path: "skills/slack-search/SKILL.md"
-        hash: "sha256:8f91e9a792a7492d7d1a47afa4786f30289a881c830b1b915e315bb57da3c77e"
-  - name: sourcegraph
-    version: "latest"
-    source: "https://claude.com/plugins/sourcegraph"
-    snapshot_date: "2026-03-21"
-    vendor_path: "./vendor/sourcegraph-latest"
-    license: "See individual files"
-    quality_check:
-      passed: true
-      checked_at: "2026-03-21"
-    skills:
-      - name: searching-sourcegraph
-        path: "skills/searching-sourcegraph/SKILL.md"
-        hash: "sha256:56b471b47406775a969745fd160cc2cdf9117f0fbe1ea4c5fdc6542f8087836f"

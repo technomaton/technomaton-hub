@@ -12,162 +12,8 @@
       "description": "DX core: PR/release, guardrails",
       "tier": "community",
       "license": "MIT",
-      "tags": [
-        "dx",
-        "pr",
-        "release"
-      ],
-      "capabilities": {
-        "skills": 2,
-        "commands": 2,
-        "agents": 0,
-        "hooks": 2,
-        "vendorDeps": 1
-      }
-    },
-    {
-      "name": "tm-docs",
-      "source": "./packs/tm-docs",
-      "description": "Documentation: ADR, changelog, readme generation",
-      "tier": "community",
-      "license": "MIT",
-      "tags": [
-        "docs",
-        "adr",
-        "changelog"
-      ],
-      "capabilities": {
-        "skills": 1,
-        "commands": 3,
-        "agents": 0,
-        "hooks": 0
-      }
-    },
-    {
-      "name": "tm-secure",
-      "source": "./packs/tm-secure",
-      "description": "Security & compliance: scanning, policy, agents",
-      "tier": "community",
-      "license": "MIT",
-      "tags": [
-        "security",
-        "compliance",
-        "scanning"
-      ],
-      "capabilities": {
-        "skills": 2,
-        "commands": 3,
-        "agents": 4,
-        "hooks": 0
-      }
-    },
-    {
-      "name": "tm-infra",
-      "source": "./packs/tm-infra",
-      "description": "Infrastructure: Azure/TF planning, AFD, Private Link",
-      "tier": "community",
-      "license": "MIT",
-      "tags": [
-        "infra",
-        "azure",
-        "terraform"
-      ],
-      "capabilities": {
-        "skills": 2,
-        "commands": 3,
-        "agents": 1,
-        "hooks": 0
-      }
-    },
-    {
-      "name": "tm-github",
-      "source": "./packs/tm-github",
-      "description": "GitHub MCP utilities: PR status, release notes, Dependabot",
-      "tier": "community",
-      "license": "MIT",
-      "tags": [
-        "github",
-        "pr",
-        "release"
-      ],
-      "capabilities": {
-        "skills": 1,
-        "commands": 4,
-        "agents": 0,
-        "hooks": 0
-      }
-    },
-    {
-      "name": "tm-growth",
-      "source": "./packs/tm-growth",
-      "description": "Growth/Sales/Marketing: ICP, outreach, content",
-      "tier": "community",
-      "license": "MIT",
-      "tags": [
-        "growth",
-        "marketing",
-        "sales"
-      ],
-      "capabilities": {
-        "skills": 0,
-        "commands": 4,
-        "agents": 5,
-        "hooks": 0
-      }
-    },
-    {
-      "name": "tm-eaa",
-      "source": "./packs/tm-eaa",
-      "description": "Accessibility (EAA/kiosks): checklists, test plans, procurement",
-      "tier": "community",
-      "license": "MIT",
-      "tags": [
-        "accessibility",
-        "eaa",
-        "a11y"
-      ],
-      "capabilities": {
-        "skills": 0,
-        "commands": 3,
-        "agents": 1,
-        "hooks": 0
-      }
-    },
-    {
-      "name": "tm-ops",
-      "source": "./packs/tm-ops",
-      "description": "Observability & Ops: runbooks, incidents, postmortems",
-      "tier": "community",
-      "license": "MIT",
-      "tags": [
-        "ops",
-        "incident",
-        "observability"
-      ],
-      "capabilities": {
-        "skills": 0,
-        "commands": 3,
-        "agents": 0,
-        "hooks": 0
-      }
-    },
-    {
-      "name": "tm-data",
-      "source": "./packs/tm-data",
-      "description": "Data & Analytics: quality, engineering agents",
-      "tier": "community",
-      "license": "MIT",
-      "tags": [
-        "data",
-        "analytics",
-        "engineering"
-      ],
-      "capabilities": {
-        "skills": 0,
-        "commands": 1,
-        "agents": 3,
-        "hooks": 0
-      }
+      "tags": ["dx", "pr", "release"],
+      "capabilities": { "skills": 2, "commands": 2, "agents": 0, "hooks": 2, "vendorDeps": 1 }
     },
     {
       "name": "tm-ml",
@@ -175,73 +21,8 @@
       "description": "ML & AI: RAG tooling, experiments, MLOps",
       "tier": "community",
       "license": "MIT",
-      "tags": [
-        "ml",
-        "ai",
-        "rag"
-      ],
-      "capabilities": {
-        "skills": 0,
-        "commands": 2,
-        "agents": 3,
-        "hooks": 0
-      }
-    },
-    {
-      "name": "tm-atlassian",
-      "source": "./packs/tm-atlassian",
-      "description": "Atlassian integration: Jira project management & Confluence knowledge base via MCP",
-      "tier": "community",
-      "license": "MIT",
-      "tags": [
-        "atlassian",
-        "jira",
-        "confluence"
-      ],
-      "capabilities": {
-        "skills": 0,
-        "commands": 1,
-        "agents": 0,
-        "hooks": 0
-      }
-    },
-    {
-      "name": "tm-servicenow",
-      "source": "./packs/tm-servicenow",
-      "description": "ServiceNow integration: incident management via MCP",
-      "tier": "commercial",
-      "license": "Proprietary",
-      "tags": [
-        "servicenow",
-        "itsm",
-        "incident"
-      ],
-      "capabilities": {
-        "skills": 0,
-        "commands": 1,
-        "agents": 0,
-        "hooks": 0
-      }
-    },
-    {
-      "name": "tm-business",
-      "source": "./packs/tm-business",
-      "description": "Finance, Legal & Public Sector: budgets, forecasts, redlining, tenders, grants",
-      "tier": "commercial",
-      "license": "Proprietary",
-      "tags": [
-        "finance",
-        "legal",
-        "budget",
-        "public",
-        "tenders"
-      ],
-      "capabilities": {
-        "skills": 0,
-        "commands": 3,
-        "agents": 0,
-        "hooks": 0
-      }
+      "tags": ["ml", "ai", "rag"],
+      "capabilities": { "skills": 0, "commands": 2, "agents": 3, "hooks": 0 }
     },
     {
       "name": "tm-governance",
@@ -250,38 +31,8 @@
       "description": "EDPA governance: evidence-driven proportional allocation. Standalone: github.com/technomaton/edpa",
       "tier": "community",
       "license": "MIT",
-      "tags": [
-        "governance",
-        "edpa",
-        "capacity",
-        "timesheets",
-        "audit"
-      ],
-      "capabilities": {
-        "skills": 5,
-        "commands": 5,
-        "agents": 0,
-        "hooks": 0
-      }
-    },
-    {
-      "name": "tm-meta",
-      "source": "./packs/tm-meta",
-      "description": "Meta-workflows: orchestrate skills from internal packs and vendored sources",
-      "tier": "community",
-      "license": "MIT",
-      "tags": [
-        "meta",
-        "workflow",
-        "composition",
-        "orchestration"
-      ],
-      "capabilities": {
-        "skills": 3,
-        "commands": 0,
-        "agents": 0,
-        "hooks": 0
-      }
+      "tags": ["governance", "edpa", "capacity", "timesheets", "audit"],
+      "capabilities": { "skills": 5, "commands": 5, "agents": 0, "hooks": 0 }
     },
     {
       "name": "tm-vuca",
@@ -289,18 +40,8 @@
       "description": "VUCA assessment: multi-agent skill evaluation framework based on Dawson/Lectica research",
       "tier": "community",
       "license": "MIT",
-      "tags": [
-        "vuca",
-        "assessment",
-        "strategy",
-        "skills"
-      ],
-      "capabilities": {
-        "skills": 1,
-        "commands": 3,
-        "agents": 5,
-        "hooks": 0
-      }
+      "tags": ["vuca", "assessment", "strategy", "skills"],
+      "capabilities": { "skills": 1, "commands": 3, "agents": 5, "hooks": 0 }
     },
     {
       "name": "tm-pmf",
@@ -308,18 +49,8 @@
       "description": "AI Product-Market Fit Playbook: opportunity scoring, product design, moat analysis, metrics, launch readiness",
       "tier": "community",
       "license": "MIT",
-      "tags": [
-        "pmf",
-        "product",
-        "strategy",
-        "ai"
-      ],
-      "capabilities": {
-        "skills": 4,
-        "commands": 6,
-        "agents": 5,
-        "hooks": 0
-      }
+      "tags": ["pmf", "product", "strategy", "ai"],
+      "capabilities": { "skills": 4, "commands": 6, "agents": 5, "hooks": 0 }
     },
     {
       "name": "tm-strategy",
@@ -327,19 +58,8 @@
       "description": "Integrated strategic assessment: orchestrates VUCA + PMF frameworks",
       "tier": "community",
       "license": "MIT",
-      "tags": [
-        "strategy",
-        "meta",
-        "vuca",
-        "pmf",
-        "orchestration"
-      ],
-      "capabilities": {
-        "skills": 1,
-        "commands": 2,
-        "agents": 1,
-        "hooks": 0
-      }
+      "tags": ["strategy", "meta", "vuca", "pmf", "orchestration"],
+      "capabilities": { "skills": 1, "commands": 2, "agents": 1, "hooks": 0 }
     }
   ]
 }

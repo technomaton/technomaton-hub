@@ -1,22 +1,21 @@
 {
   "name": "tm-strategy",
   "version": "1.0.0",
-  "description": "Integrated strategic assessment \u2014 orchestrates VUCA Skills + AI PMF Playbook for comprehensive product and communication evaluation.",
-  "author": {
-    "name": "TECHNOMATON Team"
-  },
+  "description": "Integrated strategic assessment: orchestrates VUCA + PMF frameworks.",
+  "author": { "name": "TECHNOMATON Team" },
   "license": "MIT",
-  "keywords": [
-    "strategy",
-    "meta",
-    "vuca",
-    "pmf",
-    "orchestration"
-  ],
+  "tier": "community",
+  "status": "beta",
+  "hooks": "./hooks/hooks.json",
   "mcpServers": "./.mcp.json",
-  "skills": "./skills/",
-  "commands": "./commands/",
+  "skills": [
+    "skills/strategy-integrated/SKILL.md"
+  ],
+  "commands": [
+    "commands/strategy/audit.md",
+    "commands/strategy/compass.md"
+  ],
   "agents": [
-    "./agents/strategy-conductor.md"
+    "agents/strategy-conductor.md"
   ]
 }
