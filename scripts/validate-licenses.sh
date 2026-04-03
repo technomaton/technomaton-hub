@@ -11,22 +11,21 @@ for pack in packs/tm-*/; do
   [ ! -f "$plugin_json" ] && continue
   [ ! -f "$license_file" ] && continue
 
-  tier=$(grep -o '"tier":\s*"[^"]*"' "$plugin_json" 2>/dev/null | head -1 | sed 's/.*"\([^"]*\)"/\1/')
+  # Read license from plugin.json
+  license=$(grep -o '"license":\s*"[^"]*"' "$plugin_json" 2>/dev/null | head -1 | sed 's/.*"\([^"]*\)"/\1/')
 
-  if [ "$tier" = "community" ]; then
+  # Check if keywords contain tier info
+  is_community=$(grep -c '"community"' "$plugin_json" || true)
+
+  if [ "$license" = "MIT" ]; then
     if ! grep -qi "MIT" "$license_file"; then
-      echo "   FAIL: $name is tier=community but LICENSE does not contain 'MIT'"
+      echo "   FAIL: $name declares license=MIT but LICENSE file does not contain 'MIT'"
       ERRORS=$((ERRORS + 1))
     else
-      echo "   OK: $name (community/MIT)"
+      echo "   OK: $name (${is_community:+community/}MIT)"
     fi
-  elif [ "$tier" = "commercial" ]; then
-    if ! grep -qi "Proprietary\|All Rights Reserved\|Commercial" "$license_file"; then
-      echo "   FAIL: $name is tier=commercial but LICENSE does not contain proprietary terms"
-      ERRORS=$((ERRORS + 1))
-    else
-      echo "   OK: $name (commercial/Proprietary)"
-    fi
+  elif [ -n "$license" ]; then
+    echo "   OK: $name ($license)"
   fi
 done
 

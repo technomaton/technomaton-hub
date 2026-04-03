@@ -4,25 +4,9 @@
   "description": "DX core: PR/release helpers, light guardrails.",
   "author": { "name": "TECHNOMATON Team" },
   "license": "MIT",
-  "tier": "community",
-  "status": "stable",
-  "hooks": "./hooks/hooks.json",
+  "keywords": ["dx", "pr", "release", "community"],
   "mcpServers": "./.mcp.json",
-  "skills": [
-    "skills/commit-policy/SKILL.md",
-    "skills/pr-review/SKILL.md"
-  ],
-  "commands": [
-    "commands/pr/review.md",
-    "commands/release/cut.md"
-  ],
-  "agents": [],
-  "dependencies": [
-    {
-      "name": "superpowers",
-      "source": "vendor/superpowers-v5.0.5",
-      "version": "v5.0.5",
-      "type": "vendor"
-    }
-  ]
+  "skills": "./skills/",
+  "commands": "./commands/",
+  "agents": []
 }

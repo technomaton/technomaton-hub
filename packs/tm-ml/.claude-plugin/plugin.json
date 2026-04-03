@@ -4,18 +4,13 @@
   "description": "ML & AI: experiments, MLOps, RAG tooling.",
   "author": { "name": "TECHNOMATON Team" },
   "license": "MIT",
-  "tier": "community",
-  "status": "stable",
-  "hooks": "./hooks/hooks.json",
+  "keywords": ["ml", "ai", "rag", "community"],
   "mcpServers": "./.mcp.json",
-  "skills": [],
-  "commands": [
-    "commands/rag/evals.md",
-    "commands/rag/index.md"
-  ],
+  "skills": "./skills/",
+  "commands": "./commands/",
   "agents": [
-    "agents/ml-ops.md",
-    "agents/ai-researcher.md",
-    "agents/prompt-engineer.md"
+    "./agents/ml-ops.md",
+    "./agents/ai-researcher.md",
+    "./agents/prompt-engineer.md"
   ]
 }

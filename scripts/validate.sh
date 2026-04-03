@@ -52,41 +52,37 @@ bash scripts/validate-agent.sh || ERRORS=$((ERRORS + 1))
 echo "6. Checking license consistency..."
 bash scripts/validate-licenses.sh || ERRORS=$((ERRORS + 1))
 
-# 7. Check plugin.json capability arrays match files on disk
-echo "7. Checking plugin.json capability arrays match disk..."
+# 7. Check plugin.json capability paths are valid
+echo "7. Checking plugin.json capability paths..."
+CAP_ERRORS=0
 for pack in packs/tm-*/; do
   name=$(basename "$pack")
   pj="$pack/.claude-plugin/plugin.json"
   [ ! -f "$pj" ] && continue
 
-  # Count skills on disk vs in plugin.json
-  disk_skills=0
-  [ -d "$pack/skills" ] && disk_skills=$(find "$pack/skills" -name SKILL.md | wc -l | tr -d ' ')
-  json_skills=$(grep -c '"skills/' "$pj" || true)
-  if [ "$disk_skills" -ne "$json_skills" ]; then
-    echo "   FAIL: $name has $disk_skills skills on disk but $json_skills in plugin.json"
-    ERRORS=$((ERRORS + 1))
+  # Check skills path (directory string or array of directories)
+  skills_val=$(grep '"skills"' "$pj" | head -1 | sed 's/.*"skills"[[:space:]]*:[[:space:]]*//' | tr -d '", ' || true)
+  if [ -n "$skills_val" ] && [ "$skills_val" != "[]" ]; then
+    skills_dir="$pack/$skills_val"
+    if [ -d "$skills_dir" ]; then
+      skill_count=$(find "$skills_dir" -name SKILL.md | wc -l | tr -d ' ')
+      echo "   OK: $name skills ($skill_count SKILL.md in $skills_val)"
+    elif [ "$skills_val" = "./skills/" ] && [ ! -d "$pack/skills" ]; then
+      echo "   WARN: $name declares skills path but no skills/ directory"
+      WARNINGS=$((WARNINGS + 1))
+    fi
   fi
 
-  # Count commands on disk vs in plugin.json
-  disk_cmds=0
-  [ -d "$pack/commands" ] && disk_cmds=$(find "$pack/commands" -name "*.md" | wc -l | tr -d ' ')
-  json_cmds=$(grep -c '"commands/' "$pj" || true)
-  if [ "$disk_cmds" -ne "$json_cmds" ]; then
-    echo "   FAIL: $name has $disk_cmds commands on disk but $json_cmds in plugin.json"
-    ERRORS=$((ERRORS + 1))
-  fi
-
-  # Count agents on disk vs in plugin.json
-  disk_agents=0
-  [ -d "$pack/agents" ] && disk_agents=$(find "$pack/agents" -name "*.md" | wc -l | tr -d ' ')
-  json_agents=$(grep -c '"agents/' "$pj" || true)
-  if [ "$disk_agents" -ne "$json_agents" ]; then
-    echo "   FAIL: $name has $disk_agents agents on disk but $json_agents in plugin.json"
-    ERRORS=$((ERRORS + 1))
-  fi
+  # Check agents (array of file paths)
+  agent_files=$(grep '"./agents/' "$pj" | sed 's/.*"\(\.\/agents\/[^"]*\)".*/\1/' || true)
+  for af in $agent_files; do
+    if [ ! -f "$pack/$af" ]; then
+      echo "   FAIL: $name references $af but file not found"
+      CAP_ERRORS=$((CAP_ERRORS + 1))
+    fi
+  done
 done
-echo "   OK"
+[ "$CAP_ERRORS" -gt 0 ] && ERRORS=$((ERRORS + CAP_ERRORS)) || echo "   OK"
 
 # 8. Check marketplace count matches pack count
 echo "8. Checking marketplace registry count..."
@@ -136,24 +132,25 @@ else
   WARNINGS=$((WARNINGS + 1))
 fi
 
-# 12. Check lifecycle status field
-echo "12. Checking lifecycle status..."
-VALID_STATUSES="stable beta deprecated experimental"
-for pack in packs/tm-*/; do
-  name=$(basename "$pack")
-  pj="$pack/.claude-plugin/plugin.json"
-  [ ! -f "$pj" ] && continue
-  status=$(grep '"status"' "$pj" | sed 's/.*"status"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/' || true)
-  if [ -z "$status" ]; then
-    echo "   FAIL: $name missing status field in plugin.json"
-    ERRORS=$((ERRORS + 1))
-  elif ! echo "$VALID_STATUSES" | grep -qw "$status"; then
-    echo "   FAIL: $name has invalid status '$status' (valid: $VALID_STATUSES)"
-    ERRORS=$((ERRORS + 1))
-  else
-    echo "   OK: $name ($status)"
-  fi
-done
+# 12. Validate plugin.json with Claude Code validator
+echo "12. Checking plugin.json with claude plugin validate..."
+PV_ERRORS=0
+if command -v claude &>/dev/null; then
+  for pack in packs/tm-*/; do
+    name=$(basename "$pack")
+    pj="$pack/.claude-plugin/plugin.json"
+    [ ! -f "$pj" ] && continue
+    if claude plugin validate "$pj" &>/dev/null; then
+      echo "   OK: $name"
+    else
+      echo "   FAIL: $name — run 'claude plugin validate $pj' for details"
+      PV_ERRORS=$((PV_ERRORS + 1))
+    fi
+  done
+  [ "$PV_ERRORS" -gt 0 ] && ERRORS=$((ERRORS + PV_ERRORS))
+else
+  echo "   SKIP: claude CLI not available"
+fi
 
 # 13. Validate composed-from references
 echo "13. Checking composed-from references..."
@@ -189,40 +186,18 @@ done
 [ "$COMPOSE_ERRORS" -gt 0 ] && ERRORS=$((ERRORS + COMPOSE_ERRORS))
 [ "$COMPOSE_ERRORS" -eq 0 ] && echo "   OK"
 
-# 14. Check marketplace capability counts match reality
-echo "14. Checking marketplace capability counts..."
-MKT=".claude-plugin/marketplace.json"
-MKT_ERRORS=0
-for pack in packs/tm-*/; do
-  name=$(basename "$pack")
-  [ ! -f "$pack/.claude-plugin/plugin.json" ] && continue
-
-  # Count actual capabilities on disk
-  actual_skills=0
-  [ -d "$pack/skills" ] && actual_skills=$(find "$pack/skills" -name SKILL.md | wc -l | tr -d ' ')
-  actual_cmds=0
-  [ -d "$pack/commands" ] && actual_cmds=$(find "$pack/commands" -name "*.md" | wc -l | tr -d ' ')
-  actual_agents=0
-  [ -d "$pack/agents" ] && actual_agents=$(find "$pack/agents" -name "*.md" | wc -l | tr -d ' ')
-
-  # Extract marketplace counts (simple grep — no jq)
-  # Find the block for this pack and extract skills/commands counts
-  mkt_block=$(sed -n "/\"name\": \"$name\"/,/}/p" "$MKT" 2>/dev/null)
-  mkt_skills=$(echo "$mkt_block" | grep '"skills"' | head -1 | sed 's/.*"skills"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/')
-  mkt_cmds=$(echo "$mkt_block" | grep '"commands"' | head -1 | sed 's/.*"commands"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/')
-
-  [ -z "$mkt_skills" ] && continue  # pack not in marketplace
-
-  if [ "$actual_skills" -ne "$mkt_skills" ]; then
-    echo "   FAIL: $name marketplace says $mkt_skills skills but has $actual_skills"
-    MKT_ERRORS=$((MKT_ERRORS + 1))
+# 14. Validate marketplace.json with Claude Code validator
+echo "14. Checking marketplace.json with claude plugin validate..."
+if command -v claude &>/dev/null; then
+  if claude plugin validate .claude-plugin/marketplace.json &>/dev/null; then
+    echo "   OK"
+  else
+    echo "   FAIL: marketplace.json validation failed — run 'claude plugin validate .claude-plugin/marketplace.json' for details"
+    ERRORS=$((ERRORS + 1))
   fi
-  if [ "$actual_cmds" -ne "$mkt_cmds" ]; then
-    echo "   FAIL: $name marketplace says $mkt_cmds commands but has $actual_cmds"
-    MKT_ERRORS=$((MKT_ERRORS + 1))
-  fi
-done
-[ "$MKT_ERRORS" -gt 0 ] && ERRORS=$((ERRORS + MKT_ERRORS)) || echo "   OK"
+else
+  echo "   SKIP: claude CLI not available"
+fi
 
 # 15. Check internal file references in README files
 echo "15. Checking README internal links..."
