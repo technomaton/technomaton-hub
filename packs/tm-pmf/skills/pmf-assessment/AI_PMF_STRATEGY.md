@@ -1,4 +1,5 @@
 <!-- License: CC-BY-4.0 — Attribution: Miqdad Jaffer (Product Lead, OpenAI) -->
+<!-- Sources: [jaffer-9-shifts], [jaffer-strategic-lens], [jaffer-strategy-vc] — see AI_PMF_BIBLIOGRAPHY.md -->
 
 # AI Product-Market Fit — Strategy and Positioning
 

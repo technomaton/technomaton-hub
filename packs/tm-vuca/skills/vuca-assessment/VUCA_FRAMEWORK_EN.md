@@ -9,6 +9,8 @@
 
 ## Overview
 
+> Source: [dawson-2020a] — see [VUCA_BIBLIOGRAPHY.md](./VUCA_BIBLIOGRAPHY.md) for full citations and URLs.
+
 VUCA skills are the sets of skills most needed for effective decision-making under conditions characterized by Volatility, Uncertainty, Complexity, and Ambiguity. Lectica has been studying and supporting the development of these skills since 2002.
 
 ### Skill hierarchy (idealized model)
@@ -55,7 +57,7 @@ A miniature, targeted, contextual learning cycle focused on one micro-skill. Int
 
 ---
 
-## Mega-skill 1: Collaborative Capacity
+## Mega-skill 1: Collaborative Capacity [dawson-2020b]
 
 **Role:** The most foundational of all VUCA skills. Collaborative capacity skills "either support the development of other VUCA skills or are called upon when practicing other VUCA skills."
 
@@ -156,7 +158,7 @@ Some skills, such as perspective-seeking, are "ubiquitous. They show up repeated
 
 ---
 
-## Mega-skill 2: Perspective Coordination
+## Mega-skill 2: Perspective Coordination [dawson-2020c]
 
 **Role:** Builds upon and extends collaborative capacity skills. "Wheels within wheels" — building one area of skill inevitably develops others.
 
@@ -233,7 +235,7 @@ Conflict resolution techniques:
 
 ---
 
-## Mega-skill 3: Contextual Thinking
+## Mega-skill 3: Contextual Thinking [dawson-2020d]
 
 **Role:** Emergent mega-skill. "The development of contextual thinking skills is even more immediately and explicitly connected to Lectical Level (mental complexity)" than other VUCA skills. Development hinges on consistent exercise of collaborative capacity and perspective coordination skills.
 
@@ -343,7 +345,7 @@ Practical implication: "Curricula built around skills do a better job supporting
 
 ---
 
-## Mega-skill 4: Decision-Making Process
+## Mega-skill 4: Decision-Making Process [dawson-2021a]
 
 **Role:** Most neglected mega-skill. The only VUCA skill map with a mostly temporal arrangement. Leverages and extends all three previous mega-skills.
 
@@ -459,7 +461,7 @@ Measuring outcomes:
 
 ---
 
-## Lectical Levels (measurement scale)
+## Lectical Levels (measurement scale) [fischer-1980], [lectica-levels]
 
 The Lectical Scale is a refinement of Kurt Fischer's Skill Scale — a developmental scale from birth to the highest levels of development. It measures increasing complexity, not content knowledge or "right answers."
 
@@ -492,7 +494,7 @@ Adult average: ~1097 (level 10b, advanced linear thinking zone)
 
 ---
 
-## VUCA score targets by management level
+## VUCA score targets by management level [dawson-2024c]
 
 | Level | Target VUCA Score | Zone |
 |-------|-------------------|------|
@@ -505,7 +507,9 @@ Current reality: even CEOs perform in the 55-60 range, "well below the 90-100 ra
 
 ---
 
-## Empirical data
+## Empirical data [dawson-2024a], [dawson-2024b]
+
+> Detailed empirical data with gap analysis is in [VUCA_EMPIRICAL_DATA.md](./VUCA_EMPIRICAL_DATA.md).
 
 ### VUCA scores of leaders (n=2,193, from LDMA assessments)
 
@@ -530,7 +534,7 @@ The predictive power of management level over VUCA scores increased from 3.0% (2
 
 ---
 
-## The complexity gap
+## The complexity gap [dawson-nd-a], [dawson-nd-b]
 
 "The complexity gap is the distance between the complexity level of our thinking and the complexity of the issues confronted in our personal and work lives." Role complexity increases linearly with organizational hierarchy, but cognitive complexity of leaders does not keep pace. The gap widens at senior levels. AI governance adds additional layers of complexity (regulatory, ethical, technological) that deepen this gap.
 
@@ -538,7 +542,7 @@ Two ways to bridge the gap: (1) learn optimally to increase complexity and quali
 
 ---
 
-## Assessment tools (reference only — Lectica proprietary)
+## Assessment tools (reference only — Lectica proprietary) [lectica-org]
 
 **LDMA (Lectical Decision Making Assessment)** — Flagship leadership assessment. Presents workplace dilemma, measures three dimensions: Lectical Score (complexity), Clarity Score (argumentation quality, 0-100), VUCA Score (four mega-skills, 0-100 each). Developed 2002-2006 with US intelligence community (CIA, NSA). Proven to double developmental growth rate when embedded in development programs.
 
@@ -570,16 +574,6 @@ Two ways to bridge the gap: (1) learn optimally to increase complexity and quali
 
 ## Sources
 
-- Dawson, T. L. (2020). VUCA unpacked (1)—Introduction. Medium.
-- Dawson, T. L. (2020). VUCA unpacked (2)—Collaborative capacity. Medium.
-- Dawson, T. L. (2020). VUCA unpacked (3)—Perspective coordination. Medium.
-- Dawson, T. L. (2020). VUCA unpacked (4)—Contextual thinking. Medium.
-- Dawson, T. L. (2021). VUCA unpacked (5)—Decision-making process. Medium.
-- Dawson, T. L. (2024). VUCA skills are on the rise! Medium.
-- Dawson, T. L. (2024). Leader decisions part 1: How good are Leaders' VUCA skills? Medium.
-- Dawson, T. L. (2024). VUCA skills & management levels. Medium.
-- Dawson, T. L. VUCA skills, VCoL, & the complexity gap. Medium.
-- Dawson, T. L. The complexity gap. Medium.
-- Fischer, K. W. (1980). A theory of cognitive development: The control and construction of hierarchies of skills. Psychological Review, 87(6).
-- Lectica, Inc. — lectica.org
-- Lectica. Lectical Levels & Benchmarks. lectica.org/about/skill-levels
+See [VUCA_BIBLIOGRAPHY.md](./VUCA_BIBLIOGRAPHY.md) for the complete bibliography with URLs, abstracts, and section-to-source cross-references.
+
+See [VUCA_EMPIRICAL_DATA.md](./VUCA_EMPIRICAL_DATA.md) for structured empirical data, trends, and analysis tables.

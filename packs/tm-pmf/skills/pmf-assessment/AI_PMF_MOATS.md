@@ -1,4 +1,5 @@
 <!-- License: CC-BY-4.0 — Attribution: Miqdad Jaffer (Product Lead, OpenAI) -->
+<!-- Sources: [jaffer-moats], [jaffer-distribution-vc] — see AI_PMF_BIBLIOGRAPHY.md -->
 
 # AI PMF Moats — Defensibility Framework
 

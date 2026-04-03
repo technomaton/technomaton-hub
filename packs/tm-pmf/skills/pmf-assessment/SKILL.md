@@ -35,6 +35,7 @@ Auto-trigger on keywords: "PMF", "product-market fit", "AI product", "moat analy
    - `AI_PMF_LAUNCH.md` — Launch Strategy Canvas, 7 AI Launch Plays, Three-Layer Launch Framework
    - `AI_PMF_STRATEGY.md` — 5-Question Pain Point Analysis, AI Positioning Template, AI Strategic Lens, 9 Shifts in AI PM, AI Feasibility Checklist
    - `AI_PMF_TRUST.md` — Trust Layer, 10 Psychological Triggers for AI Adoption, Key Quotes Index
+   - `AI_PMF_BIBLIOGRAPHY.md` — Source citations with URLs, file-to-source mapping, quotes attribution
 2. Route to the appropriate agent:
    - Full PMF audit → `@pmf-conductor` (orchestrates all 4 specialists)
    - Opportunity scoring only → `@pmf-opportunity`

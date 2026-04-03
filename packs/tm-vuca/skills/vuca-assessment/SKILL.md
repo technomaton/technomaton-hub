@@ -27,7 +27,11 @@ Auto-trigger on keywords: "VUCA", "complexity gap", "audit skills", "vyváženos
 
 ## What to do
 
-1. Read `VUCA_FRAMEWORK_EN.md` (primary) and optionally `VUCA_FRAMEWORK_CS.md` (Czech translation) in this directory for the complete hierarchy
+1. Read the knowledge base files in this directory:
+   - `VUCA_FRAMEWORK_EN.md` — Complete skill hierarchy and conceptual framework (primary)
+   - `VUCA_EMPIRICAL_DATA.md` — Quantitative data, trends, targets, Lectical Levels
+   - `VUCA_BIBLIOGRAPHY.md` — Source citations with URLs, abstracts, and section cross-references
+   - `VUCA_FRAMEWORK_CS.md` — Czech translation (optional)
 2. Route to the appropriate agent:
    - Full audit → `@vuca-conductor` (orchestrates all 4 specialist agents)
    - Single dimension focus → direct to specific agent (@vuca-collaboration, @vuca-perspectives, @vuca-context, @vuca-decision)

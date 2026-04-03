@@ -1,4 +1,5 @@
 <!-- License: CC-BY-4.0 — Attribution: Miqdad Jaffer (Product Lead, OpenAI) -->
+<!-- Sources: [jaffer-pricing], [jaffer-pmf] — see AI_PMF_BIBLIOGRAPHY.md -->
 
 # AI PMF Metrics — Measurement Framework
 
