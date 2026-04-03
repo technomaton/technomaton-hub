@@ -30,9 +30,11 @@ Auto-trigger on keywords: "PMF", "product-market fit", "AI product", "moat analy
 1. Read the knowledge base files in this directory:
    - `AI_PMF_CORE.md` — Paradox, Pain×Freq×AI matrix, Invisible Pain Points
    - `AI_PMF_PRODUCT.md` — 4D Method, Autonomy Staircase, 5 Layers, 6 UX Laws
-   - `AI_PMF_MOATS.md` — Three-Moat Taxonomy, AI Growth Framework
+   - `AI_PMF_MOATS.md` — Five-Moat Taxonomy, AI Growth Framework
    - `AI_PMF_METRICS.md` — Dual metrics, 7 Hidden Costs, 3 Pricing Models, 10-100-1000
-   - `AI_PMF_LAUNCH.md` — Launch Strategy Canvas
+   - `AI_PMF_LAUNCH.md` — Launch Strategy Canvas, 7 AI Launch Plays, Three-Layer Launch Framework
+   - `AI_PMF_STRATEGY.md` — 5-Question Pain Point Analysis, AI Positioning Template, AI Strategic Lens, 9 Shifts in AI PM, AI Feasibility Checklist
+   - `AI_PMF_TRUST.md` — Trust Layer, 10 Psychological Triggers for AI Adoption, Key Quotes Index
 2. Route to the appropriate agent:
    - Full PMF audit → `@pmf-conductor` (orchestrates all 4 specialists)
    - Opportunity scoring only → `@pmf-opportunity`
@@ -48,11 +50,21 @@ Auto-trigger on keywords: "PMF", "product-market fit", "AI product", "moat analy
 |-----------|------|-------|
 | Pain × Freq × AI Advantage | AI_PMF_CORE.md | @pmf-opportunity |
 | Invisible Pain Points | AI_PMF_CORE.md | @pmf-opportunity |
+| 5-Question Pain Point Analysis | AI_PMF_STRATEGY.md | @pmf-opportunity |
+| AI Positioning Template | AI_PMF_STRATEGY.md | @pmf-opportunity |
 | 4D Method | AI_PMF_PRODUCT.md | @pmf-product |
 | Autonomy Staircase | AI_PMF_PRODUCT.md | @pmf-product |
-| Three-Moat Taxonomy | AI_PMF_MOATS.md | @pmf-moat |
+| Trust Layer | AI_PMF_TRUST.md | @pmf-product |
+| 10 Psychological Triggers | AI_PMF_TRUST.md | @pmf-product |
+| Five-Moat Taxonomy | AI_PMF_MOATS.md | @pmf-moat |
 | Dual Success Metrics | AI_PMF_METRICS.md | @pmf-metrics |
 | Launch Strategy Canvas | AI_PMF_LAUNCH.md | @pmf-conductor |
+| 7 AI Launch Plays | AI_PMF_LAUNCH.md | @pmf-conductor |
+| Three-Layer Launch Framework | AI_PMF_LAUNCH.md | @pmf-conductor |
+| AI Strategic Lens | AI_PMF_STRATEGY.md | @pmf-conductor |
+| 9 Shifts in AI PM | AI_PMF_STRATEGY.md | @pmf-conductor |
+| AI Feasibility Checklist | AI_PMF_STRATEGY.md | @pmf-conductor |
+| Key Quotes Index | AI_PMF_TRUST.md | (inline) |
 
 ## Output format
 

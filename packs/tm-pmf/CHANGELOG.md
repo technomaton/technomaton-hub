@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0] — 2026-04-04
+
+### Added
+- `AI_PMF_STRATEGY.md` — 5-Question Pain Point Analysis, AI Positioning Template, AI Strategic Lens, 9 Shifts in AI PM, AI Product Feasibility Checklist
+- `AI_PMF_TRUST.md` — Trust Layer (5 components), 10 Psychological Triggers for AI Adoption, Key Quotes Index
+- 7 AI Launch Plays and Three-Layer Launch Framework in `AI_PMF_LAUNCH.md`
+- Distribution Moat and Trust Moat full detail in `AI_PMF_MOATS.md`
+- Feature-first vs. pain-first distinction in Moats knowledge
+
+### Changed
+- SKILL.md routing updated for all 7 knowledge base files and framework mappings
+- Moat taxonomy expanded from 3 core to 5 core moat types
+- Agent scopes updated for new framework coverage
+
 ## [1.0.1] - 2026-04-03
 
 ### Fixed

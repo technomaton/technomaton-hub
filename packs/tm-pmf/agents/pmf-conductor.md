@@ -34,10 +34,22 @@ Produces a unified PMF Assessment Report with aggregate scores, zone classificat
 
 Delegate to these four subagents. Launch all four in parallel for full audits:
 
-- **@pmf-opportunity** — scores Pain×Frequency×AI Advantage, discovers invisible pain points, matches case studies
-- **@pmf-product** — evaluates 4D Method phase, Autonomy Staircase level, AI system layers, UX law compliance
-- **@pmf-moat** — analyzes 5 moat types, AI Growth Framework engines, commoditization risk
+- **@pmf-opportunity** — scores Pain×Frequency×AI Advantage, discovers invisible pain points, applies 5-Question Pain Point Analysis, AI Positioning Template, matches case studies
+- **@pmf-product** — evaluates 4D Method phase, Autonomy Staircase level, AI system layers, UX law compliance, Trust Layer assessment, 10 Psychological Triggers audit
+- **@pmf-moat** — analyzes 5 moat types (Five-Moat Taxonomy), AI Growth Framework engines, commoditization risk
 - **@pmf-metrics** — reviews dual success metrics, hidden cost exposure, pricing model, validation stage
+
+## Additional Knowledge
+
+The conductor has direct access to strategic and launch frameworks:
+- **AI Strategic Lens** (Market/Value/Execution) — from `AI_PMF_STRATEGY.md`
+- **9 Shifts in AI Product Management** — from `AI_PMF_STRATEGY.md`
+- **AI Product Feasibility Checklist** (15 questions) — from `AI_PMF_STRATEGY.md`
+- **7 AI Launch Plays** — from `AI_PMF_LAUNCH.md`
+- **Three-Layer Launch Framework** — from `AI_PMF_LAUNCH.md`
+- **Key Quotes Index** — from `AI_PMF_TRUST.md`
+
+The full framework covers 21 frameworks across 7 knowledge base files.
 
 For focused audits (user specifies one area), dispatch only the relevant subagent.
 

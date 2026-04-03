@@ -7,7 +7,7 @@
 
 ---
 
-## Section 1: Three-Moat Taxonomy
+## Section 1: Five-Moat Taxonomy
 
 ### Core Moats
 
@@ -16,13 +16,21 @@
 | Data Moat | Proprietary training data competitors can't replicate | User interactions generate unique dataset; domain-specific data partnerships; feedback loops that improve with usage | Data uniqueness score, coverage gap vs competitors, data freshness | 12-24 months |
 | Behavioral Moat | Reinforcing user loops that compound | Habit formation (daily/weekly triggers), personalization that improves with use, switching costs from learned preferences | DAU/MAU ratio, session frequency trend, user-specific model improvement rate | 6-12 months |
 | Workflow Moat | Deep embedding into critical business processes | Become the system of record, integrate into existing toolchains, handle edge cases competitors ignore | % of workflow dependent on product, integration depth score, replacement cost estimate | 12-18 months |
+| Distribution Moat | Embedded so deeply into channels that access compounds; competitors can't easily reach the same users | Embed into existing user tools and workflows; create viral sharing mechanics; launch inside platforms where trust already exists | Channel reach, viral coefficient, cost of user acquisition vs. competitors | 6-12 months |
+| Trust Moat | Reputation in high-stakes domains; once a brand becomes the "safe" choice, competitors face years of uphill battle | Consistent quality over time; transparency and citations; third-party validation; audit trails; graceful error handling | Brand trust surveys, consideration rate in enterprise procurement, repeat buyer rate | 18-36 months |
 
-### Extended Moats
+> "Trust cannot be bought. It must be earned slowly."
 
-| Moat Type | Definition | Example |
-|-----------|-----------|---------|
-| Distribution Moat | Access to users competitors can't easily reach | Perplexity: mobile-first app with habit loops |
-| Trust Moat | User confidence that compounds over time | Perplexity: clear citations for every answer |
+#### Distribution Moat Examples
+
+- **GitHub Copilot** — embedded inside VS Code where developers already live; switching means leaving the IDE
+- **Perplexity** — shareable citations create viral distribution; every answer is a potential share
+- **Clay** — enrichment suggestions embedded in email/calendar; "No extra steps, no behavior change"
+
+#### Trust Moat Examples
+
+- **Perplexity** — clear citations for every answer build verifiable trust
+- **Healthcare/Legal AI** — once a brand becomes the "safe" choice in regulated industries, competitors face years of compliance and reputation building
 
 ---
 
@@ -69,14 +77,20 @@ Total: X/25
 
 > "AI itself isn't the moat. Everyone can access GPT-4o, Claude, Llama, Mistral."
 
-### Feature-First vs Pain-First
+### Feature-First vs Pain-First Distinction
+
+The way you position your product determines whether you attract curiosity or budgets.
 
 | Approach | Example Positioning | Outcome |
 |----------|-------------------|---------|
-| Feature-first | "We summarize meetings better" | Features invite curiosity |
-| Pain-first | "We help sales teams recover 20% more pipeline" | Pain points drive budgets |
+| Feature-first | "We summarize meetings better than others." | Features invite curiosity |
+| Pain-first | "We help sales teams recover 20% more pipeline by eliminating manual follow-ups." | Pain points drive budgets |
 
-> "In SaaS, features take years to copy. In AI, they're cloned in weeks."
+> "Features invite curiosity. Pain points drive budgets."
+
+> "In SaaS, features might take years to copy. In AI, they're cloned in weeks."
+
+> "Traction without moats is fragile. PMF without defensibility is a mirage."
 
 ### Moat Interaction Matrix
 

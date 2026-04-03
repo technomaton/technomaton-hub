@@ -194,3 +194,85 @@ Pivot Signals (any present?):
 Decision: [ ] Continue scaling  [ ] Pause and iterate  [ ] Pivot  [ ] Reassess in 2 weeks
 Action items: _______________
 ```
+
+---
+
+## 4. 7 AI Launch Plays
+
+Seven tactical plays for launching AI products effectively. Apply in sequence or select the most relevant for your launch stage.
+
+| # | Play | Description | Why It Works |
+|---|------|-------------|-------------|
+| 1 | **Launch with the smallest, most reliable workflow** | Start with the narrowest use case where AI performs near-perfectly | Builds trust on reliability, not breadth; users forgive limited scope but not broken outputs |
+| 2 | **Build one hero use case that is unreasonably good** | Invest disproportionately in one workflow that creates undeniable value | A single "wow" moment drives word-of-mouth more than ten mediocre features |
+| 3 | **Introduce autonomy in phases (the Staircase)** | Start at Suggest level and earn permission to do more over time | Users grant trust gradually; forcing autonomy triggers rejection |
+| 4 | **Replace prompt boxes with Context Packs** | Pre-load context so users don't start from blank; eliminate the empty text box | Blank prompts create paralysis; context-rich starting points drive engagement |
+| 5 | **Two-layer launch funnel: Safe Delight -> Serious Work** | First interaction = low-stakes delight; second interaction = real workflow value | Safe Delight removes fear of AI; Serious Work proves business value |
+| 6 | **Script the first 30 minutes like a live show** | Choreograph the entire onboarding sequence — every click, every response, every recovery | First impressions are permanent in AI products; unscripted onboarding = random outcomes |
+| 7 | **Use proof as distribution, not adjectives** | Share outputs, results, and demonstrations instead of marketing claims | AI products sell through demonstrated capability, not described capability |
+
+### Launch Play Selection
+
+```
+For your product, rank applicability of each play (High / Medium / Low):
+
+1. Smallest reliable workflow: ___
+2. Hero use case: ___
+3. Autonomy staircase: ___
+4. Context Packs over prompts: ___
+5. Safe Delight -> Serious Work: ___
+6. Scripted first 30 minutes: ___
+7. Proof as distribution: ___
+
+Top 3 plays for your launch:
+1. _______________
+2. _______________
+3. _______________
+```
+
+---
+
+## 5. Three-Layer Launch Framework
+
+Every AI product launch needs three layers working together. Missing any layer creates a fragile launch.
+
+| Layer | Name | Description | Key Question |
+|-------|------|-------------|-------------|
+| 1 | **Intelligence Narrative** | The story of what AI understands, how it reasons, its constraints, and its failure states | Can you explain what your AI does and doesn't do in one paragraph? |
+| 2 | **Activation Path** | The user journey from first contact to dependency: Curiosity -> Trust -> Value -> Dependence | Is each transition designed and measurable? |
+| 3 | **Distribution Engine** | Launching inside users' existing workflows where trust already exists | Are you going to where users already are, or asking them to come to you? |
+
+### Activation Path Detail
+
+```
+Curiosity  — User hears about the product and wants to try it
+    |
+    v
+Trust      — First interaction proves AI is competent and safe
+    |
+    v
+Value      — User completes real work and measures tangible benefit
+    |
+    v
+Dependence — User cannot imagine going back to the old way
+```
+
+### Three-Layer Assessment
+
+```
+Intelligence Narrative:
+- [ ] Can explain what AI does in one paragraph
+- [ ] Failure states documented and communicated
+- [ ] Constraints are honest, not hidden
+
+Activation Path:
+- [ ] Curiosity trigger identified (what makes users try?)
+- [ ] Trust moment designed (what proves competence?)
+- [ ] Value metric defined (what measurable benefit?)
+- [ ] Dependence signal tracked (what shows they can't go back?)
+
+Distribution Engine:
+- [ ] Launching inside existing workflow/tool? Where?
+- [ ] Trust transfer mechanism (leveraging existing platform trust)
+- [ ] Viral mechanic identified (how does usage spread?)
+```

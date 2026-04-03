@@ -1,6 +1,6 @@
 ---
 name: pmf-moat
-description: "Analyze competitive moats for AI products using the Three-Moat Taxonomy (Data, Behavioral, Workflow + Distribution, Trust) and AI Growth Framework. Specialist subagent for PMF assessments."
+description: "Analyze competitive moats for AI products using the Five-Moat Taxonomy (Data, Behavioral, Workflow, Distribution, Trust) and AI Growth Framework. Specialist subagent for PMF assessments."
 tools: Read, Grep, Glob
 model: inherit
 license: MIT
