@@ -2,25 +2,24 @@
   "name": "tm-vuca",
   "version": "1.0.0",
   "description": "VUCA assessment: multi-agent skill evaluation framework based on Dawson/Lectica research.",
-  "author": { "name": "TECHNOMATON Team" },
+  "author": {
+    "name": "TECHNOMATON Team"
+  },
   "license": "MIT",
-  "tier": "community",
-  "status": "stable",
-  "hooks": "./hooks/hooks.json",
+  "keywords": [
+    "vuca",
+    "assessment",
+    "strategy",
+    "governance"
+  ],
   "mcpServers": "./.mcp.json",
-  "skills": [
-    "skills/vuca-assessment/SKILL.md"
-  ],
-  "commands": [
-    "commands/vuca/audit.md",
-    "commands/vuca/redesign.md",
-    "commands/vuca/portfolio.md"
-  ],
+  "skills": "./skills/",
+  "commands": "./commands/",
   "agents": [
-    "agents/vuca-conductor.md",
-    "agents/vuca-collaboration.md",
-    "agents/vuca-perspectives.md",
-    "agents/vuca-context.md",
-    "agents/vuca-decision.md"
+    "./agents/vuca-conductor.md",
+    "./agents/vuca-collaboration.md",
+    "./agents/vuca-perspectives.md",
+    "./agents/vuca-context.md",
+    "./agents/vuca-decision.md"
   ]
 }
