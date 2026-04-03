@@ -53,39 +53,41 @@
 
 | Knowledge File | Primary Sources | Key Frameworks |
 |---|---|---|
-| `AI_PMF_CORE.md` | [jaffer-pmf], [jaffer-pmf-vc] | AI PMF Paradox, Pain × Freq × AI Advantage matrix, Invisible Pain Points, AI-Shaped Pain Test |
-| `AI_PMF_PRODUCT.md` | [jaffer-4d-method], [jaffer-pmf] | 4D Method (Discover, Design, Develop, Deploy), Autonomy Staircase, 5 Layers of AI System, 6 Laws of AI UX |
-| `AI_PMF_MOATS.md` | [jaffer-moats], [jaffer-distribution-vc], [jaffer-course] | Three-Moat Taxonomy (Data, Distribution, Trust) published; Behavioral + Workflow extended from course materials |
-| `AI_PMF_METRICS.md` | [jaffer-pricing], [jaffer-pmf] | Dual Success Metrics, 7 Hidden Costs of AI, 3 AI Pricing Models, 10-100-1000 Rule |
-| `AI_PMF_LAUNCH.md` | [jaffer-distribution], [jaffer-pmf] | Launch Strategy Canvas, Three-Layer Launch Framework published; 7 AI Launch Plays synthesized from multiple sources |
-| `AI_PMF_STRATEGY.md` | [jaffer-9-shifts], [jaffer-strategic-lens], [jaffer-strategy-vc] | 5-Question Pain Point Analysis, AI Positioning Template, AI Strategic Lens, 9 Shifts in AI PM, AI Feasibility Checklist |
-| `AI_PMF_TRUST.md` | [jaffer-trust], [jaffer-pmf], [jaffer-course] | Trust Layer published; 10 Psychological Triggers from course materials (trigger names 6-10 adapted) |
-| `CASE_STUDIES.md` | [jaffer-pmf], [jaffer-moats], [jaffer-trust] | 10 case studies (Klarna, Cursor, Perplexity, etc.) |
+| `AI_PMF_CORE.md` | [jaffer-pmf], [jaffer-pmf-vc] | AI PMF Paradox (published), Pain × Freq × AI matrix (concept published, scoring synthesized), Invisible Pain Points (published), AI-Shaped Pain Test (synthesized) |
+| `AI_PMF_PRODUCT.md` | [jaffer-4d-method], [jaffer-pmf], [jaffer-course] | 4D Method phase names (published); internal content diverges — published article has Discovery Debt Log, FTCEM, Drift Management, Three Moats of Deployment; course has different internal frameworks |
+| `AI_PMF_MOATS.md` | [jaffer-moats], [jaffer-distribution-vc], [jaffer-course] | Three-Moat Taxonomy (Data, Distribution, Trust) published; Behavioral + Workflow from course; Assessment Rubric, Interaction Matrix, Degradation Signals synthesized |
+| `AI_PMF_METRICS.md` | [jaffer-course], [aatir-course-summary] | Dual-metric concept (published [jaffer-pmf]); specific AI metrics, 7 Hidden Costs, 3 Pricing Models, 10-100-1000 all from course (published article has different taxonomy) |
+| `AI_PMF_LAUNCH.md` | [jaffer-course], [aatir-course-summary] | Three-Layer Launch Framework from course (published article [jaffer-distribution] uses GTM Wedge/PLG Loop/Moat Flywheel); Launch Strategy Canvas synthesized; 7 Launch Plays synthesized |
+| `AI_PMF_STRATEGY.md` | [jaffer-9-shifts], [jaffer-strategic-lens], [jaffer-strategy-vc], [jaffer-course] | AI Strategic Lens (published), 5-Question Pain Analysis (published); 9 Shifts content diverges from published article; AI Feasibility Checklist (unverified source) |
+| `AI_PMF_TRUST.md` | [jaffer-course], [aatir-course-summary] | Trust Layer components from course (published trust article [jaffer-trust] covers enterprise rollout, not tech components); 10 Triggers from course (names 6-10 adapted) |
+| `CASE_STUDIES.md` | [jaffer-pmf], [jaffer-moats], [jaffer-trust] | 10 case studies with TECHNOMATON analysis; factual claims verified (Klarna, Cursor, Clay) |
 
 ---
 
 ## Key Quotes Attribution
 
+> **Verification note:** Most quotes below could not be verified verbatim in the published articles they are attributed to. They likely originate from the Maven course [jaffer-course], podcasts, or talks. Quotes marked with `*` are verified paraphrases (similar concept found in published source but different wording). Only the Elena Verna quote has a confirmed alternative source.
+
 | Quote | Source Key | Framework Context |
 |-------|-----------|-------------------|
-| "The biggest mistake I see AI founders make is treating PMF like a checkbox." | [jaffer-pmf] | Core thesis — PMF is continuous |
-| "The model is the least differentiating layer." | [jaffer-4d-method] | Five Layers of AI System |
-| "If you scale before building trust, you're just scaling churn." | [jaffer-trust] | Trust Layer / Autonomy Staircase |
-| "AI UX is designed around failure, not success." | [jaffer-4d-method] | Six Laws of AI UX |
-| "Traction without moats is fragile. PMF without defensibility is a mirage." | [jaffer-moats] | Moat Taxonomy |
-| "Usage-based is a great business model, but a terrible activation model." | [jaffer-pricing] | AI Pricing Models |
-| "A model without context is a parrot. A model with context is a partner." | [jaffer-pmf] | Context layer |
-| "Autonomy is not a toggle — it's a staircase." | [jaffer-4d-method] | Autonomy Staircase |
-| "AI punishes shortcuts. It rewards discipline, clarity, and relentless focus on outcomes." | [jaffer-pmf] | Core thesis |
-| "In AI, your most engaged users are often your most expensive." | [jaffer-pricing] | Inference Treadmill |
-| "Features invite curiosity. Pain points drive budgets." | [jaffer-pmf] | Feature-first vs. Pain-first |
-| "Distribution isn't the sequel to PMF. In AI, distribution is PMF." | [jaffer-9-shifts] | Nine Shifts in AI PM |
-| "AI didn't suddenly turn everyone into a brilliant PM." | [jaffer-9-shifts] | AI amplifies judgment |
-| "Painkillers — unlike vitamins — find product-market fit much faster." | [jaffer-pmf] | Opportunity assessment |
-| "By adding friction, the company built trust." | [jaffer-trust] | Medical scribe case study |
-| "In SaaS, features might take years to copy. In AI, they're cloned in weeks." | [jaffer-moats] | Speed of commoditization |
+| "The biggest mistake I see AI founders make is treating PMF like a checkbox." | [jaffer-course] | Core thesis — PMF is continuous |
+| "The model is the least differentiating layer." | [jaffer-course] | Five Layers of AI System |
+| "If you scale before building trust, you're just scaling churn." | [jaffer-course] | Trust Layer / Autonomy Staircase |
+| "AI UX is designed around failure, not success." | [jaffer-course] | Six Laws of AI UX |
+| "Traction without moats is fragile. PMF without defensibility is a mirage." | [jaffer-course] | Moat Taxonomy |
+| "Usage-based is a great business model, but a terrible activation model." | [jaffer-course] | AI Pricing Models |
+| "A model without context is a parrot. A model with context is a partner." | [jaffer-course] | Context layer |
+| "Autonomy is not a toggle — it's a staircase." | [jaffer-course] | Autonomy Staircase |
+| "AI punishes shortcuts. It rewards discipline, clarity, and relentless focus on outcomes." | [jaffer-course] | Core thesis |
+| "In AI, your most engaged users are often your most expensive." | [jaffer-course] | Inference Treadmill |
+| "Features invite curiosity. Pain points drive budgets." | [jaffer-course] | Feature-first vs. Pain-first |
+| "Distribution isn't the sequel to PMF. In AI, distribution is PMF." | [jaffer-course] | Nine Shifts in AI PM |
+| "AI didn't suddenly turn everyone into a brilliant PM." | [jaffer-course] | AI amplifies judgment |
+| "Painkillers — unlike vitamins — find product-market fit much faster." | [jaffer-course] | Opportunity assessment |
+| "By adding friction, the company built trust." | [jaffer-course] | Medical scribe case study |
+| * "In SaaS, features might take years to copy. In AI, they're cloned in weeks." | [jaffer-moats] | Speed of commoditization — *paraphrase (source: "Commoditization happens in weeks, not months") |
 | "PMF is now a subscription that companies have to keep renewing." | [verna-treadmill] | AI PMF Paradox — verified phrasing (paraphrased as "PMF is a treadmill") |
-| "Trust cannot be bought. It must be earned slowly." | [jaffer-trust] | Trust Moat |
+| "Trust cannot be bought. It must be earned slowly." | [jaffer-course] | Trust Moat |
 | "Positioning is about who you are NOT serving." | [jaffer-strategic-lens] | AI Positioning Template |
 | "In AI, TAM is a trap. You don't win by being horizontal from day one." | [jaffer-strategic-lens] | Strategic constraint |
 

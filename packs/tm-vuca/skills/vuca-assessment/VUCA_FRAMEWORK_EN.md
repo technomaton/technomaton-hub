@@ -36,10 +36,12 @@ From a learning perspective, micro-skills are most important: they "can be pract
 The learning mechanism that drives all skill development:
 
 ```
-SET GOAL → GATHER INFORMATION → APPLY → REFLECT → (new goal)
+SET GOAL → GATHER INFORMATION → APPLY → EVALUATE OUTCOME → (reset goal)
 ```
 
-The +7 supporting skills:
+The +7 supporting skills (required to employ VCoL with virtuosity; most are also VUCA skills):
+
+> Note: The 7 skill names below are from Lectica's assessment documentation [lectica-org]. The Medium articles [dawson-nd-a] reference the +7 but do not enumerate them individually.
 
 1. Reflectivity
 2. Self-awareness / self-monitoring
@@ -538,7 +540,15 @@ The predictive power of management level over VUCA scores increased from 3.0% (2
 
 "The complexity gap is the distance between the complexity level of our thinking and the complexity of the issues confronted in our personal and work lives." Role complexity increases linearly with organizational hierarchy, but cognitive complexity of leaders does not keep pace. The gap widens at senior levels. AI governance adds additional layers of complexity (regulatory, ethical, technological) that deepen this gap.
 
-Two ways to bridge the gap: (1) learn optimally to increase complexity and quality of thinking, and (2) develop VUCA skills that allow collaboration and perspective coordination to tackle problems too complex for any single individual.
+Five strategies to bridge the gap [dawson-nd-b]:
+
+1. **Recognize our human limitations** — awareness that our thinking may not match the complexity of the issues we face
+2. **Work strategically on development** of our own skills and knowledge
+3. **Learn to work closely with others** — diverse perspectives compensate for individual limitations
+4. **Use the best tools available** to scaffold our thinking
+5. **Implement systems and processes** that support perspective-coordination skills
+
+Strategies 2-3 are most directly addressed by VUCA skill development and micro-VCoLing. AI governance adds additional layers of complexity (regulatory, ethical, technological) that deepen this gap — making strategy 4 (AI as thinking scaffold) increasingly relevant.
 
 ---
 

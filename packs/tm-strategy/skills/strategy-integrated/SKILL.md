@@ -46,10 +46,10 @@ Neither framework alone gives the full picture. A product can have strong PMF si
 
 | VUCA Dimension | PMF Framework | Integration Signal |
 |---|---|---|
-| Contextual Thinking (Kontextove mysleni) | Market analysis, Invisible Pain, Competition Readiness, AI Strategic Lens | Low Context + narrow market view = blind spots |
-| Decision-Making Process (Rozhodovaci proces) | 4D Method, Autonomy Staircase, Go/No-Go, AI Feasibility Checklist | Low Decision + no 4D structure = premature scaling |
-| Perspective Coordination (Koordinace perspektiv) | User research, Dual Metrics, Case Studies, 5-Question Pain Point Analysis | Low Perspectives + single metric = false PMF |
-| Collaborative Capacity (Kolaborativni kapacita) | Trust engineering, Workflow Moats, AI UX Laws, Trust Layer, 10 Psychological Triggers | Low Collaboration + no trust layer = scaling churn |
+| Contextual Thinking (Kontextuální myšlení) | Market analysis, Invisible Pain, Competition Readiness, AI Strategic Lens | Low Context + narrow market view = blind spots |
+| Decision-Making Process (Rozhodovací proces) | 4D Method, Autonomy Staircase, Go/No-Go, AI Feasibility Checklist | Low Decision + no 4D structure = premature scaling |
+| Perspective Coordination (Koordinace perspektiv) | User research, Dual Success Metrics, Case Studies, 5-Question Pain Point Analysis | Low Perspectives + single metric = false PMF |
+| Collaborative Capacity (Kolaborativní kapacita) | Trust engineering, Workflow Moats, Six Laws of AI UX, Trust Layer, 10 Psychological Triggers | Low Collaboration + no trust layer = scaling churn |
 
 ### How to read the matrix
 

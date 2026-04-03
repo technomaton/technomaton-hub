@@ -10,6 +10,8 @@
 
 ## Section 1: The Trust Layer
 
+> **Attribution:** These five components are from the Maven course [jaffer-course], not from the published trust article [jaffer-trust]. The published article covers enterprise 90-day rollout patterns (Notion, HubSpot, Intercom), not these technical trust components.
+
 Five components required for AI product trust. Every AI product must implement all five before scaling.
 
 | # | Component | Description | Implementation Example |
@@ -114,3 +116,76 @@ Reference table of key quotes from the AI PMF framework. Use for emphasis, valid
 | "Trust cannot be bought. It must be earned slowly." | Trust Moat — trust as long-term competitive advantage |
 | "Positioning is about who you are NOT serving." | AI Positioning Template — exclusion sharpens focus |
 | "In AI, TAM is a trap. You don't win by being horizontal from day one." | Strategic constraint — depth before breadth |
+
+---
+
+## Section 4: AI Onboarding Psychology
+
+> How users build trust in the first interaction determines long-term adoption.
+
+### The Trust-Usage Loop
+
+```
+No trust → No usage → No value → No trust (death spiral)
+```
+
+### AI Onboarding Must Answer 7 Subconscious Questions
+
+| # | Question | Design Response |
+|---|----------|----------------|
+| 1 | "Will this behave unpredictably?" | Show boundaries and constraints upfront |
+| 2 | "Will it misunderstand me?" | Demonstrate intent understanding in first interaction |
+| 3 | "Is it safe to try?" | Sandbox mode, reversible actions only |
+| 4 | "Does it require technical knowledge?" | No prompt engineering required; natural language |
+| 5 | "Can it break anything important?" | Safe defaults, no autonomous actions initially |
+| 6 | "Does it actually know what I mean?" | Parse ambiguity correctly from the start |
+| 7 | "Will it get me fired if it gets something wrong?" | Human-in-the-loop controls visible and prominent |
+
+### Three Pillars of AI Onboarding
+
+| Pillar | Description | Implementation |
+|--------|-------------|---------------|
+| **Safe Start** | AI cannot do damage yet; reversible actions only; no autonomy until trust built | Sandbox mode, "draft" outputs, confirmation before any action |
+| **Quick Win** | Fast output that feels smart; small task done well; evidence of competence without risk | Pre-loaded context packs, "Try this" suggestions, first output in <30 seconds |
+| **Clarity** | What AI can do, what it cannot, how it thinks, how to interact | Capabilities declaration, limitation acknowledgment, interaction guidance |
+
+> "AI onboarding is not mechanical. It is emotional engineering."
+
+### Activation Path
+
+```
+Curiosity → Trust → Value → Dependence
+```
+
+Four requirements for the activation path:
+1. **Removes cognitive friction** — guide, show examples, help express intent
+2. **Creates contained environment** — tasks where AI cannot embarrass itself
+3. **Builds competence gradually** — small tasks → bigger → multi-step → tool-based
+4. **Introduces autonomy last** — autonomy is reward for trust, not starting point
+
+---
+
+## Section 5: Extended Key Quotes
+
+Additional quotes from across the complete framework. See also Section 3 for the core quotes index.
+
+| Quote | Context / Framework |
+|-------|-------------------|
+| "The graveyard is littered with shiny AI products that don't solve real problems." | 4D Method — importance of discovery |
+| "People want 'invisible' assistants that save time on their most tedious workflows." | Product design — invisible AI principle |
+| "If users need to learn how to use your AI, you've already lost them." | AI UX — frictionless design |
+| "With AI, you earn trust in failure moments." | Failure-first design — error handling builds trust |
+| "AI pricing isn't a number. It's a system." | Pricing strategy — systemic pricing design |
+| "Price for your worst reasonable day, not your average day." | Unit economics — variance management |
+| "Growth that destroys economics is not growth. It's deferred failure." | AI economics — sustainable scaling |
+| "If your product is 'AI that does X,' OpenAI eventually eats you." | Strategy — commoditization risk |
+| "AI itself isn't the moat. Everyone can access GPT-4o, Claude, Llama, Mistral." | Strategy — moats vs. models |
+| "Proof compels. Hype fades." | Launch strategy — demonstration over claims |
+| "In AI, features don't last. Every summarizer, assistant, or copilot can be copied in hours." | Distribution — features are temporary |
+| "Stop asking 'What can AI do?' Start asking 'How will AI spread in ways competitors cannot copy?'" | Distribution — distribution as product |
+| "If you gather the wrong data, your model gets dumber at scale." | Strategy — data quality compounds |
+| "Your AI product strategy is the new PMF." | Strategy — strategy as PMF enabler |
+| "API-first AI products die fast. They mistake building a demo for building a company." | Platform trap — API dependency |
+| "Ignoring feedback in AI isn't just a missed opportunity. It's a slow death." | Feedback loops — continuous improvement |
+| "The question isn't 'How many users do we have?' The question is 'How many users can't live without us?'" | Metrics — depth over breadth |
+| "Clicks are like curiosity. Repeat use tells you they found value." | Metrics — engagement vs. adoption |

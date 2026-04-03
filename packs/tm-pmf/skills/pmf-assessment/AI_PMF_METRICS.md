@@ -1,5 +1,10 @@
 <!-- License: CC-BY-4.0 — Attribution: Miqdad Jaffer (Product Lead, OpenAI) -->
-<!-- Sources: [jaffer-pricing], [jaffer-pmf] — see AI_PMF_BIBLIOGRAPHY.md -->
+<!-- Sources: [jaffer-pricing], [jaffer-pmf], [jaffer-course] — see AI_PMF_BIBLIOGRAPHY.md -->
+<!-- Attribution note: The dual-metric concept is from Jaffer's published articles.
+     Specific AI metrics (Override Rate, Speed Delta, etc.), 7 Hidden Costs, 3 Pricing Models,
+     and 10-100-1000 Rule are from the Maven course [jaffer-course] via [aatir-course-summary].
+     The published pricing article [jaffer-pricing] uses different cost taxonomy (7 Layers)
+     and four pricing models (Usage-Based, Hybrid, Outcome-Based, Capacity-Based). -->
 
 # AI PMF Metrics — Measurement Framework
 
@@ -9,6 +14,8 @@
 ---
 
 ## Section 1: Dual Success Metrics
+
+> **Attribution:** The dual-metric concept is from Jaffer's published articles [jaffer-pmf]. The specific AI metrics below (Override Rate, Speed Delta, Workflow Stickiness, Correction Velocity, Escalation Ratio) are from the Maven course [jaffer-course]; the published articles mention accuracy, hallucination rates, and response quality instead.
 
 AI products require TWO parallel measurement systems: traditional product metrics and AI-specific indicators.
 
@@ -59,6 +66,8 @@ AI products require TWO parallel measurement systems: traditional product metric
 
 ## Section 2: Seven Hidden Costs of AI Products
 
+> **Attribution:** From the Maven course [jaffer-course] via [aatir-course-summary]. The published pricing article [jaffer-pricing] describes a different "7 Layers of AI cost structure" (data prep, retrieval, context construction, model execution, orchestration, parallelism, evaluation/monitoring).
+
 | # | Cost | Description | Typical Impact | Mitigation |
 |---|------|-------------|---------------|-----------|
 | 1 | Hallucination Cost | Detecting, preventing, and recovering from incorrect outputs | Support tickets, trust damage, legal risk | Confidence scoring, citation, human-in-loop |
@@ -101,6 +110,8 @@ Cost as % of revenue: ____%
 
 ## Section 3: Three AI Pricing Models
 
+> **Attribution:** From the Maven course [jaffer-course]. The published pricing article [jaffer-pricing] lists four models: Usage-Based, Hybrid, Outcome-Based, and Capacity-Based (different from the three below).
+
 | Model | Risk Level | Best For | Warning |
 |-------|-----------|----------|---------|
 | Usage-Based | Highest | API/platform products | "Most AI products fail with this — users afraid to use them" |
@@ -131,6 +142,8 @@ Cost as % of revenue: ____%
 ---
 
 ## Section 4: 10-100-1000 Validation Loop
+
+> **Attribution:** From the Maven course [jaffer-course] via [aatir-course-summary]. Not found in published articles.
 
 ### Stage Definitions
 

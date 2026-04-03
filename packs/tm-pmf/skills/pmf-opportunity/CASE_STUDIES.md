@@ -430,7 +430,7 @@ Hidden Costs, Token Burn, Usage-Based Pricing, Distribution Moat, Bootstrap Para
 
 | Pattern | Winners (Klarna, Cursor, Perplexity, Clay, Runway, Midjourney) | Failures (Jasper, Babylon, Chegg, Duolingo) |
 |---------|---------------------------------------------------------------|---------------------------------------------|
-| Average moat score | 18.3/25 | 9.0/25 |
+| Average moat score | 19.0/25 | 9.5/25 |
 | Moats >3 strength | 3-4 per company | 0-1 per company |
 | Primary moat type | Workflow or Data | None dominant |
 | Trust score | 3-5 | 0-2 |
@@ -438,16 +438,20 @@ Hidden Costs, Token Burn, Usage-Based Pricing, Distribution Moat, Bootstrap Para
 
 ### Framework Frequency
 
+> Counts based on explicit "Framework Tags" per case study, not moat score tables.
+
 | Framework | Times Referenced | Case Studies |
 |-----------|----------------|-------------|
-| Workflow Moat | 5 | Klarna, Cursor, Runway, Clay, Midjourney |
-| Trust (Moat/Failure/Restoration) | 5 | Perplexity, Babylon, Duolingo, Chegg, Klarna |
-| Hidden Costs / Token Burn | 4 | Midjourney, Babylon, Klarna, Jasper |
-| Data Moat / Data Network Effects | 4 | Clay, Perplexity, Cursor, Runway |
-| Behavioral Moat | 4 | Cursor, Runway, Duolingo, Midjourney |
-| Commoditization Risk / Moat Erosion | 3 | Jasper, Chegg, Duolingo |
-| Distribution Moat | 3 | Perplexity, Midjourney, Duolingo |
-| Autonomy Staircase | 2 | Klarna, Duolingo |
+| Workflow Moat | 3 | Klarna, Cursor, Runway |
+| Trust (Moat/Failure/Restoration/Compounding) | 4 | Perplexity, Babylon, Duolingo, Perplexity |
+| Hidden Costs / Token Burn | 3 | Klarna, Babylon, Midjourney |
+| Data Moat / Data Network Effects | 2 | Clay, Perplexity |
+| Behavioral Moat | 3 | Cursor, Runway, Duolingo |
+| Commoditization Risk / Moat Erosion | 2 | Jasper, Chegg |
+| Distribution Moat | 2 | Perplexity, Midjourney |
+| Autonomy Staircase | 3 | Klarna, Runway, Duolingo |
+| Bootstrap Paradox Resolution | 3 | Cursor, Clay, Midjourney |
+| Pain x Freq x AI | 3 | Klarna, Cursor, Runway |
 
 ### Key Takeaways for AI PMF Assessment
 

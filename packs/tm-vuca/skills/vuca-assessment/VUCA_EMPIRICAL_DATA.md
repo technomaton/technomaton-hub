@@ -42,7 +42,7 @@ The rate of improvement increased from +6 to +8 points despite the same ~5-year 
 
 ### Predictive Power of Management Level
 
-Source: [dawson-2024a]
+Source: [dawson-2024c]
 
 | Period | R² (management level → VUCA score) | Interpretation |
 |--------|-------------------------------------|----------------|
@@ -56,16 +56,18 @@ The 4x increase in predictive power (3.0% → 13.1%) means certified consultants
 
 ## 3. Score Targets by Management Level
 
-Source: [dawson-2024c]
+Source: [dawson-2024c] (entry through senior), [dawson-2024b] (CEO level)
 
-| Level | Target VUCA Score | Lectical Zone | Current Reality |
-|-------|-------------------|---------------|-----------------|
-| Entry-level managers | ~55 | Early systems thinking | Achievable with micro-VCoLing |
-| Mid-level managers | ~70 | Early systems thinking | Stretch target for most |
-| Senior leaders | ~85 | Advanced systems thinking | Large gap — current averages ~40-47 |
-| CEOs/Executives | ~90-100 | Advanced systems thinking | Even CEOs perform at 55-60 |
+| Level | Target VUCA Score | Lectical Zone | Current Reality | Source |
+|-------|-------------------|---------------|-----------------|--------|
+| Entry-level managers | ~55 | Early systems thinking | Achievable with micro-VCoLing | [dawson-2024c] |
+| Mid-level managers | ~70 | Early systems thinking | Stretch target for most | [dawson-2024c] |
+| Senior leaders | ~85 | Advanced systems thinking | Large gap — current averages ~40-47 | [dawson-2024c] |
+| CEOs/Executives | ~90-100 | Advanced systems thinking | Even CEOs perform at 55-60 | [dawson-2024b] |
 
-**Key finding:** Even CEOs perform in the 55-60 range, "well below the 90-100 range that would serve them best."
+**Key finding:** Even CEOs perform in the 55-60 range, "well below the 90-100 range that would serve them best" [dawson-2024b].
+
+> Note: Lectical Zone mappings are from Lectica's assessment documentation [lectica-levels], not from the Medium articles.
 
 ---
 
@@ -157,6 +159,8 @@ Source: [lectica-org]
 
 ## 7. Nine Key Principles for Application
 
+> Note: The original sources do not present a numbered list of 9 principles. This is a TECHNOMATON synthesis — individual claims are traceable to specific articles (see Primary Source column).
+
 Source: [dawson-2020a], [dawson-2020b], [dawson-2020c], [dawson-2020d], [dawson-2021a]
 
 | # | Principle | Implication | Primary Source |
@@ -175,9 +179,11 @@ Source: [dawson-2020a], [dawson-2020b], [dawson-2020c], [dawson-2020d], [dawson-
 
 ## 8. VCoL+7 Supporting Skills
 
-Source: [dawson-2020a]
+Source: [dawson-nd-a] (VCoL cycle), [lectica-org] (+7 skill names)
 
-The Virtuous Cycle of Learning (VCoL) mechanism: `SET GOAL → GATHER INFORMATION → APPLY → REFLECT → (new goal)`
+> Note: The +7 skill names are not enumerated in the Medium articles. They likely come from Lectica's assessment documentation or course materials.
+
+The Virtuous Cycle of Learning (VCoL) mechanism: `SET GOAL → GATHER INFORMATION → APPLY → EVALUATE OUTCOME → (reset goal)`
 
 | # | Supporting Skill | Role in VCoL |
 |---|-----------------|--------------|

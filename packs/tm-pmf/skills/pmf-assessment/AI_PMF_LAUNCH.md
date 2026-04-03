@@ -1,9 +1,14 @@
 <!-- License: CC-BY-4.0 — Attribution: Miqdad Jaffer (Product Lead, OpenAI) -->
-<!-- Sources: [jaffer-distribution], [jaffer-pmf] — see AI_PMF_BIBLIOGRAPHY.md -->
+<!-- Sources: [jaffer-distribution], [jaffer-pmf], [jaffer-course] — see AI_PMF_BIBLIOGRAPHY.md -->
+<!-- Attribution note: The published distribution article [jaffer-distribution] describes a different
+     framework (GTM Wedge / PLG Loop / Moat Flywheel). Content below largely matches the Maven course
+     [jaffer-course]. Launch Strategy Canvas and Go/No-Go criteria are TECHNOMATON syntheses. -->
 
 # AI Product-Market Fit — Launch and Scaling
 
 ## 1. Launch Strategy Canvas
+
+> **Attribution:** TECHNOMATON synthesis. The published distribution article [jaffer-distribution] does not contain this canvas format.
 
 Score each dimension as Green / Yellow / Red before making any scaling decision.
 
@@ -236,6 +241,8 @@ Top 3 plays for your launch:
 ---
 
 ## 5. Three-Layer Launch Framework
+
+> **Attribution:** From the Maven course [jaffer-course] via [aatir-course-summary]. The published distribution article [jaffer-distribution] uses a different three-layer model: GTM Wedge / PLG Loop / Moat Flywheel.
 
 Every AI product launch needs three layers working together. Missing any layer creates a fragile launch.
 
