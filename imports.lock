@@ -58,12 +58,12 @@ vendors:
       - name: writing-skills
         path: "skills/writing-skills/SKILL.md"
         hash: "sha256:d83a09d6a1c6976f6cc2f40addeae653a4a6eb5903097ebc365d90242e00e379"
-  - name: skills
+  - name: anthropic-skills
     version: "main"
     source: "https://github.com/anthropics/skills"
     commit: "b0cbd3df1533b396d281a6886d5132f623393a9c"
     content_hash: "sha256:6f753e50cad7b011bb3d64765aa5e9a1bbfcbf65c29485466e5d5d351c45d4a2"
-    vendor_path: "./vendor/skills-main"
+    vendor_path: "./vendor/anthropic-skills-main"
     license: "unknown"
     quality_check:
       passed: true

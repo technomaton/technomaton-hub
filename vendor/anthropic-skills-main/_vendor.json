@@ -1,5 +1,5 @@
 {
-  "name": "skills",
+  "name": "anthropic-skills",
   "version": "main",
   "source": "https://github.com/anthropics/skills",
   "commit": "b0cbd3df1533b396d281a6886d5132f623393a9c",
