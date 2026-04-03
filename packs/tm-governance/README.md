@@ -47,4 +47,4 @@ scripts/sync-edpa.sh
 - [FAQ](https://github.com/technomaton/edpa/blob/main/docs/faq.md)
 - [Simulation & Calibration](https://github.com/technomaton/edpa-simulation)
 
-See references/ for the original Czech methodology documentation.
+See `references/methodology.cs.md` for the original Czech methodology documentation.
