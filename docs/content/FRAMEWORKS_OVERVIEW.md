@@ -29,7 +29,7 @@ Evaluates cognitive complexity and decision-making skills under VUCA (Volatility
 
 ### tm-pmf — AI Product-Market Fit Playbook
 
-Strategic assessment framework for AI products adapted from Miqdad Jaffer's (Product Lead, OpenAI) AI PMF framework ecosystem. Covers: opportunity scoring (Pain × Frequency × AI Advantage), product development (4D Method: Discover, Design, Develop, Deploy), defensibility (Five-Moat Taxonomy: Data, Behavioral, Workflow, Distribution, Trust), measurement (Dual Success Metrics), launch strategy (7 AI Launch Plays), and trust engineering (Trust Layer + 10 Psychological Triggers). Core insight: "PMF is a treadmill — you re-earn it every month."
+Strategic assessment framework for AI products adapted from Miqdad Jaffer's (Product Lead, OpenAI) AI PMF framework ecosystem. Covers: opportunity scoring (Pain × Frequency × AI Advantage), product development (4D Method: Discover, Design, Develop, Deploy), defensibility (Five-Moat Taxonomy: Data, Behavioral, Workflow, Distribution, Trust), measurement (Dual Success Metrics), launch strategy (7 AI Launch Plays), and trust engineering (Trust Layer + 10 Psychological Triggers). Core insight: "PMF is now a subscription that companies have to keep renewing." (Elena Verna)
 
 **Knowledge files:** `AI_PMF_CORE.md`, `AI_PMF_PRODUCT.md`, `AI_PMF_MOATS.md`, `AI_PMF_METRICS.md`, `AI_PMF_LAUNCH.md`, `AI_PMF_STRATEGY.md`, `AI_PMF_TRUST.md`, `AI_PMF_BIBLIOGRAPHY.md`, `CASE_STUDIES.md`
 **Agents:** 5 (conductor + 4 domain specialists)

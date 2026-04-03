@@ -200,6 +200,8 @@ Action items: _______________
 
 ## 4. 7 AI Launch Plays
 
+> **Attribution:** These plays are synthesized from tactical advice across multiple Jaffer articles [jaffer-pmf], [jaffer-distribution], [jaffer-4d-method]. The "7 Launch Plays" taxonomy is a TECHNOMATON compilation; Jaffer does not publish this exact list as a named framework.
+
 Seven tactical plays for launching AI products effectively. Apply in sequence or select the most relevant for your launch stage.
 
 | # | Play | Description | Why It Works |

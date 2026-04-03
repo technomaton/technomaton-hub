@@ -17,8 +17,10 @@ AI PMF is simultaneously **easier** and **harder** than traditional PMF.
 
 ### Key Insight
 
-> "PMF is a treadmill — you re-earn it every month."
-> — Elena Verna
+> "PMF is now a subscription that companies have to keep renewing."
+> — Elena Verna, *The Product-Market Fit Treadmill* (2025)
+>
+> Note: Often paraphrased as "PMF is a treadmill — you re-earn it every month." The verified phrasing above is from her Substack article.
 
 ### Three Structural Forces That Break Traditional Linear PMF
 

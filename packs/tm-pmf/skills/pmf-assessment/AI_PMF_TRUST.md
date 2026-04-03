@@ -1,5 +1,5 @@
 <!-- License: CC-BY-4.0 — Attribution: Miqdad Jaffer (Product Lead, OpenAI) -->
-<!-- Sources: [jaffer-trust], [jaffer-pmf] — see AI_PMF_BIBLIOGRAPHY.md -->
+<!-- Sources: [jaffer-trust], [jaffer-pmf], [jaffer-course] — see AI_PMF_BIBLIOGRAPHY.md -->
 
 # AI Product-Market Fit — Trust and Adoption
 
@@ -45,6 +45,8 @@ Total: ___/10
 ---
 
 ## Section 2: 10 Psychological Triggers for AI Adoption
+
+> **Attribution:** These triggers originate from Jaffer's Maven AI Product Management course [jaffer-course], not from the published trust article [jaffer-trust]. Trigger names in this knowledge base are adapted; the original course version (per third-party summaries) uses some different names for triggers 6-10 (Context Continuity, Speed Multiplier, Authority Clarity, Social Proof Moments, Habit Loop Closure).
 
 These are the psychological moments that convert skeptics into users and users into advocates. Design your product to create these moments deliberately.
 
@@ -108,7 +110,7 @@ Reference table of key quotes from the AI PMF framework. Use for emphasis, valid
 | "Painkillers — unlike vitamins — find product-market fit much faster." | Opportunity assessment — pain severity drives PMF speed |
 | "By adding friction, the company built trust. And by building trust, they unlocked scale." | Medical scribe case study — trust through intentional friction |
 | "In SaaS, features might take years to copy. In AI, they're cloned in weeks." | Moat Taxonomy — speed of commoditization in AI |
-| "PMF is a treadmill — you re-earn it every month." | AI PMF Paradox — Elena Verna quote |
+| "PMF is now a subscription that companies have to keep renewing." | AI PMF Paradox — Elena Verna, *The Product-Market Fit Treadmill* (2025). Often paraphrased as "PMF is a treadmill." |
 | "Trust cannot be bought. It must be earned slowly." | Trust Moat — trust as long-term competitive advantage |
 | "Positioning is about who you are NOT serving." | AI Positioning Template — exclusion sharpens focus |
 | "In AI, TAM is a trap. You don't win by being horizontal from day one." | Strategic constraint — depth before breadth |

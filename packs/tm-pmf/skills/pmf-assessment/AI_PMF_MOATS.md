@@ -1,5 +1,9 @@
 <!-- License: CC-BY-4.0 — Attribution: Miqdad Jaffer (Product Lead, OpenAI) -->
 <!-- Sources: [jaffer-moats], [jaffer-distribution-vc] — see AI_PMF_BIBLIOGRAPHY.md -->
+<!-- Attribution note: Jaffer's published articles describe 3 core moats (Data, Distribution, Trust).
+     Behavioral and Workflow moats are derived from course materials and supporting concepts
+     in his articles (habit loops, workflow embedding). The Five-Moat framing is a TECHNOMATON
+     synthesis extending Jaffer's published three-moat taxonomy. -->
 
 # AI PMF Moats — Defensibility Framework
 
@@ -10,15 +14,22 @@
 
 ## Section 1: Five-Moat Taxonomy
 
-### Core Moats
+> **Attribution:** Jaffer's published framework defines three core moats: **Data, Distribution, Trust** [jaffer-moats]. The Behavioral and Workflow moats are synthesized from supporting concepts in his articles and Maven course materials, elevated here for completeness.
+
+### Core Moats (published by Jaffer)
 
 | Moat Type | Definition | How to Build | How to Measure | Time to Build |
 |-----------|-----------|--------------|----------------|---------------|
 | Data Moat | Proprietary training data competitors can't replicate | User interactions generate unique dataset; domain-specific data partnerships; feedback loops that improve with usage | Data uniqueness score, coverage gap vs competitors, data freshness | 12-24 months |
-| Behavioral Moat | Reinforcing user loops that compound | Habit formation (daily/weekly triggers), personalization that improves with use, switching costs from learned preferences | DAU/MAU ratio, session frequency trend, user-specific model improvement rate | 6-12 months |
-| Workflow Moat | Deep embedding into critical business processes | Become the system of record, integrate into existing toolchains, handle edge cases competitors ignore | % of workflow dependent on product, integration depth score, replacement cost estimate | 12-18 months |
 | Distribution Moat | Embedded so deeply into channels that access compounds; competitors can't easily reach the same users | Embed into existing user tools and workflows; create viral sharing mechanics; launch inside platforms where trust already exists | Channel reach, viral coefficient, cost of user acquisition vs. competitors | 6-12 months |
 | Trust Moat | Reputation in high-stakes domains; once a brand becomes the "safe" choice, competitors face years of uphill battle | Consistent quality over time; transparency and citations; third-party validation; audit trails; graceful error handling | Brand trust surveys, consideration rate in enterprise procurement, repeat buyer rate | 18-36 months |
+
+### Extended Moats (synthesized from course materials and supporting concepts)
+
+| Moat Type | Definition | How to Build | How to Measure | Time to Build |
+|-----------|-----------|--------------|----------------|---------------|
+| Behavioral Moat | Reinforcing user loops that compound | Habit formation (daily/weekly triggers), personalization that improves with use, switching costs from learned preferences | DAU/MAU ratio, session frequency trend, user-specific model improvement rate | 6-12 months |
+| Workflow Moat | Deep embedding into critical business processes | Become the system of record, integrate into existing toolchains, handle edge cases competitors ignore | % of workflow dependent on product, integration depth score, replacement cost estimate | 12-18 months |
 
 > "Trust cannot be bought. It must be earned slowly."
 

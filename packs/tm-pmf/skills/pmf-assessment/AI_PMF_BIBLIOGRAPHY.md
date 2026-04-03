@@ -34,11 +34,18 @@
 | [aatir-summary] | OpenAI's product lead dropped this crash course on building, pricing and launching AI products | Aatir Abdul Rauf | [link](https://aatir.substack.com/p/complete-crash-course-in-building) |
 | [jaffer-podcast] | OpenAI and Ex-Shopify Product Lead Reveals How He Builds AI Products | Behind the Craft (Peter Yang) | [link](https://creatoreconomy.so/p/how-to-build-ai-products-miqdad-jaffer) |
 
+### Course Materials
+
+| Key | Title | Platform | URL |
+|-----|-------|----------|-----|
+| [jaffer-course] | Building AI Products with OpenAI (6-week AI PM Certification) | Maven | [link](https://maven.com/p/1e25ef/building-ai-products-with-open-ai) |
+| [aatir-course-summary] | OpenAI's product lead dropped this crash course | Aatir Abdul Rauf (Substack) | [link](https://aatir.substack.com/p/complete-crash-course-in-building) |
+
 ### Quoted Authors
 
-| Key | Attribution | Context |
-|-----|------------|---------|
-| [verna-treadmill] | Elena Verna — "PMF is a treadmill — you re-earn it every month." | Quoted in [jaffer-pmf], AI PMF Paradox section |
+| Key | Attribution | Verified Phrasing | Context |
+|-----|------------|-------------------|---------|
+| [verna-treadmill] | Elena Verna — *The Product-Market Fit Treadmill* (Nov 2025) | "PMF is now a subscription that companies have to keep renewing." | Often paraphrased as "PMF is a treadmill — you re-earn it every month." Verified phrasing from her [Substack](https://www.elenaverna.com/p/the-product-market-fit-treadmill) (paid, $9/mo or $99/yr). Concept also discussed on [Lenny's Podcast](https://www.lennysnewsletter.com/p/the-new-ai-growth-playbook-for-2026-elena-verna). |
 
 ---
 
@@ -48,11 +55,11 @@
 |---|---|---|
 | `AI_PMF_CORE.md` | [jaffer-pmf], [jaffer-pmf-vc] | AI PMF Paradox, Pain × Freq × AI Advantage matrix, Invisible Pain Points, AI-Shaped Pain Test |
 | `AI_PMF_PRODUCT.md` | [jaffer-4d-method], [jaffer-pmf] | 4D Method (Discover, Design, Develop, Deploy), Autonomy Staircase, 5 Layers of AI System, 6 Laws of AI UX |
-| `AI_PMF_MOATS.md` | [jaffer-moats], [jaffer-distribution-vc] | Five-Moat Taxonomy (Data, Behavioral, Workflow, Distribution, Trust), AI Growth Framework |
+| `AI_PMF_MOATS.md` | [jaffer-moats], [jaffer-distribution-vc], [jaffer-course] | Three-Moat Taxonomy (Data, Distribution, Trust) published; Behavioral + Workflow extended from course materials |
 | `AI_PMF_METRICS.md` | [jaffer-pricing], [jaffer-pmf] | Dual Success Metrics, 7 Hidden Costs of AI, 3 AI Pricing Models, 10-100-1000 Rule |
-| `AI_PMF_LAUNCH.md` | [jaffer-distribution], [jaffer-pmf] | Launch Strategy Canvas, 7 AI Launch Plays, Three-Layer Launch Framework |
+| `AI_PMF_LAUNCH.md` | [jaffer-distribution], [jaffer-pmf] | Launch Strategy Canvas, Three-Layer Launch Framework published; 7 AI Launch Plays synthesized from multiple sources |
 | `AI_PMF_STRATEGY.md` | [jaffer-9-shifts], [jaffer-strategic-lens], [jaffer-strategy-vc] | 5-Question Pain Point Analysis, AI Positioning Template, AI Strategic Lens, 9 Shifts in AI PM, AI Feasibility Checklist |
-| `AI_PMF_TRUST.md` | [jaffer-trust], [jaffer-pmf] | Trust Layer, 10 Psychological Triggers for AI Adoption, Key Quotes Index |
+| `AI_PMF_TRUST.md` | [jaffer-trust], [jaffer-pmf], [jaffer-course] | Trust Layer published; 10 Psychological Triggers from course materials (trigger names 6-10 adapted) |
 | `CASE_STUDIES.md` | [jaffer-pmf], [jaffer-moats], [jaffer-trust] | 10 case studies (Klarna, Cursor, Perplexity, etc.) |
 
 ---
@@ -77,7 +84,7 @@
 | "Painkillers — unlike vitamins — find product-market fit much faster." | [jaffer-pmf] | Opportunity assessment |
 | "By adding friction, the company built trust." | [jaffer-trust] | Medical scribe case study |
 | "In SaaS, features might take years to copy. In AI, they're cloned in weeks." | [jaffer-moats] | Speed of commoditization |
-| "PMF is a treadmill — you re-earn it every month." | [verna-treadmill] | AI PMF Paradox (Elena Verna) |
+| "PMF is now a subscription that companies have to keep renewing." | [verna-treadmill] | AI PMF Paradox — verified phrasing (paraphrased as "PMF is a treadmill") |
 | "Trust cannot be bought. It must be earned slowly." | [jaffer-trust] | Trust Moat |
 | "Positioning is about who you are NOT serving." | [jaffer-strategic-lens] | AI Positioning Template |
 | "In AI, TAM is a trap. You don't win by being horizontal from day one." | [jaffer-strategic-lens] | Strategic constraint |
