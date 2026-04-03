@@ -1,6 +1,6 @@
 {
   "name": "tm-strategy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Integrated strategic assessment: orchestrates VUCA + PMF frameworks.",
   "author": { "name": "TECHNOMATON Team" },
   "license": "MIT",

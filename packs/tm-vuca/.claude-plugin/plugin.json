@@ -1,6 +1,6 @@
 {
   "name": "tm-vuca",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "VUCA assessment: multi-agent skill evaluation framework based on Dawson/Lectica research.",
   "author": { "name": "TECHNOMATON Team" },
   "license": "MIT",
