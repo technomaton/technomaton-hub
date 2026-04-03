@@ -8,7 +8,7 @@ Meta-plugin that orchestrates VUCA Skills + AI PMF Playbook for comprehensive st
 |------|-------|-------------|
 | Skills | 1 | strategy-integrated (VUCA + PMF orchestration) |
 | Agents | 1 | strategy-conductor (meta-orchestrator) |
-| Commands | 2 | /strategy/audit, /strategy/compass |
+| Commands | 2 | /strategy:audit, /strategy:compass |
 
 ## Dependencies
 
@@ -26,8 +26,8 @@ Meta-plugin that orchestrates VUCA Skills + AI PMF Playbook for comprehensive st
 
 ## Usage
 
-- `/strategy/audit [target]` — Full combined VUCA + PMF assessment
-- `/strategy/compass [target]` — Quick strategic positioning with 2x2 matrix
+- `/strategy:audit [target]` — Full combined VUCA + PMF assessment
+- `/strategy:compass [target]` — Quick strategic positioning with 2x2 matrix
 
 ## License
 

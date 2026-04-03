@@ -8,7 +8,7 @@ Strategic assessment plugin for AI products. Multi-agent system covering opportu
 |------|-------|-------------|
 | Skills | 4 | pmf-assessment, pmf-opportunity, pmf-product-design, pmf-moat-analysis |
 | Agents | 5 | conductor + 4 specialists |
-| Commands | 6 | /pmf/score, /pmf/audit, /pmf/moat, /pmf/launch-check, /pmf/invisible-pain, /pmf/validate |
+| Commands | 6 | /pmf:score, /pmf:audit, /pmf:moat, /pmf:launch-check, /pmf:invisible-pain, /pmf:validate |
 | Knowledge | 6 | 5 framework files + case studies |
 
 ## Key Frameworks
