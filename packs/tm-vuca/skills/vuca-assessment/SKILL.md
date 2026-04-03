@@ -23,24 +23,24 @@ This skill provides the VUCA framework knowledge base and routes to the appropri
 
 ## When this skill activates
 
-Auto-trigger on keywords: "VUCA", "complexity gap", "audit skills", "vyváženost", "balance", "skill audit", "agent evaluation", "mikro-VCoL", "Lectical", "Dawson"
+Auto-trigger on keywords: "VUCA", "complexity gap", "audit skills", "vyváženost", "balance", "skill audit", "agent evaluation", "mikro-VCoL", "micro-VCoL", "Lectical", "Lectical Level", "VCoL", "Dawson", "assessment tools", "LDMA"
 
 ## What to do
 
-1. Read `VUCA_FRAMEWORK.md` in this directory for the complete hierarchy
+1. Read `VUCA_FRAMEWORK_EN.md` (primary) and optionally `VUCA_FRAMEWORK_CS.md` (Czech translation) in this directory for the complete hierarchy
 2. Route to the appropriate agent:
    - Full audit → `@vuca-conductor` (orchestrates all 4 specialist agents)
    - Single dimension focus → direct to specific agent (@vuca-collaboration, @vuca-perspectives, @vuca-context, @vuca-decision)
-   - Just information about VUCA → answer from VUCA_FRAMEWORK.md directly
+   - Just information about VUCA → answer from VUCA_FRAMEWORK_EN.md directly
 3. If no agent is needed (simple factual question), answer inline
 
 ## Quick reference
 
 Four VUCA dimensions:
-- **Kolaborace** (Collaborative Capacity) — audience adaptation, uncertainty, communication
-- **Perspektivy** (Perspective Coordination) — multi-source, cross-validation, integration
-- **Kontext** (Contextual Thinking) — situation, broader context, constraints, negative triggers
-- **Rozhodování** (Decision-Making Process) — framing, goals, alternatives, verification
+- **Collaborative Capacity** (Kolaborativní kapacita) — audience adaptation, uncertainty, communication
+- **Perspective Coordination** (Koordinace perspektiv) — multi-source, cross-validation, integration
+- **Contextual Thinking** (Kontextuální myšlení) — situation, broader context, constraints, negative triggers
+- **Decision-Making Process** (Rozhodovací proces) — framing, goals, alternatives, verification
 
 VCoL cycle: Goal → Gather → Apply → Reflect → (new goal)
 

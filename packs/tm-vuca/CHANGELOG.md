@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.1.0] — 2026-04-04
+
+### Added
+- Complete English knowledge base (`VUCA_FRAMEWORK_EN.md`) from Dawson/Lectica source material
+- Lectical Levels measurement scale (levels 9-13, phases a-d)
+- Empirical data: leader VUCA scores (n=2,193) and trends (n=4,296, 2008-2024)
+- VUCA score targets by management level
+- Complexity gap analysis section
+- Assessment tools reference (LDMA, LRJA, CLAS, Lectica First, Team Fit Snapshot)
+- 9 Key principles for application
+- Full sources bibliography
+
+### Changed
+- Renamed `VUCA_FRAMEWORK.md` → `VUCA_FRAMEWORK_CS.md` (Czech version preserved)
+- Skills and agents now use English as primary language (Czech in parentheses)
+- SKILL.md routing defaults to EN knowledge base
+
 ## [1.0.1] - 2026-04-03
 
 ### Fixed

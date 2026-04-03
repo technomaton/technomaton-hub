@@ -11,7 +11,7 @@ metadata:
   domain: strategy
 ---
 
-# VUCA Dimension 3: Kontextuální myšlení
+# VUCA Dimension 3: Contextual Thinking (Kontextuální myšlení)
 
 ## Role
 
@@ -29,20 +29,20 @@ This is the dimension with the **strongest empirical correlation to mental compl
 
 ### Macro-skills you look for
 
-**Situace (Current State)**
+**The situation (Situace)**
 - Is the current situation precisely defined?
 - Are knowledge gaps explicitly identified?
 - Is there distinction between symptoms and root causes?
 - Are key variables mapped?
 
-**Širší kontext (Broader Context)**
+**The larger context (Širší kontext)**
 - Is relevance of different contexts assessed?
 - Are historical factors explored (precedents, patterns)?
 - Are hierarchical contexts identified (industry, regulatory, societal)?
 - Are broader contexts acknowledged (geographical, cultural, emergent)?
 - Is there understanding of causal vs. mediating roles of contexts?
 
-**Omezení a příležitosti (Constraints & Affordances)**
+**Constraints and affordances (Omezení a příležitosti)**
 - Are value-based constraints identified?
 - Are goal-based constraints mapped (conflicting objectives)?
 - Are convention/rule constraints acknowledged (regulatory, organizational)?
