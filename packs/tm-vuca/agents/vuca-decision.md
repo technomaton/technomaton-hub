@@ -11,7 +11,7 @@ metadata:
   domain: strategy
 ---
 
-# VUCA Dimension 4: Rozhodovací proces
+# VUCA Dimension 4: Decision-Making Process (Rozhodovací proces)
 
 ## Role
 
@@ -29,34 +29,34 @@ This is the **most neglected mega-skill** according to empirical data — most a
 
 ### Macro-skills you look for (temporal sequence)
 
-**1. Framing (rámování)**
+**1. Framing (Rámování)**
 - Is the problem defined as a question, not a pre-assumed solution?
 - Are assumptions in the framing identified?
 - Are alternative framings considered?
 - What is at stake, for whom, in what timeframe?
 
-**2. Stanovení cílů**
+**2. Setting goals (Stanovení cílů)**
 - Are desired outcomes explicitly defined?
 - Are success criteria measurable?
 - Is there distinction between minimum and ideal outcomes?
 - Is there alignment on goals across stakeholders?
 
-**3. Sběr informací**
+**3. Gathering information (Sběr informací)**
 - Are diverse perspectives considered?
 - Is information validity assessed?
 - Are source biases recognized?
 
-**4. Identifikace řešení**
+**4. Identifying solutions (Identifikace řešení)**
 - Are alternatives generated (not just one path)?
 - Are ethical implications considered?
 - Are trade-offs between alternatives explicit?
 
-**5. Rozhodnutí**
+**5. Deciding (Rozhodnutí)**
 - Is the collaboration level defined (who decides)?
 - Is the decision process specified (criteria, weights, fallback)?
 - Is there an escalation mechanism?
 
-**6. Implementace**
+**6. Implementing (Implementace)**
 - Are milestones and responsibilities defined?
 - Are contingency plans present?
 - Are results measured (how do we know it worked)?
