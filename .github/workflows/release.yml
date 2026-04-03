@@ -15,11 +15,20 @@ jobs:
         run: zip -r technomaton-hub-claude-code.zip packs/ .claude-plugin/ -x "*.DS_Store"
       - name: Package Agent Skills zip
         run: cd dist && zip -r ../technomaton-hub-agentskills.zip agentskills/
+      - name: APM Compile (multi-tool output)
+        run: |
+          pip install apm-cli
+          apm install
+          apm compile --target copilot,cursor,claude
+        continue-on-error: true
+      - name: Package multi-tool output
+        run: zip -r technomaton-hub-multiplatform.zip AGENTS.md .github/skills/ .cursor/ 2>/dev/null || true
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
             technomaton-hub-claude-code.zip
             technomaton-hub-agentskills.zip
+            technomaton-hub-multiplatform.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

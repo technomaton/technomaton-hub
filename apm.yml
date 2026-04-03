@@ -1,0 +1,27 @@
+# apm.yml — APM manifest for multi-tool distribution
+# This file enables Copilot, Cursor, and Codex users to consume Hub skills via APM.
+# Hub governance (imports.lock, validate.sh) remains the source of truth.
+# See: https://github.com/microsoft/apm
+
+name: technomaton-hub
+version: 1.0.0
+description: >
+  Curated AI capability hub for business operations — development, security,
+  governance, infrastructure, documentation, and more. 15 packs, 100+ skills.
+author: TECHNOMATON Group
+license: MIT
+homepage: https://github.com/technomaton/technomaton-hub
+
+dependencies:
+  apm:
+    # Git-based vendor dependencies (commit-pinned in imports.lock)
+    - obra/superpowers#v5.0.5
+    - anthropics/skills
+
+# Non-git vendors (claude.com/plugins/*) are managed by Hub's own
+# vendor system with SHA-256 content hashing — not available via APM.
+# See imports.lock for full vendor registry.
+
+# Community packs exposed as skills (commercial packs excluded)
+# Skills are compiled to AGENTS.md (Copilot/Cursor) and CLAUDE.md (Claude Code)
+# via `apm compile` in CI.

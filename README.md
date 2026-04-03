@@ -49,6 +49,16 @@ git add .claude/settings.json && git commit -m "chore: enable technomaton-hub pa
 
 Open Claude Code — packs load automatically.
 
+### Option D: Copilot / Cursor / Codex (via APM)
+
+If you use GitHub Copilot, Cursor, or Codex CLI, install via [Microsoft APM](https://github.com/microsoft/apm):
+
+```bash
+apm install technomaton-hub
+```
+
+This compiles Hub skills into `AGENTS.md` (Copilot/Cursor) and `.cursor/rules/` (Cursor) automatically. Hub governance (validation, content hashing, license enforcement) is applied at source — APM handles distribution only.
+
 See [TOGGLING.md](TOGGLING.md) for team defaults, role profiles, and fine-grained control.
 
 ## Packs
