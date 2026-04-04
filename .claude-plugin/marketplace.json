@@ -46,7 +46,7 @@
     {
       "name": "tm-strategy",
       "source": "./packs/tm-strategy",
-      "description": "Integrated strategic assessment: orchestrates VUCA + PMF frameworks",
+      "description": "Integrated strategic assessment: orchestrates VUCA (HOW) + PMF (WHAT) + Wardley (WHERE) frameworks",
       "license": "MIT",
       "tags": ["strategy", "meta", "vuca", "pmf", "orchestration", "community"]
     },

@@ -80,6 +80,7 @@ See [TOGGLING.md](TOGGLING.md) for team defaults, role profiles, and fine-graine
 | tm-public | Public Sector | commercial | 0 | 1 | 0 |
 | tm-business | Finance & Legal | commercial | 0 | 2 | 0 |
 | tm-governance | EDPA governance | community | 4 | 4 | 0 |
+| tm-wardley | Wardley Mapping: value chain evolution, strategic positioning | community | 3 | 6 | 5 |
 | tm-agents | General-purpose agents | community | 0 | 0 | 6 |
 | tm-meta | Meta-workflows (orchestration) | community | 3 | 0 | 0 |
 

@@ -10,7 +10,8 @@
 |------|--------|-----------|-----------------|---------|--------|
 | **tm-vuca** | Strategy (HOW) | VUCA Skills Framework | Dawson / Lectica / Fischer | CC-BY-4.0 (knowledge) + MIT (code) | Stable v1.1.0 |
 | **tm-pmf** | Strategy (WHAT) | AI PMF Playbook | Miqdad Jaffer (OpenAI) | CC-BY-4.0 (knowledge) + MIT (code) | Stable v1.1.0 |
-| **tm-strategy** | Meta-orchestration | Integration Matrix | Composite (VUCA + PMF) | MIT | Stable v1.0.0 |
+| **tm-wardley** | Strategy (WHERE) | Wardley Mapping | Simon Wardley | CC-BY-SA-4.0 (knowledge) + MIT (code) | Stable v1.0.0 |
+| **tm-strategy** | Meta-orchestration | Integration Matrix | Composite (VUCA + PMF + Wardley) | MIT | Stable v1.2.0 |
 | **tm-governance** | Governance | EDPA | Jaroslav Urbánek | MIT | Beta v1.0.0-beta |
 | **tm-ml** | ML/AI Ops | RAG, MLOps, Prompt Eng. | — | MIT | Stable |
 | **tm-dx** | Dev Experience | PR Review, Commit Policy | — | MIT | Stable |
@@ -35,12 +36,20 @@ Strategic assessment framework for AI products adapted from Miqdad Jaffer's (Pro
 **Agents:** 5 (conductor + 4 domain specialists)
 **Commands:** `/pmf:score`, `/pmf:audit`, `/pmf:moat`, `/pmf:launch-check`, `/pmf:invisible-pain`, `/pmf:validate`
 
+### tm-wardley — Wardley Mapping
+
+Positional strategy via value chain evolution analysis based on Simon Wardley's mapping methodology. Maps products, services, and organizations on two axes: visibility (user need to infrastructure) and evolution (Genesis -> Custom-Built -> Product -> Commodity). Identifies movement patterns, strategic plays, build-vs-buy boundaries, and climatic patterns. Provides OWM (Online Wardley Maps) text format generation for LLM-based map creation, doctrine assessment (40 principles scored 0-160), and strategic gameplay recommendations. Includes AI-specific patterns: AI stack evolution map, wrapper trap analysis, and context layer defensibility. Bridges to PMF Five-Moat Taxonomy via Moat Evolution Matrix.
+
+**Knowledge files:** `WARDLEY_CORE.md`, `WARDLEY_DOCTRINE.md`, `WARDLEY_CLIMATE.md`, `WARDLEY_PLAYS.md`, `WARDLEY_ILC.md`, `WARDLEY_OWM.md`, `WARDLEY_AI.md`, `WARDLEY_BIBLIOGRAPHY.md`
+**Agents:** 5 (conductor + 4 specialists: mapper, evolution, doctrine, gameplay)
+**Commands:** `/wardley:map`, `/wardley:analyze`, `/wardley:doctrine`, `/wardley:evolve`, `/wardley:build-buy`, `/wardley:landscape`
+
 ### tm-strategy — Integration Matrix
 
-Meta-orchestration layer that composes VUCA (qualitative lens — HOW you communicate and design) with PMF (strategic lens — WHAT you're building and for whom). Maps each VUCA dimension to corresponding PMF framework elements and identifies risk amplification patterns. When both a VUCA dimension and its corresponding PMF area score low, the risk becomes critical. Neither framework alone gives the full picture.
+Meta-orchestration layer that composes VUCA (qualitative lens — HOW), PMF (strategic lens — WHAT), and Wardley Mapping (positional lens — WHERE). Maps each VUCA dimension to corresponding PMF and Wardley framework elements, identifying risk amplification patterns across three dimensions. When all three dimensions score low in a row, the risk is critical. No single framework gives the full picture.
 
-**Knowledge files:** `SKILL.md` (integration matrix embedded)
-**Agents:** 1 (strategy-conductor dispatches to both VUCA and PMF conductors)
+**Knowledge files:** `SKILL.md` (three-framework integration matrix embedded)
+**Agents:** 1 (strategy-conductor dispatches to VUCA, PMF, and Wardley conductors)
 **Commands:** `/strategy:audit`, `/strategy:compass`
 
 ### tm-governance — EDPA (Evidence-Driven Proportional Allocation)
@@ -70,17 +79,17 @@ Code quality and release management tools. PR review with structured feedback, c
 ## Cross-Pack Relationships
 
 ```
-┌─────────────────────────────────────────────┐
-│              tm-strategy                     │
-│         Integration Matrix                   │
-│      (meta-orchestration layer)              │
-│                                              │
-│   ┌──────────────┐  ┌──────────────┐        │
-│   │   tm-vuca    │  │   tm-pmf     │        │
-│   │  HOW lens    │  │  WHAT lens   │        │
-│   │  (qualitat.) │  │  (strategic) │        │
-│   └──────────────┘  └──────────────┘        │
-└─────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│                      tm-strategy                             │
+│            Three-Framework Integration Matrix                │
+│               (meta-orchestration layer)                     │
+│                                                              │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐       │
+│  │   tm-vuca    │  │   tm-pmf     │  │  tm-wardley  │       │
+│  │  HOW lens    │  │  WHAT lens   │  │  WHERE lens  │       │
+│  │  (qualitat.) │  │  (strategic) │  │ (positional) │       │
+│  └──────────────┘  └──────────────┘  └──────────────┘       │
+└──────────────────────────────────────────────────────────────┘
 
 ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
 │ tm-governance│  │    tm-ml     │  │    tm-dx     │
@@ -95,7 +104,9 @@ Code quality and release management tools. PR review with structured feedback, c
 |------|-----|-------------|
 | tm-strategy | tm-vuca | Dispatches to vuca-conductor for HOW assessment |
 | tm-strategy | tm-pmf | Dispatches to pmf-conductor for WHAT assessment |
-| tm-strategy | (synthesis) | Combines via Integration Matrix for risk amplification patterns |
+| tm-strategy | tm-wardley | Dispatches to wardley-conductor for WHERE assessment (value chain positioning) |
+| tm-strategy | (synthesis) | Combines via Three-Framework Integration Matrix for risk amplification patterns |
+| tm-wardley | (standalone) | Fully functional independent of other packs |
 | tm-governance | (standalone) | Syncs from github.com/technomaton/edpa |
 
 ---
@@ -104,4 +115,5 @@ Code quality and release management tools. PR review with structured feedback, c
 
 - **VUCA:** `packs/tm-vuca/skills/vuca-assessment/VUCA_BIBLIOGRAPHY.md`
 - **PMF:** `packs/tm-pmf/skills/pmf-assessment/AI_PMF_BIBLIOGRAPHY.md`
+- **Wardley:** `packs/tm-wardley/skills/wardley-assessment/WARDLEY_BIBLIOGRAPHY.md`
 - **EDPA:** `packs/tm-governance/references/`

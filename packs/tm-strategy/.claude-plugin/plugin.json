@@ -1,12 +1,12 @@
 {
   "name": "tm-strategy",
   "version": "1.1.0",
-  "description": "Integrated strategic assessment — orchestrates VUCA Skills + AI PMF Playbook for comprehensive product and communication evaluation.",
+  "description": "Integrated strategic assessment — orchestrates VUCA Skills (HOW) + AI PMF Playbook (WHAT) + Wardley Mapping (WHERE) for comprehensive product, communication, and strategic positioning evaluation.",
   "author": {
     "name": "TECHNOMATON Team"
   },
   "license": "MIT",
-  "keywords": ["strategy", "meta", "vuca", "pmf", "orchestration", "community"],
+  "keywords": ["strategy", "meta", "vuca", "pmf", "wardley", "orchestration", "community"],
   "mcpServers": "./.mcp.json",
   "skills": "./skills/",
   "commands": "./commands/",
