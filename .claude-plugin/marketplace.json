@@ -49,6 +49,13 @@
       "description": "Integrated strategic assessment: orchestrates VUCA + PMF frameworks",
       "license": "MIT",
       "tags": ["strategy", "meta", "vuca", "pmf", "orchestration", "community"]
+    },
+    {
+      "name": "tm-wardley",
+      "source": "./packs/tm-wardley",
+      "description": "Wardley Mapping: value chain analysis, component evolution, strategic positioning, doctrine assessment, OWM map generation",
+      "license": "MIT",
+      "tags": ["wardley", "strategy", "mapping", "evolution", "doctrine", "community"]
     }
   ]
 }

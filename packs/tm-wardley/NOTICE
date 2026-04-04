@@ -1,0 +1,24 @@
+NOTICE — tm-wardley
+
+This pack contains knowledge adapted from the following sources:
+
+1. Simon Wardley, "Wardley Maps" book
+   - URL: https://medium.com/wardleymaps
+   - License: CC-BY-SA-4.0
+   - Used in: WARDLEY_CORE.md, WARDLEY_DOCTRINE.md, WARDLEY_CLIMATE.md,
+     WARDLEY_PLAYS.md, WARDLEY_ILC.md
+   - Nature: Adapted framework descriptions and principles
+
+2. Online Wardley Maps project
+   - URL: https://onlinewardleymaps.com
+   - License: MIT
+   - Used in: WARDLEY_OWM.md
+   - Nature: OWM syntax reference
+
+3. Ben Mosior, Learn Wardley Mapping
+   - URL: https://learnwardleymapping.com
+   - License: CC-BY-SA-4.0
+   - Used in: WARDLEY_CLIMATE.md, WARDLEY_DOCTRINE.md
+   - Nature: Pattern descriptions and categorization
+
+All TECHNOMATON synthesis and original analysis (WARDLEY_AI.md) is MIT licensed.

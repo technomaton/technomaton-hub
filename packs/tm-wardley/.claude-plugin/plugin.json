@@ -1,0 +1,20 @@
+{
+  "name": "tm-wardley",
+  "version": "1.0.0",
+  "description": "Wardley Mapping — positional strategy via value chain evolution analysis. Covers map generation (OWM format), doctrine assessment, climatic pattern recognition, strategic gameplay, and ILC model. Based on Simon Wardley's mapping methodology. 8 knowledge files, 5 agents, 3 skills, 6 commands.",
+  "author": {
+    "name": "TECHNOMATON Team"
+  },
+  "license": "MIT",
+  "keywords": ["wardley", "strategy", "mapping", "evolution", "doctrine", "community"],
+  "mcpServers": "./.mcp.json",
+  "skills": "./skills/",
+  "commands": "./commands/",
+  "agents": [
+    "./agents/wardley-conductor.md",
+    "./agents/wardley-mapper.md",
+    "./agents/wardley-evolution.md",
+    "./agents/wardley-doctrine.md",
+    "./agents/wardley-gameplay.md"
+  ]
+}
