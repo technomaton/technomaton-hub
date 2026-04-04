@@ -1,0 +1,22 @@
+pack: tm-wardley
+date: "2026-04-04"
+version: "1.0.0"
+score: 100
+grade: healthy
+dimensions:
+  structural:
+    score: 100
+    checks: 20
+    failures: 0
+  content_consistency:
+    score: 100
+    checks: 9
+    failures: 0
+  knowledge_coverage:
+    score: 100
+    checks: 16
+    failures: 0
+  agent_readiness:
+    score: 100
+    checks: 15
+    failures: 0

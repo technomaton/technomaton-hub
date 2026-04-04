@@ -1,0 +1,44 @@
+name: Quality Gate
+
+on:
+  pull_request:
+    branches: [main]
+    paths: ['packs/**', 'tests/**', 'scripts/test-*', 'scripts/quality*']
+  schedule:
+    - cron: '0 10 * * 1'  # Monday 10:00 UTC (after vendor check at 09:00)
+  workflow_dispatch:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Structural validation
+        run: bash scripts/validate.sh
+
+      - name: E2E tests
+        run: bash scripts/test-e2e.sh
+
+      - name: Quality scoring
+        run: bash scripts/quality-score.sh --output reports/quality/
+
+      - name: Quality regression check
+        if: github.event_name == 'pull_request'
+        run: bash scripts/quality-regression.sh
+
+      - name: Generate dashboard
+        run: bash scripts/quality/generate-dashboard.sh
+
+      - name: Upload quality report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-report
+          path: reports/quality/
+
+      - name: Create issues for critical findings (weekly only)
+        if: github.event_name == 'schedule'
+        run: bash scripts/create-quality-issues.sh
+        env:
+          GH_TOKEN: ${{ github.token }}

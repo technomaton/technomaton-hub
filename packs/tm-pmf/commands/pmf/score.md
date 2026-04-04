@@ -13,12 +13,11 @@ Score the product or idea described in $ARGUMENTS across three dimensions:
 - **Frequency** (1-10): How often does the user encounter it?
 - **AI Advantage** (1-10): How much better is AI vs. traditional solutions?
 
-Compute the composite score (Pain × Frequency × AI Advantage) and classify into the appropriate zone:
-- **PMF Zone** (score ≥ 500): Strong product-market fit signal
-- **Test Zone** (200-499): Worth testing with users
-- **SaaS Zone** (100-199): Traditional SaaS territory, AI adds marginal value
-- **Demo Zone** (50-99): Impressive demo, weak daily use case
-- **Skip Zone** (< 50): Move on
+Compute the composite score (Pain + Frequency + AI Advantage, range 3-30) and classify into the appropriate zone:
+- **PMF Zone** (score 22-30): Strong product-market fit signal — move to Design phase
+- **Promising** (score 18-21): Worth validating with 10 user conversations
+- **Gray Zone** (score 12-17): Narrow the use case and rescore
+- **Skip** (score < 12): Not worth pursuing
 
 Output a concise markdown table with scores, zone classification, and a one-line recommendation.
 

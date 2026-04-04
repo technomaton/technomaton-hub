@@ -1,0 +1,6 @@
+{
+  "tm-pmf": {"health": 100, "structural": 100, "content": 100, "coverage": 100, "readiness": 100},
+  "tm-strategy": {"health": 100, "structural": 100, "content": 100, "coverage": 100, "readiness": 100},
+  "tm-vuca": {"health": 100, "structural": 100, "content": 100, "coverage": 100, "readiness": 100},
+  "tm-wardley": {"health": 100, "structural": 100, "content": 100, "coverage": 100, "readiness": 100}
+}

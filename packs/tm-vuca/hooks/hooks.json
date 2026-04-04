@@ -1,4 +1,16 @@
 {
-  "description": "default hooks for tm-vuca",
-  "hooks": {}
+  "description": "hooks for tm-vuca — usage tracking",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/log-usage.sh agent"
+          }
+        ]
+      }
+    ]
+  }
 }

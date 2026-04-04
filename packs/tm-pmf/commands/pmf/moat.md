@@ -1,5 +1,5 @@
 ---
-description: "Analyze competitive moats for an AI product using the Three-Moat Taxonomy"
+description: "Analyze competitive moats for an AI product using the Five-Moat Taxonomy"
 allowed-tools: Read, Grep, Glob, Agent
 model: opus
 ---
@@ -10,7 +10,7 @@ Analyze competitive moats for the product specified in $ARGUMENTS.
 
 Invoke @pmf-moat to perform a full moat assessment:
 
-1. **Score all 5 moat types** (each 1-10):
+1. **Score all 5 moat types** (each 0-5, total X/25):
    - Data Moat — proprietary data assets and feedback loops
    - Behavioral Moat — user habits, switching costs, workflow lock-in
    - Workflow Moat — deep integration into existing processes

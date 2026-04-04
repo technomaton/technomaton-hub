@@ -1,0 +1,36 @@
+# Scoring System Definitions
+# Canonical scale definitions per pack with source-of-truth and consumers.
+# Used by scripts/test-scoring.sh to verify consistency.
+
+tm-pmf:
+  pain-freq-ai:
+    scale_pattern: "1-10"
+    total_pattern: "X/30"
+    source: packs/tm-pmf/skills/pmf-assessment/AI_PMF_CORE.md
+    consumers:
+      - packs/tm-pmf/commands/pmf/score.md
+      - packs/tm-pmf/agents/pmf-opportunity.md
+  moat:
+    scale_pattern: "0-5"
+    total_pattern: "X/25"
+    source: packs/tm-pmf/skills/pmf-assessment/AI_PMF_MOATS.md
+    consumers:
+      - packs/tm-pmf/commands/pmf/moat.md
+      - packs/tm-pmf/agents/pmf-moat.md
+
+tm-vuca:
+  dimensions:
+    scale_pattern: "0-5"
+    total_pattern: "X/20"
+    source: packs/tm-vuca/skills/vuca-assessment/VUCA_FRAMEWORK_EN.md
+    consumers:
+      - packs/tm-vuca/agents/vuca-conductor.md
+
+tm-wardley:
+  doctrine:
+    scale_pattern: "0-4"
+    total_pattern: "X/160"
+    source: packs/tm-wardley/skills/wardley-assessment/WARDLEY_DOCTRINE.md
+    consumers:
+      - packs/tm-wardley/commands/wardley/doctrine.md
+      - packs/tm-wardley/agents/wardley-doctrine.md

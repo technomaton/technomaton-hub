@@ -88,6 +88,17 @@ Lectica's page on the theoretical foundation, explaining Fischer's contribution 
 
 ---
 
+## File-to-Source Mapping
+
+| Knowledge File | Primary Sources | Description |
+|---|---|---|
+| VUCA_FRAMEWORK_EN.md | [dawson-2020a] through [dawson-2021a] | Complete skill hierarchy, VCoL+7, 4 mega-skills with all macro/mini/micro-skills |
+| VUCA_FRAMEWORK_CS.md | [dawson-2020a] through [dawson-2021a] | Czech translation of the full framework |
+| VUCA_EMPIRICAL_DATA.md | [dawson-2024a], [dawson-2024b], [dawson-2024c] | Quantitative benchmarks, longitudinal trends, management level targets |
+| VUCA_BIBLIOGRAPHY.md | All sources | This file — citation index, abstracts, cross-references |
+
+---
+
 ## Section-to-Source Cross-Reference
 
 | Framework Section | Primary Sources | Supporting Sources |

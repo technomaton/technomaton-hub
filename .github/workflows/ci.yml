@@ -11,5 +11,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate pack structure
         run: bash scripts/validate.sh
+      - name: Run E2E tests
+        run: bash scripts/test-e2e.sh
       - name: Test export pipeline
         run: bash scripts/export-agentskills.sh --dry-run

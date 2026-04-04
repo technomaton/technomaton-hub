@@ -10,9 +10,9 @@ Run a comprehensive PMF audit on the product or idea specified in $ARGUMENTS.
 
 Invoke @pmf-conductor with the task to dispatch all four specialist agents in parallel:
 - @pmf-opportunity — Pain×Frequency×AI Advantage scoring and opportunity classification
-- @pmf-moat — Three-Moat Taxonomy analysis and competitive defensibility
+- @pmf-moat — Five-Moat Taxonomy analysis and competitive defensibility
 - @pmf-metrics — 10-100-1000 validation stage and metrics health
-- @pmf-launch — Launch Strategy Canvas and readiness assessment
+- @pmf-product — 4D Method phase, Autonomy Staircase level, Trust Layer, UX compliance
 
 The conductor synthesizes outputs into a unified **PMF Assessment Report** containing:
 1. **Opportunity Score** — composite Pain×Frequency×AI Advantage with zone classification

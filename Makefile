@@ -1,6 +1,6 @@
-.PHONY: validate export clean new-pack all vendor-skill update-vendor check-upstream validate-vendor
+.PHONY: validate export clean new-pack all vendor-skill update-vendor check-upstream validate-vendor test quality quality-report quality-dashboard usage
 
-all: validate export
+all: validate test export
 
 validate:
 	@bash scripts/validate.sh
@@ -26,3 +26,19 @@ check-upstream:
 
 validate-vendor:
 	@bash scripts/validate-vendor.sh
+
+# Testing & quality
+test:
+	@bash scripts/test-e2e.sh
+
+quality:
+	@bash scripts/quality-score.sh
+
+quality-report:
+	@bash scripts/quality-score.sh --output reports/quality/
+
+quality-dashboard:
+	@bash scripts/quality/generate-dashboard.sh
+
+usage:
+	@bash scripts/usage-report.sh
