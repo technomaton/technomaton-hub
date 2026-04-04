@@ -23,8 +23,8 @@
       "tags": ["ml", "ai", "rag", "community"]
     },
     {
-      "name": "tm-governance",
-      "source": "./packs/tm-governance",
+      "name": "tm-edpa",
+      "source": "./packs/tm-edpa",
       "description": "EDPA governance: evidence-driven proportional allocation. Standalone: github.com/technomaton/edpa",
       "license": "MIT",
       "tags": ["governance", "edpa", "capacity", "community"]

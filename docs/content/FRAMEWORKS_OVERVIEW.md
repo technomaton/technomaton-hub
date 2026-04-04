@@ -12,7 +12,7 @@
 | **tm-pmf** | Strategy (WHAT) | AI PMF Playbook | Miqdad Jaffer (OpenAI) | CC-BY-4.0 (knowledge) + MIT (code) | Stable v1.1.0 |
 | **tm-wardley** | Strategy (WHERE) | Wardley Mapping | Simon Wardley | CC-BY-SA-4.0 (knowledge) + MIT (code) | Stable v1.0.0 |
 | **tm-strategy** | Meta-orchestration | Integration Matrix | Composite (VUCA + PMF + Wardley) | MIT | Stable v1.2.0 |
-| **tm-governance** | Governance | EDPA | Jaroslav Urbánek | MIT | Beta v1.0.0-beta |
+| **tm-edpa** | Governance | EDPA | Jaroslav Urbánek | MIT | Beta v1.0.0-beta |
 | **tm-ml** | ML/AI Ops | RAG, MLOps, Prompt Eng. | — | MIT | Stable |
 | **tm-dx** | Dev Experience | PR Review, Commit Policy | — | MIT | Stable |
 
@@ -52,7 +52,7 @@ Meta-orchestration layer that composes VUCA (qualitative lens — HOW), PMF (str
 **Agents:** 1 (strategy-conductor dispatches to VUCA, PMF, and Wardley conductors)
 **Commands:** `/strategy:audit`, `/strategy:compass`
 
-### tm-governance — EDPA (Evidence-Driven Proportional Allocation)
+### tm-edpa — EDPA (Evidence-Driven Proportional Allocation)
 
 Derives team member hours from Git delivery evidence — zero timesheets required. Uses mathematical guarantees and Monte Carlo calibrated CW (Contribution Weight) heuristics. Maintained as a standalone repository at [github.com/technomaton/edpa](https://github.com/technomaton/edpa) with a Python CLI engine, GitHub Actions, MCP server, and full documentation. The hub pack syncs content from the standalone repo.
 
@@ -92,9 +92,9 @@ Code quality and release management tools. PR review with structured feedback, c
 └──────────────────────────────────────────────────────────────┘
 
 ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
-│ tm-governance│  │    tm-ml     │  │    tm-dx     │
+│   tm-edpa    │  │    tm-ml     │  │    tm-dx     │
 │   EDPA       │  │  ML/AI Ops   │  │   Dev Exp.   │
-│ (governance) │  │  (tooling)   │  │  (tooling)   │
+│  (capacity)  │  │  (tooling)   │  │  (tooling)   │
 └──────────────┘  └──────────────┘  └──────────────┘
 ```
 
@@ -107,7 +107,7 @@ Code quality and release management tools. PR review with structured feedback, c
 | tm-strategy | tm-wardley | Dispatches to wardley-conductor for WHERE assessment (value chain positioning) |
 | tm-strategy | (synthesis) | Combines via Three-Framework Integration Matrix for risk amplification patterns |
 | tm-wardley | (standalone) | Fully functional independent of other packs |
-| tm-governance | (standalone) | Syncs from github.com/technomaton/edpa |
+| tm-edpa | (standalone) | Syncs from github.com/technomaton/edpa |
 
 ---
 
@@ -116,4 +116,4 @@ Code quality and release management tools. PR review with structured feedback, c
 - **VUCA:** `packs/tm-vuca/skills/vuca-assessment/VUCA_BIBLIOGRAPHY.md`
 - **PMF:** `packs/tm-pmf/skills/pmf-assessment/AI_PMF_BIBLIOGRAPHY.md`
 - **Wardley:** `packs/tm-wardley/skills/wardley-assessment/WARDLEY_BIBLIOGRAPHY.md`
-- **EDPA:** `packs/tm-governance/references/`
+- **EDPA:** `packs/tm-edpa/references/`

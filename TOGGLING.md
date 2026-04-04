@@ -68,7 +68,7 @@ Each user can per-user enable/disable packs:
     "tm-data@technomaton-hub": "enabled",
     "tm-ml@technomaton-hub": "enabled",
     "tm-atlassian@technomaton-hub": "enabled",
-    "tm-governance@technomaton-hub": "enabled",
+    "tm-edpa@technomaton-hub": "enabled",
     "tm-agents@technomaton-hub": "enabled",
     "tm-meta@technomaton-hub": "enabled"
   }

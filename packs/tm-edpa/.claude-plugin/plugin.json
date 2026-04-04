@@ -1,5 +1,5 @@
 {
-  "name": "tm-governance",
+  "name": "tm-edpa",
   "version": "1.0.0-beta",
   "description": "EDPA — Evidence-Driven Proportional Allocation. Derive hours from Git delivery evidence. Standalone: github.com/technomaton/edpa",
   "author": {
@@ -9,7 +9,7 @@
   "homepage": "https://edpa.technomaton.com",
   "repository": "https://github.com/technomaton/edpa",
   "license": "MIT",
-  "keywords": ["governance", "edpa", "capacity", "community", "beta"],
+  "keywords": ["edpa", "capacity", "evidence-driven", "community", "beta"],
   "mcpServers": "./.mcp.json",
   "skills": "./skills/",
   "commands": "./commands/",

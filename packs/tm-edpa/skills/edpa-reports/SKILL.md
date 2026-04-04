@@ -12,7 +12,7 @@ allowed-tools: Read Write Bash(python3 *) Bash(cp *) Bash(mkdir *)
 metadata:
   author: Jaroslav Urbánek
   version: 1.0.0
-  domain: governance
+  domain: edpa
   phase: reports
   standard: AgentSkills v1.0
 ---

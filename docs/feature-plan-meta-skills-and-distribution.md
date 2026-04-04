@@ -29,7 +29,7 @@ Technomaton Hub slouží jako **kurátorovaný zdroj AI-powered capabilities** p
 | **Design** | — | example-skills (frontend-design, canvas-design, brand-guidelines, theme-factory) |
 | **Komunikace** | — | example-skills (internal-comms, slack-gif-creator) |
 | **Data & Finance** | tm-data | example-skills (xlsx), excel-analyst-pro |
-| **Governance** | tm-governance (EDPA) | — |
+| **Governance** | tm-edpa (EDPA) | — |
 | **Infrastruktura** | tm-infra | — |
 | **Marketing** | tm-public, tm-growth | example-skills (brand-guidelines, canvas-design) |
 | **Business** | tm-business, tm-servicedesk | — |
@@ -134,7 +134,7 @@ description: "Curated AI capabilities for TECHNOMATON"
 # Vlastní skills
 skills:
   - path: ./packs/tm-dx/skills/commit-policy/SKILL.md
-  - path: ./packs/tm-governance/skills/edpa-setup/SKILL.md
+  - path: ./packs/tm-edpa/skills/edpa-setup/SKILL.md
   - path: ./packs/tm-secure/skills/*/SKILL.md
 
 # Externí závislosti — APM je stáhne automaticky
@@ -175,12 +175,12 @@ description: Use when starting a new feature from scratch
 dependencies:
   - superpowers:brainstorming
   - superpowers:test-driven-development
-  - tm-governance:edpa-setup
+  - tm-edpa:edpa-setup
   - tm-dx:pr-review
 ---
 # Full Development Workflow
 1. superpowers:brainstorming → design
-2. tm-governance:edpa-setup → capacity
+2. tm-edpa:edpa-setup → capacity
 3. superpowers:test-driven-development → implementace
 4. tm-dx:pr-review → review
 ```
@@ -254,7 +254,7 @@ technomaton-hub/
 │
 ├── packs/                             # Tvoje capabilities (beze změn)
 │   ├── tm-dx/
-│   ├── tm-governance/
+│   ├── tm-edpa/
 │   ├── tm-secure/
 │   ├── ...                            # (15 existujících packů)
 │   └── tm-meta/              # NOVÝ — meta-pack
@@ -425,7 +425,7 @@ metadata:
   composed-from:
     - vendor: superpowers/brainstorming
     - vendor: superpowers/test-driven-development
-    - pack: tm-governance/edpa-setup
+    - pack: tm-edpa/edpa-setup
     - pack: tm-dx/pr-review
 ---
 
@@ -446,7 +446,7 @@ Invoke the superpowers:brainstorming skill. Follow its complete workflow:
 
 ## Fáze 2: Capacity Planning (technomaton:edpa-setup)
 
-After design approval, invoke tm-governance:edpa-setup to:
+After design approval, invoke tm-edpa:edpa-setup to:
 - Initialize EDPA configuration for the new feature
 - Set up capacity registry entries
 - Configure evidence detection rules
@@ -623,7 +623,7 @@ name: technomaton-hub
 version: 1.0.0
 skills:
   - path: ./packs/tm-dx/skills/*/SKILL.md
-  - path: ./packs/tm-governance/skills/*/SKILL.md
+  - path: ./packs/tm-edpa/skills/*/SKILL.md
   - path: ./packs/tm-meta/skills/*/SKILL.md
 dependencies:
   superpowers:
@@ -641,7 +641,7 @@ dependencies:
 {
   "plugins": [
     { "name": "tm-dx", "source": "./packs/tm-dx" },
-    { "name": "tm-governance", "source": "./packs/tm-governance" },
+    { "name": "tm-edpa", "source": "./packs/tm-edpa" },
     { "name": "tm-meta", "source": "./packs/tm-meta" }
     // ... ostatní packy
   ]

@@ -1,4 +1,4 @@
-# tm-governance
+# tm-edpa
 
 **EDPA — Evidence-Driven Proportional Allocation v1.0.0-beta**
 
@@ -11,7 +11,7 @@ Derive hours from Git delivery evidence. Zero timesheets, mathematical guarantee
 
 ## Skills
 
-- `edpa-setup` — Initialize EDPA governance for a project
+- `edpa-setup` — Initialize EDPA for a project
 - `edpa-engine` — Run evidence-driven calculation for an iteration
 - `edpa-reports` — Generate timesheets, exports, and snapshots
 - `edpa-autocalib` — Auto-calibrate CW heuristics
@@ -19,7 +19,7 @@ Derive hours from Git delivery evidence. Zero timesheets, mathematical guarantee
 
 ## Commands
 
-- `/edpa setup` — Initialize governance
+- `/edpa setup` — Initialize EDPA
 - `/edpa close-iteration` — Close iteration (engine + reports)
 - `/edpa reports` — Generate reports
 - `/edpa calibrate` — Auto-calibrate heuristics

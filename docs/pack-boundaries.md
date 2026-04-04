@@ -22,7 +22,7 @@ Every pack owns exactly one domain. Commands, skills, and agents must not duplic
 | ServiceNow (ITSM) | tm-servicenow | `/snow-incident` |
 | Public sector (tenders, grants) | tm-public | `/tender-checklist` |
 | Finance & legal | tm-business | `/forecast`, `/redline` |
-| EDPA governance | tm-governance | capacity, evidence, reporting |
+| EDPA governance | tm-edpa | capacity, evidence, reporting |
 | Wardley Mapping (strategic positioning) | tm-wardley | `/wardley:map`, `/wardley:analyze`, `/wardley:doctrine` |
 | Cross-cutting agents | tm-agents | product, discovery, prompt, research |
 | Meta-workflows (orchestration) | tm-meta | full-dev-workflow, secure-dev-workflow |

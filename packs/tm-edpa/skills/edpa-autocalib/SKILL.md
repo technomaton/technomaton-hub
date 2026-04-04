@@ -13,7 +13,7 @@ disable-model-invocation: false
 metadata:
   author: Jaroslav Urbánek
   version: 1.0.0
-  domain: governance
+  domain: edpa
   phase: auto-calibration
   pattern: autoresearch (Karpathy)
   standard: AgentSkills v1.0

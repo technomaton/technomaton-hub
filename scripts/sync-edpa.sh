@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Sync EDPA standalone repo content into hub's packs/tm-governance/
+# Sync EDPA standalone repo content into hub's packs/tm-edpa/
 # Usage: scripts/sync-edpa.sh [--dry-run] [path-to-edpa-repo]
 #
 # --dry-run  Verify source paths exist without copying. Exit 1 if any missing.
@@ -20,7 +20,7 @@ if [ "${1:-}" = "--dry-run" ]; then
 fi
 
 EDPA_REPO="${1:-../edpa}"
-HUB_GOV="packs/tm-governance"
+HUB_GOV="packs/tm-edpa"
 
 if [ ! -d "$EDPA_REPO/plugin" ]; then
   echo "ERROR: EDPA repo not found at $EDPA_REPO (missing plugin/ directory)"

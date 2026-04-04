@@ -220,7 +220,7 @@ Meta-skills in `tm-meta` combine skills from **different packs and vendors** int
 
 ```
 Phase 1: Design           -> superpowers:brainstorming        (vendored)
-Phase 2: Capacity          -> tm-governance:edpa-setup         (internal)
+Phase 2: Capacity          -> tm-edpa:edpa-setup         (internal)
 Phase 3: Implementation    -> superpowers:test-driven-development (vendored)
 Phase 4: Review            -> tm-dx:pr-review                  (internal)
 Phase 5: Finishing         -> superpowers:finishing-a-dev-branch (vendored)
@@ -234,7 +234,7 @@ Each phase has an **exit condition** — once met, the workflow proceeds to the 
 metadata:
   composed-from:
     - vendor: superpowers/brainstorming        # from vendor/superpowers-v5.0.5/
-    - pack: tm-governance/edpa-setup           # from packs/tm-governance/
+    - pack: tm-edpa/edpa-setup           # from packs/tm-edpa/
     - pack: tm-dx/pr-review                    # from packs/tm-dx/
 ```
 

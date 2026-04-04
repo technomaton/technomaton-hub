@@ -48,7 +48,7 @@ Identifies movement patterns, strategic plays, and build-vs-buy boundaries.
 
 - **Standalone:** Fully functional independent of other packs
 - **tm-strategy:** Adds "WHERE" lens to HOW (VUCA) + WHAT (PMF) integration
-- **tm-governance:** Evolution-aware capacity allocation via EDPA
+- **tm-edpa:** Evolution-aware capacity allocation via EDPA
 - **tm-ml:** ML infrastructure build-vs-buy guidance
 
 ## License
