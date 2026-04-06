@@ -41,6 +41,9 @@ run_test "4. Knowledge Integrity" "$SCRIPT_DIR/test-knowledge.sh"
 # Phase 5: Cross-Pack Integration
 run_test "5. Cross-Pack Integration" "$SCRIPT_DIR/test-cross-pack.sh"
 
+# Phase 6: Hooks Validation
+run_test "6. Hooks Validation" "$SCRIPT_DIR/test-hooks.sh"
+
 echo "=== E2E Results ==="
 echo "Test suites passed: $TOTAL_PASS"
 echo "Test suites failed: $TOTAL_ERRORS"
