@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.3.0-beta — 2026-05-05
+
+Synced from standalone `technomaton/edpa` @ e55caf1 (release v1.3.0-beta).
+
+### Upstream highlights (MCP-focused, not shipped in hub pack)
+- Production-quality MCP server: portable plugin path via `${CLAUDE_PLUGIN_ROOT}`, stderr logging (`EDPA_LOG_LEVEL`/`EDPA_LOG_FILE`), versioned `serverInfo`, `item_id` regex validation, crash-safe handler dispatch, `${GITHUB_PERSONAL_ACCESS_TOKEN}` env-driven token. See upstream `docs/mcp.md`.
+- Test count: 84 → **139 passing** (+43 unlocked by `jsonschema`+`mcp` dev deps, +12 new MCP hardening tests).
+- **Note:** the MCP server itself lives under `plugin/edpa/scripts/mcp_server.py` upstream and is not synced into this hub pack today; users wanting the MCP surface should install the standalone via `curl -fsSL https://edpa.technomaton.com/install.sh | sh`.
+
+### Synced into hub
+- `edpa-reports` SKILL refresh.
+- `edpa-setup` SKILL refresh.
+- `project.yaml.tmpl` and `methodology-en.md` upstream version-string bump.
+- `imports.lock` pin: `tm-edpa -> v1.3.0-beta (e55caf125768)`.
+
 ## 1.2.1-beta — 2026-05-05
 
 Synced from standalone `technomaton/edpa` @ 326651f.
