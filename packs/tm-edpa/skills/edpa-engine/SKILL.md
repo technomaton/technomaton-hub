@@ -12,7 +12,7 @@ allowed-tools: Read Bash(gh *) Bash(git *) Bash(python3 *) Grep
 metadata:
   author: Jaroslav Urbánek
   version: 1.0.0
-  domain: edpa
+  domain: governance
   phase: engine
   standard: AgentSkills v1.0
 ---
@@ -68,8 +68,8 @@ with open('.edpa/config/heuristics.yaml') as f:
 
 For each person P, identify relevant items:
 - **Stories:** Done in iteration $ARGUMENTS, where P has evidence
-- **Features:** Active in current PI, where P has evidence
-- **Epics:** Active, where P has evidence
+- **Features:** Not Done and not Funnel in current PI, where P has evidence
+- **Epics:** Not Done and not Funnel, where P has evidence
 
 **Evidence sources (hybrid — MCP preferred, gh CLI fallback):**
 
@@ -105,12 +105,28 @@ Allow manual override: check issue body for `/contribute @person weight:X`.
 
 ### 4. Calculate EDPA scores
 
-**Simple mode (default):**
+**Gates mode (default):**
+For each Initiative/Epic/Feature status transition that fired during the
+iteration, credit the parent's contributors with `JobSize × gate_weight`.
+Story still uses the Done filter. Requires git history to record status
+transitions (sync `pull --commit` produces these automatically).
+
 ```
-Score[P, item] = JobSize[item] × CW[P, item]
+Score[P, gate_event] = JobSize[parent] × gate_weight × CW[P, parent]
+Score[P, story_done] = JobSize[story] × CW[P, story]
 ```
 
-**Full mode (if --full flag or user requests audit variant):**
+**Simple mode (`--mode simple`):**
+Falls back to Done-only filter for every level. Use when the project
+doesn't record mid-life status transitions in git.
+
+```
+Score[P, item] = JobSize[item] × CW[P, item]   # only items with status: Done
+```
+
+**Full mode (`--mode full`):**
+Same as simple but adds RS audit detail in the snapshot.
+
 ```
 Score[P, item] = JobSize[item] × CW[P, item] × RS[P, item]
 RS = min(evidence_score / max_evidence_score_on_item, 1.0)
@@ -132,7 +148,7 @@ Run ALL checks — halt on failure:
 | Σ = capacity | Σ DerivedHours[P, *] = Capacity[P] ± 0.01 | HALT, report |
 | Σ ratio = 1 | Σ (Score/ΣScores) = 1.0 ± 0.001 | HALT, report |
 | No negative | DerivedHours ≥ 0 for all | HALT, report |
-| Eligibility | In Progress items excluded | WARN if included |
+| Eligibility | Non-Done items excluded from Story hours | WARN if included |
 | JS exists | All items have Job Size > 0 | WARN, skip item |
 
 ### 7. Output
@@ -141,7 +157,7 @@ Write results to `.edpa/reports/iteration-{ID}/edpa_results.json`:
 ```json
 {
   "iteration": "$ARGUMENTS",
-  "mode": "simple|full",
+  "mode": "gates|simple|full",
   "computed_at": "ISO-8601",
   "people": [
     {

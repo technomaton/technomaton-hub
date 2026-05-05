@@ -11,7 +11,7 @@ allowed-tools: Read Write Bash(gh *) Bash(git *) Bash(mkdir *) Bash(python3 *) B
 metadata:
   author: Jaroslav Urbánek
   version: 1.0.0
-  domain: edpa
+  domain: governance
   phase: setup
   standard: AgentSkills v1.0
 ---
@@ -92,7 +92,7 @@ people:
 
 Create `.edpa/config/heuristics.yaml`:
 ```yaml
-version: "1.0.0-beta"
+version: "1.2.1-beta"
 evidence_threshold: 1.0
 role_weights:
   owner: 1.0

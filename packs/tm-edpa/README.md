@@ -1,8 +1,8 @@
 # tm-edpa
 
-**EDPA — Evidence-Driven Proportional Allocation v1.0.0-beta**
+**EDPA — Evidence-Driven Proportional Allocation v1.2.1-beta**
 
-Derive hours from Git delivery evidence. Zero timesheets, mathematical guarantee, Monte Carlo calibrated CW weights.
+Derive hours from Git delivery evidence. Zero timesheets, mathematical guarantee, Monte Carlo calibrated CW weights. Gates mode (default) credits each status transition; bidirectional sync with GitHub Projects.
 
 > **Standalone version:** [github.com/technomaton/edpa](https://github.com/technomaton/edpa)
 > **Website:** [edpa.technomaton.com](https://edpa.technomaton.com)
@@ -24,6 +24,7 @@ Derive hours from Git delivery evidence. Zero timesheets, mathematical guarantee
 - `/edpa reports` — Generate reports
 - `/edpa calibrate` — Auto-calibrate heuristics
 - `/edpa sync` — Sync GitHub Projects with local backlog
+- `/edpa board` — Generate visual HTML Kanban board from local backlog
 
 ## Installation (standalone)
 

@@ -12,7 +12,7 @@ allowed-tools: Read Write Bash(python3 *) Bash(gh *) Bash(git *) Grep
 metadata:
   author: Jaroslav Urbánek
   version: 1.0.0
-  domain: edpa
+  domain: governance
   phase: sync
   standard: AgentSkills v1.0
 ---

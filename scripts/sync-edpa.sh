@@ -4,7 +4,7 @@
 #
 # --dry-run  Verify source paths exist without copying. Exit 1 if any missing.
 #
-# EDPA repo structure (1.0.0-beta):
+# EDPA repo structure (1.1.0-beta):
 #   plugin/skills/           -> skills
 #   plugin/commands/edpa/    -> commands
 #   plugin/edpa/scripts/     -> scripts
@@ -65,8 +65,8 @@ for skill in edpa-setup edpa-engine edpa-reports edpa-autocalib edpa-sync; do
             "skill: $skill"
 done
 
-# Sync commands (5 commands)
-for cmd in setup close-iteration reports calibrate sync; do
+# Sync commands (6 commands)
+for cmd in setup close-iteration reports calibrate sync board; do
   sync_file "$EDPA_REPO/plugin/commands/edpa/$cmd.md" \
             "$HUB_GOV/commands/edpa/$cmd.md" \
             "command: $cmd"
@@ -80,9 +80,9 @@ sync_file "$EDPA_REPO/docs/auto-calibration.md"      "$HUB_GOV/references/auto-c
 sync_file "$EDPA_REPO/docs/cadence.md"               "$HUB_GOV/references/cadence.md"            "ref: cadence"
 sync_file "$EDPA_REPO/docs/github-setup.md"          "$HUB_GOV/references/setup-guide.md"        "ref: github-setup -> setup-guide"
 
-# Sync methodology (EN = default, CZ = .cs.md)
-sync_file "$EDPA_REPO/docs/methodology.md"    "$HUB_GOV/references/methodology.md"    "ref: methodology (EN)"
-sync_file "$EDPA_REPO/docs/methodology.cs.md" "$HUB_GOV/references/methodology.cs.md" "ref: methodology (CZ)"
+# Sync methodology (EN = methodology-en.md, CZ = methodology.cs.md in hub naming)
+sync_file "$EDPA_REPO/docs/methodology.md"    "$HUB_GOV/references/methodology-en.md" "ref: methodology -> methodology-en"
+sync_file "$EDPA_REPO/docs/methodology-cs.md" "$HUB_GOV/references/methodology.cs.md"  "ref: methodology-cs -> methodology.cs"
 
 # Sync config templates
 sync_file "$EDPA_REPO/plugin/edpa/templates/people.yaml.tmpl"         "$HUB_GOV/config/capacity.yaml.tmpl"      "template: people -> capacity"
