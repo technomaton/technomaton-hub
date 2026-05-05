@@ -1,28 +1,47 @@
-name: Check Upstream Vendors
+name: Check Upstream Vendors and Synced Packs
 
 on:
   schedule:
     - cron: '0 9 * * 1'  # Every Monday at 09:00 UTC
   workflow_dispatch:       # Manual trigger
+  repository_dispatch:
+    types: [edpa-release]  # Triggered by edpa repo on new release
 
 jobs:
   check-upstream:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
     steps:
       - uses: actions/checkout@v4
 
       - name: Check for upstream changes
-        run: bash scripts/check-upstream.sh
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set +e
+          OUTPUT=$(bash scripts/check-upstream.sh 2>&1)
+          STATUS=$?
+          echo "$OUTPUT"
+          {
+            echo "report<<EOF"
+            echo "$OUTPUT"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+          exit $STATUS
 
       - name: Create issue if updates found
         if: failure()
         uses: actions/github-script@v7
         with:
           script: |
+            const report = `${{ steps.check.outputs.report }}`;
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: 'Vendor upstream updates available',
-              body: 'The weekly vendor check found upstream changes. Run `make check-upstream` locally for details.',
+              title: 'Upstream updates available (vendors / synced packs)',
+              body: `The weekly upstream check found updates.\n\n\`\`\`\n${report}\n\`\`\`\n\nRun \`make check-upstream\` locally for details, then follow the suggested sync commands.`,
               labels: ['vendor', 'dependencies']
             });

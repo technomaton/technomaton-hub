@@ -80,12 +80,73 @@ while IFS= read -r line; do
 
     echo ""
   fi
-done < "$LOCK_FILE"
+done < <(awk 'BEGIN{p=0} /^vendors:/{p=1; next} /^synced_packs:/{p=0} p' "$LOCK_FILE")
+
+# ------------------------------------------------------------
+# Synced packs (release-tag tracked, e.g. tm-edpa).
+# Different shape than vendors: we compare GitHub release tags via
+# the gh CLI rather than git ls-remote HEAD commits, because these
+# packs are pinned to releases, not arbitrary HEAD.
+# ------------------------------------------------------------
+if grep -q '^synced_packs:' "$LOCK_FILE"; then
+  echo "=== Synced Pack Check ==="
+  pack_name=""
+  pack_version=""
+  pack_source=""
+
+  while IFS= read -r line; do
+    if echo "$line" | grep -q '^  - name:'; then
+      pack_name=$(echo "$line" | sed 's/.*name: //' | tr -d ' ')
+      pack_version=""
+      pack_source=""
+    elif echo "$line" | grep -q '^    version:'; then
+      pack_version=$(echo "$line" | sed 's/.*version: "//' | sed 's/".*//')
+    elif echo "$line" | grep -q '^    source:'; then
+      pack_source=$(echo "$line" | sed 's/.*source: "//' | sed 's/".*//')
+
+      if [ -n "$CHECK_NAME" ] && [ "$pack_name" != "$CHECK_NAME" ]; then
+        continue
+      fi
+
+      echo "Checking $pack_name (synced: $pack_version)..."
+
+      # Extract owner/repo from GitHub URL
+      repo=$(echo "$pack_source" | sed -E 's|https://github.com/([^/]+/[^/]+).*|\1|')
+      if ! command -v gh >/dev/null 2>&1; then
+        echo "  WARN: gh CLI not available — cannot check release tags"
+        continue
+      fi
+
+      latest=$(gh release list --repo "$repo" --limit 1 \
+        --json tagName --jq '.[0].tagName' 2>/dev/null || echo "")
+      if [ -z "$latest" ]; then
+        echo "  WARN: could not query releases for $repo"
+        continue
+      fi
+
+      if [ "$latest" = "$pack_version" ]; then
+        echo "  Up to date ($pack_version)"
+      else
+        echo "  UPDATE AVAILABLE"
+        echo "  Synced: $pack_version"
+        echo "  Latest: $latest"
+        case "$pack_name" in
+          tm-edpa) echo "  → Run: bash scripts/sync-edpa.sh --tag $latest" ;;
+          *)       echo "  → No sync command registered for $pack_name" ;;
+        esac
+        UPDATES_FOUND=$((UPDATES_FOUND + 1))
+      fi
+      echo ""
+    fi
+  done < <(awk 'BEGIN{p=0} /^synced_packs:/{p=1; next} p' "$LOCK_FILE")
+fi
 
 echo "=== Summary ==="
 if [ "$UPDATES_FOUND" -eq 0 ]; then
-  echo "All vendors are up to date."
+  echo "All vendors and synced packs are up to date."
 else
-  echo "$UPDATES_FOUND vendor(s) have updates or warnings."
-  echo "Run 'make update-vendor name=<name> version=<version>' to update."
+  echo "$UPDATES_FOUND item(s) have updates or warnings."
+  echo "Run 'make update-vendor name=<name> version=<version>' for vendors,"
+  echo "or the listed sync command for synced packs."
+  exit 1
 fi
