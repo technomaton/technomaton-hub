@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.4.0-beta — 2026-05-06
+
+Synced from standalone `technomaton/edpa` @ 4e1cc45 (release v1.4.0-beta). Bundles 1.3.1, 1.3.2 and 1.4 upstream changes.
+
+### Changed (BREAKING for fresh installs only)
+- **Default cadence flipped to AI-native**: 1-week iterations, 5-week PI (4 delivery + 1 IP). IP iteration absorbs leftover work, debt, prioritization, and PI planning itself — compressible to a single day with AI ceremonies. Classic SAFe (2w / 10w) still fully supported; opt out with `cadence.iteration_weeks: 2`, `cadence.pi_weeks: 10` in `people.yaml`.
+- **Default `capacity_per_iteration` halved** in `capacity.yaml.tmpl`: `0.5 FTE Arch → 20h`, `1.0 FTE Dev → 40h` (was 40h / 80h on 2-week iteration). Template comments show the math both ways.
+- Existing `.edpa/` projects keep their explicit cadence — no migration needed.
+
+### Added (upstream highlights)
+- `sync add-iteration <ID>` subcommand — append a new iteration option to the GitHub Project Iteration field, drop the TBD placeholder when the first real iteration is added. Idempotent. Reflected in `edpa-sync` skill flow.
+- `tests/test_mcp_integration.py`: 16 live JSON-RPC stdio tests; `mcp_server.load_yaml` mtime-keyed LRU cache (50× speedup on repeated `tools/call`). MCP layer not shipped in hub pack — install standalone for the MCP surface.
+
+### Fixed (hardening backport from v1.3 MCP)
+- `evaluate_cw.py` (synced): `load_yaml` / `load_json` helpers return `None` with stderr WARNING instead of letting exceptions bubble up. Specific exceptions only; `KeyboardInterrupt` / `SystemExit` propagate.
+- Upstream-only: same hardening pass applied to `engine.py`, `sync.py`, `pi_close.py`; two `except Exception` blocks in `engine.py` narrowed.
+
+### Synced into hub
+- `edpa-reports` + `edpa-setup` SKILL refresh (cadence-related copy + first-5-minutes walkthrough).
+- `capacity.yaml.tmpl` (halved capacity defaults), `project.yaml.tmpl` (cadence default).
+- `evaluate_cw.py` (load_yaml hardening).
+- `methodology-en.md` upstream version-string bump.
+- `imports.lock` pin: `tm-edpa -> v1.4.0-beta (4e1cc45f8ca8)`.
+
 ## 1.3.0-beta — 2026-05-05
 
 Synced from standalone `technomaton/edpa` @ e55caf1 (release v1.3.0-beta).
