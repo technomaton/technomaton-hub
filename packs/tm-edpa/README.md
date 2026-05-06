@@ -1,6 +1,6 @@
 # tm-edpa
 
-**EDPA — Evidence-Driven Proportional Allocation v1.5.0-beta**
+**EDPA — Evidence-Driven Proportional Allocation v1.6.4-beta**
 
 Derive hours from Git delivery evidence. Zero timesheets, mathematical guarantee, Monte Carlo calibrated CW weights. Gates mode (default) credits each status transition; bidirectional sync with GitHub Projects.
 
@@ -16,6 +16,7 @@ Derive hours from Git delivery evidence. Zero timesheets, mathematical guarantee
 - `edpa-reports` — Generate timesheets, exports, and snapshots
 - `edpa-autocalib` — Auto-calibrate CW heuristics
 - `edpa-sync` — Bidirectional GitHub Projects <-> .edpa/backlog/ sync
+- `edpa-sync-people` — Reconcile `people.yaml` against GitHub collaborator list
 
 ## Commands
 

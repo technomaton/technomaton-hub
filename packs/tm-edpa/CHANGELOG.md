@@ -1,5 +1,30 @@
 # Changelog
 
+## 1.6.4-beta — 2026-05-06
+
+Synced from standalone `technomaton/edpa` @ b694777 (release v1.6.4-beta). Bundles 1.6.0 → 1.6.4 upstream changes.
+
+### Added
+- **New skill `edpa-sync-people`** — reconciles `.edpa/config/people.yaml` against the repo's GitHub collaborator list (uses `gh` + python3, no hub-side dependencies). Sync script extended to pull this 6th skill.
+- `edpa-setup` SKILL: `people.yaml` template now includes the `github` field with explicit "ASK user, never invent" guidance, and `/edpa:setup` explicitly forbids flat issue lists — `gh issue create` and hand-written `.edpa/backlog/**/*.yaml` are called out as forbidden bypasses; the wizard must use `backlog.py add --parent` per item then a single `sync push` at the end.
+
+### Upstream highlights (not in hub pack surface today)
+- **GitHub-aware people pipeline** across the standalone toolchain: new `_people_loader.py` with `display_handle()`/`avatar_url()`/`validate_people()`, MCP `edpa_validate` merges iteration + people diagnostics, MCP `edpa_people` returns the `github` field, `backlog.py` renders `@github_login`, `board.py` uses GitHub avatars, `edpa_commit_info.resolve_person()` matches GitHub noreply email and `git user.name` literal handle.
+- **Collaborator → people.yaml sync** (the engine behind the new `edpa-sync-people` skill): `sync_collaborators.py`, `.github/workflows/collaborators-sync.yml` (member-add/remove/edit + workflow_dispatch + `COLLAB_SYNC_TOKEN` PAT fallback for org-level access), MCP tool `edpa_sync_people` (read-only diff). Asymmetric strategy: removed collaborators auto-flip to `availability: unavailable`; new collaborators open a PR with auto-filled stub. `ruamel.yaml` round-trip preserves comments, blank lines, key order.
+- **`_sub_issue_linker.py`** — shared GraphQL `addSubIssue` helper used by `project_setup.py` STEP 8 and `sync.py push`. Idempotent ("already a sub-issue" = success).
+- **Optional auto-create of GitHub Project views** — new STEP 10 in `project_setup.py` prompts the maintainer; non-fatal on failure; `--non-interactive` flag for CI.
+
+### Synced into hub
+- `edpa-sync-people/SKILL.md` (new).
+- `edpa-setup` + `edpa-reports` SKILL refresh.
+- `project.yaml.tmpl` + `methodology-en.md` upstream version-string bump.
+- `imports.lock` pin: `tm-edpa -> v1.6.4-beta (b694777d206c)`.
+
+### Hub metadata
+- Capability counts: `5 / 6 / 0` → `6 / 6 / 0` (skills / commands / agents).
+- `scripts/sync-edpa.sh` skill list extended to include `edpa-sync-people`.
+- Pack README, hub README table, `hub-dashboard.html`, `FRAMEWORKS_OVERVIEW.md` updated.
+
 ## 1.5.0-beta — 2026-05-06
 
 Synced from standalone `technomaton/edpa` @ 375c93b (release v1.5.0-beta). Bundles 1.4.1 + 1.5 upstream changes.

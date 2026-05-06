@@ -140,7 +140,7 @@ sync_file() {
   fi
 }
 
-for skill in edpa-setup edpa-engine edpa-reports edpa-autocalib edpa-sync; do
+for skill in edpa-setup edpa-engine edpa-reports edpa-autocalib edpa-sync edpa-sync-people; do
   sync_file "$SRC_ROOT/plugin/skills/$skill/SKILL.md" \
             "$HUB_GOV/skills/$skill/SKILL.md" \
             "skill: $skill"

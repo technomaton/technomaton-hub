@@ -65,8 +65,21 @@ cp .claude/edpa/workflows/*.yml .github/workflows/ 2>/dev/null || true
 ### 3. Initialize capacity registry
 
 Create `.edpa/config/people.yaml` with project name from $ARGUMENTS.
-Ask user for: team members (name, role, FTE, team/organization).
-Calculate capacity_per_iteration based on FTE × hours_per_week × iteration_weeks.
+For each team member, ask the user explicitly for: name, role,
+team/organization, FTE, email, **and GitHub username**. Calculate
+`capacity_per_iteration = fte × hours_per_week × iteration_weeks`.
+
+**CRITICAL** — never invent the `github` field from email patterns
+(e.g. `jaroslav@company.com` → `jaroslav`) or from the user's name.
+GitHub usernames are not derivable. If the user does not know
+someone's login, leave `github: ""` and tell them they can fill it
+in later — `sync push --assignee` simply skips people without a
+login. Inventing a login risks routing issue assignments to a
+stranger with the same handle.
+
+Canonical phrasing per person:
+> "GitHub username for {name}? (leave blank if you don't know it
+> right now — you can fill it in later in `.edpa/config/people.yaml`)"
 
 Template:
 ```yaml
@@ -86,13 +99,15 @@ people:
     fte: 1.0
     capacity_per_iteration: 80
     email: ""
+    github: ""              # GitHub login (or blank — don't guess)
+    availability: confirmed  # confirmed, partial, unavailable
 ```
 
 ### 4. Initialize CW heuristics
 
 Create `.edpa/config/heuristics.yaml`:
 ```yaml
-version: "1.5.0-beta"
+version: "1.6.4-beta"
 evidence_threshold: 1.0
 role_weights:
   owner: 1.0
@@ -122,10 +137,44 @@ gh project create --title "$ARGUMENTS Governance" --owner @me
 
 Create `.github/workflows/branch-check.yml` that blocks PRs without S-XXX/F-XXX/E-XXX reference.
 
-### 7. Output confirmation
+### 7. Hierarchy is mandatory — never produce a flat backlog
+
+**CRITICAL** — every backlog item below the Initiative level MUST
+declare a `parent:` field referencing a higher-level item. The skill
+must refuse to emit flat lists, and the wizard must use the
+`backlog.py add` CLI rather than writing YAML files directly or
+calling `gh issue create` by hand:
+
+```bash
+# Correct — backlog.py enforces parent + assigns the next ID
+python .claude/edpa/scripts/backlog.py add --type Initiative --title "Platform"
+python .claude/edpa/scripts/backlog.py add --type Epic        --parent I-1 --title "Auth"
+python .claude/edpa/scripts/backlog.py add --type Feature     --parent E-1 --title "OAuth"
+python .claude/edpa/scripts/backlog.py add --type Story       --parent F-1 --title "Login UI" --js 5
+
+# After items exist, sync push wires parent-child to GitHub sub-issues:
+python .claude/edpa/scripts/sync.py push
+```
+
+**Forbidden** — these bypass hierarchy enforcement:
+- `gh issue create ...` directly (skips `backlog.py add` validation)
+- Writing `.edpa/backlog/**/*.yaml` files via the editor without a
+  `parent:` field on every non-Initiative entry
+- Skipping `sync push` after adding items locally — without it,
+  GitHub Issues never get linked as sub-issues
+
+If the user asks "create issues for the backlog", ALWAYS use
+`backlog.py add` per item, then a single `sync push` at the end.
+
+### 8. Output confirmation
 
 Print summary: project name, team count, total FTE, capacity/iteration, cadence.
-Suggest next step: "Create work items using GitHub Issues with the hierarchy Initiative → Epic → Feature → Story."
+
+The `project_setup.py` wizard automatically prompts for optional
+`create_project_views.py` invocation (Initiative / Epic / Feature /
+Story / Status views in the GitHub Project UI). Default is yes.
+Failure to create views is non-fatal — the maintainer can re-run
+`python .claude/edpa/scripts/create_project_views.py` later.
 
 ## Error handling
 
