@@ -1,5 +1,34 @@
 # Changelog
 
+## 1.8.1-beta — 2026-05-06
+
+Synced from standalone `technomaton/edpa` @ 6bcce3f (release v1.8.1-beta). Bundles 1.8.0 + 1.8.1 upstream changes (no v1.7.0-beta release was published).
+
+### Changed (BREAKING — one-shot migration provided)
+- **Contributors schema rename in `.edpa/backlog/**/*.yaml`:**
+  - `contributors[].role` → `contributors[].as`
+  - `contributors[].weight` → `contributors[].cw`
+- The old keys collided with `people[].role` (job role: Dev/Arch/QA/PM) and forced readers to domain-switch. New keys have **no alias** — legacy YAMLs hard-fail on `validate_syntax.py` and are skipped by `engine.py load_backlog_items` with a migration breadcrumb.
+- One-shot migration: `python3 .claude/edpa/scripts/migrate_contributors.py` (also translates job-role labels — architect / developer / QA / PM / product_owner — to nearest evidence role: key / owner / reviewer / consulted).
+
+### Fixed (upstream — closes 18 E2E findings + N1/N2 from v1.8.0 re-validation)
+- `engine.py` validates contributor schema, warns per-item when `contributors[].as` is not in the evidence enum (`owner|key|reviewer|consulted`) or `cw` is missing, and prints a summary `WARN: 0 evidence pairs derived from N contributor entries` when nothing produced evidence. Top-level `body` and `assignees` preserved on the way to evidence detection.
+- `project_setup.py` is idempotent: reuses existing project on exact title match (gh project create silently lets duplicate titles through), reuses existing issues by title on rerun.
+- `sync.cmd_conflicts` referenced a non-existent `parse_remote_items()` helper introduced in F10; real name is `map_gh_items_to_edpa(gh_data, fields_mapping)`. Same-field conflict detection now flags conflicts cleanly. (E2E v180 N1)
+
+### Added (upstream — auto-commit + ergonomic gap closures)
+- **Auto-commit of EDPA-managed setup state** via new `plugin/edpa/scripts/_auto_commit.py`. Used by `project_setup.py` STEP 9b (commits `.edpa/config/edpa.yaml`, `.edpa/config/issue_map.yaml`, `.edpa/iterations/` once project IDs / field IDs / option IDs are persisted), `sync push` (commits `issue_map.yaml` updates), and `sync setup-refresh` (commits recovered state). Each command takes `--no-commit` to opt out. Helper uses targeted `git add <paths>` + `git commit -- <paths>` so unrelated WIP stays uncommitted; silently skips when not in a git repo, no `user.name`/`user.email`, or paths match HEAD. (E2E v180 N2 — closes the silent loss of project IDs after `git pull --ff-only`.)
+- Snapshot revisioning, `--until` parser parity, per-iteration YAML bootstrap, GraphQL extension of the Iteration field on rerun, snapshot.frozen_at field, README contributors-schema example.
+
+### Synced into hub
+- `evaluate_cw.py` — substantial change for new `contributors[].as` / `cw` schema validation.
+- `capacity.yaml.tmpl` — additional content (~34 lines).
+- `edpa-setup` + `edpa-reports` SKILL refresh.
+- `project.yaml.tmpl` + `methodology-en.md` upstream version-string bump.
+- `imports.lock` pin: `tm-edpa -> v1.8.1-beta (6bcce3f6b5fa)`.
+
+The `migrate_contributors.py` script and `_auto_commit.py` helper are upstream-only — install standalone for those.
+
 ## 1.6.4-beta — 2026-05-06
 
 Synced from standalone `technomaton/edpa` @ b694777 (release v1.6.4-beta). Bundles 1.6.0 → 1.6.4 upstream changes.

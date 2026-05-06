@@ -12,7 +12,7 @@
 | **tm-pmf** | Strategy (WHAT) | AI PMF Playbook | Miqdad Jaffer (OpenAI) | CC-BY-4.0 (knowledge) + MIT (code) | Stable v1.1.0 |
 | **tm-wardley** | Strategy (WHERE) | Wardley Mapping | Simon Wardley | CC-BY-SA-4.0 (knowledge) + MIT (code) | Stable v1.0.0 |
 | **tm-strategy** | Meta-orchestration | Integration Matrix | Composite (VUCA + PMF + Wardley) | MIT | Stable v1.2.0 |
-| **tm-edpa** | Governance | EDPA | Jaroslav Urbánek | MIT | Beta v1.6.4-beta |
+| **tm-edpa** | Governance | EDPA | Jaroslav Urbánek | MIT | Beta v1.8.1-beta |
 | **tm-ml** | ML/AI Ops | RAG, MLOps, Prompt Eng. | — | MIT | Stable |
 | **tm-dx** | Dev Experience | PR Review, Commit Policy | — | MIT | Stable |
 

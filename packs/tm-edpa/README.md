@@ -1,6 +1,6 @@
 # tm-edpa
 
-**EDPA — Evidence-Driven Proportional Allocation v1.6.4-beta**
+**EDPA — Evidence-Driven Proportional Allocation v1.8.1-beta**
 
 Derive hours from Git delivery evidence. Zero timesheets, mathematical guarantee, Monte Carlo calibrated CW weights. Gates mode (default) credits each status transition; bidirectional sync with GitHub Projects.
 
