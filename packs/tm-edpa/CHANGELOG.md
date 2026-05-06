@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.5.0-beta — 2026-05-06
+
+Synced from standalone `technomaton/edpa` @ 375c93b (release v1.5.0-beta). Bundles 1.4.1 + 1.5 upstream changes.
+
+### Changed (BREAKING — no migration shim)
+- **PI/iteration schema moved out of `edpa.yaml`.** The canonical source is now `.edpa/iterations/`:
+  - `PI-{year}-{n}.yaml` carries PI-level metadata (status, `iteration_weeks`, `pi_iterations`, `start_date`, `end_date`).
+  - `PI-{year}-{n}.{m}.yaml` carries per-iteration plan and delivery using ISO `start_date`/`end_date` plus an explicit `weeks` override.
+- **Legacy fields removed:** `config['pis'][*]`, `config['pi']` singular fallback, the Czech `dates: "D.M.–D.M.YYYY"` string, and the `cadence: "2/10"` shorthand. `weeks` is reconciled against the date range — declared/derived mismatch is now an error.
+- **MCP responses changed shape:** `edpa_iterations` returns `{iterations: [...], warnings?: [...]}` (was a bare list); `edpa_status` replaces `active_iteration_dates` with separate ISO `active_iteration_start`/`_end` fields and adds a top-level `warnings` array on schema drift.
+- **No migration shim:** pre-1.5 `.edpa/` projects with `pis[]` must manually move iteration data into `iterations/*.yaml` before upgrading.
+
+### Added (upstream — not in hub pack surface)
+- `derive_pis()` runtime loader (`plugin/edpa/scripts/_pi_loader.py`) — reconstructs PI list, validates continuity (no date gaps/overlaps, weekend bridging tolerated), reconciles declared vs derived weeks. 30 unit tests.
+- `edpa_validate` MCP tool + `validate_iterations.py` CLI for hooks/CI/assistant diagnostics.
+- PostToolUse hook (`validate_on_save.sh`) now runs the iteration validator on `.edpa/iterations/*.yaml` changes (non-blocking, stderr).
+- `project_setup.py` bootstraps a stub `iterations/PI-{year}-1.yaml` (1-week × 5 default cadence, status `planning`) on empty `iterations/`.
+
+### Fixed
+- `project_setup.py` setup-refresh: `gh project field-list` retries once after 2 s on 5xx instead of crashing with `TypeError: ... NoneType` from `json.loads(None)`.
+
+### Synced into hub
+- `edpa-engine` + `edpa-reports` + `edpa-setup` SKILL refresh (iteration-loader copy, validation hooks, new bootstrap behaviour).
+- `project.yaml.tmpl` + `methodology-en.md` upstream version bump.
+- `imports.lock` pin: `tm-edpa -> v1.5.0-beta (375c93b2baf6)`.
+
+The new `_pi_loader.py`, `validate_iterations.py`, `edpa_validate` MCP tool and updated `validate_on_save.sh` hook are upstream-only — install standalone for the validator surface.
+
 ## 1.4.0-beta — 2026-05-06
 
 Synced from standalone `technomaton/edpa` @ 4e1cc45 (release v1.4.0-beta). Bundles 1.3.1, 1.3.2 and 1.4 upstream changes.
