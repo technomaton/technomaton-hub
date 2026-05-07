@@ -1,5 +1,42 @@
 # Changelog
 
+## 1.9.0 — 2026-05-07
+
+Synced from standalone `technomaton/edpa` @ e5f7ab1 (release v1.9.0). **Drops the `-beta` suffix — first stable release.** Bundles 1.9.0-beta substantive feature work plus the version-string-only graduation in 1.9.0.
+
+Stable graduation triggered by the kashealth pilot kickoff (2026-05-07) after a fourth consecutive E2E run confirmed 32/32 cumulative findings PASS and the 260-test unit suite stayed green across the contributors schema rename and the per-iteration override rollout.
+
+### Added (from 1.9.0-beta)
+- **Iteration-level `people:` overrides** — per-person, per-iteration capacity overrides for IP iteration crunch, vacations, sick leave, etc. that don't belong in `people.yaml`'s permanent baseline. An iteration YAML may now carry a top-level `people:` block reusing the same schema as `people.yaml`; engine matches by `id` and overrides `capacity_per_iteration` (or legacy `capacity`) on top of baseline. Optional `note:` preserved through snapshots and reports for audit.
+
+  ```yaml
+  iteration:
+    id: PI-2026-1.3
+  people:
+    - id: bob-dev
+      capacity_per_iteration: 44
+      note: "IP weekend deploy push (Jun 13-14)"
+    - id: alice-arch
+      capacity_per_iteration: 10
+      note: "vacation Jun 9-11 (3 days PTO)"
+  ```
+
+  Why iteration `people:` rather than a separate `capacity_overrides:` block (the original RFC shape): reuses an existing schema users already know, no new vocabulary. Audit reason downgraded from required `reason:` to optional `note:`, with `validate_syntax` enforcing that an override entry must touch at least one of capacity/note (otherwise it's a no-op typo).
+
+- 15 new unit tests in `tests/test_capacity_overrides.py`. RFC `docs/proposals/per-iteration-capacity-overrides.md` retained for design history.
+
+### Upstream-only (install standalone for these)
+- `engine.run_edpa()` gained `edpa_root=` and `iteration_id=` kwargs; loads `iteration.people[]` overrides and surfaces `capacity_baseline` + `capacity_override` on each person result. Pre-1.9 callers (no `iteration_id`) still work — every person uses people.yaml baseline only.
+- `validate_syntax.py` recognises iteration `people:` schema and hard-fails on unknown person id, duplicate entries, missing id, no override fields, or negative capacity. Backward-compat alias `validate_capacity_overrides` re-exports `validate_iteration_people_overrides`.
+- Snapshots persist `capacity_baseline` + `capacity_override` (with `note`) when an override applied; absent fields keep pre-1.9 snapshots byte-identical (preserves L6 dedup).
+- `reports.py` per-person timesheet shows `(baseline 40h, override abs 44h (+4h vs baseline 40h) ("IP weekend deploy push"))` when an override is active; team rollup gains an `Override` column the moment any iteration entry has overrides applied.
+
+### Synced into hub
+- `edpa-setup` + `edpa-reports` SKILL refresh (override workflow guidance).
+- `project.yaml.tmpl` + `methodology-en.md` upstream version-string bump.
+- `imports.lock` pin: `tm-edpa -> v1.9.0 (e5f7ab111274)`.
+- `plugin.json`: tier keyword `beta` → `stable`.
+
 ## 1.8.1-beta — 2026-05-06
 
 Synced from standalone `technomaton/edpa` @ 6bcce3f (release v1.8.1-beta). Bundles 1.8.0 + 1.8.1 upstream changes (no v1.7.0-beta release was published).
