@@ -106,34 +106,38 @@ issue_comment → consulted (0.15)
 
 Allow manual override: check issue body for `/contribute @person weight:X`.
 
-### 4. Calculate EDPA scores
+### 4. Calculate EDPA scores (v1.14 single path, v1.17 yaml_edit)
 
-**Gates mode (default):**
-For each Initiative/Epic/Feature status transition that fired during the
-iteration, credit the parent's contributors with `JobSize × gate_weight`.
-Story still uses the Done filter. Requires git history to record status
-transitions (sync `pull --commit` produces these automatically).
+The engine credits three kinds of work events:
 
 ```
-Score[P, gate_event] = JobSize[parent] × gate_weight × CW[P, parent]
-Score[P, story_done] = JobSize[story] × CW[P, story]
+Score[P, story_done]   = JobSize[story]   × CW[P, story]      # also Defect / Task in v1.17
+Score[P, gate_event]   = JobSize[parent]  × gate_weight × CW[P, parent]
+Score[P, yaml_edit]    = signal_weight    × CW[P, item]       # v1.17 (in-memory enrichment)
 ```
 
-**Simple mode (`--mode simple`):**
-Falls back to Done-only filter for every level. Use when the project
-doesn't record mid-life status transitions in git.
+- **Story / Defect / Task Done credit** for every item at `status: Done`.
+  (v1.17 fix: pre-1.17 the engine silently dropped Defects via a
+  `level == "Story"` filter at engine.py:1198.)
+- **Parent gate transitions** for every Feature / Epic / Initiative
+  status transition captured in git history (via `sync pull --commit`
+  auto-commits) within the iteration date window.
+- **YAML-edit structural signals (v1.17)** — every commit on
+  `.edpa/backlog/<typ>/<id>.yaml` in the iteration window contributes
+  structural signals (`yaml_edit:create`, `yaml_edit:block_add`,
+  `yaml_edit:list_grow`, `yaml_edit:scalar_change`,
+  `yaml_edit:lines_volume`, `yaml_edit:contributors_rebalance`,
+  `yaml_edit:revert`). These augment contributors[] in-memory before
+  run_edpa; the frozen snapshot captures the augmented state.
 
-```
-Score[P, item] = JobSize[item] × CW[P, item]   # only items with status: Done
-```
+When git history records no transitions and no yaml_edit activity,
+only Done-item credit fires — the calculation degenerates gracefully
+to the pre-v1.14 "simple" behaviour without any mode selector.
 
-**Full mode (`--mode full`):**
-Same as simple but adds RS audit detail in the snapshot.
-
-```
-Score[P, item] = JobSize[item] × CW[P, item] × RS[P, item]
-RS = min(evidence_score / max_evidence_score_on_item, 1.0)
-```
+> **Pre-v1.14 mode selector removed.** v1.13 and earlier had
+> `--mode {simple, full, gates}`. v1.14 dropped it: `gates` was
+> a strict superset of the others, so the single-path engine is
+> mathematically equivalent and operationally simpler.
 
 ### 5. Derive hours
 
@@ -160,7 +164,6 @@ Write results to `.edpa/reports/iteration-{ID}/edpa_results.json`:
 ```json
 {
   "iteration": "$ARGUMENTS",
-  "mode": "gates|simple|full",
   "computed_at": "ISO-8601",
   "people": [
     {

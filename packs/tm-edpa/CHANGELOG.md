@@ -1,5 +1,48 @@
 # Changelog
 
+## 1.18.0 — 2026-05-11
+
+Synced from standalone `technomaton/edpa` @ ad0b3e4 (release v1.18.0). Bundles 9 minor versions of upstream work (1.10–1.18). Standalone is the canonical surface — hub pack carries the user-facing skills, commands, references, and config templates; engine internals, workflows, and most CLI scripts remain upstream-only.
+
+### Workflow-prefix refactor (BREAKING — upstream, distributed workflows)
+- All 11 plugin-shipped GitHub Actions workflows now use the `edpa-` prefix (`branch-check.yml → edpa-branch-check.yml`, etc.). Rationale: generic names collided with target projects' own workflows and install.sh's "skip if exists" silently no-op'd in collision cases. Prefixed names are namespace-safe and group together in the Actions UI sidebar. Migration: install.sh prints `git mv` commands by default; set `EDPA_AUTO_MIGRATE=1` to rename legacy files automatically.
+- `EDPA_TOKEN || GITHUB_TOKEN` fallback pattern with explicit warning when EDPA_TOKEN is missing. `collaborators-sync.yml` drops bespoke `COLLAB_SYNC_TOKEN` in favor of shared `EDPA_TOKEN` (one PAT carries `read:org` + `repo` + `project`).
+- `sync-projects-to-git.yml` switched from invalid `projects_v2_item` trigger (it's a webhook event, not a workflow trigger) to a business-hours polling cron (`*/30 6-17 * * 1-5` UTC = Mon–Fri 8–18 CET/CEST). ~528 CI min/month, max 30 min latency during business hours; weekends pause (workflow_dispatch escape hatch).
+
+### Major feature work synced into hub skills + templates
+- **Preflight (v1.10)** — `/edpa:setup` Stage 0 runs `preflight.py` before any provisioning (toolchain, gh scopes, org access, Issue Types, `git config user.email`, Python modules, declared github logins vs org members). Blocks on ERROR. Flags: `--check-only`, `--skip-preflight`, `--auto-fix`. Eliminates the "setup fails with cryptic GraphQL error" path.
+- **Capacity override prep (v1.10)** — `/edpa:close-iteration` now has an interactive prep step before the engine call. Forms: `<iter>` (prep + engine + reports), `<iter> --prep-only` (record overrides without closing — for mid-iteration PTO), `<iter> --skip-prep` (engine + reports only, re-runs). Uses new `capacity_override.py` CLI (validates person-id, accepts absolute or `+N`/`-N` delta, auto-commits).
+- **Single calculation path (v1.14)** — `mode` field retired from `project.yaml.tmpl` and report templates; single canonical gated calculation. `reports.py` no longer prints `Mode: ?` (was a v1.14 regression).
+- **yaml_edit signals (v1.17)** — 8 structural diff-derived signals capture content elaboration on Initiatives/Epics/Features/Defects that PR-API surfaces missed: `create`, `block_add`, `list_grow`, `scalar_change`, `lines_volume`, `contributors_rebalance`, `revert`, `bulk_migration_discount`. Tunable weights live in `cw_heuristics.yaml` → `yaml_edit_weights:`. Bot authors, tool-generated commits (`EDPA sync push:` etc.), whitespace-only diffs, renames, and status-only changes get 0 weight. Major rewrite of `cw_heuristics.yaml.tmpl`, `evidence-detection.md`, `methodology-en.md`, `auto-calibration.md`, `audit.md` reflects this.
+- **Excel consolidation (v1.10)** — single `edpa-results.xlsx` with `Team Summary` + `Item Costs` tabs (was split workbooks).
+
+### Schema rename (BREAKING — upstream-only, v1.11)
+- `rr` → `rr_oe` field rename in backlog YAMLs (matches v1.8 contributors schema migration pattern — clarifies role/responsibility scope). Hub pack carries no backlog data, so no migration needed here; standalone-installed projects must run `migrate_*` scripts.
+
+### Fixed (upstream, surfaced via E2E pilot runs)
+- **IP-iteration gate events were orphaned (0h derived).** When parents were seeded with title+js+status only (realistic for progressively elaborated Initiatives/Features), gate events inherited empty `contributors[]`. `load_gate_events(..., people=...)` now falls back to crediting the transition's commit author at `cw=1.0` with a `gate_transition_author` signal. PI-2026-1.5 jumped 0h → 120h in the test sandbox. (v1.17.1)
+- **Defects bypassed the iteration filter and got double-counted.** Engine filter at `engine.py:539-547` had explicit branches for Story (exact-match) and Feature (PI-prefix), but Defect/Task fell through to the always-include-if-Done path. Now `if item_type in ("Story", "Defect", "Task")`. (v1.17.1)
+- **Defects silently dropped from engine** (`level != "Story"` filter at `engine.py:1198`). Promoted to `level in ("Story", "Defect", "Task")`. (v1.17)
+- **`backlog.py tree` / `status` crashed with `KeyError: 'project'`** on every canonical pilot `people.yaml`. `load_backlog()` now merges `project:` from `edpa.yaml` (correct post-v1.10 location) and uses `.get()` so unconfigured projects print `(unnamed project)`. (v1.17.1)
+- **`project_setup.py` Iteration field left with only `TBD`** — STEP 9 now scans `.edpa/iterations/` for child iteration files, calls `_extend_iteration_options_via_graphql`, and refetches options so `option_ids` persists. Unblocks the first `sync.py push`. (v1.16)
+- **`backlog.py add --rr-oe NameError`** (leftover `rr` reference), legacy `as:` role field rejected by `validate_syntax.py --strict`. (v1.16)
+
+### Synced into hub
+- `edpa-engine` SKILL — gate-event author resolver, yaml_edit signals integration, Defect/Task promotion (51 line diff).
+- `edpa-setup` SKILL — Stage 0 preflight, flags, Issue Types auto-fix (45 line diff).
+- `edpa-reports` SKILL — single-mode report shape, Excel consolidation (12 lines).
+- `edpa-sync-people` SKILL — minor refresh (2 lines).
+- `/edpa close-iteration` command — capacity override prep step (+80 lines).
+- `config/cw_heuristics.yaml.tmpl` — yaml_edit_weights block + refactor (331 line diff).
+- `config/capacity.yaml.tmpl` (93 line diff), `config/project.yaml.tmpl` (81 line diff — `mode` field retired).
+- References: `methodology-en.md` (271 line rewrite), `evidence-detection.md` (174 lines), `audit.md` (102 lines), `auto-calibration.md` (191 lines).
+- `imports.lock` pin: `tm-edpa -> v1.18.0 (ad0b3e424f37)`.
+
+### Upstream-only (install standalone via `curl … install.sh | sh` for these)
+- `preflight.py`, `capacity_override.py`, `yaml_edit_signals.py`, all engine internals.
+- 11 prefixed GitHub Actions workflows + EDPA_TOKEN PAT migration.
+- Schema migration scripts (`migrate_*.py`).
+
 ## 1.9.0 — 2026-05-07
 
 Synced from standalone `technomaton/edpa` @ e5f7ab1 (release v1.9.0). **Drops the `-beta` suffix — first stable release.** Bundles 1.9.0-beta substantive feature work plus the version-string-only graduation in 1.9.0.

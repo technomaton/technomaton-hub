@@ -69,7 +69,7 @@ Projekt: {project_name}
 Registrace: {registration}
 Období: {iteration} ({dates})
 Kapacita: {capacity}h ({fte} FTE)
-Metodika: EDPA 1.9.0 ({mode})
+Metodika: EDPA 1.18.0
 
 | Item | Typ | JS | CW | Score | Podíl | Hodiny |
 |------|-----|----|----|-------|-------|--------|
@@ -91,18 +91,20 @@ ItemShare[P] = DerivedHours[P, item] / Σ DerivedHours[*, item]
 ```
 
 Output hierarchically: Epic → Feature → Story with contributor breakdown per level.
-Write to `.edpa/reports/iteration-{ID}/item-costs.xlsx`.
+Engine writes both per-person summary and per-item allocation into a
+single workbook `.edpa/reports/iteration-{ID}/edpa-results.xlsx` with
+two tabs: **Team Summary** and **Item Costs**.
 
 ### Frozen snapshot
 
 Write to `.edpa/snapshots/iteration-{ID}.json`:
 ```json
 {
-  "snapshot_version": "1.9.0",
+  "snapshot_version": "1.18.0",
   "iteration": "{id}",
   "generated_at": "ISO-8601",
   "frozen": true,
-  "methodology": "EDPA 1.9.0",
+  "methodology": "EDPA 1.18.0",
   "capacity_registry": { "...from config..." },
   "edpa_results": { "...from engine..." },
   "signature_status": "pending"
@@ -117,7 +119,7 @@ When $ARGUMENTS = "pi":
 1. Load all iteration results in current PI
 2. Aggregate per person: Σ hours across iterations
 3. Compare to expected (capacity × iterations_count)
-4. Write `.edpa/reports/pi-{ID}/pi-summary.xlsx`
+4. Write `.edpa/reports/pi-{ID}/pi-summary-{ID}.md`
 
 ### Excel export
 

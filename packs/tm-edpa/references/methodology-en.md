@@ -2,7 +2,7 @@
 
 *Capacity derivation from delivery evidence*
 
-**Version 1.9.0 — May 2026 — Jaroslav Urbanek, Lead Architect**
+**Version 1.18.0 — May 2026 — Jaroslav Urbanek, Lead Architect**
 
 ---
 
@@ -105,114 +105,246 @@ For person **P** and Iteration **I**:
 | `Capacity[P, I]` | Confirmed at Iteration Planning | 40h |
 | `RelevantItems[P, I]` | Automatically from GitHub evidence | 6 items across 3 levels |
 | `JobSize[item]` | Custom field on issue | Fibonacci 1–20 |
-| `ContributionWeight[P, item]` | From evidence / manual override | 0.15–1.0 |
-| `RelevanceSignal[P, item]` | Normalized from Evidence Score | 0.25–1.0 |
+| `cw[P, item]` | Per-item share, computed by detect_contributors | 0.0–1.0 (Σ across persons = 1.0) |
+| `contribution_score[P, item]` | Σ signal weights for P on item (audit input) | 0.5–10+ |
 
-### 5.3 Evidence Detection
+### 5.3 Evidence Detection (v1.11 + v1.17 yaml_edit)
 
-| GitHub signal | Evidence score | Typical CW |
-|---|---:|---:|
-| Assignee on issue | +4 | 1.0 |
-| Explicit `/contribute` command | +3 | 0.6 |
-| PR author referencing item | +2 | 0.6 |
-| Commit author with S-XXX / F-XXX / E-XXX in message | +1 | 0.25 |
-| PR reviewer on PR referencing item | +1 | 0.25 |
-| Issue / PR comment in design discussion | +0.5 | 0.15 |
+CW computation lives in two collectors that feed the same additive
+signal pool:
+
+- `detect_contributors.py` (v1.11) — PR/issue API surfaces. Runs at
+  PR merge via the `edpa-contributor-detect.yml` workflow.
+- `yaml_edit_signals.py` (v1.17) — git diff over `.edpa/backlog/*.yaml`.
+  Runs at engine close, scoped to the iteration window.
+
+Both feed the same `contributors[].signals[]` aggregation. Signal
+weights sum into `contribution_score`, which normalizes to per-item
+`cw[P, item]` shares.
+
+#### 5.3.1 PR / issue API signals (v1.11)
+
+| Signal type | Default weight | Source | Auditor `ref` |
+|-------------|---------------:|--------|---------------|
+| `assignee` | 4.00 | Issue assignees | `issue#<num>` |
+| `pr_author` | 3.40 | PR author | `pr#<num>` |
+| `commit_author` | 2.78 | PR commit author (excl. PR author) | `pr#<num>/commit/<sha>` |
+| `pr_reviewer` | 2.25 | PR reviews submitted | `pr#<num>/review/<id>` |
+| `issue_comment` | 1.14 | Issue/PR comments (excl. bots) | `issue#<num>/comment/<id>` |
+| `manual:pr_body` | explicit | `/contribute` in PR description | `pr#<num>/body` |
+| `manual:commit_message` | explicit | `/contribute` in commit message | `commit/<sha>/message` |
+| `manual:issue_body` | explicit | `/contribute` in issue description | `issue#<num>/body` |
+| `manual:issue_comment` | explicit | `/contribute` in issue comment | `issue#<num>/comment/<id>` |
+| `manual:pr_comment` | explicit | `/contribute` in PR-level comment | `pr#<num>/comment/<id>` |
+
+#### 5.3.2 YAML-edit structural signals (v1.17)
+
+Every commit touching `.edpa/backlog/<typ>/<id>.yaml` is itself
+evidence of work on that item. Detection is **structural** (count
+list bullets, top-level blocks, scalar changes) — it never tries to
+semantically classify content (operator field-naming drift makes
+that brittle). Auditor reviewing per-signal `ref` opens the commit
+and sees the actual diff.
+
+| Signal type | Default weight | Source | Auditor `ref` |
+|-------------|---------------:|--------|---------------|
+| `yaml_edit:create` | 5.00 | New file with +id+type+title | `commit/<sha>/<file>` |
+| `yaml_edit:block_add` | 2.00 | Per top-level nested block added | `commit/<sha>/<file>` |
+| `yaml_edit:list_grow` | 1.00 (cap 10) | Per net `- ` bullet added | `commit/<sha>/<file>` |
+| `yaml_edit:scalar_change` | 0.50 | Per top-level scalar set | `commit/<sha>/<file>` |
+| `yaml_edit:lines_volume` | min(3.0, n/30) | Substantive-edit proxy | `commit/<sha>/<file>` |
+| `yaml_edit:contributors_rebalance` | 0.30 | Per new person added (NOT cw shifts) | `commit/<sha>/<file>` |
+| `yaml_edit:revert` | -0.50 | Per net-removed block (negative) | `commit/<sha>/<file>` |
+
+Built-in mitigations against gaming:
+
+- **Bot authors** (`*[bot]@*`, `github-actions@*`) → 0 weight
+- **Tool-generated commits** (`EDPA sync push:`, `EDPA: capacity override`,
+  `EDPA setup state committed`) → 0 weight
+- **Whitespace-only diffs** → 0 weight
+- **Status-only changes** → 0 weight (transitions.py owns gate-event credit)
+- **File renames / moves** → 0 weight (metadata only)
+- **Bulk migrations** (`chore: rename`, `EDPA migrate`) → ×0.1 multiplier
+- **Backdated commits** use `GIT_AUTHOR_DATE` for iteration-window check
+
+Auto-detected signal weights live in `.edpa/config/cw_heuristics.yaml`
+under `signals:` (PR/issue) and `yaml_edit_weights:` (v1.17). Both
+are calibrated by `/edpa:calibrate`. Manual `/contribute @person weight:X`
+directives carry the operator-supplied `weight:` value verbatim —
+they are **additive signals**, not overrides.
 
 Rules:
-- Relevance threshold: Evidence Score >= 1.0
-- CW heuristic: strongest signal determines default CW
-- Manual override: `/contribute @person weight:0.6`
-- Commit count does NOT convert to time — only signals relevance
+- All signals contribute additively to `contribution_score`; no priority dominance
+- `cw[P, item] = contribution_score[P, item] / Σ_persons contribution_score[*, item]`
+- Multiple `/contribute` lines for the same person stack additively
+- Role labels are derived from signal types at display time only — never stored
 
-### 5.4 Calculation — Two Variants
+See [`docs/evidence-detection.md`](evidence-detection.md) for the full
+detection algorithm and [`docs/contribute-directive.md`](contribute-directive.md)
+for `/contribute` usage patterns.
 
-**Methodologically pure variant (audit):**
+### 5.4 Calculation (single path, v1.14+ extended in v1.17)
+
+The engine has **one calculation path**. It credits three kinds of
+work events together and lets per-person ratio normalization split
+the person's capacity across whichever items they touched:
+
+1. **Story / Defect / Task Done credit** — items at `status: Done`
+   get `JS × cw` per their contributors[]. cw shares come pre-computed
+   from `detect_contributors.py` and (v1.17+) augmented in-memory by
+   `yaml_edit_signals.py` before run_edpa. (v1.17 fix: pre-v1.17 the
+   engine silently dropped Defects via a `level == "Story"` filter.)
+2. **Parent gate transitions** — Feature/Epic/Initiative status
+   transitions captured in git history (via `sync pull --commit`
+   auto-commits) become synthetic events with effective JS =
+   `parent.JS × gate_weights[type][transition]`. Parent contributors
+   inherit cw shares from the parent's contributors[] block — and
+   when the parent had no contributors[] populated (e.g., seeded
+   without `--contributor`), v1.17 yaml_edit signals automatically
+   credit the commit author who wrote the LBC / AC / NFRs.
+3. **YAML-edit signals (v1.17)** — every commit on a backlog YAML
+   inside the iteration window contributes structural signals
+   (create / block_add / list_grow / scalar_change / lines_volume /
+   contributors_rebalance / revert). These augment contributors[]
+   in-memory before run_edpa; the frozen snapshot captures the
+   augmented state for full audit trail.
+
+When git history records no transitions and no yaml_edit activity,
+only Done-item credit fires. The calculation is feature-preserving
+across all setups.
+
+> **`status: Done` requirement for Stories.** Stories still in
+> `Backlog` / `Implementing` / `Validating` don't fire Done credit.
+> If you want partial credit before iteration close, drive parent
+> status transitions on the Feature/Epic that contains them — gate
+> events fire on parent transitions even while their child Stories
+> are mid-flight.
+
+**v1.14 unified formula** (no role dominance, no Relevance Signal,
+no mode selector):
+
 ```text
-Score[P, item] = JobSize[item] x ContributionWeight[P, item] x RelevanceSignal[P, item]
-DerivedHours[P, item] = (Score[P, item] / SumScores[P, I]) x Capacity[P, I]
+contribution_score[P, item] = Σ signal_weight × signal_fired(P, item)
+cw[P, item]                 = contribution_score[P, item]
+                              / Σ_persons contribution_score[*, item]
+score[P, item]              = JobSize[item] × cw[P, item]
+ratio[P, item]              = score[P, item] / Σ_items_of_P score
+DerivedHours[P, item]       = ratio[P, item] × Capacity[P, I]
 ```
 
-**Simplified operational variant:**
+The pre-v1.14 `simple` / `full` / `gates` mode selector was removed.
+`gates` was a strict superset of the others (degenerated to Done-only
+when no transitions existed), so the single-path engine is
+mathematically equivalent and operationally simpler.
+
+### 5.5 Mathematical Guarantees
+
+Two invariants hold by construction:
+
 ```text
-Score[P, item] = JobSize[item] x ContributionWeight[P, item]
-DerivedHours[P, item] = (Score[P, item] / SumScores[P, I]) x Capacity[P, I]
+1. Per-item:    Σ_persons cw[*, item] = 1.0
+2. Per-person:  Σ_items   DerivedHours[P, *] = Capacity[P, I]
 ```
 
-Recommendation: start with operational variant. Preserve Evidence Score and Relevance Signal in snapshots for audit defense.
-
-### 5.5 Mathematical Guarantee
-
-```text
-Σ DerivedHours[P, item] = Capacity[P, I]
-```
-
-Sum of derived hours equals exactly the person's capacity for the Iteration, provided at least one relevant item exists. Holds for both calculation variants.
+Invariant 1 follows from the sum-and-normalize aggregation: each
+item's contributions sum to 1.0 by definition. Invariant 2 follows
+from per-person ratio normalization across their items in the
+iteration. Engine validates both at run time and refuses to write
+the snapshot if either fails.
 
 ---
 
-## 6. Dual-View CW: Two Questions, One Dataset
+## 6. Two Views from One Dataset (v1.11)
 
-### 6.1 The Problem
+### 6.1 What `cw` means in v1.11
 
-CW = 0.25 for a reviewer on a Story can mean two things:
-
-- **Per-person view:** "this item took 25% of attention vs their other items" → capacity distribution
-- **Per-item view:** "they did 25% of the work on this item" → cost allocation per deliverable
-
-These are two different questions. One set of CWs cannot cover both. The model solves both — from the same data, with two normalizations.
-
-### 6.2 Per-Person Normalization (Timesheets)
-
-Answers: **How does person P's capacity distribute across their items?**
+Single semantic: **cw is the per-item share of contribution**.
 
 ```text
-DerivedHours[P, item] = (Score[P, item] / Σ Score[P, *]) x Capacity[P, I]
-
-Guarantee: Σ DerivedHours[P, *] = Capacity[P, I]
+cw[P, item] = contribution_score[P, item] / Σ_persons contribution_score[*, item]
+Σ_persons cw[*, item] = 1.0
 ```
 
-Output: **timesheet per person** — how many hours P spent on which item.
+`cw = 0.25` for person P on Story S-1 reads as **"P contributed 25%
+of S-1's evidence-weighted work"**. Pre-v1.11 cw was an absolute
+[0, 1] value with role-coupled semantics ("P was a reviewer, weight
+0.25"), which was ambiguous between two normalizations. v1.11 fixes
+the meaning to per-item share.
 
-### 6.3 Per-Item Normalization (Cost Allocation)
+### 6.2 Per-Person View (Timesheets)
+
+Answers: **How does person P's capacity distribute across their items
+this iteration?**
+
+```text
+score[P, item] = JobSize[item] × cw[P, item]
+ratio[P, item] = score[P, item] / Σ_items_of_P score
+DerivedHours[P, item] = ratio[P, item] × Capacity[P, I]
+
+Guarantee: Σ_items DerivedHours[P, *] = Capacity[P, I]
+```
+
+Output: **timesheet per person** — how many hours P spent on which
+item.
+
+### 6.3 Per-Item View (Cost Allocation)
 
 Answers: **How does work on item X distribute across people?**
 
-```text
-ItemShare[P, item] = DerivedHours[P, item] / Σ DerivedHours[*, item]
+This view is **directly readable from `cw`** without further
+computation — `cw[P, X]` IS X's share of P. To translate to hours:
 
-Where Σ runs over all contributors of the item.
+```text
+ItemHours[P, item] = JobSize[item] × cw[P, item] × hour_factor
+
+Where hour_factor is set so that Σ_items_of_P JS × cw × hour_factor = Capacity[P]
 ```
 
-Output: **cost card per item** — how many hours each person invested in this deliverable.
+Or equivalently, the per-item hours **sum to the same number** as
+the per-person view's `DerivedHours[P, item]` — they're two ways to
+read the same per-(person, item) hour value.
 
-### 6.4 Example: Story S-200 (OMOP parser impl., JS: 8)
+### 6.4 Example: Story S-200 (JobSize = 8)
 
-**Per-person view** (each from THEIR capacity):
+Detected signals:
+- turyna: assignee (4) + commit_author (1) + manual:pr_body weight=2 → score 7
+- tuma: pr_author (2) + commit_author (1) + pr_reviewer (1) → score 4
+- urbanek: issue_comment (0.5) → score 0.5
 
-| Contributor | CW | Score | Their ΣScores | Their capacity | Hours on S-200 |
-|---|---:|---:|---:|---:|---:|
-| Turyna (Dev, owner) | 1.0 | 8.0 | 42.3 | 60h | 11.3h |
-| Tuma (DevSecOps, CI/CD) | 0.6 | 4.8 | 58.1 | 80h | 6.6h |
-| Urbanek (Arch, review) | 0.25 | 2.0 | 28.6 | 40h | 2.8h |
+Σ score on S-200 = 11.5
 
-**Per-item view** (how 20.7h on S-200 distributes):
+| Contributor | Signals | contribution_score | cw (share) |
+|---|---|---:|---:|
+| Turyna | assignee + commit + manual | 7.0 | **0.609** |
+| Tuma | pr_author + commit + pr_reviewer | 4.0 | **0.348** |
+| Urbanek | issue_comment | 0.5 | **0.043** |
+| **Σ** | | **11.5** | **1.000** |
 
-| Contributor | Hours on S-200 | Share of item |
-|---|---:|---:|
-| Turyna | 11.3h | 54.6% |
-| Tuma | 6.6h | 31.9% |
-| Urbanek | 2.8h | 13.5% |
-| **Total** | **20.7h** | **100%** |
+**Per-person view** (each from their own capacity, assuming S-200 is
+their only item this iteration):
 
-### 6.5 When to Use Which
+| Contributor | JS × cw | Capacity | Hours on S-200 |
+|---|---:|---:|---:|
+| Turyna | 8 × 0.609 = 4.87 | 60h | 60.0h (sole item) |
+| Tuma | 8 × 0.348 = 2.78 | 80h | 80.0h (sole item) |
+| Urbanek | 8 × 0.043 = 0.35 | 40h | 40.0h (sole item) |
 
-| View | Question | Output | Guarantee |
-|---|---|---|---|
-| Per-person | How many hours did P spend on what? | Timesheet, OP TAK | Σ = capacity |
-| Per-item | How many people and hours did item X cost? | Cost allocation, audit per deliverable | Σ shares = 100% |
+(In real iterations each person has multiple items; ratio
+normalization across items spreads their capacity proportionally to
+score per item.)
 
-Both views are generated from the same data (CW, JS, Capacity) — no duplication, no conflict.
+### 6.5 When to read cw vs hours
+
+| Question | Read | From |
+|----------|------|------|
+| "What share of S-200's work was Turyna's?" | `cw[turyna, S-200]` | `contributors[].cw` directly |
+| "How many hours did Turyna spend on S-200?" | `DerivedHours[turyna, S-200]` | engine output `items[].hours` |
+| "How many hours did the whole team spend on S-200?" | Σ over `DerivedHours[*, S-200]` | engine output, summed across persons |
+| "What's the team total this iteration?" | Σ over `DerivedHours[*, *]` | should equal Σ Capacity by invariant |
+
+cw is normalized (sums to 1.0 per item, dimensionless). DerivedHours
+is in hours (sums to capacity per person). Both come from the same
+underlying data — no duplication.
 
 ---
 
@@ -333,11 +465,10 @@ No item enters delivery without: Issue Type, Parent, Job Size, BV+TC+RR, Owner. 
 Iteration Close → per person:
   .edpa/reports/iteration-{I}/vykaz-{person}.md
   .edpa/reports/iteration-{I}/vykaz-{person}.json
-  .edpa/reports/iteration-{I}/summary.xlsx
-  .edpa/reports/iteration-{I}/item-costs.xlsx    ← per-item view
+  .edpa/reports/iteration-{I}/edpa-results.xlsx    ← Team Summary + Item Costs tabs
 
 PI Close → aggregation:
-  .edpa/reports/planning-interval-{PI}/summary.xlsx
+  .edpa/reports/planning-interval-{PI}/pi-summary-{PI}.md
 
 Annual:
   .edpa/reports/2026/annual.xlsx
