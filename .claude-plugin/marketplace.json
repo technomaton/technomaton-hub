@@ -24,8 +24,12 @@
     },
     {
       "name": "tm-edpa",
-      "source": "./packs/tm-edpa",
-      "description": "EDPA governance: evidence-driven proportional allocation. Standalone: github.com/technomaton/edpa",
+      "source": {
+        "source": "github",
+        "repo": "technomaton/edpa",
+        "path": "plugin"
+      },
+      "description": "EDPA governance: evidence-driven proportional allocation. Pulled directly from upstream — see packs/tm-edpa/_vendor.json for the currently-pinned ref.",
       "license": "MIT",
       "tags": ["governance", "edpa", "capacity", "community"]
     },

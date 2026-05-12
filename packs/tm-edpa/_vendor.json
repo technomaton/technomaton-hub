@@ -1,0 +1,22 @@
+{
+  "name": "tm-edpa",
+  "model": "marketplace-pointer",
+  "upstream": {
+    "repo": "technomaton/edpa",
+    "path": "plugin",
+    "homepage": "https://edpa.technomaton.com",
+    "url": "https://github.com/technomaton/edpa"
+  },
+  "pinned": {
+    "tag": "v1.18.2",
+    "sha": "446affd180d8492a4264dcce6d71f2c1687fc7cc",
+    "pinned_at": "2026-05-12"
+  },
+  "license": "MIT",
+  "notes": [
+    "tm-edpa is NOT vendored as a copy any more. The hub marketplace.json source points directly to technomaton/edpa@plugin, so `/plugin install tm-edpa@technomaton-hub` fetches the plugin payload (skills, commands, hooks, .mcp.json, Python engine, schemas, templates, workflows) straight from upstream.",
+    "`pinned` records the upstream tag/SHA the hub currently advertises. Bumping it requires editing this file and the corresponding section in CHANGELOG/README — Claude Code's marketplace will pick the bumped ref up automatically.",
+    "If we ever need to pin a specific upstream ref (e.g. for compliance), add `ref: <tag>` to the source object in .claude-plugin/marketplace.json. Today the source resolves to the default branch HEAD of technomaton/edpa.",
+    "The legacy auto-sync workflow .github/workflows/sync-edpa.yml is obsolete under this model — it can be removed once we've shipped a release on the pointer model and confirmed marketplace installs work."
+  ]
+}
